@@ -2,34 +2,46 @@
 #include "ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
-{
+: QMainWindow(parent)
+, ui(new Ui::MainWindow) {
     ui->setupUi(this);
+    yandex = new YandexAPI(_baseUrl,this);
+    connect(yandex, &YandexAPI::s_authComplete, this, [=](bool auth){
+        ui->labelAuthError->setVisible(!auth);
+        if (!auth) {
+            _errorPassword++;
+            if (_errorPassword < 5) {
+                ui->labelAuthError->setText(tr("Ошибка при авторизации.\nПроверьте пароль.\nОшибок: %1").arg(_errorPassword));
+            } else {
+                ui->labelAuthError->setText(tr("Превышено количество ошибок.\nЗапросите пароль заново."));
+            }
+        }
+    });
+    ui->labelAuthError->setVisible(false);
 }
 
-MainWindow::~MainWindow(){
+MainWindow::~MainWindow() {
     delete ui;
 }
 
-void MainWindow::on_ButtonEnter_clicked(){
-    YandexAPI *request = new YandexAPI(_baseUrl);
-    request->Authorization(ui->LineEditLogin->text(),ui->LineEditPassword->text());
+void MainWindow::on_ButtonEnter_clicked() {
+    //YandexAPI *request = new YandexAPI(_baseUrl,this);
+    yandex->authorization(ui->LineEditLogin->text(),ui->LineEditPassword->text());
 }
 
-void MainWindow::on_ButtonGetPassword_clicked(){
-    YandexAPI *request = new YandexAPI(_baseUrl);
-    request->GetPassword(ui->LineEditLogin->text());
+void MainWindow::on_ButtonGetPassword_clicked() {
+    //YandexAPI *request = new YandexAPI(_baseUrl,this);
+    yandex->getPassword(ui->LineEditLogin->text());
+    _errorPassword = 0;
 }
 
-void MainWindow::on_pushButton_clicked(){
-    YandexAPI *request = new YandexAPI(_baseUrl);
-    request->UpdatePriceList("a92=22.221&a95=44.22&a95_premium=22.44&diesel_premium=24.42");
+void MainWindow::on_pushButton_clicked() {
+    //YandexAPI *request = new YandexAPI(_baseUrl,this);
+    yandex->updatePriceList("a92=33.33&a95=33.33&a95_premium=11.11&diesel_premium=11.11");
 }
 
-void MainWindow::on_pushButton_2_clicked()
-{
-    YandexAPI *request = new YandexAPI(_baseUrl);
+void MainWindow::on_pushButton_2_clicked() {
+    //YandexAPI *request = new YandexAPI(_baseUrl,this);
 //    QJsonObject configuration;
 //    configuration["StationExtendedId"]="00001";
 
@@ -69,14 +81,14 @@ void MainWindow::on_pushButton_2_clicked()
                                         "\"a95_premium\","
                                         "\"diesel_premium\"]"
                                     "},"
-                                "3:"
-                                    "{\"Fuels\":"
-                                        "[\"a92\","
-                                        "\"diesel_premium\"]"
-                                    "}"
+//                                "3:"
+//                                    "{\"Fuels\":"
+//                                        "[\"a92\","
+//                                        "\"diesel_premium\"]"
+//                                    "}"
                                 "},"
                             "\"StationExtendedId\":\"00001\"}";
-    request->UpdateConfigurationAGZS(configuration);
+    yandex->updateConfigurationAGZS(configuration);
     //    {
     //    "StationExtendedId": "00001",
     //    "Columns": {
@@ -104,4 +116,14 @@ void MainWindow::on_pushButton_3_clicked()
     QTimer *timer = new QTimer();
     connect(timer,&QTimer::timeout, this, [=]{QApplication::alert(this);});
     timer->start(5000);
+}
+
+void MainWindow::mainFunction() {
+
+}
+
+void MainWindow::on_pushButton_4_clicked()
+{
+    YandexAPI *request = new YandexAPI(_baseUrl,this);
+    qDebug()<<request->checkOrders();
 }

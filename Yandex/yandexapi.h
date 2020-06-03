@@ -5,27 +5,41 @@
 #include <requestdata.h>
 #include <QSettings>
 
-class YandexAPI : public QObject
-{
+class YandexAPI : public QObject {
     Q_OBJECT
 public:
-    YandexAPI(QString bazeurl);
-    void GetPassword(QString login);
-    void Authorization(QString login, QString password);
-    void UpdatePriceList(QString pricelist);
-    void UpdateConfigurationAGZS(QJsonObject configuration);
-    void UpdateConfigurationAGZS(QString configuration);
-    void CheckOrders(QString);//?
-    void SendLoadCounter(QString orderid, QString volume);
-    void ReceiveVolumeReport(QDateTime sdate, QDateTime edate, int page);
+    YandexAPI(QString bazeurl, QObject *parent=nullptr);
+    void getPassword(QString login);
+    void authorization(QString login, QString password);
+    void updatePriceList(QString pricelist);
+    void updateConfigurationAGZS(QJsonObject configuration);
+    void updateConfigurationAGZS(QString configuration);
+    int checkOrders();
+    void receiveVolumeReport(QDateTime sdate, QDateTime edate, int page = 0);
 
-    void GetStateAGZS(QString apikey);
+    void getStateAGZS(QString apikey);
+
+    void setStatusAccept(QString orderId);
+    void setStatusFueling(QString orderId);
+    void setStatusCanceled(QString orderId, QString reason, QString extendedOrderId, QDateTime extendedDate);
+    void setStatusCompleted(QString orderId, double litre, QString extendedOrderId, QDateTime extendedDate);
+    void setFuelNow(QString orderId, double litre);
+
+signals:
+    void s_setTimer(int mSec);
+    void s_needAuth(bool);
+    void s_authComplete(bool);
+
+private slots:
+    QNetworkRequest createRequest(QString url, QString contentType, bool auth);
+    void checkAuth(RequestData*);
+    void saveToken(RequestData*);
 
 private:
-    void SaveToken(RequestData*);
-    void On_ReceiveVolumeReport(RequestData *a_request);
-    void On_GetStateAGZS(RequestData *a_request);
-    QString _bazeurl;
+    const QString _bazeUrl;
+    RequestData *_request;
+    QSettings _reestr;
+
 };
 
 #endif // YANDEXAPI_H

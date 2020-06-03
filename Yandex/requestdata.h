@@ -17,37 +17,39 @@
 #include <QUrl>
 #include <QUrlQuery>
 
-class RequestData : public QObject
-{
+class RequestData : public QObject {
     Q_OBJECT
+    enum class RequestType {
+        get,
+        post
+    };
+
 public:
     explicit RequestData(QString url, bool parallel=false, QObject *parent = nullptr);
-    RequestData();
+    RequestData(QObject *parent = nullptr);
     ~RequestData();
-    void Get(QString str, bool parallel = false);
-    void Get(QNetworkRequest request, bool parallel = false);
-    void Post(QString url, QUrlQuery post, bool parallel = false);
-    void Post(QString url, QHttpMultiPart post, bool parallel = false);
-    void Post(QNetworkRequest request, QString post, bool parallel = false);
-    QByteArray GetAnswer() {return _answer;}
-    QByteArray GetAuthorization() {return _authorization;}
-    int GetCode() {return _code;}
+    void get(QString str, bool parallel = false);
+    void get(QNetworkRequest request, bool parallel = false);
+    void post(QNetworkRequest request, QString post, bool parallel = false);
+    QByteArray getAnswer();
+    QByteArray getAuthorization();
+    int getCode();
 
 signals:
-    void s_finished(RequestData *imgr);
+    void s_finished(RequestData *request);
+
+private slots:
+    void completeRequest(RequestType type, QNetworkRequest request, QString post, bool parallel);
+    void onResult(QNetworkReply *reply);
 
 private:
     QNetworkAccessManager *_manager;
-    QTcpSocket *_socket;
     QByteArray _answer;
     int _code;
     QByteArray _authorization;
     QString _url;
     bool _parallel;
 
-public slots:
-    void OnResultGet(QNetworkReply *reply);
-    void OnResultPost(QNetworkReply *reply);
 };
 
 #endif // IMAGEREQUEST_H

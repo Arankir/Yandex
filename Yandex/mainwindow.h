@@ -29,8 +29,14 @@ private slots:
 
     void on_pushButton_3_clicked();
 
+    void mainFunction();
+
+    void on_pushButton_4_clicked();
+
 private:
     Ui::MainWindow *ui;
     QString _baseUrl="http://cabinet.tst.tanker.yandex.ru";
+    YandexAPI *yandex;
+    int _errorPassword=0;
 };
 #endif // MAINWINDOW_H
