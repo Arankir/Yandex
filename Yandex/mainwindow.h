@@ -18,6 +18,8 @@ public:
 
     ~MainWindow();
 
+public slots:
+
 private slots:
     void on_ButtonEnter_clicked();
 
@@ -30,13 +32,21 @@ private slots:
     void on_pushButton_3_clicked();
 
     void mainFunction();
+    QString GetFullFuelName(int aFuelId);
+    QString GetFuelAPIName(int aFuelVCode);
 
     void on_pushButton_4_clicked();
+
+    void updatePrice();
+    void updateConfiguration();
+
 
 private:
     Ui::MainWindow *ui;
     QString _baseUrl="http://cabinet.tst.tanker.yandex.ru";
-    YandexAPI *yandex;
-    int _errorPassword=0;
+    YandexAPI *_yandex;
+    int _errorPassword = 0;
+    QSqlDatabase _db;
+    QTimer _timer;
 };
 #endif // MAINWINDOW_H
