@@ -30,6 +30,7 @@ public:
     QWidget *centralwidget;
     QGridLayout *gridLayout;
     QPushButton *pushButton_3;
+    QLineEdit *lineEdit;
     QPushButton *ButtonEnter;
     QPushButton *pushButton_4;
     QSpacerItem *horizontalSpacer_4;
@@ -48,6 +49,7 @@ public:
     QPushButton *pushButton;
     QSpacerItem *horizontalSpacer;
     QLabel *labelAuthError;
+    QPushButton *pushButton_5;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -55,7 +57,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(411, 406);
+        MainWindow->resize(240, 468);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         gridLayout = new QGridLayout(centralwidget);
@@ -64,6 +66,11 @@ public:
         pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
 
         gridLayout->addWidget(pushButton_3, 8, 1, 1, 1);
+
+        lineEdit = new QLineEdit(centralwidget);
+        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
+
+        gridLayout->addWidget(lineEdit, 10, 1, 1, 1);
 
         ButtonEnter = new QPushButton(centralwidget);
         ButtonEnter->setObjectName(QString::fromUtf8("ButtonEnter"));
@@ -111,7 +118,7 @@ public:
 
         verticalSpacer_2 = new QSpacerItem(20, 62, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
-        gridLayout->addItem(verticalSpacer_2, 10, 1, 1, 1);
+        gridLayout->addItem(verticalSpacer_2, 12, 1, 1, 1);
 
         pushButton_2 = new QPushButton(centralwidget);
         pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
@@ -158,10 +165,15 @@ public:
 
         gridLayout->addWidget(labelAuthError, 4, 1, 1, 1);
 
+        pushButton_5 = new QPushButton(centralwidget);
+        pushButton_5->setObjectName(QString::fromUtf8("pushButton_5"));
+
+        gridLayout->addWidget(pushButton_5, 11, 1, 1, 1);
+
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 411, 20));
+        menubar->setGeometry(QRect(0, 0, 240, 20));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -183,7 +195,8 @@ public:
         pushButton_2->setText(QCoreApplication::translate("MainWindow", "UpdateConfiguration", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "\320\233\320\276\320\263\320\270\320\275", nullptr));
         pushButton->setText(QCoreApplication::translate("MainWindow", "UpdatePriceList", nullptr));
-        labelAuthError->setText(QString());
+        labelAuthError->setText(QCoreApplication::translate("MainWindow", "\320\243\321\201\320\277\320\265\321\210\320\275\320\276 \320\260\320\262\321\202\320\276\321\200\320\270\320\267\320\276\320\262\320\260\320\275\320\276!", nullptr));
+        pushButton_5->setText(QCoreApplication::translate("MainWindow", "\320\236\321\202\320\274\320\265\320\275\320\260", nullptr));
     } // retranslateUi
 
 };

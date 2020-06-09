@@ -41,6 +41,8 @@ private slots:
     void updateConfiguration();
 
 
+    void on_pushButton_5_clicked();
+
 private:
     Ui::MainWindow *ui;
     QString _baseUrl="http://cabinet.tst.tanker.yandex.ru";

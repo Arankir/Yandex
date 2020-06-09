@@ -47,7 +47,7 @@ private slots:
     QString getFullFuelName(int fuelID);
     int getCashBoxIndex();
     int checkError(QString columnId, QString fuelId, QString priceFuel, QString id, QString lastVCode, QDateTime now);
-    void moneyData(QJsonObject data, int &requestTotalPriceDB, int &requestVolumeDB, int &requestUnitPriceDB, int &moneyTakenDB, int &fullTankDB);
+    void moneyData(QJsonObject data, double &requestTotalPriceDB, double &requestVolumeDB, double &requestUnitPriceDB, double &moneyTakenDB, int &fullTankDB);
     QString getSmena();
 
 private:

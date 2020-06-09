@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_YandexAPI_t {
-    QByteArrayData data[41];
-    char stringdata0[441];
+    QByteArrayData data[42];
+    char stringdata0[449];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -66,13 +66,14 @@ QT_MOC_LITERAL(30, 319, 9), // "lastVCode"
 QT_MOC_LITERAL(31, 329, 3), // "now"
 QT_MOC_LITERAL(32, 333, 9), // "moneyData"
 QT_MOC_LITERAL(33, 343, 4), // "data"
-QT_MOC_LITERAL(34, 348, 4), // "int&"
-QT_MOC_LITERAL(35, 353, 19), // "requestTotalPriceDB"
-QT_MOC_LITERAL(36, 373, 15), // "requestVolumeDB"
-QT_MOC_LITERAL(37, 389, 18), // "requestUnitPriceDB"
-QT_MOC_LITERAL(38, 408, 12), // "moneyTakenDB"
-QT_MOC_LITERAL(39, 421, 10), // "fullTankDB"
-QT_MOC_LITERAL(40, 432, 8) // "getSmena"
+QT_MOC_LITERAL(34, 348, 7), // "double&"
+QT_MOC_LITERAL(35, 356, 19), // "requestTotalPriceDB"
+QT_MOC_LITERAL(36, 376, 15), // "requestVolumeDB"
+QT_MOC_LITERAL(37, 392, 18), // "requestUnitPriceDB"
+QT_MOC_LITERAL(38, 411, 12), // "moneyTakenDB"
+QT_MOC_LITERAL(39, 424, 4), // "int&"
+QT_MOC_LITERAL(40, 429, 10), // "fullTankDB"
+QT_MOC_LITERAL(41, 440, 8) // "getSmena"
 
     },
     "YandexAPI\0s_setTimer\0\0mSec\0s_needAuth\0"
@@ -84,9 +85,9 @@ QT_MOC_LITERAL(40, 432, 8) // "getSmena"
     "fuelIdAPI\0getFullFuelName\0fuelID\0"
     "getCashBoxIndex\0checkError\0columnId\0"
     "fuelId\0priceFuel\0id\0lastVCode\0now\0"
-    "moneyData\0data\0int&\0requestTotalPriceDB\0"
+    "moneyData\0data\0double&\0requestTotalPriceDB\0"
     "requestVolumeDB\0requestUnitPriceDB\0"
-    "moneyTakenDB\0fullTankDB\0getSmena"
+    "moneyTakenDB\0int&\0fullTankDB\0getSmena"
 };
 #undef QT_MOC_LITERAL
 
@@ -121,7 +122,7 @@ static const uint qt_meta_data_YandexAPI[] = {
       24,    0,  130,    2, 0x08 /* Private */,
       25,    6,  131,    2, 0x08 /* Private */,
       32,    6,  144,    2, 0x08 /* Private */,
-      40,    0,  157,    2, 0x08 /* Private */,
+      41,    0,  157,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Int,    3,
@@ -140,7 +141,7 @@ static const uint qt_meta_data_YandexAPI[] = {
     QMetaType::QString, QMetaType::Int,   23,
     QMetaType::Int,
     QMetaType::Int, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QDateTime,   26,   27,   28,   29,   30,   31,
-    QMetaType::Void, QMetaType::QJsonObject, 0x80000000 | 34, 0x80000000 | 34, 0x80000000 | 34, 0x80000000 | 34, 0x80000000 | 34,   33,   35,   36,   37,   38,   39,
+    QMetaType::Void, QMetaType::QJsonObject, 0x80000000 | 34, 0x80000000 | 34, 0x80000000 | 34, 0x80000000 | 34, 0x80000000 | 39,   33,   35,   36,   37,   38,   40,
     QMetaType::QString,
 
        0        // eod
@@ -173,7 +174,7 @@ void YandexAPI::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
         case 13: { int _r = _t->checkError((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3])),(*reinterpret_cast< QString(*)>(_a[4])),(*reinterpret_cast< QString(*)>(_a[5])),(*reinterpret_cast< QDateTime(*)>(_a[6])));
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
-        case 14: _t->moneyData((*reinterpret_cast< QJsonObject(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])),(*reinterpret_cast< int(*)>(_a[4])),(*reinterpret_cast< int(*)>(_a[5])),(*reinterpret_cast< int(*)>(_a[6]))); break;
+        case 14: _t->moneyData((*reinterpret_cast< QJsonObject(*)>(_a[1])),(*reinterpret_cast< double(*)>(_a[2])),(*reinterpret_cast< double(*)>(_a[3])),(*reinterpret_cast< double(*)>(_a[4])),(*reinterpret_cast< double(*)>(_a[5])),(*reinterpret_cast< int(*)>(_a[6]))); break;
         case 15: { QString _r = _t->getSmena();
             if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
         default: ;

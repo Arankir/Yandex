@@ -5,6 +5,14 @@ MainWindow::MainWindow(QWidget *parent)
 : QMainWindow(parent)
 , ui(new Ui::MainWindow) {
     ui->setupUi(this);
+
+    ui->pushButton->setVisible(false);
+    ui->pushButton_2->setVisible(false);
+    ui->pushButton_3->setVisible(false);
+    ui->pushButton_4->setVisible(false);
+    ui->pushButton_5->setVisible(false);
+    ui->lineEdit->setVisible(false);
+
     _db = QSqlDatabase::addDatabase("QODBC3");
     QStringList setting;
     if(QFile::exists("Setting.txt")){
@@ -35,7 +43,7 @@ MainWindow::MainWindow(QWidget *parent)
         _timer.start(5000);
         _yandex = new YandexAPI(_baseUrl,_db,setting[1],this);
         connect(_yandex, &YandexAPI::s_authComplete, this, [=](bool auth){
-            ui->labelAuthError->setVisible(!auth);
+            ui->labelAuthError->setVisible(true);
             if (!auth) {
                 _errorPassword++;
                 if (_errorPassword < 5) {
@@ -44,6 +52,7 @@ MainWindow::MainWindow(QWidget *parent)
                     ui->labelAuthError->setText(tr("Превышено количество ошибок.\nЗапросите пароль заново."));
                 }
             } else {
+                ui->labelAuthError->setText(tr("Успешно авторизовано!"));
                 _timer.start(5000);
             }
         });
@@ -56,7 +65,7 @@ MainWindow::MainWindow(QWidget *parent)
         connect(_yandex, &YandexAPI::s_updatePrice, this, [=](){
             updatePrice();
         });
-        ui->labelAuthError->setVisible(false);
+        //ui->labelAuthError->setVisible(false);
     }
     else {
         qDebug() << "db close";
@@ -256,27 +265,24 @@ void MainWindow::updateConfiguration() {
                      "FROM [agzs].[dbo].PR_AGZSColumnsData  "
                      "WHERE Link = "+QString::number(q->value(2).toInt())+
                      "ORDER BY TrkVCode, SideAdress ASC");
-            int trkVCode = 0;
             int sideAdress = 0;
             int index = 1;
             QJsonArray fuels;
             q2->next();
             fuels.push_back(GetFuelAPIName(q2->value(4).toInt()));
             while (q2->next()) {
-                if (trkVCode != q2->value(5).toInt() || sideAdress != q2->value(6).toInt()) {
-                    trkVCode = q2->value(5).toInt();
+                if (sideAdress != q2->value(6).toInt()) {
                     sideAdress = q2->value(6).toInt();
                     QJsonObject fu;
-                    //QJsonArray fuels;
                     fu["Fuels"]=fuels;
-                    columns[QString::number(index++)] = fu;
+                    columns[QString::number(sideAdress)] = fu;
                     fuels = QJsonArray();
                 }
                 fuels.push_back(GetFuelAPIName(q2->value(4).toInt()));
             }
-            QJsonObject fu;
-            fu["Fuels"]=fuels;
-            columns[QString::number(index++)] = fu;
+            QJsonObject fuel;
+            fuel["Fuels"]=fuels;
+            columns[QString::number(index++)] = fuel;
 
             delete q2;
             AGZS["Columns"]=columns;
@@ -284,4 +290,8 @@ void MainWindow::updateConfiguration() {
         }
     }
     delete q;
+}
+
+void MainWindow::on_pushButton_5_clicked(){
+    _yandex->setStatusCanceled(ui->lineEdit->text(),"1",ui->lineEdit->text(), QDateTime::currentDateTime());
 }

@@ -119,8 +119,7 @@ int YandexAPI::checkOrders() {
             createTransaction(order.toObject());
             setStatusAccept(order.toObject().value("id").toString());
             if (_request->getCode() != 200) {
-                QDateTime now = QDateTime::currentDateTime();
-                setStatusCanceled(order.toObject().value("id").toString(), "Неизвестная ошибка.", QString::number(getLastAPI()), now);
+                setStatusCanceled(order.toObject().value("id").toString(), "Неизвестная ошибка.", QString::number(getLastAPI()), QDateTime::currentDateTime());
             }
         } else if (order.toObject().value("status").toString() == "WaitingRefueling") { //ожидаем включения налива на ТРК
             //AdditionalTransVCode = VCode другой записи - идет заправка
@@ -544,53 +543,55 @@ void YandexAPI::createTransaction(QJsonObject aTransaction) {
                                aTransaction.value("id").toString(),
                                QString::number(lastAPIVCode+1),
                                now);
-        QString fuelFullName = getFullFuelName(getFuelID(aTransaction.value("fuelId").toString()));
         QSqlQuery *q_AGZSColumn = new QSqlQuery(_db);
-        q_AGZSColumn->exec("SELECT c.AGZSName, c.AGZS, d.VCode, d.Id, d.Adress, d.Location_x, d.Location_y, d.ColumnsCount, d.AGZSL, d.AGZSP "
-                    ",d.[diesel_price] ,d.[diesel_premium_price] ,d.[a80_price] ,d.[a92_price] ,d.[a92_premium_price] ,d.[a95_price] "
-                    ",d.[a95_premium_price] ,d.[a98_price] ,d.[a98_premium_price] ,d.[a100_price] ,d.[a100_premium_price] ,d.[propane_price] "
-                    ",d.[metan_price], c.TrkType, c.[DeviceName], c.[Serial], c.[FuelName], c.[FuelShortName], c.[Side], c.[SideAdress], c.[Nozzle], c.[TrkFuelCode], c.[TrkVCode] "
-                    "FROM [agzs].[dbo].PR_AGZSData d INNER JOIN [agzs].[dbo].PR_AGZSColumnsData c ON [agzs].[dbo].PR_AGZSData.VCode = [agzs].[dbo].PR_AGZSColumnsData.Link "
-                    "WHERE d.Id='" + _agzs + "' and c.[TrkVCode]=" + QString::number(aTransaction.value("columnId").toInt() / 1000) + " and "
-                    "c.SideAdress=" + QString::number(aTransaction.value("columnId").toInt() % 1000) + " and c.FuelName='" + fuelFullName + "' "
-                    "d.[" + aTransaction.value("fuelId").toString() + "]=" + QString::number(aTransaction.value("priceFuel").toInt()) + " "
-                    "ORDER BY CDate DESC");
+        q_AGZSColumn->exec("SELECT c.AGZSName, c.AGZS, d.VCode, d.Id,  c.TrkType, c.[DeviceName], c.[Serial], c.[FuelName], c.[FuelShortName], "
+                            "c.[Side], c.[SideAdress], c.[Nozzle], c.[TrkFuelCode], c.[TrkVCode] "
+                           "FROM [agzs].[dbo].PR_AGZSData d "
+                                "INNER JOIN [agzs].[dbo].PR_AGZSColumnsData c "
+                                "ON d.VCode = c.Link "
+                                "INNER JOIN [agzs].[dbo].pr_agzsPrice p "
+                                "ON d.VCode = p.Link "
+                           "WHERE d.AGZS=" + _agzs + " and c.SideAdress=" + QString::number(aTransaction.value("columnId").toInt()) +
+                            " and c.FuelVCode=" + QString::number(getFuelID(aTransaction.value("fuelId").toString())) +
+                            " and p.[" + aTransaction.value("fuelId").toString() + "]=" + QString::number(aTransaction.value("priceFuel").toInt()) + " "
+                           "ORDER BY d.CDate DESC");
         q_AGZSColumn->next();
         int transactionVCode = -1;
-        if (error != 0) {
-            int requestTotalPriceDB=-1,	requestVolumeDB=-1,	requestUnitPriceDB=-1, moneyTakenDB=-1, fullTankDB=-1;
+        if (error == 0) {
+            double requestTotalPriceDB=-1,	requestVolumeDB=-1,	requestUnitPriceDB=-1, moneyTakenDB=-1;
+            int fullTankDB=-1;
             moneyData(aTransaction, requestTotalPriceDB, requestVolumeDB, requestUnitPriceDB, moneyTakenDB, fullTankDB);
             QSqlQuery *q_Transaction = new QSqlQuery(_db);
             q_Transaction->exec("SELECT TOP 1 Value "
                                 "FROM [agzs].[dbo].[LxKeysOfCodes] "
-                                "WHERE Key='ADAST_TRKTransaction'");
+                                "WHERE [Key]='ADAST_TRKTransaction'");
             q_Transaction->next();
             transactionVCode=q_Transaction->value(0).toInt()+1;
             q_Transaction->exec("UPDATE [agzs].[dbo].[LxKeysOfCodes] "
                                 "SET Value="+QString::number(transactionVCode)+" "
-                                "WHERE Key='ADAST_TRKTransaction'");
+                                "WHERE [Key]='ADAST_TRKTransaction'");
             q_Transaction->prepare("INSERT INTO [agzs].[dbo].[ADAST_TRKTransaction] (AGZSName, LocalVCode, TrkType, DeviceName,	Serial,	FuelName, FuelShortName, Side, SideAddress, Nozzle, "
                            "TrkFuelCode, TransNum, TrkTotalPriceDB, TrkVolumeDB, TrkUnitPriceDB, RequestTotalPriceDB, RequestVolumeDB, RequestUnitPriceDB, RequestField, State, iState, "
                            "TrkTransType, LitersCountBeforeDB, MoneyCountBeforeDB, TransCountBefore, LitersCountAfterDB, MoneyCountAfterDB, TransCountAfter, Result, DateOpen, DateClose, "
                            "TemperatureDB, PayOperationVCode, PayWay, PrePostPay, WUser, WDate, CUser, CDate, CHost, WHost, VCode, AddedForTransVCode, AditionalTransVCode, ActiveDB, "
                            "MassDB, Smena, TrkVcode, CapacityVcode, PumpPlace, MoneyTakenDB, iPayWay, AutoCheckDB, Closed, FullTankDB, AGZS, FuelVCode, rowguid, Propan) "
-                           "VALUES(:AGZSName, :LocalVCode, :TrkType, :DeviceName, :Serial,	:FuelName, :FuelShortName, :Side, :SideAddress, :Nozzle, :TrkFuelCode, :TransNum, "
+                           "VALUES(:AGZSName, :LocalVCode, :TrkType, :DeviceName, :Serial, :FuelName, :FuelShortName, :Side, :SideAddress, :Nozzle, :TrkFuelCode, :TransNum, "
                            ":TrkTotalPriceDB, :TrkVolumeDB, :TrkUnitPriceDB, :RequestTotalPriceDB, :RequestVolumeDB, :RequestUnitPriceDB, :RequestField, :State, :iState, :TrkTransType, "
                            ":LitersCountBeforeDB, :MoneyCountBeforeDB, :TransCountBefore, :LitersCountAfterDB, :MoneyCountAfterDB, :TransCountAfter, :Result, :DateOpen, :DateClose, "
                            ":TemperatureDB, :PayOperationVCode, :PayWay, :PrePostPay, :WUser, :WDate, :CUser, :CDate, :CHost, :WHost, :VCode, :AddedForTransVCode, :AditionalTransVCode, "
-                           ":ActiveDB, :MassDB, :Smena, :TrkVcode, :CapacityVcode, :PumpPlace, :MoneyTakenDB, :iPayWay, :AutoCheckDB, :Closed, :FullTankDB, :AGZS, :FuelVCode, :rowguid, "
+                           ":ActiveDB, :MassDB, :Smena, :TrkVcode, :CapacityVcode, :PumpPlace, :MoneyTakenDB, :iPayWay, :AutoCheckDB, :Closed, :FullTankDB, :AGZS, :FuelVCode, DEFAULT, "
                            ":Propan)");
             q_Transaction->bindValue(":AGZSName",q_AGZSColumn->value(0).toString());
             q_Transaction->bindValue(":LocalVCode",QString::number(transactionVCode));
-            q_Transaction->bindValue(":TrkType",q_AGZSColumn->value(23).toString());
-            q_Transaction->bindValue(":DeviceName",q_AGZSColumn->value(24).toString());
-            q_Transaction->bindValue(":Serial",q_AGZSColumn->value(25).toString());
-            q_Transaction->bindValue(":FuelName",q_AGZSColumn->value(26).toString());
-            q_Transaction->bindValue(":FuelShortName",q_AGZSColumn->value(27).toString());
-            q_Transaction->bindValue(":Side",q_AGZSColumn->value(28).toString());
-            q_Transaction->bindValue(":SideAddress",q_AGZSColumn->value(29).toString());
-            q_Transaction->bindValue(":Nozzle",q_AGZSColumn->value(30).toString());
-            q_Transaction->bindValue(":TrkFuelCode",q_AGZSColumn->value(31).toString());
+            q_Transaction->bindValue(":TrkType",q_AGZSColumn->value(4).toString());
+            q_Transaction->bindValue(":DeviceName",q_AGZSColumn->value(5).toString());
+            q_Transaction->bindValue(":Serial",q_AGZSColumn->value(6).toString());
+            q_Transaction->bindValue(":FuelName",q_AGZSColumn->value(7).toString());
+            q_Transaction->bindValue(":FuelShortName",q_AGZSColumn->value(8).toString());
+            q_Transaction->bindValue(":Side",q_AGZSColumn->value(9).toString());
+            q_Transaction->bindValue(":SideAddress",q_AGZSColumn->value(10).toString());
+            q_Transaction->bindValue(":Nozzle",q_AGZSColumn->value(11).toString());
+            q_Transaction->bindValue(":TrkFuelCode",q_AGZSColumn->value(12).toString());
             q_Transaction->bindValue(":TransNum","");
             q_Transaction->bindValue(":TrkTotalPriceDB",0);
             q_Transaction->bindValue(":TrkVolumeDB",0);
@@ -601,7 +602,7 @@ void YandexAPI::createTransaction(QJsonObject aTransaction) {
             q_Transaction->bindValue(":RequestField","V");
             q_Transaction->bindValue(":State","Завершение выдачи");
             q_Transaction->bindValue(":iState",8);
-            q_Transaction->bindValue(":TrkTransType","");
+            q_Transaction->bindValue(":TrkTransType","P");
             q_Transaction->bindValue(":LitersCountBeforeDB",0);
             q_Transaction->bindValue(":MoneyCountBeforeDB",0);
             q_Transaction->bindValue(":TransCountBefore",0);
@@ -609,16 +610,16 @@ void YandexAPI::createTransaction(QJsonObject aTransaction) {
             q_Transaction->bindValue(":MoneyCountAfterDB",0);
             q_Transaction->bindValue(":TransCountAfter",0);
             q_Transaction->bindValue(":Result","Выдача завершена: 1");
-            q_Transaction->bindValue(":DateOpen",now);
-            q_Transaction->bindValue(":DateClose",now);
+            q_Transaction->bindValue(":DateOpen",now.toString("yyyyMMdd hh:mm:ss.zzz"));
+            q_Transaction->bindValue(":DateClose",now.toString("yyyyMMdd hh:mm:ss.zzz"));
             q_Transaction->bindValue(":TemperatureDB",-100);
             q_Transaction->bindValue(":PayOperationVCode",0);
-            q_Transaction->bindValue(":PayWay","СИТИМОБИЛ");
+            q_Transaction->bindValue(":PayWay","ЯНДЕКС");
             q_Transaction->bindValue(":PrePostPay",0);
             q_Transaction->bindValue(":WUser","SERVER");
-            q_Transaction->bindValue(":WDate",now);
+            q_Transaction->bindValue(":WDate",now.toString("yyyyMMdd hh:mm:ss.zzz"));
             q_Transaction->bindValue(":CUser","SERVER");
-            q_Transaction->bindValue(":CDate",now);
+            q_Transaction->bindValue(":CDate",now.toString("yyyyMMdd hh:mm:ss.zzz"));
             q_Transaction->bindValue(":CHost","SERVER");
             q_Transaction->bindValue(":WHost","SERVER");
             q_Transaction->bindValue(":VCode",transactionVCode);
@@ -627,51 +628,51 @@ void YandexAPI::createTransaction(QJsonObject aTransaction) {
             q_Transaction->bindValue(":ActiveDB",0);
             q_Transaction->bindValue(":MassDB",0);
             q_Transaction->bindValue(":Smena",getSmena());
-            q_Transaction->bindValue(":TrkVcode",q_AGZSColumn->value(32).toString());
+            q_Transaction->bindValue(":TrkVcode",q_AGZSColumn->value(13).toString());
             q_Transaction->bindValue(":CapacityVcode",getCashBoxIndex());
-            q_Transaction->bindValue(":PumpPlace",q_AGZSColumn->value(29).toString());
+            q_Transaction->bindValue(":PumpPlace",q_AGZSColumn->value(10).toString());
             q_Transaction->bindValue(":MoneyTakenDB",moneyTakenDB);
-            q_Transaction->bindValue(":iPayWay",10);
+            q_Transaction->bindValue(":iPayWay",11);
             q_Transaction->bindValue(":AutoCheckDB",0);
             q_Transaction->bindValue(":Closed",0);
             q_Transaction->bindValue(":FullTankDB",fullTankDB);
             q_Transaction->bindValue(":AGZS",q_AGZSColumn->value(1).toString());
             q_Transaction->bindValue(":FuelVCode",getFuelID(aTransaction.value("fuelId").toString()));
-            q_Transaction->bindValue(":rowguid","DEFAULT");
             q_Transaction->bindValue(":Propan",0);
             q_Transaction->exec();
-            qDebug()<<1<<q_Transaction->lastQuery();
+            if(q_Transaction->next()) {
+                setStatusAccept(aTransaction.value("id").toString());
+            }
             delete q_Transaction;
-            setStatusAccept(aTransaction.value("id").toString());
         }
         QSqlQuery *q_APIRequests = new QSqlQuery(_db);
         q_APIRequests->prepare("INSERT INTO [agzs].[dbo].[PR_APITransaction] ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],"
-                    "[APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Sum],[DateOpen],[DateClose],[Link]) "
+                    "[APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link]) "
                     "VALUES (:AGZSName, :AGZS, :CDate, :VCode, :APIID, :APIStationExtendedId, :APIColumnId, :APIFuelId, :FuelId, :APIPriceFuel, :APILitre, :APISum, "
-                    ":APIStatus, :APIContractId, :agent, :localState, :Price, :Sum, :DateOpen, :DateClose, :Link)");
+                    ":APIStatus, :APIContractId, :agent, :localState, :Price, :Litre, :Sum, :DateOpen, DEFAULT, :Link)");
         q_APIRequests->bindValue(":AGZSName", q_AGZSColumn->value(0).toString());
         q_APIRequests->bindValue(":AGZS", q_AGZSColumn->value(1).toString());
-        q_APIRequests->bindValue(":CDate", QDateTime::fromString(aTransaction.value("dateCreate").toString(), "yyyy-MM-ddThh:mm:ss.zzzZ").toString("yyyy-MM-dd hh:mm:ss.zzz"));
+        q_APIRequests->bindValue(":CDate", QDateTime::fromString(aTransaction.value("dateCreate").toString().left(23), "yyyy-MM-ddThh:mm:ss.zzz").toString("yyyyMMdd hh:mm:ss.zzz"));
         q_APIRequests->bindValue(":VCode", lastAPIVCode + 1);
         q_APIRequests->bindValue(":APIID", aTransaction.value("id").toString());
         q_APIRequests->bindValue(":APIStationExtendedId", "");
-        q_APIRequests->bindValue(":APIColumnId", aTransaction.value("columnId").toString());
+        q_APIRequests->bindValue(":APIColumnId", aTransaction.value("columnId").toInt());
         q_APIRequests->bindValue(":APIFuelId", aTransaction.value("fuelId").toString());
         q_APIRequests->bindValue(":FuelId", getFuelID(aTransaction.value("fuelId").toString()));
-        q_APIRequests->bindValue(":APIPriceFuel", aTransaction.value("priceFuel").toString());
-        q_APIRequests->bindValue(":APILitre", aTransaction.value("litre").toString());
-        q_APIRequests->bindValue(":APISum", aTransaction.value("sum").toString());
+        q_APIRequests->bindValue(":APIPriceFuel", aTransaction.value("priceFuel").toDouble());
+        q_APIRequests->bindValue(":APILitre", aTransaction.value("litre").toDouble());
+        q_APIRequests->bindValue(":APISum", aTransaction.value("sum").toDouble());
         q_APIRequests->bindValue(":APIStatus", aTransaction.value("status").toString());
         q_APIRequests->bindValue(":APIContractId", aTransaction.value("contractId").toString());
         q_APIRequests->bindValue(":agent", "Yandex");
         q_APIRequests->bindValue(":localState", error != 0 ? "Error: " + QString::number(error) : "0");
         q_APIRequests->bindValue(":Price", 0);
+        q_APIRequests->bindValue(":Litre", 0);
         q_APIRequests->bindValue(":Sum", 0);
-        q_APIRequests->bindValue(":DateOpen", now);
-        q_APIRequests->bindValue(":DateClose", "DEFAULT");
-        q_APIRequests->bindValue(":Link", transactionVCode);
+        q_APIRequests->bindValue(":DateOpen", now.toString("yyyyMMdd hh:mm:ss.zzz"));
+        //q_APIRequests->bindValue(":DateClose", "DEFAULT");
+        q_APIRequests->bindValue(":Link", QString::number(transactionVCode));
         q_APIRequests->exec();
-        qDebug()<<2<<q_APIRequests->lastQuery();
         delete q_APIRequests;
         delete q_AGZSColumn;
 }
@@ -681,8 +682,10 @@ int YandexAPI::getLastAPI(){
     q_APIRequestsLast->exec("SELECT TOP 1 VCode "
                             "FROM [agzs].[dbo].[PR_APITransaction] "
                             "ORDER BY CDate DESC");
-    q_APIRequestsLast->next();
-    int last=q_APIRequestsLast->value(0).toInt();
+    int last=0;
+    if (q_APIRequestsLast->next()) {
+        last = q_APIRequestsLast->value(0).toInt();
+    }
     delete q_APIRequestsLast;
     return last;
 }
@@ -761,75 +764,83 @@ QString YandexAPI::getFullFuelName(int aFuelID){
 int YandexAPI::getCashBoxIndex(){
     QSqlQuery *q_CashBox = new QSqlQuery(_db);
     q_CashBox->exec("SELECT TOP 1 CashBoxIndex, PayIndex, PayWay, AutoCheck FROM [agzs].[dbo].[ARM_CashBoxesSemaphor] "
-                    "WHERE PayIndex = 10 and PayWay = 'СИТИМОБИЛ' and AutoCheck = 0 "
+                    "WHERE PayIndex = 11 and PayWay = 'ЯНДЕКС' and AutoCheck = 0 "
                     "ORDER BY CDate DESC");
-    q_CashBox->next();
-    int last=q_CashBox->value(0).toInt();
+    int last = 0;
+    if (q_CashBox->next()) {
+        last = q_CashBox->value(0).toInt();
+    }
     delete q_CashBox;
     return last;
 }
 
 int YandexAPI::checkError(QString aColumnID, QString aFuelID, QString aPriceFuel, QString aOrderId, QString aLastVCode, QDateTime aNow){
     QSqlQuery *q_Check = new QSqlQuery(_db);
-    q_Check->exec("SELECT c.AGZSName, c.AGZS, d.VCode, d.Id, d.Adress, d.Location_x, d.Location_y, d.ColumnsCount, d.AGZSL, d.AGZSP"
-                ", d.[diesel_price], d.[diesel_premium_price], d.[a80_price], d.[a92_price], d.[a92_premium_price], d.[a95_price]"
-                ", d.[a95_premium_price], d.[a98_price], d.[a98_premium_price], d.[a100_price], d.[a100_premium_price], d.[propane_price]"
-                ", d.[metan_price], c.[DeviceName], c.[Serial], c.[FuelName], c.[FuelShortName], c.[Side], c.[SideAdress], c.[Nozzle], c.[TrkFuelCode], c.[TrkVCode] "
-                "FROM [agzs].[dbo].PR_AGZSData d INNER JOIN [agzs].[dbo].PR_AGZSColumnsData c ON [agzs].[dbo].PR_AGZSData.VCode = [agzs].[dbo].PR_AGZSColumnsData.Link "
-                "WHERE d.Id = '"+_agzs+"' and c.[TrkVCode] = "+QString::number(aColumnID.toInt() / 1000)+" and c.SideAdress = "+QString::number(aColumnID.toInt() % 1000)+" "
-                "ORDER BY CDate DESC");
+    q_Check->exec("SELECT c.AGZSName, c.AGZS, d.VCode, d.Id, c.[FuelName], c.[FuelShortName], c.[Side], c.[SideAdress], c.[Nozzle], "
+                    "c.[TrkFuelCode], c.[TrkVCode] "
+                  "FROM [agzs].[dbo].PR_AGZSData d "
+                    "INNER JOIN [agzs].[dbo].PR_AGZSColumnsData c "
+                    "ON d.VCode = c.Link "
+                  "WHERE d.AGZS = "+_agzs+" and c.SideAdress = "+aColumnID+" "
+                  "ORDER BY d.CDate DESC");
     if (q_Check->size() == 0) {
         setStatusCanceled(aOrderId, "Указанная колонка не найдена.", aLastVCode, aNow);
         delete q_Check;
+        qDebug()<<"Error1";
         return 1;
     }
-    q_Check->exec("SELECT c.AGZSName, c.AGZS, d.VCode, d.Id, d.Adress, d.Location_x, d.Location_y, d.ColumnsCount, d.AGZSL, d.AGZSP "
-                ",d.[diesel_price] ,d.[diesel_premium_price] ,d.[a80_price] ,d.[a92_price] ,d.[a92_premium_price] ,d.[a95_price] "
-                ",d.[a95_premium_price] ,d.[a98_price] ,d.[a98_premium_price] ,d.[a100_price] ,d.[a100_premium_price] ,d.[propane_price] "
-                ",d.[metan_price], c.[DeviceName], c.[Serial], c.[FuelName], c.[FuelShortName], c.[Side], c.[SideAdress], c.[Nozzle], c.[TrkFuelCode], c.[TrkVCode] "
-                "FROM [agzs].[dbo].PR_AGZSData d INNER JOIN [agzs].[dbo].PR_AGZSColumnsData c ON [agzs].[dbo].PR_AGZSData.VCode = [agzs].[dbo].PR_AGZSColumnsData.Link "
-                "WHERE d.Id='"+_agzs+"' and d.["+aFuelID+"] > 0 "
-                "ORDER BY CDate DESC");
+    q_Check->exec("SELECT c.AGZSName, c.AGZS, d.VCode, d.Id, c.[FuelName], c.[FuelShortName], c.[Side], c.[SideAdress], c.[Nozzle], "
+                    "c.[TrkFuelCode], c.[TrkVCode] "
+                  "FROM [agzs].[dbo].PR_AGZSData d "
+                    "INNER JOIN [agzs].[dbo].PR_AGZSColumnsData c "
+                    "ON d.VCode = c.Link "
+                  "WHERE d.Id='"+_agzs+"' and c.SideAdress = "+aColumnID+" and c.FuelVCode = "+QString::number(getFuelID(aFuelID))+" "
+                  "ORDER BY d.CDate DESC");
     if (q_Check->size() == 0) {
         setStatusCanceled(aOrderId, "Не обнаружено указанное топливо.", aLastVCode, aNow);
         delete q_Check;
+        qDebug()<<"Error2";
         return 2;
     }
-    q_Check->exec("SELECT c.AGZSName, c.AGZS, d.VCode, d.Id, d.Adress, d.Location_x, d.Location_y, d.ColumnsCount, d.AGZSL, d.AGZSP "
-                ",d.[diesel_price] ,d.[diesel_premium_price] ,d.[a80_price] ,d.[a92_price] ,d.[a92_premium_price] ,d.[a95_price] "
-                ",d.[a95_premium_price] ,d.[a98_price] ,d.[a98_premium_price] ,d.[a100_price] ,d.[a100_premium_price] ,d.[propane_price] "
-                ",d.[metan_price], c.[DeviceName], c.[Serial], c.[FuelName], c.[FuelShortName], c.[Side], c.[SideAdress], c.[Nozzle], c.[TrkFuelCode], c.[TrkVCode] "
-                "FROM [agzs].[dbo].PR_AGZSData d INNER JOIN [agzs].[dbo].PR_AGZSColumnsData c ON [agzs].[dbo].PR_AGZSData.VCode = [agzs].[dbo].PR_AGZSColumnsData.Link "
-                "WHERE d.Id='"+_agzs+"' and d.["+aFuelID+"]="+aPriceFuel+" "
+    q_Check->exec("SELECT c.AGZSName, c.AGZS, d.VCode, d.Id, c.[FuelName], c.[FuelShortName], c.[Side], c.[SideAdress], c.[Nozzle], "
+                    "c.[TrkFuelCode], c.[TrkVCode], p.["+aFuelID+"] "
+                "FROM [agzs].[dbo].PR_AGZSData d "
+                     "INNER JOIN [agzs].[dbo].PR_AGZSColumnsData c "
+                     "ON d.VCode = c.Link "
+                     "INNER JOIN [agzs].[dbo].PR_AGZSPrice p "
+                     "ON d.VCode = p.Link "
+                "WHERE d.Id='"+_agzs+"' and c.SideAdress = "+aColumnID+" and c.FuelVCode = "+QString::number(getFuelID(aFuelID))+
+                    " and p.["+aFuelID+"]="+aPriceFuel+" "
                 "ORDER BY CDate DESC");
     if (q_Check->size() == 0) {
         setStatusCanceled(aOrderId, "Цена на выбранный вид топлива отличается от фактической цены.", aLastVCode, aNow);
         delete q_Check;
         emit s_updatePrice();
+        qDebug()<<"Error3";
         return 3;
     }
     delete q_Check;
     return 0;
 }
 
-void YandexAPI::moneyData(QJsonObject aRequest, int &aRequestTotalPriceDB, int &aRequestVolumeDB, int &aRequestUnitPriceDB, int &aMoneyTakenDB, int &aFullTankDB){
-    if (aRequest.value("OrderType").toString() == "Money") {
-        aRequestTotalPriceDB = aRequest.value("OrderVolume").toString().toInt();
-        aRequestUnitPriceDB = aRequest.value("PriceFuel").toString().toInt();
+void YandexAPI::moneyData(QJsonObject aRequest, double &aRequestTotalPriceDB, double &aRequestVolumeDB, double &aRequestUnitPriceDB, double &aMoneyTakenDB, int &aFullTankDB){
+    if (aRequest.value("orderType").toString() == "Money") {
+        aRequestTotalPriceDB = aRequest.value("orderVolume").toDouble();
+        aRequestUnitPriceDB = aRequest.value("priceFuel").toDouble();
         aRequestVolumeDB = aRequestTotalPriceDB / aRequestUnitPriceDB;
-        aMoneyTakenDB = aRequest.value("OrderVolume").toString().toInt();
+        aMoneyTakenDB = aRequest.value("orderVolume").toDouble();
         aFullTankDB = 0;
-    } else if (aRequest.value("OrderType").toString() == "Liters") {
-        aRequestVolumeDB = aRequest.value("orderVolume").toString().toInt();
-        aRequestUnitPriceDB = aRequest.value("priceFuel").toString().toInt();
+    } else if (aRequest.value("orderType").toString() == "Liters") {
+        aRequestVolumeDB = aRequest.value("orderVolume").toDouble();
+        aRequestUnitPriceDB = aRequest.value("priceFuel").toDouble();
         aRequestTotalPriceDB = aRequestVolumeDB * aRequestUnitPriceDB;
-        aMoneyTakenDB = aRequest.value("orderVolume").toString().toInt();
+        aMoneyTakenDB = aRequest.value("orderVolume").toDouble();
         aFullTankDB = 0;
-    } else if (aRequest.value("OrderType").toString() == "FullTank") {
-        aRequestTotalPriceDB = aRequest.value("OrderVolume").toString().toInt();
-        aRequestUnitPriceDB = aRequest.value("PriceFuel").toString().toInt();
+    } else if (aRequest.value("orderType").toString() == "FullTank") {
+        aRequestTotalPriceDB = aRequest.value("orderVolume").toDouble();
+        aRequestUnitPriceDB = aRequest.value("priceFuel").toDouble();
         aRequestVolumeDB = aRequestTotalPriceDB / aRequestUnitPriceDB;
-        aMoneyTakenDB = aRequest.value("OrderVolume").toString().toInt();
+        aMoneyTakenDB = aRequest.value("OrderVolume").toDouble();
         aFullTankDB = 1;
     }
 }
