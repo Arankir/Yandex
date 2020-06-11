@@ -42,7 +42,6 @@ private slots:
     void createTransaction(QJsonObject transaction);
 
     int getLastAPI();
-    QString getFuelAPIName(QString fuelFullName);
     int getFuelID(QString fuelIdAPI);
     QString getFullFuelName(int fuelID);
     int getCashBoxIndex();

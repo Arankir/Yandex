@@ -677,7 +677,7 @@ void YandexAPI::createTransaction(QJsonObject aTransaction) {
         delete q_AGZSColumn;
 }
 
-int YandexAPI::getLastAPI(){
+int YandexAPI::getLastAPI() {
     QSqlQuery *q_APIRequestsLast = new QSqlQuery(_db);
     q_APIRequestsLast->exec("SELECT TOP 1 VCode "
                             "FROM [agzs].[dbo].[PR_APITransaction] "
@@ -690,37 +690,7 @@ int YandexAPI::getLastAPI(){
     return last;
 }
 
-QString YandexAPI::getFuelAPIName(QString aFuelFullName){
-    if(aFuelFullName=="Дизельное топливо")
-        return "diesel";
-//    if(a_fuelFullName=="diesel_premium")
-//        return "diesel_premium";
-//    if(a_fuelFullName=="a80")
-//        return "a80";
-    if(aFuelFullName=="Бензин АИ-92")
-        return "a92";
-//    if(a_fuelFullName=="a92_premium")
-//        return "a92_premium";
-//    if(a_fuelFullName=="a95")
-//        return "a95";
-//    if(a_fuelFullName=="a95_premium")
-//        return "a95_premium";
-//    if(a_fuelFullName=="a98")
-//        return "a98";
-//    if(a_fuelFullName=="a98_premium")
-//        return "a98_premium";
-//    if(a_fuelFullName=="a100")
-//        return "a100";
-//    if(a_fuelFullName=="a100_premium")
-//        return "a100_premium";
-    if(aFuelFullName=="Сжиженный газ")
-        return "propane";
-//    if(a_fuelFullName=="metan")
-//        return "metan";
-    return 0;
-}
-
-int YandexAPI::getFuelID(QString aFuelIdApi){
+int YandexAPI::getFuelID(QString aFuelIdApi) {
     if(aFuelIdApi=="diesel")
         return 32;
     if(aFuelIdApi=="diesel_premium")
@@ -750,7 +720,7 @@ int YandexAPI::getFuelID(QString aFuelIdApi){
     return 0;
 }
 
-QString YandexAPI::getFullFuelName(int aFuelID){
+QString YandexAPI::getFullFuelName(int aFuelID) {
     QSqlQuery *q_Fuels = new QSqlQuery(_db);
     q_Fuels->exec("SELECT TOP 1 [DBVCode], [DBName] "
                   "FROM [agzs].[dbo].[FuelMassLink] "
@@ -761,7 +731,7 @@ QString YandexAPI::getFullFuelName(int aFuelID){
     return fullName;
 }
 
-int YandexAPI::getCashBoxIndex(){
+int YandexAPI::getCashBoxIndex() {
     QSqlQuery *q_CashBox = new QSqlQuery(_db);
     q_CashBox->exec("SELECT TOP 1 CashBoxIndex, PayIndex, PayWay, AutoCheck FROM [agzs].[dbo].[ARM_CashBoxesSemaphor] "
                     "WHERE PayIndex = 11 and PayWay = 'ЯНДЕКС' and AutoCheck = 0 "
@@ -774,7 +744,7 @@ int YandexAPI::getCashBoxIndex(){
     return last;
 }
 
-int YandexAPI::checkError(QString aColumnID, QString aFuelID, QString aPriceFuel, QString aOrderId, QString aLastVCode, QDateTime aNow){
+int YandexAPI::checkError(QString aColumnID, QString aFuelID, QString aPriceFuel, QString aOrderId, QString aLastVCode, QDateTime aNow) {
     QSqlQuery *q_Check = new QSqlQuery(_db);
     q_Check->exec("SELECT c.AGZSName, c.AGZS, d.VCode, d.Id, c.[FuelName], c.[FuelShortName], c.[Side], c.[SideAdress], c.[Nozzle], "
                     "c.[TrkFuelCode], c.[TrkVCode] "
@@ -811,7 +781,7 @@ int YandexAPI::checkError(QString aColumnID, QString aFuelID, QString aPriceFuel
                      "ON d.VCode = p.Link "
                 "WHERE d.Id='"+_agzs+"' and c.SideAdress = "+aColumnID+" and c.FuelVCode = "+QString::number(getFuelID(aFuelID))+
                     " and p.["+aFuelID+"]="+aPriceFuel+" "
-                "ORDER BY CDate DESC");
+                "ORDER BY d.CDate DESC");
     if (q_Check->size() == 0) {
         setStatusCanceled(aOrderId, "Цена на выбранный вид топлива отличается от фактической цены.", aLastVCode, aNow);
         delete q_Check;
@@ -823,7 +793,7 @@ int YandexAPI::checkError(QString aColumnID, QString aFuelID, QString aPriceFuel
     return 0;
 }
 
-void YandexAPI::moneyData(QJsonObject aRequest, double &aRequestTotalPriceDB, double &aRequestVolumeDB, double &aRequestUnitPriceDB, double &aMoneyTakenDB, int &aFullTankDB){
+void YandexAPI::moneyData(QJsonObject aRequest, double &aRequestTotalPriceDB, double &aRequestVolumeDB, double &aRequestUnitPriceDB, double &aMoneyTakenDB, int &aFullTankDB) {
     if (aRequest.value("orderType").toString() == "Money") {
         aRequestTotalPriceDB = aRequest.value("orderVolume").toDouble();
         aRequestUnitPriceDB = aRequest.value("priceFuel").toDouble();
@@ -845,7 +815,7 @@ void YandexAPI::moneyData(QJsonObject aRequest, double &aRequestTotalPriceDB, do
     }
 }
 
-QString YandexAPI::getSmena(){
+QString YandexAPI::getSmena() {
     QSqlQuery *q_Smena = new QSqlQuery(_db);
     q_Smena->exec("SELECT TOP 1 VCode "
                   "FROM [agzs].[dbo].[ARM_Smena] "
