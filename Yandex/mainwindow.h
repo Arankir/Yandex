@@ -3,52 +3,58 @@
 
 #include <QMainWindow>
 #include <QTimer>
-#include <yandexapi.h>
+#include <partners/yandexapi.h>
+#include <partners/citymobileapi.h>
+#include <systems/databasecontrol.h>
+#include <systems/formsettings.h>
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class MainWindow; }
+namespace Ui {
+    class MainWindow;
+}
 QT_END_NAMESPACE
 
-class MainWindow : public QMainWindow
-{
+class MainWindow: public QMainWindow {
     Q_OBJECT
+
+    enum class Partner {
+        yandex,
+        citymobile
+    };
 
 public:
     MainWindow(QWidget *parent = nullptr);
-
     ~MainWindow();
 
 public slots:
+    int getFuelID(QString aFuelIdApi);
+    void moneyData(Partner aPartner, QJsonObject aRequest, double &aRequestTotalPriceDB, double &aRequestVolumeDB, double &aRequestUnitPriceDB, double &aMoneyTakenDB, int &aFullTankDB);
+    QString getFuelName(int aFuelVCode);
 
 private slots:
     void on_ButtonEnter_clicked();
-
     void on_ButtonGetPassword_clicked();
-
-    void on_pushButton_clicked();
-
-    void on_pushButton_2_clicked();
-
-    void on_pushButton_3_clicked();
-
-    void mainFunction();
-    QString GetFullFuelName(int aFuelId);
-    QString GetFuelAPIName(int aFuelVCode);
-
-    void on_pushButton_4_clicked();
-
-    void updatePrice();
-    void updateConfiguration();
-
 
     void on_pushButton_5_clicked();
 
+    void mainFunctionYandex();
+    void mainFunctionCityMobile();
+    QString getFuelAPIName(int aFuelVCode);
+
+    void updatePrice(Partner p);
+    void updateConfiguration(Partner p);
+    void processOrders(Partner aPartner, QJsonDocument orders);
+
+    void on_ButtonSettings_clicked();
+
 private:
     Ui::MainWindow *ui;
-    QString _baseUrl="http://cabinet.tst.tanker.yandex.ru";
     YandexAPI *_yandex;
+    CityMobileAPI *_cityMobile;
     int _errorPassword = 0;
-    QSqlDatabase _db;
-    QTimer _timer;
+    DataBaseControl _db;
+    QTimer _timerYandex;
+    QTimer _timerCityMobile;
+    QSettings _reestr;
 };
 #endif // MAINWINDOW_H

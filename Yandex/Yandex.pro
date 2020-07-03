@@ -18,18 +18,30 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
-    requestdata.cpp \
-    yandexapi.cpp
+    partners/citymobileapi.cpp \
+    partners/networking/requestdata.cpp \
+    partners/yandexapi.cpp \
+    systems/databasecontrol.cpp \
+    systems/formsettings.cpp
 
 HEADERS += \
     mainwindow.h \
-    requestdata.h \
-    yandexapi.h
+    partners/citymobileapi.h \
+    partners/networking/requestdata.h \
+    partners/yandexapi.h \
+    systems/databasecontrol.h \
+    systems/formsettings.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    systems/formsettings.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES +=
+
+RESOURCES += \
+    res.qrc
