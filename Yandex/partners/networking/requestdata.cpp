@@ -10,7 +10,9 @@ RequestData::RequestData(QObject *aParent): RequestData("", false, aParent) {
 }
 
 void RequestData::get(QString aUrl, bool aParallel) {
-    get(QNetworkRequest(QUrl(aUrl)), aParallel);
+    _url = aUrl;
+    _post = "";
+    get(QNetworkRequest(QUrl(_url)), aParallel);
 }
 
 void RequestData::get(QNetworkRequest aRequest, bool aParallel) {
@@ -34,7 +36,8 @@ int RequestData::getCode() {
 }
 
 void RequestData::completeRequest(RequestData::RequestType aType, QNetworkRequest aRequest, QString aPost, bool aParallel) {
-    qDebug() << "Запрос:" << aRequest.url() << aPost.toUtf8();
+    _url = aRequest.url().toString();
+    _post = aPost.toUtf8();
     switch (aType) {
     case RequestType::get: {
         _manager->get(aRequest);
@@ -55,7 +58,13 @@ void RequestData::completeRequest(RequestData::RequestType aType, QNetworkReques
 
 void RequestData::onResult(QNetworkReply *aReply) {
     _code = aReply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();
-    qDebug()<<"Код:"<< _code;
+    if (_post == "") {
+        qDebug()<< "GET(" << _url << ") Код:" << _code;
+        emit s_request("GET(" + _url + ") Код:" + QString::number(_code));
+    } else {
+        qDebug()<< "POST(" << _url << _post << ") Код:" << _code;
+        emit s_request("POST(" + _url + " " + _post + ") Код:" + QString::number(_code));
+    }
     _answer = aReply->readAll();
     if (aReply->rawHeaderList().indexOf("Authorization") > -1) {
         _authorization = aReply->rawHeader("Authorization");

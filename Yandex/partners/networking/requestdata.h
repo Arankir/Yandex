@@ -25,7 +25,7 @@ class RequestData : public QObject {
     };
 
 public:
-    explicit RequestData(QString url, bool parallel=false, QObject *parent = nullptr);
+    explicit RequestData(QString url, bool parallel = false, QObject *parent = nullptr);
     RequestData(QObject *parent = nullptr);
     ~RequestData();
     void get(QString str, bool parallel = false);
@@ -37,6 +37,7 @@ public:
 
 signals:
     void s_finished(RequestData *request);
+    void s_request(QString);
 
 private slots:
     void completeRequest(RequestType type, QNetworkRequest request, QString post, bool parallel);
@@ -48,6 +49,7 @@ private:
     int _code;
     QByteArray _authorization;
     QString _url;
+    QString _post;
     bool _parallel;
 
 };

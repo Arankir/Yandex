@@ -1,12 +1,15 @@
 #include "yandexapi.h"
 
 YandexAPI::YandexAPI(QObject *aParent): QObject(aParent), _request(new RequestData(this)),
-_reestr("RegionPostavka", "Partners"), _timer(new QTimer()) {
+_reestr("RegionPostavka", "Partners"), _timer(new QTimer()), c_baseUrl(_reestr.value("isTest").toBool()? c_baseTest: c_baseRelease) {
     QObject::connect(_request, &RequestData::s_finished, this, &YandexAPI::checkAuth);
+    QObject::connect(_request, &RequestData::s_request, this, [=](QString request) {
+        emit s_request(request);
+    });
 }
 
 void YandexAPI::getPassword(QString aLogin){
-    _request->get(QString("%1/api/auth?login=%2").arg(c_baseUrl,aLogin));
+    _request->get(QString("%1/api/auth?login=%2").arg(c_baseUrl, aLogin));
     //GET базовый url + /api/auth?login={login}
     //Система вышлет пароль на закрепленный за компанией Telegram канал, почту или смс
 }
@@ -14,7 +17,7 @@ void YandexAPI::getPassword(QString aLogin){
 void YandexAPI::authorization(QString aLogin, QString aPassword) {
     QNetworkRequest request = createRequest(QString("%1/api/auth").arg(c_baseUrl), "application/x-www-form-urlencoded", false);
     connect(_request, &RequestData::s_finished, this, &YandexAPI::saveToken);
-    _request->post(request, QString("login=%1&code=%2").arg(aLogin,aPassword));
+    _request->post(request, QString("login=%1&code=%2").arg(aLogin, aPassword));
 //    url + /api/auth
 //    POST
 //    login={login}&code={password}
@@ -114,7 +117,7 @@ int YandexAPI::checkOrders() {
     _request->get(request);
     QJsonDocument jsonRequest = QJsonDocument::fromJson(_request->getAnswer());
     emit s_gotOrders(jsonRequest);
-    qDebug()<<_request->getAnswer();
+    qDebug() << "Яндекс заказы:" << _request->getAnswer();
     checkAuth(_request);
     return jsonRequest.object().value("nextRetryMs").toInt();
 //    АСУ АЗС должна постоянно опрашивать систему Яндекс.Заправки для проверки поступления
@@ -254,7 +257,7 @@ void YandexAPI::setStatusCanceled(QString aOrderId, QString aReason, QString aEx
     _request->get(request);
     checkAuth(_request);
     if ((_request->getCode() != 200) && (_request->getCode() != 401)) {
-        emit s_error("setStatusCanceled", aOrderId, _request->getCode());
+        emit s_error("setStatusCanceled", "\"" + aOrderId + "\"", _request->getCode());
     }
 //    Данный статус сообщает системе Яндекс.Заправки о том, что заказ следует отменить
 //    GET базовый url +
@@ -298,7 +301,7 @@ void YandexAPI::setStatusCompleted(QString aOrderId, double aLitre, QString aExt
 
 void YandexAPI::setFuelNow(QString aOrderId, double aLitre) {
     QNetworkRequest request = createRequest(QString("%1/api/orders/volume").arg(c_baseUrl), "application/x-www-form-urlencoded", true);
-    _request->post(request, QString("orderId=%1&litre=%2").arg(aOrderId, QString::number(aLitre)));
+    _request->post(request, QString("orderId=%1&litre=%2").arg(aOrderId, QString::number(aLitre).replace(".",",")));
     checkAuth(_request);
     if ((_request->getCode() != 200) && (_request->getCode() != 401)) {
         emit s_error("setFuelNow", aOrderId, _request->getCode());
@@ -335,14 +338,8 @@ void YandexAPI::checkAuth(RequestData *aRequest) {
 
 void YandexAPI::saveToken(RequestData *aRequest){
     disconnect(_request, &RequestData::s_finished, this, &YandexAPI::saveToken);
-    qDebug()<<"Токен:"<<QString::fromUtf8(aRequest->getAuthorization());
-    if (aRequest->getAuthorization() != "") {
-        _reestr.setValue("Yandex Token",QString::fromUtf8(aRequest->getAuthorization()));
-        _reestr.sync();
-        emit s_authComplete(true);
-    } else {
-        emit s_authComplete(false);
-    }
+    qDebug()<<"Яндекс Токен:"<<QString::fromUtf8(aRequest->getAuthorization());
+    emit s_authComplete(QString::fromUtf8(aRequest->getAuthorization()));
 //    В ответе 200 ОК будет прислан Head параметр Authorization
 //    Авторизационный токен следует запомнить в реестре, файле системы, или конфигурации,
 //    важно предусмотреть вариант при котором обновление АСУ АЗС не проводило к потери

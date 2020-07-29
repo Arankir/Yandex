@@ -23,8 +23,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_DataBaseControl_t {
-    QByteArrayData data[175];
-    char stringdata0[2032];
+    QByteArrayData data[177];
+    char stringdata0[2075];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -194,20 +194,22 @@ QT_MOC_LITERAL(157, 1655, 6), // "amount"
 QT_MOC_LITERAL(158, 1662, 21), // "getPayOperationLiters"
 QT_MOC_LITERAL(159, 1684, 20), // "setTransactionClosed"
 QT_MOC_LITERAL(160, 1705, 6), // "closed"
-QT_MOC_LITERAL(161, 1712, 17), // "GetFuelNamesCycle"
-QT_MOC_LITERAL(162, 1730, 13), // "GetFuelsCycle"
-QT_MOC_LITERAL(163, 1744, 20), // "GetCashBoxIndexCycle"
-QT_MOC_LITERAL(164, 1765, 14), // "GetPricesCycle"
-QT_MOC_LITERAL(165, 1780, 16), // "GetAgzsDataCycle"
-QT_MOC_LITERAL(166, 1797, 20), // "GetAgzsAdastTrkCycle"
-QT_MOC_LITERAL(167, 1818, 25), // "createTrkTransactionCycle"
-QT_MOC_LITERAL(168, 1844, 13), // "getSmenaCycle"
-QT_MOC_LITERAL(169, 1858, 25), // "createApiTransactionCycle"
-QT_MOC_LITERAL(170, 1884, 27), // "getApiTransactionStateCycle"
-QT_MOC_LITERAL(171, 1912, 30), // "updateApiTransactionStateCycle"
-QT_MOC_LITERAL(172, 1943, 35), // "finalUpdateApiTransactionStat..."
-QT_MOC_LITERAL(173, 1979, 26), // "getPayOperationLitersCycle"
-QT_MOC_LITERAL(174, 2006, 25) // "setTransactionClosedCycle"
+QT_MOC_LITERAL(161, 1712, 18), // "getTransactionData"
+QT_MOC_LITERAL(162, 1731, 17), // "GetFuelNamesCycle"
+QT_MOC_LITERAL(163, 1749, 13), // "GetFuelsCycle"
+QT_MOC_LITERAL(164, 1763, 20), // "GetCashBoxIndexCycle"
+QT_MOC_LITERAL(165, 1784, 14), // "GetPricesCycle"
+QT_MOC_LITERAL(166, 1799, 16), // "GetAgzsDataCycle"
+QT_MOC_LITERAL(167, 1816, 20), // "GetAgzsAdastTrkCycle"
+QT_MOC_LITERAL(168, 1837, 25), // "createTrkTransactionCycle"
+QT_MOC_LITERAL(169, 1863, 13), // "getSmenaCycle"
+QT_MOC_LITERAL(170, 1877, 25), // "createApiTransactionCycle"
+QT_MOC_LITERAL(171, 1903, 27), // "getApiTransactionStateCycle"
+QT_MOC_LITERAL(172, 1931, 30), // "updateApiTransactionStateCycle"
+QT_MOC_LITERAL(173, 1962, 35), // "finalUpdateApiTransactionStat..."
+QT_MOC_LITERAL(174, 1998, 26), // "getPayOperationLitersCycle"
+QT_MOC_LITERAL(175, 2025, 25), // "setTransactionClosedCycle"
+QT_MOC_LITERAL(176, 2051, 23) // "getTransactionDataCycle"
 
     },
     "DataBaseControl\0GetCurrentAgzs\0\0"
@@ -258,16 +260,17 @@ QT_MOC_LITERAL(174, 2006, 25) // "setTransactionClosedCycle"
     "finalUpdateApiTransactionState\0price\0"
     "volume\0amount\0getPayOperationLiters\0"
     "setTransactionClosed\0closed\0"
-    "GetFuelNamesCycle\0GetFuelsCycle\0"
-    "GetCashBoxIndexCycle\0GetPricesCycle\0"
-    "GetAgzsDataCycle\0GetAgzsAdastTrkCycle\0"
-    "createTrkTransactionCycle\0getSmenaCycle\0"
-    "createApiTransactionCycle\0"
+    "getTransactionData\0GetFuelNamesCycle\0"
+    "GetFuelsCycle\0GetCashBoxIndexCycle\0"
+    "GetPricesCycle\0GetAgzsDataCycle\0"
+    "GetAgzsAdastTrkCycle\0createTrkTransactionCycle\0"
+    "getSmenaCycle\0createApiTransactionCycle\0"
     "getApiTransactionStateCycle\0"
     "updateApiTransactionStateCycle\0"
     "finalUpdateApiTransactionStateCycle\0"
     "getPayOperationLitersCycle\0"
-    "setTransactionClosedCycle"
+    "setTransactionClosedCycle\0"
+    "getTransactionDataCycle"
 };
 #undef QT_MOC_LITERAL
 
@@ -277,7 +280,7 @@ static const uint qt_meta_data_DataBaseControl[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      32,   14, // methods
+      34,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -285,38 +288,40 @@ static const uint qt_meta_data_DataBaseControl[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,  174,    2, 0x0a /* Public */,
-       3,    3,  175,    2, 0x0a /* Public */,
-       8,    1,  182,    2, 0x0a /* Public */,
-      11,    1,  185,    2, 0x0a /* Public */,
-      13,   20,  188,    2, 0x0a /* Public */,
-      36,    9,  229,    2, 0x0a /* Public */,
-      42,   17,  248,    2, 0x0a /* Public */,
-      60,    3,  283,    2, 0x0a /* Public */,
-      63,    2,  290,    2, 0x0a /* Public */,
-      66,    4,  295,    2, 0x0a /* Public */,
-      71,   58,  304,    2, 0x0a /* Public */,
-     130,    0,  421,    2, 0x0a /* Public */,
-     131,   21,  422,    2, 0x0a /* Public */,
-     147,    7,  465,    2, 0x0a /* Public */,
-     153,    3,  480,    2, 0x0a /* Public */,
-     154,    7,  487,    2, 0x0a /* Public */,
-     158,    4,  502,    2, 0x0a /* Public */,
-     159,    2,  511,    2, 0x0a /* Public */,
-     161,    3,  516,    2, 0x08 /* Private */,
-     162,    1,  523,    2, 0x08 /* Private */,
-     163,    1,  526,    2, 0x08 /* Private */,
-     164,   20,  529,    2, 0x08 /* Private */,
-     165,    9,  570,    2, 0x08 /* Private */,
-     166,   17,  589,    2, 0x08 /* Private */,
-     167,   58,  624,    2, 0x08 /* Private */,
-     168,    0,  741,    2, 0x08 /* Private */,
-     169,   21,  742,    2, 0x08 /* Private */,
-     170,    7,  785,    2, 0x08 /* Private */,
-     171,    3,  800,    2, 0x08 /* Private */,
-     172,    7,  807,    2, 0x08 /* Private */,
-     173,    4,  822,    2, 0x08 /* Private */,
-     174,    2,  831,    2, 0x08 /* Private */,
+       1,    0,  184,    2, 0x0a /* Public */,
+       3,    3,  185,    2, 0x0a /* Public */,
+       8,    1,  192,    2, 0x0a /* Public */,
+      11,    1,  195,    2, 0x0a /* Public */,
+      13,   20,  198,    2, 0x0a /* Public */,
+      36,    9,  239,    2, 0x0a /* Public */,
+      42,   17,  258,    2, 0x0a /* Public */,
+      60,    3,  293,    2, 0x0a /* Public */,
+      63,    2,  300,    2, 0x0a /* Public */,
+      66,    4,  305,    2, 0x0a /* Public */,
+      71,   58,  314,    2, 0x0a /* Public */,
+     130,    0,  431,    2, 0x0a /* Public */,
+     131,   21,  432,    2, 0x0a /* Public */,
+     147,    8,  475,    2, 0x0a /* Public */,
+     153,    3,  492,    2, 0x0a /* Public */,
+     154,    7,  499,    2, 0x0a /* Public */,
+     158,    4,  514,    2, 0x0a /* Public */,
+     159,    2,  523,    2, 0x0a /* Public */,
+     161,    9,  528,    2, 0x0a /* Public */,
+     162,    3,  547,    2, 0x08 /* Private */,
+     163,    1,  554,    2, 0x08 /* Private */,
+     164,    1,  557,    2, 0x08 /* Private */,
+     165,   20,  560,    2, 0x08 /* Private */,
+     166,    9,  601,    2, 0x08 /* Private */,
+     167,   17,  620,    2, 0x08 /* Private */,
+     168,   58,  655,    2, 0x08 /* Private */,
+     169,    0,  772,    2, 0x08 /* Private */,
+     170,   21,  773,    2, 0x08 /* Private */,
+     171,    8,  816,    2, 0x08 /* Private */,
+     172,    3,  833,    2, 0x08 /* Private */,
+     173,    7,  840,    2, 0x08 /* Private */,
+     174,    4,  855,    2, 0x08 /* Private */,
+     175,    2,  864,    2, 0x08 /* Private */,
+     176,    9,  869,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Int,
@@ -332,11 +337,12 @@ static const uint qt_meta_data_DataBaseControl[] = {
     QMetaType::Bool, QMetaType::QString, QMetaType::Int, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::QString, QMetaType::Double, QMetaType::Double, QMetaType::Double, QMetaType::Double, QMetaType::Double, QMetaType::Double, QMetaType::QString, QMetaType::QString, QMetaType::Int, QMetaType::QString, QMetaType::Double, QMetaType::Double, QMetaType::Int, QMetaType::Double, QMetaType::Double, QMetaType::Int, QMetaType::QString, QMetaType::QDateTime, QMetaType::QDateTime, QMetaType::Double, QMetaType::Int, QMetaType::QString, QMetaType::Int, QMetaType::QString, QMetaType::QDateTime, QMetaType::QString, QMetaType::QDateTime, QMetaType::QString, QMetaType::QString, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Double, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Double, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Int,   72,   73,   74,   75,   76,   77,   78,   79,   80,   81,   82,   83,   84,   85,   86,   87,   88,   89,   90,   91,   92,   93,   94,   95,   96,   97,   98,   99,  100,  101,  102,  103,  104,  105,  106,  107,  108,  109,  110,  111,  112,  113,  114,  115,  116,  117,  118,  119,  120,  121,  122,  123,  124,  125,  126,  127,  128,  129,
     QMetaType::Int,
     QMetaType::Bool, QMetaType::QString, QMetaType::Int, QMetaType::QDateTime, QMetaType::Int, QMetaType::QString, QMetaType::QString, QMetaType::Int, QMetaType::QString, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::Double, QMetaType::Double, QMetaType::Double, QMetaType::QDateTime, QMetaType::Int,   72,  127,  110,  113,  132,  133,  134,  135,    4,  136,  137,  138,  139,  140,  141,  142,  143,  144,  145,  101,  146,
-    QMetaType::Bool, QMetaType::QString, 0x80000000 | 5, 0x80000000 | 15, 0x80000000 | 15, 0x80000000 | 15, QMetaType::QDateTime, 0x80000000 | 19,   37,   61,  148,  149,  150,  151,  152,
+    QMetaType::Bool, QMetaType::QString, 0x80000000 | 5, 0x80000000 | 22, 0x80000000 | 15, 0x80000000 | 15, 0x80000000 | 15, QMetaType::QDateTime, 0x80000000 | 19,   37,   61,  137,  148,  149,  150,  151,  152,
     QMetaType::Bool, QMetaType::QString, QMetaType::QDateTime, QMetaType::Int,   61,  152,   17,
     QMetaType::Bool, QMetaType::QString, QMetaType::Double, QMetaType::Double, QMetaType::Double, QMetaType::QDateTime, QMetaType::QDateTime, QMetaType::Int,   61,  155,  156,  157,  151,  152,   17,
     QMetaType::Bool, QMetaType::Int, 0x80000000 | 22, 0x80000000 | 22, 0x80000000 | 22,   18,  157,  156,  155,
     QMetaType::Bool, QMetaType::QString, QMetaType::Int,   37,  160,
+    QMetaType::Bool, QMetaType::Int, 0x80000000 | 22, 0x80000000 | 22, 0x80000000 | 22, 0x80000000 | 22, 0x80000000 | 22, 0x80000000 | 22, 0x80000000 | 19, 0x80000000 | 19,  113,   87,   88,   89,   84,   85,   86,  101,  102,
     QMetaType::Bool, QMetaType::Int, 0x80000000 | 5, 0x80000000 | 5,    4,    6,    7,
     QMetaType::Bool, 0x80000000 | 9,   10,
     QMetaType::Int, QMetaType::QString,   12,
@@ -346,11 +352,12 @@ static const uint qt_meta_data_DataBaseControl[] = {
     QMetaType::Bool, QMetaType::QString, QMetaType::Int, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::QString, QMetaType::Double, QMetaType::Double, QMetaType::Double, QMetaType::Double, QMetaType::Double, QMetaType::Double, QMetaType::QString, QMetaType::QString, QMetaType::Int, QMetaType::QString, QMetaType::Double, QMetaType::Double, QMetaType::Int, QMetaType::Double, QMetaType::Double, QMetaType::Int, QMetaType::QString, QMetaType::QDateTime, QMetaType::QDateTime, QMetaType::Double, QMetaType::Int, QMetaType::QString, QMetaType::Int, QMetaType::QString, QMetaType::QDateTime, QMetaType::QString, QMetaType::QDateTime, QMetaType::QString, QMetaType::QString, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Double, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Double, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Int,   72,   73,   74,   75,   76,   77,   78,   79,   80,   81,   82,   83,   84,   85,   86,   87,   88,   89,   90,   91,   92,   93,   94,   95,   96,   97,   98,   99,  100,  101,  102,  103,  104,  105,  106,  107,  108,  109,  110,  111,  112,  113,  114,  115,  116,  117,  118,  119,  120,  121,  122,  123,  124,  125,  126,  127,  128,  129,
     QMetaType::Int,
     QMetaType::Bool, QMetaType::QString, QMetaType::Int, QMetaType::QDateTime, QMetaType::Int, QMetaType::QString, QMetaType::QString, QMetaType::Int, QMetaType::QString, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::Double, QMetaType::Double, QMetaType::Double, QMetaType::QDateTime, QMetaType::Int,   72,  127,  110,  113,  132,  133,  134,  135,    4,  136,  137,  138,  139,  140,  141,  142,  143,  144,  145,  101,  146,
-    QMetaType::Bool, QMetaType::QString, 0x80000000 | 5, 0x80000000 | 15, 0x80000000 | 15, 0x80000000 | 15, QMetaType::QDateTime, 0x80000000 | 19,   37,   61,  148,  149,  150,  151,  152,
+    QMetaType::Bool, QMetaType::QString, 0x80000000 | 5, 0x80000000 | 22, 0x80000000 | 15, 0x80000000 | 15, 0x80000000 | 15, QMetaType::QDateTime, 0x80000000 | 19,   37,   61,  137,  148,  149,  150,  151,  152,
     QMetaType::Bool, QMetaType::QString, QMetaType::QDateTime, QMetaType::Int,   61,  152,   17,
     QMetaType::Bool, QMetaType::QString, QMetaType::Double, QMetaType::Double, QMetaType::Double, QMetaType::QDateTime, QMetaType::QDateTime, QMetaType::Int,   61,  155,  156,  157,  151,  152,   17,
     QMetaType::Bool, QMetaType::Int, 0x80000000 | 22, 0x80000000 | 22, 0x80000000 | 22,   18,  157,  156,  155,
     QMetaType::Bool, QMetaType::QString, QMetaType::Int,   37,  160,
+    QMetaType::Bool, QMetaType::Int, 0x80000000 | 22, 0x80000000 | 22, 0x80000000 | 22, 0x80000000 | 22, 0x80000000 | 22, 0x80000000 | 22, 0x80000000 | 19, 0x80000000 | 19,  113,   87,   88,   89,   84,   85,   86,  101,  102,
 
        0        // eod
 };
@@ -387,7 +394,7 @@ void DataBaseControl::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
         case 12: { bool _r = _t->createApiTransaction((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< QDateTime(*)>(_a[3])),(*reinterpret_cast< int(*)>(_a[4])),(*reinterpret_cast< QString(*)>(_a[5])),(*reinterpret_cast< QString(*)>(_a[6])),(*reinterpret_cast< int(*)>(_a[7])),(*reinterpret_cast< QString(*)>(_a[8])),(*reinterpret_cast< int(*)>(_a[9])),(*reinterpret_cast< int(*)>(_a[10])),(*reinterpret_cast< int(*)>(_a[11])),(*reinterpret_cast< int(*)>(_a[12])),(*reinterpret_cast< QString(*)>(_a[13])),(*reinterpret_cast< QString(*)>(_a[14])),(*reinterpret_cast< QString(*)>(_a[15])),(*reinterpret_cast< QString(*)>(_a[16])),(*reinterpret_cast< double(*)>(_a[17])),(*reinterpret_cast< double(*)>(_a[18])),(*reinterpret_cast< double(*)>(_a[19])),(*reinterpret_cast< QDateTime(*)>(_a[20])),(*reinterpret_cast< int(*)>(_a[21])));
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
-        case 13: { bool _r = _t->getApiTransactionState((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])),(*reinterpret_cast< int(*)>(_a[4])),(*reinterpret_cast< int(*)>(_a[5])),(*reinterpret_cast< QDateTime(*)>(_a[6])),(*reinterpret_cast< QDateTime(*)>(_a[7])));
+        case 13: { bool _r = _t->getApiTransactionState((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< double(*)>(_a[3])),(*reinterpret_cast< int(*)>(_a[4])),(*reinterpret_cast< int(*)>(_a[5])),(*reinterpret_cast< int(*)>(_a[6])),(*reinterpret_cast< QDateTime(*)>(_a[7])),(*reinterpret_cast< QDateTime(*)>(_a[8])));
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
         case 14: { bool _r = _t->updateApiTransactionState((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QDateTime(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])));
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
@@ -397,33 +404,37 @@ void DataBaseControl::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
         case 17: { bool _r = _t->setTransactionClosed((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])));
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
-        case 18: { bool _r = _t->GetFuelNamesCycle((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3])));
+        case 18: { bool _r = _t->getTransactionData((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< double(*)>(_a[2])),(*reinterpret_cast< double(*)>(_a[3])),(*reinterpret_cast< double(*)>(_a[4])),(*reinterpret_cast< double(*)>(_a[5])),(*reinterpret_cast< double(*)>(_a[6])),(*reinterpret_cast< double(*)>(_a[7])),(*reinterpret_cast< QDateTime(*)>(_a[8])),(*reinterpret_cast< QDateTime(*)>(_a[9])));
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
-        case 19: { bool _r = _t->GetFuelsCycle((*reinterpret_cast< QVector<QVector<int> >(*)>(_a[1])));
+        case 19: { bool _r = _t->GetFuelNamesCycle((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3])));
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
-        case 20: { int _r = _t->GetCashBoxIndexCycle((*reinterpret_cast< QString(*)>(_a[1])));
+        case 20: { bool _r = _t->GetFuelsCycle((*reinterpret_cast< QVector<QVector<int> >(*)>(_a[1])));
+            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
+        case 21: { int _r = _t->GetCashBoxIndexCycle((*reinterpret_cast< QString(*)>(_a[1])));
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
-        case 21: { bool _r = _t->GetPricesCycle((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])),(*reinterpret_cast< int(*)>(_a[4])),(*reinterpret_cast< int(*)>(_a[5])),(*reinterpret_cast< QDateTime(*)>(_a[6])),(*reinterpret_cast< QString(*)>(_a[7])),(*reinterpret_cast< double(*)>(_a[8])),(*reinterpret_cast< double(*)>(_a[9])),(*reinterpret_cast< double(*)>(_a[10])),(*reinterpret_cast< double(*)>(_a[11])),(*reinterpret_cast< double(*)>(_a[12])),(*reinterpret_cast< double(*)>(_a[13])),(*reinterpret_cast< double(*)>(_a[14])),(*reinterpret_cast< double(*)>(_a[15])),(*reinterpret_cast< double(*)>(_a[16])),(*reinterpret_cast< double(*)>(_a[17])),(*reinterpret_cast< double(*)>(_a[18])),(*reinterpret_cast< double(*)>(_a[19])),(*reinterpret_cast< double(*)>(_a[20])));
+        case 22: { bool _r = _t->GetPricesCycle((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])),(*reinterpret_cast< int(*)>(_a[4])),(*reinterpret_cast< int(*)>(_a[5])),(*reinterpret_cast< QDateTime(*)>(_a[6])),(*reinterpret_cast< QString(*)>(_a[7])),(*reinterpret_cast< double(*)>(_a[8])),(*reinterpret_cast< double(*)>(_a[9])),(*reinterpret_cast< double(*)>(_a[10])),(*reinterpret_cast< double(*)>(_a[11])),(*reinterpret_cast< double(*)>(_a[12])),(*reinterpret_cast< double(*)>(_a[13])),(*reinterpret_cast< double(*)>(_a[14])),(*reinterpret_cast< double(*)>(_a[15])),(*reinterpret_cast< double(*)>(_a[16])),(*reinterpret_cast< double(*)>(_a[17])),(*reinterpret_cast< double(*)>(_a[18])),(*reinterpret_cast< double(*)>(_a[19])),(*reinterpret_cast< double(*)>(_a[20])));
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
-        case 22: { bool _r = _t->GetAgzsDataCycle((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< QDateTime(*)>(_a[3])),(*reinterpret_cast< int(*)>(_a[4])),(*reinterpret_cast< QString(*)>(_a[5])),(*reinterpret_cast< QString(*)>(_a[6])),(*reinterpret_cast< double(*)>(_a[7])),(*reinterpret_cast< double(*)>(_a[8])),(*reinterpret_cast< int(*)>(_a[9])));
+        case 23: { bool _r = _t->GetAgzsDataCycle((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< QDateTime(*)>(_a[3])),(*reinterpret_cast< int(*)>(_a[4])),(*reinterpret_cast< QString(*)>(_a[5])),(*reinterpret_cast< QString(*)>(_a[6])),(*reinterpret_cast< double(*)>(_a[7])),(*reinterpret_cast< double(*)>(_a[8])),(*reinterpret_cast< int(*)>(_a[9])));
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
-        case 23: { bool _r = _t->GetAgzsAdastTrkCycle((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3])),(*reinterpret_cast< QString(*)>(_a[4])),(*reinterpret_cast< QString(*)>(_a[5])),(*reinterpret_cast< int(*)>(_a[6])),(*reinterpret_cast< int(*)>(_a[7])),(*reinterpret_cast< int(*)>(_a[8])),(*reinterpret_cast< int(*)>(_a[9])),(*reinterpret_cast< int(*)>(_a[10])),(*reinterpret_cast< int(*)>(_a[11])),(*reinterpret_cast< int(*)>(_a[12])),(*reinterpret_cast< int(*)>(_a[13])),(*reinterpret_cast< int(*)>(_a[14])),(*reinterpret_cast< int(*)>(_a[15])),(*reinterpret_cast< int(*)>(_a[16])),(*reinterpret_cast< int(*)>(_a[17])));
+        case 24: { bool _r = _t->GetAgzsAdastTrkCycle((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3])),(*reinterpret_cast< QString(*)>(_a[4])),(*reinterpret_cast< QString(*)>(_a[5])),(*reinterpret_cast< int(*)>(_a[6])),(*reinterpret_cast< int(*)>(_a[7])),(*reinterpret_cast< int(*)>(_a[8])),(*reinterpret_cast< int(*)>(_a[9])),(*reinterpret_cast< int(*)>(_a[10])),(*reinterpret_cast< int(*)>(_a[11])),(*reinterpret_cast< int(*)>(_a[12])),(*reinterpret_cast< int(*)>(_a[13])),(*reinterpret_cast< int(*)>(_a[14])),(*reinterpret_cast< int(*)>(_a[15])),(*reinterpret_cast< int(*)>(_a[16])),(*reinterpret_cast< int(*)>(_a[17])));
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
-        case 24: { bool _r = _t->createTrkTransactionCycle((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3])),(*reinterpret_cast< QString(*)>(_a[4])),(*reinterpret_cast< QString(*)>(_a[5])),(*reinterpret_cast< QString(*)>(_a[6])),(*reinterpret_cast< QString(*)>(_a[7])),(*reinterpret_cast< QString(*)>(_a[8])),(*reinterpret_cast< int(*)>(_a[9])),(*reinterpret_cast< int(*)>(_a[10])),(*reinterpret_cast< int(*)>(_a[11])),(*reinterpret_cast< QString(*)>(_a[12])),(*reinterpret_cast< double(*)>(_a[13])),(*reinterpret_cast< double(*)>(_a[14])),(*reinterpret_cast< double(*)>(_a[15])),(*reinterpret_cast< double(*)>(_a[16])),(*reinterpret_cast< double(*)>(_a[17])),(*reinterpret_cast< double(*)>(_a[18])),(*reinterpret_cast< QString(*)>(_a[19])),(*reinterpret_cast< QString(*)>(_a[20])),(*reinterpret_cast< int(*)>(_a[21])),(*reinterpret_cast< QString(*)>(_a[22])),(*reinterpret_cast< double(*)>(_a[23])),(*reinterpret_cast< double(*)>(_a[24])),(*reinterpret_cast< int(*)>(_a[25])),(*reinterpret_cast< double(*)>(_a[26])),(*reinterpret_cast< double(*)>(_a[27])),(*reinterpret_cast< int(*)>(_a[28])),(*reinterpret_cast< QString(*)>(_a[29])),(*reinterpret_cast< QDateTime(*)>(_a[30])),(*reinterpret_cast< QDateTime(*)>(_a[31])),(*reinterpret_cast< double(*)>(_a[32])),(*reinterpret_cast< int(*)>(_a[33])),(*reinterpret_cast< QString(*)>(_a[34])),(*reinterpret_cast< int(*)>(_a[35])),(*reinterpret_cast< QString(*)>(_a[36])),(*reinterpret_cast< QDateTime(*)>(_a[37])),(*reinterpret_cast< QString(*)>(_a[38])),(*reinterpret_cast< QDateTime(*)>(_a[39])),(*reinterpret_cast< QString(*)>(_a[40])),(*reinterpret_cast< QString(*)>(_a[41])),(*reinterpret_cast< int(*)>(_a[42])),(*reinterpret_cast< int(*)>(_a[43])),(*reinterpret_cast< int(*)>(_a[44])),(*reinterpret_cast< int(*)>(_a[45])),(*reinterpret_cast< double(*)>(_a[46])),(*reinterpret_cast< int(*)>(_a[47])),(*reinterpret_cast< int(*)>(_a[48])),(*reinterpret_cast< int(*)>(_a[49])),(*reinterpret_cast< int(*)>(_a[50])),(*reinterpret_cast< double(*)>(_a[51])),(*reinterpret_cast< int(*)>(_a[52])),(*reinterpret_cast< int(*)>(_a[53])),(*reinterpret_cast< int(*)>(_a[54])),(*reinterpret_cast< int(*)>(_a[55])),(*reinterpret_cast< int(*)>(_a[56])),(*reinterpret_cast< int(*)>(_a[57])),(*reinterpret_cast< int(*)>(_a[58])));
+        case 25: { bool _r = _t->createTrkTransactionCycle((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3])),(*reinterpret_cast< QString(*)>(_a[4])),(*reinterpret_cast< QString(*)>(_a[5])),(*reinterpret_cast< QString(*)>(_a[6])),(*reinterpret_cast< QString(*)>(_a[7])),(*reinterpret_cast< QString(*)>(_a[8])),(*reinterpret_cast< int(*)>(_a[9])),(*reinterpret_cast< int(*)>(_a[10])),(*reinterpret_cast< int(*)>(_a[11])),(*reinterpret_cast< QString(*)>(_a[12])),(*reinterpret_cast< double(*)>(_a[13])),(*reinterpret_cast< double(*)>(_a[14])),(*reinterpret_cast< double(*)>(_a[15])),(*reinterpret_cast< double(*)>(_a[16])),(*reinterpret_cast< double(*)>(_a[17])),(*reinterpret_cast< double(*)>(_a[18])),(*reinterpret_cast< QString(*)>(_a[19])),(*reinterpret_cast< QString(*)>(_a[20])),(*reinterpret_cast< int(*)>(_a[21])),(*reinterpret_cast< QString(*)>(_a[22])),(*reinterpret_cast< double(*)>(_a[23])),(*reinterpret_cast< double(*)>(_a[24])),(*reinterpret_cast< int(*)>(_a[25])),(*reinterpret_cast< double(*)>(_a[26])),(*reinterpret_cast< double(*)>(_a[27])),(*reinterpret_cast< int(*)>(_a[28])),(*reinterpret_cast< QString(*)>(_a[29])),(*reinterpret_cast< QDateTime(*)>(_a[30])),(*reinterpret_cast< QDateTime(*)>(_a[31])),(*reinterpret_cast< double(*)>(_a[32])),(*reinterpret_cast< int(*)>(_a[33])),(*reinterpret_cast< QString(*)>(_a[34])),(*reinterpret_cast< int(*)>(_a[35])),(*reinterpret_cast< QString(*)>(_a[36])),(*reinterpret_cast< QDateTime(*)>(_a[37])),(*reinterpret_cast< QString(*)>(_a[38])),(*reinterpret_cast< QDateTime(*)>(_a[39])),(*reinterpret_cast< QString(*)>(_a[40])),(*reinterpret_cast< QString(*)>(_a[41])),(*reinterpret_cast< int(*)>(_a[42])),(*reinterpret_cast< int(*)>(_a[43])),(*reinterpret_cast< int(*)>(_a[44])),(*reinterpret_cast< int(*)>(_a[45])),(*reinterpret_cast< double(*)>(_a[46])),(*reinterpret_cast< int(*)>(_a[47])),(*reinterpret_cast< int(*)>(_a[48])),(*reinterpret_cast< int(*)>(_a[49])),(*reinterpret_cast< int(*)>(_a[50])),(*reinterpret_cast< double(*)>(_a[51])),(*reinterpret_cast< int(*)>(_a[52])),(*reinterpret_cast< int(*)>(_a[53])),(*reinterpret_cast< int(*)>(_a[54])),(*reinterpret_cast< int(*)>(_a[55])),(*reinterpret_cast< int(*)>(_a[56])),(*reinterpret_cast< int(*)>(_a[57])),(*reinterpret_cast< int(*)>(_a[58])));
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
-        case 25: { int _r = _t->getSmenaCycle();
+        case 26: { int _r = _t->getSmenaCycle();
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
-        case 26: { bool _r = _t->createApiTransactionCycle((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< QDateTime(*)>(_a[3])),(*reinterpret_cast< int(*)>(_a[4])),(*reinterpret_cast< QString(*)>(_a[5])),(*reinterpret_cast< QString(*)>(_a[6])),(*reinterpret_cast< int(*)>(_a[7])),(*reinterpret_cast< QString(*)>(_a[8])),(*reinterpret_cast< int(*)>(_a[9])),(*reinterpret_cast< int(*)>(_a[10])),(*reinterpret_cast< int(*)>(_a[11])),(*reinterpret_cast< int(*)>(_a[12])),(*reinterpret_cast< QString(*)>(_a[13])),(*reinterpret_cast< QString(*)>(_a[14])),(*reinterpret_cast< QString(*)>(_a[15])),(*reinterpret_cast< QString(*)>(_a[16])),(*reinterpret_cast< double(*)>(_a[17])),(*reinterpret_cast< double(*)>(_a[18])),(*reinterpret_cast< double(*)>(_a[19])),(*reinterpret_cast< QDateTime(*)>(_a[20])),(*reinterpret_cast< int(*)>(_a[21])));
+        case 27: { bool _r = _t->createApiTransactionCycle((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< QDateTime(*)>(_a[3])),(*reinterpret_cast< int(*)>(_a[4])),(*reinterpret_cast< QString(*)>(_a[5])),(*reinterpret_cast< QString(*)>(_a[6])),(*reinterpret_cast< int(*)>(_a[7])),(*reinterpret_cast< QString(*)>(_a[8])),(*reinterpret_cast< int(*)>(_a[9])),(*reinterpret_cast< int(*)>(_a[10])),(*reinterpret_cast< int(*)>(_a[11])),(*reinterpret_cast< int(*)>(_a[12])),(*reinterpret_cast< QString(*)>(_a[13])),(*reinterpret_cast< QString(*)>(_a[14])),(*reinterpret_cast< QString(*)>(_a[15])),(*reinterpret_cast< QString(*)>(_a[16])),(*reinterpret_cast< double(*)>(_a[17])),(*reinterpret_cast< double(*)>(_a[18])),(*reinterpret_cast< double(*)>(_a[19])),(*reinterpret_cast< QDateTime(*)>(_a[20])),(*reinterpret_cast< int(*)>(_a[21])));
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
-        case 27: { bool _r = _t->getApiTransactionStateCycle((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])),(*reinterpret_cast< int(*)>(_a[4])),(*reinterpret_cast< int(*)>(_a[5])),(*reinterpret_cast< QDateTime(*)>(_a[6])),(*reinterpret_cast< QDateTime(*)>(_a[7])));
+        case 28: { bool _r = _t->getApiTransactionStateCycle((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< double(*)>(_a[3])),(*reinterpret_cast< int(*)>(_a[4])),(*reinterpret_cast< int(*)>(_a[5])),(*reinterpret_cast< int(*)>(_a[6])),(*reinterpret_cast< QDateTime(*)>(_a[7])),(*reinterpret_cast< QDateTime(*)>(_a[8])));
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
-        case 28: { bool _r = _t->updateApiTransactionStateCycle((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QDateTime(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])));
+        case 29: { bool _r = _t->updateApiTransactionStateCycle((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QDateTime(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])));
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
-        case 29: { bool _r = _t->finalUpdateApiTransactionStateCycle((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< double(*)>(_a[2])),(*reinterpret_cast< double(*)>(_a[3])),(*reinterpret_cast< double(*)>(_a[4])),(*reinterpret_cast< QDateTime(*)>(_a[5])),(*reinterpret_cast< QDateTime(*)>(_a[6])),(*reinterpret_cast< int(*)>(_a[7])));
+        case 30: { bool _r = _t->finalUpdateApiTransactionStateCycle((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< double(*)>(_a[2])),(*reinterpret_cast< double(*)>(_a[3])),(*reinterpret_cast< double(*)>(_a[4])),(*reinterpret_cast< QDateTime(*)>(_a[5])),(*reinterpret_cast< QDateTime(*)>(_a[6])),(*reinterpret_cast< int(*)>(_a[7])));
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
-        case 30: { bool _r = _t->getPayOperationLitersCycle((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< double(*)>(_a[2])),(*reinterpret_cast< double(*)>(_a[3])),(*reinterpret_cast< double(*)>(_a[4])));
+        case 31: { bool _r = _t->getPayOperationLitersCycle((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< double(*)>(_a[2])),(*reinterpret_cast< double(*)>(_a[3])),(*reinterpret_cast< double(*)>(_a[4])));
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
-        case 31: { bool _r = _t->setTransactionClosedCycle((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])));
+        case 32: { bool _r = _t->setTransactionClosedCycle((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])));
+            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
+        case 33: { bool _r = _t->getTransactionDataCycle((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< double(*)>(_a[2])),(*reinterpret_cast< double(*)>(_a[3])),(*reinterpret_cast< double(*)>(_a[4])),(*reinterpret_cast< double(*)>(_a[5])),(*reinterpret_cast< double(*)>(_a[6])),(*reinterpret_cast< double(*)>(_a[7])),(*reinterpret_cast< QDateTime(*)>(_a[8])),(*reinterpret_cast< QDateTime(*)>(_a[9])));
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
         default: ;
         }
@@ -459,13 +470,13 @@ int DataBaseControl::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 32)
+        if (_id < 34)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 32;
+        _id -= 34;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 32)
+        if (_id < 34)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 32;
+        _id -= 34;
     }
     return _id;
 }

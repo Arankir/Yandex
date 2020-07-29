@@ -6,7 +6,7 @@ int main(int argc, char *argv[])
 {
     QCoreApplication::setOrganizationName("RegionPostavka");
     QCoreApplication::setOrganizationDomain("region postavka");
-    QCoreApplication::setApplicationName("Yandex api");
+    QCoreApplication::setApplicationName("Agents api");
     QApplication a(argc, argv);
     MainWindow w;
     w.show();

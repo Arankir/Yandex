@@ -17,10 +17,10 @@ DataBaseControl::DataBaseControl(QObject *aParent) : QObject(aParent), _reestr("
     } else {
         qDebug()<<"Error: log file not found";
     }
-    while(!Init());
+    while(!init());
 }
 
-bool DataBaseControl::Init() {
+bool DataBaseControl::init() {
     _db = QSqlDatabase::addDatabase("QODBC3");
     QStringList setting;
     if (QFile::exists(c_settingPath)) {
@@ -31,17 +31,20 @@ bool DataBaseControl::Init() {
             }
             settings.close();
         } else {
-            LogAppend("Error: setting file is already open");
+            logAppend("Error: setting file is already open");
             return false;
         }
     } else {
-        LogAppend("Error: setting file not found");
+        logAppend("Error: setting file not found");
         return false;
     }
     qDebug()<<setting;
     if (setting.size() > 1) {
-        _reestr.setValue("CityMobile Token", setting[1]);
+        _reestr.setValue("isTest", setting[1] == "Test");
+    } else {
+        _reestr.setValue("isTest", false);
     }
+
     if (setting.size() > 0) {
         _db.setDatabaseName(QString("DRIVER={SQL Server};"
                                     "SERVER=%1;"
@@ -50,15 +53,30 @@ bool DataBaseControl::Init() {
                                     "uid=sa;"
                                     "pwd=Gfhf743Djpbr").arg(setting[0]));
         if (_db.open()) {
+            QString cityMobileToken;
+
+            QSqlQuery* qData = new QSqlQuery(_db);
+            qData->exec("SELECT TOP 1 [CityMobileToken] "
+                    "FROM [agzs].[dbo].[PR_AGZSData] "
+                    "WHERE AGZS = (SELECT TOP 1 AGZS "
+                                  "FROM [agzs].[dbo].[Identification]) ");
+            qData->next();
+            if (qData->lastError().type() == QSqlError::NoError) {
+                cityMobileToken = qData->value(0).toString();
+            }
+            delete qData;
+            _reestr.setValue("CityMobile Token", cityMobileToken);
+            logAppend("DB open");
             return true;
         } else {
+            logAppend("DB close");
             return false;
         }
     }
     return false;
 }
 
-bool DataBaseControl::LogAppend(QString aMessage) {
+bool DataBaseControl::logAppend(QString aMessage) {
     if (QFile::exists(c_logPath)) {
         QFile fLog(c_logPath);
         if (fLog.open(QIODevice::Append)) {
@@ -78,14 +96,14 @@ bool DataBaseControl::LogAppend(QString aMessage) {
 #define InitEnd }
 
 #define OneStart {
-bool DataBaseControl::GetFuelNames(int aFuelId, QString &aFullName, QString &aShortName) {
+bool DataBaseControl::getFuelNames(int aFuelId, QString &aFullName, QString &aShortName) {
     _cycles = 0;
-    return GetFuelNamesCycle(aFuelId, aFullName, aShortName);
+    return getFuelNamesCycle(aFuelId, aFullName, aShortName);
 }
 
-bool DataBaseControl::GetFuels(QVector<QVector<int> > &aFuels) {
+bool DataBaseControl::getFuels(QVector<QVector<int> > &aFuels) {
     _cycles = 0;
-    return GetFuelsCycle(aFuels);
+    return getFuelsCycle(aFuels);
 }
 
 int DataBaseControl::getSmena() {
@@ -93,29 +111,29 @@ int DataBaseControl::getSmena() {
     return getSmenaCycle();
 }
 
-int DataBaseControl::GetCashBoxIndex(QString aIPartner) {
+int DataBaseControl::getCashBoxIndex(QString aIPartner) {
     _cycles = 0;
-    return GetCashBoxIndexCycle(aIPartner);
+    return getCashBoxIndexCycle(aIPartner);
 }
 
-bool DataBaseControl::GetPrices(QString aIPartner, QString &aAgzsName, int &aAgzs, int &aVCode, int &aLink, QDateTime &aCDate, QString &aPartner,
+bool DataBaseControl::getPrices(QString aIPartner, QString &aAgzsName, int &aAgzs, int &aVCode, int &aLink, QDateTime &aCDate, QString &aPartner,
                                 double &aDiesel, double &aDiesel_premium, double &aA80, double &aA92, double &aA92_premium, double &aA95, double &aA95_premium, double &aA98,
                                 double &aA98_premium, double &aA100, double &aA100_premium, double &aPropane, double &aMetan) {
     _cycles = 0;
-    return GetPricesCycle(aIPartner, aAgzsName, aAgzs, aVCode, aLink, aCDate, aPartner, aDiesel, aDiesel_premium, aA80, aA92, aA92_premium, aA95, aA95_premium,
+    return getPricesCycle(aIPartner, aAgzsName, aAgzs, aVCode, aLink, aCDate, aPartner, aDiesel, aDiesel_premium, aA80, aA92, aA92_premium, aA95, aA95_premium,
                           aA98, aA98_premium, aA100, aA100_premium, aPropane, aMetan);
 }
 
-bool DataBaseControl::GetAgzsData(QString &aAgzsName, int &aAgzs, QDateTime &aCDate, int &aVCode, QString &aId, QString &aAdress, double &aLoc_x, double &aLoc_y, int &aColumnCount) {
+bool DataBaseControl::getAgzsData(QString &aAgzsName, int &aAgzs, QDateTime &aCDate, int &aVCode, QString &aId, QString &aAdress, double &aLat, double &aLon, int &aColumnCount) {
     _cycles = 0;
-    return GetAgzsDataCycle(aAgzsName, aAgzs, aCDate, aVCode, aId, aAdress, aLoc_x, aLoc_y, aColumnCount);
+    return getAgzsDataCycle(aAgzsName, aAgzs, aCDate, aVCode, aId, aAdress, aLat, aLon, aColumnCount);
 }
 
-bool DataBaseControl::GetAgzsAdastTrk(int aSideAdress, QString &aSide, QString &aDeviceName, QString &aSerial, QString &aDescription,
+bool DataBaseControl::getAgzsAdastTrk(int aSideAdress, QString &aSide, QString &aDeviceName, QString &aSerial, QString &aDescription,
                                       int &aFuelCode1, int &aFuelCode2, int &aFuelCode3, int &aFuelCode4, int &aFuelCode5,
                                       int &aTrkVCode, int &aPumpPlace, int &aFuel1, int &aFuel2, int &aFuel3, int &aFuel4, int &aFuel5) {
     _cycles = 0;
-    return GetAgzsAdastTrkCycle(aSideAdress, aSide, aDeviceName, aSerial, aDescription, aFuelCode1, aFuelCode2, aFuelCode3, aFuelCode4, aFuelCode5,
+    return getAgzsAdastTrkCycle(aSideAdress, aSide, aDeviceName, aSerial, aDescription, aFuelCode1, aFuelCode2, aFuelCode3, aFuelCode4, aFuelCode5,
                                 aTrkVCode, aPumpPlace, aFuel1, aFuel2, aFuel3, aFuel4, aFuel5);
 }
 
@@ -149,9 +167,9 @@ bool DataBaseControl::createApiTransaction(QString aAgzsName, int aAgzs, QDateTi
                                      aApiContractId, aAgent, aLocalState, aPrice, aLitre, aSum, aDateOpen, aLink);
 }
 
-bool DataBaseControl::getApiTransactionState(QString aId, QString &aLocalState, int &aApiVCode, int &aHeadVCode, int &aIState, QDateTime aDateOpen, QDateTime &aDateClose) {
+bool DataBaseControl::getApiTransactionState(QString aId, QString &aLocalState, double &aApiLitre, int &aApiVCode, int &aHeadVCode, int &aIState, QDateTime aDateOpen, QDateTime &aDateClose) {
     _cycles = 0;
-    return getApiTransactionStateCycle(aId, aLocalState, aApiVCode, aHeadVCode, aIState, aDateOpen, aDateClose);
+    return getApiTransactionStateCycle(aId, aLocalState, aApiLitre, aApiVCode, aHeadVCode, aIState, aDateOpen, aDateClose);
 }
 
 bool DataBaseControl::updateApiTransactionState(QString aLocalState, QDateTime aDateClose, int aVCode) {
@@ -173,10 +191,15 @@ bool DataBaseControl::setTransactionClosed(QString aId, int aClosed) {
     _cycles = 0;
     return setTransactionClosedCycle(aId, aClosed);
 }
+
+bool DataBaseControl::getTransactionData(int aVCode, double &aRequestTotalPrice, double &aRequestVolume, double &aRequestUnitPrice, double &aTrkTotalPrice, double &aTrkVolume, double &aTrkUnitPrice, QDateTime &aDateOpen, QDateTime &aDateClose) {
+    _cycles = 0;
+    return getTransactionDataCycle(aVCode, aRequestTotalPrice, aRequestVolume, aRequestUnitPrice, aTrkTotalPrice, aTrkVolume, aTrkUnitPrice, aDateOpen, aDateClose);
+}
 #define OneEnd }
 
 #define CycleStart {
-bool DataBaseControl::GetFuelNamesCycle(int aFuelId, QString &aFullName, QString &aShortName) {
+bool DataBaseControl::getFuelNamesCycle(int aFuelId, QString &aFullName, QString &aShortName) {
     QSqlQuery *qFuels = new QSqlQuery(_db);
     qFuels->exec("SELECT TOP 1 [FuelName], [FuelShortName] "
                   "FROM [agzs].[dbo].[Interface_FuelParams] "
@@ -189,18 +212,18 @@ bool DataBaseControl::GetFuelNamesCycle(int aFuelId, QString &aFullName, QString
         return true;
     } else {
         delete qFuels;
-        Init();
+        init();
         if (_cycles < c_maxRestartCount) {
-            LogAppend("GetFuelNamesCycle error " + QString::number(_cycles));
+            logAppend("GetFuelNamesCycle error " + QString::number(_cycles));
             _cycles++;
-            return GetFuelNamesCycle(aFuelId, aFullName, aShortName);
+            return getFuelNamesCycle(aFuelId, aFullName, aShortName);
         } else {
             return false;
         }
     }
 }
 
-bool DataBaseControl::GetFuelsCycle(QVector<QVector<int> > &aFuels) {
+bool DataBaseControl::getFuelsCycle(QVector<QVector<int> > &aFuels) {
     QSqlQuery *qFuels = new QSqlQuery(_db);
     qFuels->exec("SELECT [DeviceName], [Serial], [Description], "
                  "[SideA_Address], [SideA_Nozzle1FuelCode], [SideA_Nozzle2FuelCode], [SideA_Nozzle3FuelCode], [SideA_Nozzle4FuelCode], [SideA_Nozzle5FuelCode], "
@@ -256,11 +279,11 @@ bool DataBaseControl::GetFuelsCycle(QVector<QVector<int> > &aFuels) {
         return true;
     } else {
         delete qFuels;
-        Init();
+        init();
         if (_cycles < c_maxRestartCount) {
-            LogAppend("GetFuelsCycle error " + QString::number(_cycles));
+            logAppend("GetFuelsCycle error " + QString::number(_cycles));
             _cycles++;
-            return GetFuelsCycle(aFuels);
+            return getFuelsCycle(aFuels);
         } else {
             return false;
         }
@@ -279,15 +302,15 @@ int DataBaseControl::getSmenaCycle() {
         delete qSmena;
     } else if (_cycles < c_maxRestartCount) {
         _cycles++;
-        LogAppend("GetSmenaCycle error " + QString::number(_cycles));
+        logAppend("GetSmenaCycle error " + QString::number(_cycles));
         delete qSmena;
-        Init();
+        init();
         index = getSmenaCycle();
     }
     return index;
 }
 
-int DataBaseControl::GetCashBoxIndexCycle(QString aIPartner) {
+int DataBaseControl::getCashBoxIndexCycle(QString aIPartner) {
     QSqlQuery *qCashBox = new QSqlQuery(_db);
     qCashBox->exec("SELECT TOP 1 CashBoxIndex, PayIndex, PayWay, AutoCheck FROM [agzs].[dbo].[ARM_CashBoxesSemaphor] "
                     "WHERE PayIndex = " + aIPartner + " and AutoCheck = 0 "
@@ -299,15 +322,15 @@ int DataBaseControl::GetCashBoxIndexCycle(QString aIPartner) {
         delete qCashBox;
     } else if (_cycles < c_maxRestartCount) {
         _cycles++;
-        LogAppend("GetCashBoxIndexCycle error " + QString::number(_cycles));
+        logAppend("GetCashBoxIndexCycle error " + QString::number(_cycles));
         delete qCashBox;
-        Init();
-        index = GetCashBoxIndexCycle(aIPartner);
+        init();
+        index = getCashBoxIndexCycle(aIPartner);
     }
     return index;
 }
 
-bool DataBaseControl::GetPricesCycle(QString aIPartner, QString &aAgzsName, int &aAgzs, int &aVCode, int &aLink, QDateTime &aCDate, QString &aPartner, double &aDiesel, double &aDiesel_premium,
+bool DataBaseControl::getPricesCycle(QString aIPartner, QString &aAgzsName, int &aAgzs, int &aVCode, int &aLink, QDateTime &aCDate, QString &aPartner, double &aDiesel, double &aDiesel_premium,
                                      double &aA80, double &aA92, double &aA92_premium, double &aA95, double &aA95_premium, double &aA98, double &aA98_premium, double &aA100, double &aA100_premium,
                                      double &aPropane, double &aMetan) {
     QSqlQuery* qPrice = new QSqlQuery(_db);
@@ -345,11 +368,11 @@ bool DataBaseControl::GetPricesCycle(QString aIPartner, QString &aAgzsName, int 
         return true;
     } else {
         delete qPrice;
-        Init();
+        init();
         if (_cycles < c_maxRestartCount) {
-            LogAppend("GetPricesCycle error " + QString::number(_cycles));
+            logAppend("GetPricesCycle error " + QString::number(_cycles));
             _cycles++;
-            return GetPricesCycle(aIPartner, aAgzsName, aAgzs, aVCode, aLink, aCDate, aPartner, aDiesel, aDiesel_premium, aA80, aA92, aA92_premium, aA95, aA95_premium, aA98, aA98_premium,
+            return getPricesCycle(aIPartner, aAgzsName, aAgzs, aVCode, aLink, aCDate, aPartner, aDiesel, aDiesel_premium, aA80, aA92, aA92_premium, aA95, aA95_premium, aA98, aA98_premium,
                                   aA100, aA100_premium, aPropane, aMetan);
         } else {
             return false;
@@ -357,10 +380,10 @@ bool DataBaseControl::GetPricesCycle(QString aIPartner, QString &aAgzsName, int 
     }
 }
 
-bool DataBaseControl::GetAgzsDataCycle(QString &aAgzsName, int &aAgzs, QDateTime &aCDate, int &aVCode, QString &aId, QString &aAdress, double &aLoc_x, double &aLoc_y, int &aColumnCount) {
+bool DataBaseControl::getAgzsDataCycle(QString &aAgzsName, int &aAgzs, QDateTime &aCDate, int &aVCode, QString &aId, QString &aAdress, double &aLat, double &aLon, int &aColumnCount) {
     QSqlQuery* qData = new QSqlQuery(_db);
     qData->exec("SELECT TOP 1 [AGZSName], [AGZS], [CDate], [VCode], [Id], [Adress], "
-            "[Location_x], [Location_y], [ColumnsCount] "
+            "[latitude], [longitude], [ColumnsCount] "
             "FROM [agzs].[dbo].[PR_AGZSData] "
             "WHERE AGZS = (SELECT TOP 1 AGZS "
                           "FROM [agzs].[dbo].[Identification]) ");
@@ -372,25 +395,25 @@ bool DataBaseControl::GetAgzsDataCycle(QString &aAgzsName, int &aAgzs, QDateTime
         aVCode = qData->value(3).toInt();
         aId = qData->value(4).toString();
         aAdress = qData->value(5).toString();
-        aLoc_x = qData->value(6).toFloat();
-        aLoc_y = qData->value(7).toFloat();
+        aLat = qData->value(6).toFloat();
+        aLon = qData->value(7).toFloat();
         aColumnCount = qData->value(8).toInt();
         delete qData;
         return true;
     } else {
         delete qData;
-        Init();
+        init();
         if (_cycles < c_maxRestartCount) {
-            LogAppend("GetAgzsDataCycle error " + QString::number(_cycles));
+            logAppend("GetAgzsDataCycle error " + QString::number(_cycles));
             _cycles++;
-            return GetAgzsDataCycle(aAgzsName, aAgzs, aCDate, aVCode, aId, aAdress, aLoc_x, aLoc_y, aColumnCount);
+            return getAgzsDataCycle(aAgzsName, aAgzs, aCDate, aVCode, aId, aAdress, aLat, aLon, aColumnCount);
         } else {
             return false;
         }
     }
 }
 
-bool DataBaseControl::GetAgzsAdastTrkCycle(int aSideAdress, QString &aSide, QString &aDeviceName, QString &aSerial, QString &aDescription,
+bool DataBaseControl::getAgzsAdastTrkCycle(int aSideAdress, QString &aSide, QString &aDeviceName, QString &aSerial, QString &aDescription,
                                            int &aFuelCode1, int &aFuelCode2, int &aFuelCode3, int &aFuelCode4, int &aFuelCode5,
                                            int &aTrkVCode, int &aPumpPlace, int &aFuel1, int &aFuel2, int &aFuel3, int &aFuel4, int &aFuel5) {
     QSqlQuery *qFuels = new QSqlQuery(_db);
@@ -441,11 +464,11 @@ bool DataBaseControl::GetAgzsAdastTrkCycle(int aSideAdress, QString &aSide, QStr
         return true;
     } else {
         delete qFuels;
-        Init();
+        init();
         if (_cycles < c_maxRestartCount) {
-            LogAppend("GetAgzsAdastTrkCycle error " + QString::number(_cycles));
+            logAppend("GetAgzsAdastTrkCycle error " + QString::number(_cycles));
             _cycles++;
-            return GetAgzsAdastTrkCycle(aSideAdress, aSide, aDeviceName, aSerial, aDescription, aFuelCode1, aFuelCode2, aFuelCode3, aFuelCode4, aFuelCode5,
+            return getAgzsAdastTrkCycle(aSideAdress, aSide, aDeviceName, aSerial, aDescription, aFuelCode1, aFuelCode2, aFuelCode3, aFuelCode4, aFuelCode5,
                                  aTrkVCode, aPumpPlace, aFuel1, aFuel2, aFuel3, aFuel4, aFuel5);
         } else {
             return false;
@@ -537,9 +560,9 @@ bool DataBaseControl::createTrkTransactionCycle(QString aAgzsName, int aLocalVCo
         return true;
     } else {
         delete qTransaction;
-        Init();
+        init();
         if (_cycles < c_maxRestartCount) {
-            LogAppend("createTrkTransactionCycle error " + QString::number(_cycles));
+            logAppend("createTrkTransactionCycle error " + QString::number(_cycles));
             _cycles++;
             return createTrkTransactionCycle(aAgzsName, aLocalVCode, aTrkType, aDeviceName, aSerial, aFuelName, aFuelShortName,
                                              aSide, aSideAdress, aNozzle, aTrkFuelCode, aTransNum, aTrkTotalPrice, aTrkVolume, aTrkUnitPrice,
@@ -590,23 +613,23 @@ bool DataBaseControl::createApiTransactionCycle(QString aAgzsName, int aAgzs, QD
         delete qApiRequests;
         return true;
     } else if (_cycles < c_maxRestartCount) {
-        LogAppend("createApiTransactionCycle error " + QString::number(_cycles));
+        logAppend("createApiTransactionCycle error " + QString::number(_cycles));
         _cycles++;
         delete qApiRequests;
-        Init();
+        init();
         return createApiTransactionCycle(aAgzsName, aAgzs, aCDate, aVCode, aApiId, aApiStationExtendedId,
                                          aApiColumnId, aApiFuelId, aFuelId, aApiPriceFuel, aApiLitre, aApiSum, aApiStatus,
                                          aApiContractId, aAgent, aLocalState, aPrice, aLitre, aSum, aDateOpen, aLink);
     } else {
         delete qApiRequests;
-        Init();
+        init();
         return false;
     }
 }
 
-bool DataBaseControl::getApiTransactionStateCycle(QString aId, QString &aLocalState, int &aApiVCode, int &aHeadVCode, int &aIState, QDateTime aDateOpen, QDateTime &aDateClose) {
+bool DataBaseControl::getApiTransactionStateCycle(QString aId, QString &aLocalState, double &aApiLitre, int &aApiVCode, int &aHeadVCode, int &aIState, QDateTime aDateOpen, QDateTime &aDateClose) {
     QSqlQuery* qRequests = new QSqlQuery(_db);
-    qRequests->exec("SELECT api.localState, api.VCode, h.VCode, b.iState, b.DateOpen, b.DateClose "
+    qRequests->exec("SELECT api.localState, api.APILitre, api.VCode, h.VCode, b.iState, b.DateOpen, b.DateClose "
                 "FROM [agzs].[dbo].[PR_APITransaction] api "
                 "INNER JOIN [agzs].[dbo].[ADAST_TRKTransaction] h ON api.Link = h.VCode "
                 "INNER JOIN [agzs].[dbo].[ADAST_TRKTransaction] b ON h.AditionalTransVCode = b.VCode "
@@ -614,22 +637,23 @@ bool DataBaseControl::getApiTransactionStateCycle(QString aId, QString &aLocalSt
     if (qRequests->lastError().type() == QSqlError::NoError) {
         while (qRequests->next()){
             aLocalState = qRequests->value(0).toString();
-            aApiVCode = qRequests->value(1).toInt();
-            aHeadVCode = qRequests->value(2).toInt();
-            aIState = qRequests->value(3).toInt();
-            aDateOpen = qRequests->value(4).toDateTime();
-            aDateClose = qRequests->value(5).toDateTime();
+            aApiLitre = qRequests->value(1).toDouble();
+            aApiVCode = qRequests->value(2).toInt();
+            aHeadVCode = qRequests->value(3).toInt();
+            aIState = qRequests->value(4).toInt();
+            aDateOpen = qRequests->value(5).toDateTime();
+            aDateClose = qRequests->value(6).toDateTime();
             break;
         }
         delete qRequests;
         return true;
     } else {
         delete qRequests;
-        Init();
+        init();
         if (_cycles < c_maxRestartCount) {
-            LogAppend("getApiTransactionStateCycle error " + QString::number(_cycles));
+            logAppend("getApiTransactionStateCycle error " + QString::number(_cycles));
             _cycles++;
-            return getApiTransactionStateCycle(aId, aLocalState, aApiVCode, aHeadVCode, aIState, aDateOpen, aDateClose);
+            return getApiTransactionStateCycle(aId, aLocalState, aApiLitre, aApiVCode, aHeadVCode, aIState, aDateOpen, aDateClose);
         } else {
             return false;
         }
@@ -650,9 +674,9 @@ bool DataBaseControl::updateApiTransactionStateCycle(QString aLocalState, QDateT
         return true;
     } else {
         delete qApiUpdate;
-        Init();
+        init();
         if (_cycles < c_maxRestartCount) {
-            LogAppend("updateApiTransactionStateCycle error " + QString::number(_cycles));
+            logAppend("updateApiTransactionStateCycle error " + QString::number(_cycles));
             _cycles++;
             return updateApiTransactionStateCycle(aLocalState, aDateClose, aVCode);
         } else {
@@ -684,9 +708,9 @@ bool DataBaseControl::finalUpdateApiTransactionStateCycle(QString aLocalState, d
         return true;
     } else {
         delete qApiUpdate;
-        Init();
+        init();
         if (_cycles < c_maxRestartCount) {
-            LogAppend("finalUpdateApiTransactionStateCycle error " + QString::number(_cycles));
+            logAppend("finalUpdateApiTransactionStateCycle error " + QString::number(_cycles));
             _cycles++;
             return finalUpdateApiTransactionStateCycle(aLocalState, aPrice, aVolume, aAmount, aDateOpen, aDateClose, aVCode);
         } else {
@@ -702,16 +726,16 @@ bool DataBaseControl::getPayOperationLitersCycle(int aLink, double &aAmount, dou
                          "WHERE Link = " + QString::number(aLink));
     if (qPayOperation->lastError().type() == QSqlError::NoError) {
         qPayOperation->next();
-        aAmount = qPayOperation->value(0).toFloat();
-        aVolume = qPayOperation->value(2).toFloat();
-        aPrice = qPayOperation->value(1).toFloat();
+        aAmount = qPayOperation->value(0).toDouble();
+        aVolume = qPayOperation->value(2).toDouble();
+        aPrice = qPayOperation->value(1).toDouble();
         delete qPayOperation;
         return true;
     } else {
         delete qPayOperation;
-        Init();
+        init();
         if (_cycles < c_maxRestartCount) {
-            LogAppend("getPayOperationLitersCycle error " + QString::number(_cycles));
+            logAppend("getPayOperationLitersCycle error " + QString::number(_cycles));
             _cycles++;
             return getPayOperationLitersCycle(aLink, aAmount, aVolume, aPrice);
         } else {
@@ -735,9 +759,9 @@ bool DataBaseControl::setTransactionClosedCycle(QString aId, int aClosed) {
         return true;
     } else {
         delete qUpdate;
-        Init();
+        init();
         if (_cycles < c_maxRestartCount) {
-            LogAppend("setTransactionClosedCycle error " + QString::number(_cycles));
+            logAppend("setTransactionClosedCycle error " + QString::number(_cycles));
             _cycles++;
             return setTransactionClosedCycle(aId, aClosed);
         } else {
@@ -747,7 +771,7 @@ bool DataBaseControl::setTransactionClosedCycle(QString aId, int aClosed) {
 }
 #define CycleEnd }
 
-int DataBaseControl::GetCurrentAgzs() {
+int DataBaseControl::getCurrentAgzs() {
     QSqlQuery* qData = new QSqlQuery(_db);
     qData->exec("SELECT TOP 1 AGZS "
                 "FROM [agzs].[dbo].[Identification] ");
@@ -757,7 +781,7 @@ int DataBaseControl::GetCurrentAgzs() {
     return agzs;
 }
 
-bool DataBaseControl::UpdateApiTransaction(int aLocalState, QDateTime aDate, int aVCode) {
+bool DataBaseControl::updateApiTransaction(int aLocalState, QDateTime aDate, int aVCode) {
     QSqlQuery *qApiUpdate = new QSqlQuery(_db);
         qApiUpdate->prepare("UPDATE [agzs].[dbo].[PR_APITransaction] "
                              "SET localState = :localState, DateClose = :date "
@@ -771,12 +795,12 @@ bool DataBaseControl::UpdateApiTransaction(int aLocalState, QDateTime aDate, int
         return true;
     } else {
         delete qApiUpdate;
-        Init();
+        init();
         return false;
     }
 }
 
-int DataBaseControl::GetLastVCode(QString aKey, bool aUpdate) {
+int DataBaseControl::getLastVCode(QString aKey, bool aUpdate) {
     QSqlQuery *qLastVCode = new QSqlQuery(_db);
         qLastVCode->exec("SELECT TOP 1 Value "
                             "FROM [agzs].[dbo].[LxKeysOfCodes] "
@@ -793,57 +817,127 @@ int DataBaseControl::GetLastVCode(QString aKey, bool aUpdate) {
         return vcode;
     } else {
         delete qLastVCode;
-        Init();
+        init();
         return 0;
     }
 }
 
-int DataBaseControl::CheckError(QString aColumnID, QString aFuelID, int aiFuelID, QString aPriceFuel) {
+int DataBaseControl::checkError(QString aColumnID, QString aFuelID, int aiFuelID, QString aPriceFuel, int aIPartner) {
     QSqlQuery *qCheck = new QSqlQuery(_db);
-    qCheck->exec("SELECT c.AGZSName, c.AGZS, d.VCode, d.Id, c.[FuelName], c.[FuelShortName], c.[Side], c.[SideAdress], c.[Nozzle], "
-                    "c.[TrkFuelCode], c.[TrkVCode] "
-                  "FROM [agzs].[dbo].PR_AGZSData d "
-                    "INNER JOIN [agzs].[dbo].PR_AGZSColumns c "
-                    "ON d.VCode = c.Link "
-                  "WHERE d.AGZS = (SELECT TOP 1 AGZS "
-                                  "FROM [agzs].[dbo].[Identification]) "
-                    "and c.SideAdress = " + aColumnID + " "
-                  "ORDER BY d.CDate DESC");
-    if (qCheck->size() == 0) {
+    qCheck->exec("SELECT d.AGZS, d.VCode, d.Id "
+                 "FROM [agzs].[dbo].PR_AGZSData d "
+                     "INNER JOIN [agzs].[dbo].[ADAST_AdastTRK] t "
+                     "ON d.AGZS = t.AGZS "
+                 "WHERE d.AGZS = (SELECT TOP 1 AGZS "
+                                "FROM [agzs].[dbo].[Identification]) "
+                    "AND ((t.[SideA_Address] = " + aColumnID + ") OR (t.[SideB_Address] = " + aColumnID + ")) "
+                 "ORDER BY d.CDate DESC");
+    if (qCheck->next()) {
+        qCheck->exec("SELECT d.AGZS, d.VCode, d.Id "
+                     "FROM [agzs].[dbo].PR_AGZSData d "
+                         "INNER JOIN [agzs].[dbo].[ADAST_AdastTRK] t "
+                         "ON d.AGZS = t.AGZS "
+                     "WHERE d.AGZS = (SELECT TOP 1 AGZS "
+                                    "FROM [agzs].[dbo].[Identification]) "
+                        "AND (((t.[SideA_Address] = " + aColumnID + ") AND (([SideA_Nozzle1Fuel] = " + QString::number(aiFuelID) + ") "
+                                                                        "OR ([SideA_Nozzle2Fuel] = " + QString::number(aiFuelID) + ") "
+                                                                        "OR ([SideA_Nozzle3Fuel] = " + QString::number(aiFuelID) + ") "
+                                                                        "OR ([SideA_Nozzle4Fuel] = " + QString::number(aiFuelID) + ") "
+                                                                        "OR ([SideA_Nozzle5Fuel] = " + QString::number(aiFuelID) + "))) "
+                           "OR (t.[SideB_Address] = " + aColumnID + ") AND (([SideB_Nozzle1Fuel] = " + QString::number(aiFuelID) + ") "
+                                                                        "OR ([SideB_Nozzle2Fuel] = " + QString::number(aiFuelID) + ") "
+                                                                        "OR ([SideB_Nozzle3Fuel] = " + QString::number(aiFuelID) + ") "
+                                                                        "OR ([SideB_Nozzle4Fuel] = " + QString::number(aiFuelID) + ") "
+                                                                        "OR ([SideB_Nozzle5Fuel] = " + QString::number(aiFuelID) + "))) "
+                     "ORDER BY d.CDate DESC");
+        if (qCheck->next()) {
+            qCheck->exec("SELECT d.AGZS, d.VCode, d.Id, p.[" + aFuelID + "] "
+                        "FROM [agzs].[dbo].PR_AGZSData d "
+                             "INNER JOIN [agzs].[dbo].[ADAST_AdastTRK] t "
+                             "ON d.AGZS = t.AGZS "
+                             "INNER JOIN [agzs].[dbo].PR_AGZSPrice p "
+                             "ON d.VCode = p.Link "
+                        "WHERE d.AGZS = (SELECT TOP 1 AGZS "
+                                        "FROM [agzs].[dbo].[Identification]) "
+                            "AND (((t.[SideA_Address] = " + aColumnID + ") AND (([SideA_Nozzle1Fuel] = " + QString::number(aiFuelID) + ") "
+                                                                            "OR ([SideA_Nozzle2Fuel] = " + QString::number(aiFuelID) + ") "
+                                                                            "OR ([SideA_Nozzle3Fuel] = " + QString::number(aiFuelID) + ") "
+                                                                            "OR ([SideA_Nozzle4Fuel] = " + QString::number(aiFuelID) + ") "
+                                                                            "OR ([SideA_Nozzle5Fuel] = " + QString::number(aiFuelID) + "))) "
+                               "OR (t.[SideB_Address] = " + aColumnID + ") AND (([SideB_Nozzle1Fuel] = " + QString::number(aiFuelID) + ") "
+                                                                            "OR ([SideB_Nozzle2Fuel] = " + QString::number(aiFuelID) + ") "
+                                                                            "OR ([SideB_Nozzle3Fuel] = " + QString::number(aiFuelID) + ") "
+                                                                            "OR ([SideB_Nozzle4Fuel] = " + QString::number(aiFuelID) + ") "
+                                                                            "OR ([SideB_Nozzle5Fuel] = " + QString::number(aiFuelID) + "))) "
+                            "and p.[" + aFuelID + "]=" + aPriceFuel + " "
+                            "and p.iPartner = " + QString::number(aIPartner) +
+                        "ORDER BY d.CDate DESC");
+            if (qCheck->next()) {
+                delete qCheck;
+                return 0;
+            } else {
+                delete qCheck;
+                return 3;
+            }
+        } else {
+            delete qCheck;
+            return 2;
+        }
+    } else {
         delete qCheck;
         return 1;
     }
-    qCheck->exec("SELECT c.AGZSName, c.AGZS, d.VCode, d.Id, c.[FuelName], c.[FuelShortName], c.[Side], c.[SideAdress], c.[Nozzle], "
-                    "c.[TrkFuelCode], c.[TrkVCode] "
-                  "FROM [agzs].[dbo].PR_AGZSData d "
-                    "INNER JOIN [agzs].[dbo].PR_AGZSColumns c "
-                    "ON d.VCode = c.Link "
-                  "WHERE d.AGZS = (SELECT TOP 1 AGZS "
-                                  "FROM [agzs].[dbo].[Identification]) "
-                    "and c.SideAdress = " + aColumnID + " "
-                    "and c.FuelVCode = " + QString::number(aiFuelID) + " "
-                  "ORDER BY d.CDate DESC");
-    if (qCheck->size() == 0) {
-        delete qCheck;
-        return 2;
+}
+
+bool DataBaseControl::getTransactionDataCycle(int aVCode, double &aRequestTotalPrice, double &aRequestVolume, double &aRequestUnitPrice, double &aTrkTotalPrice, double &aTrkVolume, double &aTrkUnitPrice, QDateTime &aDateOpen, QDateTime &aDateClose) {
+    QSqlQuery *qTransaction = new QSqlQuery(_db);
+        qTransaction->prepare("SELECT [TrkTotalPriceDB] "
+                              ",[TrkVolumeDB] "
+                              ",[TrkUnitPriceDB] "
+                              ",[RequestTotalPriceDB] "
+                              ",[RequestVolumeDB] "
+                              ",[RequestUnitPriceDB] "
+                              ",DateOpen"
+                              ",DateClose "
+                              "FROM [agzs].[dbo].[ADAST_TRKTransaction] "
+                              "WHERE VCode = :VCode");
+        qTransaction->bindValue(":VCode",aVCode);
+        qTransaction->exec();
+    if (qTransaction->lastError().type() == QSqlError::NoError) {
+        if (qTransaction->next()) {
+            aTrkTotalPrice = qTransaction->value(0).toDouble();
+            aTrkVolume = qTransaction->value(1).toDouble();
+            aTrkUnitPrice = qTransaction->value(2).toDouble();
+            aRequestTotalPrice = qTransaction->value(3).toDouble();
+            aRequestVolume = qTransaction->value(4).toDouble();
+            aRequestUnitPrice = qTransaction->value(5).toDouble();
+            aDateOpen = qTransaction->value(6).toDateTime();
+            aDateClose = qTransaction->value(7).toDateTime();
+        }
+        delete qTransaction;
+        return true;
+    } else {
+        delete qTransaction;
+        init();
+        if (_cycles < c_maxRestartCount) {
+            logAppend("getTransactionData error " + QString::number(_cycles));
+            _cycles++;
+            return getTransactionDataCycle(aVCode, aRequestTotalPrice, aRequestVolume, aRequestUnitPrice, aTrkTotalPrice, aTrkVolume, aTrkUnitPrice, aDateOpen, aDateClose);
+        } else {
+            return false;
+        }
     }
-    qCheck->exec("SELECT c.AGZSName, c.AGZS, d.VCode, d.Id, c.[FuelName], c.[FuelShortName], c.[Side], c.[SideAdress], c.[Nozzle], "
-                    "c.[TrkFuelCode], c.[TrkVCode], p.[" + aFuelID + "] "
-                "FROM [agzs].[dbo].PR_AGZSData d "
-                     "INNER JOIN [agzs].[dbo].PR_AGZSColumns c "
-                     "ON d.VCode = c.Link "
-                     "INNER JOIN [agzs].[dbo].PR_AGZSPrice p "
-                     "ON d.VCode = p.Link "
-                "WHERE d.AGZS = (SELECT TOP 1 AGZS "
-                                "FROM [agzs].[dbo].[Identification]) "
-                    "and c.SideAdress = " + aColumnID + " "
-                    "and c.FuelVCode = " + QString::number(aiFuelID) + " "
-                    "and p.[" + aFuelID + "]=" + aPriceFuel + " "
-                "ORDER BY d.CDate DESC");
-    if (qCheck->size() == 0) {
-        delete qCheck;
-        return 3;
-    }
-    delete qCheck;
-    return 0;
+}
+
+bool DataBaseControl::setYandexToken(QString aToken) {
+    QSqlQuery *qYandexToken = new QSqlQuery(_db);
+        qYandexToken->prepare("UPDATE [agzs].[dbo].[PR_AGZSData] "
+                             "SET YandexToken = :token "
+                            "WHERE AGZS = (SELECT TOP 1 AGZS "
+                                          "FROM [agzs].[dbo].[Identification]) ");
+        qYandexToken->bindValue(":token", aToken);
+        qYandexToken->exec();
+        delete qYandexToken;
+        _reestr.setValue("Yandex Token", aToken);
+        return true;
 }

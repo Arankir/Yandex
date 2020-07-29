@@ -28,24 +28,23 @@ public:
 
 public slots:
     int getFuelID(QString aFuelIdApi);
-    void moneyData(Partner aPartner, QJsonObject aRequest, double &aRequestTotalPriceDB, double &aRequestVolumeDB, double &aRequestUnitPriceDB, double &aMoneyTakenDB, int &aFullTankDB);
     QString getFuelName(int aFuelVCode);
+    QString getFuelAPIName(int aFuelVCode);
+    void moneyData(Partner aPartner, QJsonObject aRequest, double &aRequestTotalPriceDB, double &aRequestVolumeDB, double &aRequestUnitPriceDB, double &aMoneyTakenDB, int &aFullTankDB);
 
 private slots:
     void on_ButtonEnter_clicked();
     void on_ButtonGetPassword_clicked();
-
     void on_pushButton_5_clicked();
+    void on_ButtonSettings_clicked();
 
     void mainFunctionYandex();
-    void mainFunctionCityMobile();
-    QString getFuelAPIName(int aFuelVCode);
+    void updateDataCityMobile();
+    void getOrdersCityMobile();
 
     void updatePrice(Partner p);
     void updateConfiguration(Partner p);
     void processOrders(Partner aPartner, QJsonDocument orders);
-
-    void on_ButtonSettings_clicked();
 
 private:
     Ui::MainWindow *ui;
@@ -53,8 +52,10 @@ private:
     CityMobileAPI *_cityMobile;
     int _errorPassword = 0;
     DataBaseControl _db;
-    QTimer _timerYandex;
-    QTimer _timerCityMobile;
     QSettings _reestr;
+
+    QTimer _timerYandex;
+    QTimer _timerCityMobileAgzsData;
+    QTimer _timerCityMobileOrders;
 };
 #endif // MAINWINDOW_H

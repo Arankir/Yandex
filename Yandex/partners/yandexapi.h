@@ -17,9 +17,7 @@ public:
     void updateConfigurationAGZS(QString configuration);
     int checkOrders();
     void receiveVolumeReport(QDateTime sdate, QDateTime edate, int page = 0);
-
     void getStateAGZS(QString apikey);
-
     void setStatusAccept(QString orderId, int vCode);
     void setStatusFueling(QString orderId, int vCode);
     void setStatusCanceled(QString orderId, QString reason, QString extendedOrderId, QDateTime extendedDate);
@@ -29,10 +27,11 @@ public:
 signals:
     void s_setTimer(int mSec);
     void s_needAuth(bool);
-    void s_authComplete(bool);
+    void s_authComplete(QString token);
     void s_updatePrice();
     void s_gotOrders(QJsonDocument orders);
     void s_error(QString status, QString order, int code);
+    void s_request(QString request);
 
 private slots:
     QNetworkRequest createRequest(QString url, QString contentType, bool auth);
@@ -40,10 +39,12 @@ private slots:
     void saveToken(RequestData*);
 
 private:
-    const QString c_baseUrl = "http://cabinet.tst.tanker.yandex.ru"; //https://cabinet.tanker.yandex.net/api
     RequestData *_request;
     QSettings _reestr;
     QTimer _timer;
+    const QString c_baseTest = "http://cabinet.tst.tanker.yandex.ru";
+    const QString c_baseRelease = "https://cabinet.tanker.yandex.net";
+    const QString c_baseUrl;
 
 };
 

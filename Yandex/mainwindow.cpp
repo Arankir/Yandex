@@ -1,11 +1,16 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+const double c_litersForMin = 25;
+
 MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWindow), _reestr("RegionPostavka", "Partners") {
     ui->setupUi(this);
 
-    ui->pushButton_5->setVisible(false);
-    ui->lineEdit->setVisible(false);
+    if (!_reestr.value("isTest").toBool()) {
+        ui->pushButton_5->setVisible(false);
+        ui->lineEdit->setVisible(false);
+    }
+
     ui->label->setTextFormat(Qt::RichText);
     ui->label->setText("<img height=25 style=\"vertical-align: top\" src=\"://images/login.png\"> Логин</a>");
     ui->label_2->setTextFormat(Qt::RichText);
@@ -17,16 +22,17 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWin
     _timerYandex.start(5000);
 
     _yandex = new YandexAPI(this);
-    connect(_yandex, &YandexAPI::s_authComplete, this, [=](bool auth) {
+    connect(_yandex, &YandexAPI::s_authComplete, this, [=](QString aToken) {
         ui->labelAuthError->setVisible(true);
-        if (!auth) {
+        if (aToken == "") {
             _errorPassword++;
             if (_errorPassword < 5) {
-                ui->labelAuthError->setText(tr("Ошибка при авторизации.\nПроверьте пароль.\nОшибок: %1").arg(_errorPassword));
+                ui->labelAuthError->setText(tr("Ошибка при авторизации Яндекса.\nПроверьте пароль.\nОшибок: %1").arg(_errorPassword));
             } else {
-                ui->labelAuthError->setText(tr("Превышено количество ошибок.\nЗапросите пароль заново."));
+                ui->labelAuthError->setText(tr("Превышено количество ошибок.\nЗапросите пароль Яндекса заново."));
             }
         } else {
+            _db.setYandexToken(aToken);
             ui->labelAuthError->setText(tr("Успешно авторизовано!"));
             _timerYandex.start(5000);
         }
@@ -34,7 +40,7 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWin
 
     connect(_yandex, &YandexAPI::s_needAuth, this, [=](bool) {
         ui->labelAuthError->setVisible(true);
-        ui->labelAuthError->setText(tr("Пожалуйста, \nавторизуйтесь заново."));
+        ui->labelAuthError->setText(tr("Пожалуйста, авторизуйтесь\nв Яндексе заново."));
         _timerYandex.stop();
         QApplication::alert(this);
     });
@@ -46,10 +52,17 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWin
     connect(_yandex, &YandexAPI::s_gotOrders, this, [=](QJsonDocument orders) {
         processOrders(Partner::yandex, orders);
     });
+
+    connect(_yandex, &YandexAPI::s_request, this, [=](QString request) {
+        _db.logAppend(request);
+    });
     #define yandexEnd }
     #define cityMobileStart {
-    connect(&_timerCityMobile, &QTimer::timeout, this, &MainWindow::mainFunctionCityMobile);
-    _timerCityMobile.start(5000);
+    connect(&_timerCityMobileAgzsData, &QTimer::timeout, this, &MainWindow::updateDataCityMobile);
+    _timerCityMobileAgzsData.start(60000);
+
+    connect(&_timerCityMobileOrders, &QTimer::timeout, this, &MainWindow::getOrdersCityMobile);
+    _timerCityMobileOrders.start(5000);
 
     _cityMobile = new CityMobileAPI(this);
 
@@ -64,6 +77,7 @@ MainWindow::~MainWindow() {
     delete ui;
 }
 
+#define ButtonsStart {
 void MainWindow::on_ButtonEnter_clicked() {
     _yandex->authorization(ui->LineEditLogin->text(),ui->LineEditPassword->text());
 }
@@ -74,32 +88,44 @@ void MainWindow::on_ButtonGetPassword_clicked() {
     ui->labelAuthError->setText(tr("Введите пароль."));
 }
 
+void MainWindow::on_pushButton_5_clicked(){
+    //_yandex->setStatusCanceled(ui->lineEdit->text(),"1",ui->lineEdit->text(), QDateTime::currentDateTime());
+    _cityMobile->setStatusCanceled(ui->lineEdit->text(),"Ошибка 3",ui->lineEdit->text(), QDateTime::currentDateTime());
+}
+
+void MainWindow::on_ButtonSettings_clicked() {
+    FormSettings *settings = new FormSettings();
+    settings->show();
+}
+#define ButtonsEnd }
+
+#define FuelStart {
 int MainWindow::getFuelID(QString aFuelIdApi) {
-    if(aFuelIdApi=="diesel")
+    if(aFuelIdApi == "diesel")
         return 32;
-    if(aFuelIdApi=="diesel_premium")
+    if(aFuelIdApi == "diesel_premium")
         return 0;
-    if(aFuelIdApi=="a80")
+    if(aFuelIdApi == "a80")
         return 0;
-    if(aFuelIdApi=="a92")
+    if(aFuelIdApi == "a92")
         return 3;
-    if(aFuelIdApi=="a92_premium")
+    if(aFuelIdApi == "a92_premium")
         return 0;
-    if(aFuelIdApi=="a95")
+    if(aFuelIdApi == "a95")
         return 8;
-    if(aFuelIdApi=="a95_premium")
+    if(aFuelIdApi == "a95_premium")
         return 0;
-    if(aFuelIdApi=="a98")
+    if(aFuelIdApi == "a98")
         return 0;
-    if(aFuelIdApi=="a98_premium")
+    if(aFuelIdApi == "a98_premium")
         return 0;
-    if(aFuelIdApi=="a100")
+    if(aFuelIdApi == "a100")
         return 0;
-    if(aFuelIdApi=="a100_premium")
+    if(aFuelIdApi == "a100_premium")
         return 0;
-    if(aFuelIdApi=="propane")
+    if(aFuelIdApi == "propane")
         return 14;
-    if(aFuelIdApi=="metan")
+    if(aFuelIdApi == "metan")
         return 0;
     return 0;
 }
@@ -137,6 +163,7 @@ QString MainWindow::getFuelName(int aFuelVCode) {
     }
     }
 }
+#define FuelEnd }
 
 void MainWindow::mainFunctionYandex() {
     if (_reestr.value("Yandex Enabled", QVariant(false)).toBool()) {
@@ -146,10 +173,16 @@ void MainWindow::mainFunctionYandex() {
     }
 }
 
-void MainWindow::mainFunctionCityMobile() {
+void MainWindow::updateDataCityMobile() {
     if (_reestr.value("CityMobile Enabled", QVariant(false)).toBool()) {
         updatePrice(Partner::citymobile);
         updateConfiguration(Partner::citymobile);
+        //_cityMobile->checkOrders();
+    }
+}
+
+void MainWindow::getOrdersCityMobile() {
+    if (_reestr.value("CityMobile Enabled", QVariant(false)).toBool()) {
         _cityMobile->checkOrders();
     }
 }
@@ -157,6 +190,30 @@ void MainWindow::mainFunctionCityMobile() {
 void MainWindow::moneyData(Partner aPartner, QJsonObject aRequest, double &aRequestTotalPriceDB, double &aRequestVolumeDB, double &aRequestUnitPriceDB, double &aMoneyTakenDB, int &aFullTankDB) {
     switch (aPartner) {
     case Partner::yandex: {
+        if (aRequest.value("orderType").toString() == "Money") {
+            aRequestTotalPriceDB = aRequest.value("orderVolume").toDouble();
+            aRequestUnitPriceDB = aRequest.value("priceFuel").toDouble();
+            int temp = (aRequestTotalPriceDB / aRequestUnitPriceDB) * 100;
+            aRequestVolumeDB = temp / 100;
+            aMoneyTakenDB = aRequest.value("orderVolume").toDouble();
+            aFullTankDB = 0;
+        } else if (aRequest.value("orderType").toString() == "Liters") {
+            aRequestVolumeDB = aRequest.value("orderVolume").toDouble();
+            aRequestUnitPriceDB = aRequest.value("priceFuel").toDouble();
+            aRequestTotalPriceDB = aRequestVolumeDB * aRequestUnitPriceDB;
+            aMoneyTakenDB = aRequest.value("orderVolume").toDouble();
+            aFullTankDB = 0;
+        } else if (aRequest.value("orderType").toString() == "FullTank") {
+            aRequestTotalPriceDB = aRequest.value("orderVolume").toDouble();
+            aRequestUnitPriceDB = aRequest.value("priceFuel").toDouble();
+            int temp = (aRequestTotalPriceDB / aRequestUnitPriceDB) * 100;
+            aRequestVolumeDB = temp / 100;
+            aMoneyTakenDB = aRequest.value("orderVolume").toDouble();
+            aFullTankDB = 1;
+        }
+        break;
+    }
+    case Partner::citymobile: {
         if (aRequest.value("orderType").toString() == "Money") {
             aRequestTotalPriceDB = aRequest.value("orderVolume").toDouble();
             aRequestUnitPriceDB = aRequest.value("priceFuel").toDouble();
@@ -178,31 +235,10 @@ void MainWindow::moneyData(Partner aPartner, QJsonObject aRequest, double &aRequ
         }
         break;
     }
-    case Partner::citymobile: {
-        if (aRequest.value("OrderType").toString() == "Money") {
-            aRequestTotalPriceDB = aRequest.value("OrderVolume").toDouble();
-            aRequestUnitPriceDB = aRequest.value("PriceFuel").toDouble();
-            aRequestVolumeDB = aRequestTotalPriceDB / aRequestUnitPriceDB;
-            aMoneyTakenDB = aRequest.value("OrderVolume").toDouble();
-            aFullTankDB = 0;
-        } else if (aRequest.value("OrderType").toString() == "Liters") {
-            aRequestVolumeDB = aRequest.value("OrderVolume").toDouble();
-            aRequestUnitPriceDB = aRequest.value("PriceFuel").toDouble();
-            aRequestTotalPriceDB = aRequestVolumeDB * aRequestUnitPriceDB;
-            aMoneyTakenDB = aRequest.value("OrderVolume").toDouble();
-            aFullTankDB = 0;
-        } else if (aRequest.value("OrderType").toString() == "FullTank") {
-            aRequestTotalPriceDB = aRequest.value("OrderVolume").toDouble();
-            aRequestUnitPriceDB = aRequest.value("PriceFuel").toDouble();
-            aRequestVolumeDB = aRequestTotalPriceDB / aRequestUnitPriceDB;
-            aMoneyTakenDB = aRequest.value("OrderVolume").toDouble();
-            aFullTankDB = 1;
-        }
-        break;
-    }
     }
 }
 
+#define FunctionsStart {
 void MainWindow::updatePrice(Partner aPartner) {
     switch (aPartner) {
     case Partner::yandex: {
@@ -212,7 +248,7 @@ void MainWindow::updatePrice(Partner aPartner) {
         int agzs, vCode, link;
         QDateTime cDate;
         double diesel = 0, diesel_premium = 0, a80 = 0, a92 = 0, a92_premium = 0, a95 = 0, a95_premium = 0, a98 = 0, a98_premium = 0, a100 = 0, a100_premium = 0, propane = 0, metan = 0;
-        _db.GetPrices("11", agzsName, agzs, vCode, link, cDate, partner, diesel, diesel_premium, a80, a92, a92_premium, a95, a95_premium, a98,a98_premium, a100, a100_premium, propane, metan);
+        _db.getPrices("11", agzsName, agzs, vCode, link, cDate, partner, diesel, diesel_premium, a80, a92, a92_premium, a95, a95_premium, a98,a98_premium, a100, a100_premium, propane, metan);
         if(diesel>0.1f){
             prices.append("diesel="+QString::number(diesel));
         }
@@ -262,7 +298,7 @@ void MainWindow::updatePrice(Partner aPartner) {
         int agzs, vCode, link;
         QDateTime cDate;
         double diesel = 0, diesel_premium = 0, a80 = 0, a92 = 0, a92_premium = 0, a95 = 0, a95_premium = 0, a98 = 0, a98_premium = 0, a100 = 0, a100_premium = 0, propane = 0, metan = 0;
-        _db.GetPrices("10", agzsName, agzs, vCode, link, cDate, partner, diesel, diesel_premium, a80, a92, a92_premium, a95, a95_premium, a98,a98_premium, a100, a100_premium, propane, metan);
+        _db.getPrices("10", agzsName, agzs, vCode, link, cDate, partner, diesel, diesel_premium, a80, a92, a92_premium, a95, a95_premium, a98,a98_premium, a100, a100_premium, propane, metan);
         if(diesel>0.1f){
             prices.append("diesel="+QString::number(diesel));
         }
@@ -335,7 +371,7 @@ void MainWindow::updateConfiguration(Partner aPartner) {
         int agzsD, vCodeD, columnCount;
         QDateTime cDateD;
         double loc_x, loc_y;
-        _db.GetAgzsData(agzsNameD, agzsD, cDateD, vCodeD, idD, adress, loc_x, loc_y, columnCount);
+        _db.getAgzsData(agzsNameD, agzsD, cDateD, vCodeD, idD, adress, loc_x, loc_y, columnCount);
 
         QJsonObject AGZS;
         AGZS["StationExtendedId"] = QString::number(agzsD);
@@ -343,7 +379,7 @@ void MainWindow::updateConfiguration(Partner aPartner) {
         QJsonObject columns;
 
         QVector<QVector<int>> fuels;
-        _db.GetFuels(fuels);
+        _db.getFuels(fuels);
         for (auto &side: fuels) {
             QJsonObject sideJ;
             QJsonArray fuelsJ;
@@ -399,8 +435,8 @@ void MainWindow::updateConfiguration(Partner aPartner) {
         QString agzsNameD, idD, adress;
         int agzsD, vCodeD, columnCount;
         QDateTime cDateD;
-        double loc_x, loc_y;
-        _db.GetAgzsData(agzsNameD, agzsD, cDateD, vCodeD, idD, adress, loc_x, loc_y, columnCount);
+        double lat, lon;
+        _db.getAgzsData(agzsNameD, agzsD, cDateD, vCodeD, idD, adress, lat, lon, columnCount);
 
         QJsonObject AGZS;
         AGZS["StationExtendedId"] = QString::number(agzsD);
@@ -409,15 +445,15 @@ void MainWindow::updateConfiguration(Partner aPartner) {
         AGZS["Adress"] = adress;
 
         QJsonObject Location;
-        Location["Lon"] = QString::number(loc_x).replace(",",".");
-        Location["Lat"] = QString::number(loc_y).replace(",",".");
+        Location["Lon"] = QString::number(lon).replace(",",".");
+        Location["Lat"] = QString::number(lat).replace(",",".");
         AGZS["Location"] = Location;
         //Columns
         QJsonObject columns;
         QJsonArray fuelNames;
 
         QVector<QVector<int>> fuels;
-        _db.GetFuels(fuels);
+        _db.getFuels(fuels);
         for (auto &side: fuels) {
             QJsonObject sideJ;
             QJsonArray fuelsJ;
@@ -441,7 +477,7 @@ void MainWindow::updateConfiguration(Partner aPartner) {
             sideJ["Fuels"] = fuelsJ;
             columns[QString::number(side[0])] = sideJ;
         }
-        AGZS["Columns"]=columns;
+        AGZS["Columns"] = columns;
         AGZS["FuelNames"] = fuelNames;
         QJsonDocument doc;
         doc.setObject(AGZS);
@@ -457,22 +493,23 @@ void MainWindow::processOrders(Partner aPartner, QJsonDocument aOrders) {
         for (auto order: aOrders.object().value("orders").toArray()) {
             if (order.toObject().value("status").toString() == "AcceptOrder") { //заказ ожидает подтверждения от АСУ АЗС
                 QDateTime now = QDateTime::currentDateTime();
-                int lastAPIVCode = (_db.GetLastVCode("PR_APITransaction", true) + 1) * 100 + _db.GetCurrentAgzs();
-                int error = _db.CheckError(order.toObject().value("columnId").toString(),
+                int lastAPIVCode = (_db.getLastVCode("PR_APITransaction", true) + 1) * 100 + _db.getCurrentAgzs();
+                int error = _db.checkError(QString::number(order.toObject().value("columnId").toInt()),
                                        order.toObject().value("fuelId").toString(),
                                        getFuelID(order.toObject().value("fuelId").toString()),
-                                       QString::number(order.toObject().value("priceFuel").toInt()));
+                                       QString::number(order.toObject().value("priceFuel").toDouble()),
+                                       11);
 
                 QString agzsName, id, adress;
                 int agzs, vCode, columnCount;
                 QDateTime cDate;
                 double loc_x, loc_y;
-                _db.GetAgzsData(agzsName, agzs, cDate, vCode, id, adress, loc_x, loc_y, columnCount);
+                _db.getAgzsData(agzsName, agzs, cDate, vCode, id, adress, loc_x, loc_y, columnCount);
 
                 int transactionVCode = 0;
                 switch (error) {
                 case 0: {
-                    transactionVCode = (_db.GetLastVCode("ADAST_TRKTransaction", true) + 1) * 100 + agzs;
+                    transactionVCode = (_db.getLastVCode("ADAST_TRKTransaction", true) + 1) * 100 + agzs;
 
                     double requestTotalPriceDB = -1, requestVolumeDB = -1, requestUnitPriceDB = -1, moneyTakenDB = -1;
                     int fullTankDB = -1;
@@ -480,11 +517,11 @@ void MainWindow::processOrders(Partner aPartner, QJsonDocument aOrders) {
 
                     int fuelCode1 = 0, fuelCode2 = 0, fuelCode3 = 0, fuelCode4 = 0, fuelCode5 = 0, trkVCode = 0, pumpPlace = 0, fuel1 = 0, fuel2 = 0, fuel3 = 0, fuel4 = 0, fuel5 = 0;
                     QString deviceName, serial, description, side;
-                    _db.GetAgzsAdastTrk(order.toObject().value("columnId").toInt(), side, deviceName, serial, description, fuelCode1, fuelCode2, fuelCode3, fuelCode4, fuelCode5, trkVCode,
+                    _db.getAgzsAdastTrk(order.toObject().value("columnId").toInt(), side, deviceName, serial, description, fuelCode1, fuelCode2, fuelCode3, fuelCode4, fuelCode5, trkVCode,
                                         pumpPlace, fuel1, fuel2, fuel3, fuel4, fuel5);
 
                     QString fuelName, fuelShortName;
-                    _db.GetFuelNames(getFuelID(order.toObject().value("fuelId").toString()), fuelName, fuelShortName);
+                    _db.getFuelNames(getFuelID(order.toObject().value("fuelId").toString()), fuelName, fuelShortName);
 
                     int nozzle = 0;
                     int trkFuelCode = 0;
@@ -509,7 +546,7 @@ void MainWindow::processOrders(Partner aPartner, QJsonDocument aOrders) {
                                       order.toObject().value("columnId").toInt(), nozzle, trkFuelCode, "", 0, 0, 0, requestTotalPriceDB,
                                       requestVolumeDB, requestUnitPriceDB, "V", "Завершение выдачи", 8, "P", 0, 0, 0, 0, 0, 0, "Выдача завершена: 1", now, now,
                                       -100, 0, "ЯНДЕКС", 0, "SERVER", now, "SERVER", now, "SERVER", "SERVER", transactionVCode, 0, 0, 0, 0, _db.getSmena(), trkVCode,
-                                      _db.GetCashBoxIndex("11"), pumpPlace, moneyTakenDB, 11, 0, 0, fullTankDB, agzs,
+                                      _db.getCashBoxIndex("11"), pumpPlace, moneyTakenDB, 11, 0, 0, fullTankDB, agzs,
                                       getFuelID(order.toObject().value("fuelId").toString()), 0);
                     break;
                 }
@@ -536,9 +573,8 @@ void MainWindow::processOrders(Partner aPartner, QJsonDocument aOrders) {
                 QString localState = "0";
                 int apiVCode = 0, headVCode = 0, iState = 0;
                 QDateTime dateOpen, dateClose;
-                _db.getApiTransactionState(order.toObject().value("id").toString(), localState, apiVCode, headVCode, iState, dateOpen, dateClose);
-    //TODO рано срабатывает
-                qDebug()<<111<<QString::number(iState) << localState;
+                double apiLitre = 0.0f;
+                _db.getApiTransactionState(order.toObject().value("id").toString(), localState, apiLitre, apiVCode, headVCode, iState, dateOpen, dateClose);
                 if (QString::number(iState) != localState) {
                     if (iState > 0) {
                         _db.updateApiTransactionState(localState, dateClose, apiVCode);
@@ -549,7 +585,21 @@ void MainWindow::processOrders(Partner aPartner, QJsonDocument aOrders) {
                 QString localState;
                 int apiVCode = 0, headVCode = 0, iState = 0;
                 QDateTime dateOpen, dateClose;
-                _db.getApiTransactionState(order.toObject().value("id").toString(), localState, apiVCode, headVCode, iState, dateOpen, dateClose);
+                double apiLitre = 0.0f;
+                _db.getApiTransactionState(order.toObject().value("id").toString(), localState, apiLitre, apiVCode, headVCode, iState, dateOpen, dateClose);
+
+                double requestTotalPrice = 0.0f, requestVolume = 0.0f, requestUnitPrice = 0.0f, trkTotalPrice = 0.0f, trkVolume = 0.0f, trkUnitPrice = 0.0f;
+                QDateTime transactionDateOpen, transactionDateClose;
+                _db.getTransactionData(headVCode, requestTotalPrice, requestVolume, requestUnitPrice, trkTotalPrice, trkVolume, trkUnitPrice, transactionDateOpen, transactionDateClose);
+
+                QDateTime now = QDateTime::currentDateTime();
+                QDateTime diffTime = QDateTime::fromMSecsSinceEpoch(now.toMSecsSinceEpoch() - transactionDateOpen.toMSecsSinceEpoch());
+                diffTime = diffTime.addSecs(-20);
+
+                double litersNow = diffTime.toSecsSinceEpoch() * (c_litersForMin / 60);
+                if ((litersNow > 0) && (litersNow < apiLitre)) {
+                    _yandex->setFuelNow(order.toObject().value("id").toString(), litersNow);
+                }
 
                 if (QString::number(iState) != localState) {
                     switch (iState) {
@@ -578,7 +628,8 @@ void MainWindow::processOrders(Partner aPartner, QJsonDocument aOrders) {
                 QString localState;
                 int apiVCode = 0, headVCode = 0, iState = 0;
                 QDateTime dateOpen, dateClose;
-                _db.getApiTransactionState(order.toObject().value("id").toString(), localState, apiVCode, headVCode, iState, dateOpen, dateClose);
+                double apiLitre = 0.0f;
+                _db.getApiTransactionState(order.toObject().value("id").toString(), localState, apiLitre, apiVCode, headVCode, iState, dateOpen, dateClose);
 
                 _db.updateApiTransactionState("Ошибка: 30 минут", dateClose, apiVCode);
 
@@ -587,7 +638,9 @@ void MainWindow::processOrders(Partner aPartner, QJsonDocument aOrders) {
                 _yandex->setStatusCanceled(order.toObject().value("id").toString(), "Истекло время ожидания", QString::number(apiVCode), dateOpen);
             }
         }
-        _timerYandex.setInterval(aOrders.object().value("nextRetryMs").toInt());
+        if (aOrders.object().value("nextRetryMs").isDouble()) {
+            _timerYandex.setInterval(aOrders.object().value("nextRetryMs").toInt());
+        }
         break;
     }
     case Partner::citymobile: {
@@ -610,34 +663,33 @@ void MainWindow::processOrders(Partner aPartner, QJsonDocument aOrders) {
                 //            "ContractId":  "32135"
                 //            }
                 QDateTime now = QDateTime::currentDateTime();
-                int lastAPIVCode = (_db.GetLastVCode("PR_APITransaction", true) + 1) * 100 + _db.GetCurrentAgzs();
-                int error = _db.CheckError(order.toObject().value("ColumnId").toString(),
-                                       order.toObject().value("FuelId").toString(),
-                                       getFuelID(order.toObject().value("FuelId").toString()),
-                                       QString::number(order.toObject().value("PriceFuel").toInt()));
+                int lastAPIVCode = (_db.getLastVCode("PR_APITransaction", true) + 1) * 100 + _db.getCurrentAgzs();
+                int error = _db.checkError(QString::number(order.toObject().value("columnId").toInt()),
+                                       order.toObject().value("fuelId").toString(),
+                                       getFuelID(order.toObject().value("fuelId").toString()),
+                                       QString::number(order.toObject().value("priceFuel").toDouble()),
+                                       10);
 
                 QString agzsName, id, adress;
                 int agzs, vCode, columnCount;
                 QDateTime cDate;
                 double loc_x, loc_y;
-                _db.GetAgzsData(agzsName, agzs, cDate, vCode, id, adress, loc_x, loc_y, columnCount);
+                _db.getAgzsData(agzsName, agzs, cDate, vCode, id, adress, loc_x, loc_y, columnCount);
 
                 int transactionVCode = 0;
                 switch (error) {
                 case 0: {
-                    transactionVCode = (_db.GetLastVCode("ADAST_TRKTransaction", true) + 1) * 100 + agzs;
-
                     double requestTotalPriceDB = -1, requestVolumeDB = -1, requestUnitPriceDB = -1, moneyTakenDB = -1;
                     int fullTankDB = -1;
                     moneyData(Partner::citymobile, order.toObject(), requestTotalPriceDB, requestVolumeDB, requestUnitPriceDB, moneyTakenDB, fullTankDB);
 
                     int fuelCode1 = 0, fuelCode2 = 0, fuelCode3 = 0, fuelCode4 = 0, fuelCode5 = 0, trkVCode = 0, pumpPlace = 0, fuel1 = 0, fuel2 = 0, fuel3 = 0, fuel4 = 0, fuel5 = 0;
                     QString deviceName, serial, description, side;
-                    _db.GetAgzsAdastTrk(order.toObject().value("columnId").toInt(), side, deviceName, serial, description, fuelCode1, fuelCode2, fuelCode3, fuelCode4, fuelCode5, trkVCode,
+                    _db.getAgzsAdastTrk(order.toObject().value("columnId").toInt(), side, deviceName, serial, description, fuelCode1, fuelCode2, fuelCode3, fuelCode4, fuelCode5, trkVCode,
                                         pumpPlace, fuel1, fuel2, fuel3, fuel4, fuel5);
 
                     QString fuelName, fuelShortName;
-                    _db.GetFuelNames(getFuelID(order.toObject().value("fuelId").toString()), fuelName, fuelShortName);
+                    _db.getFuelNames(getFuelID(order.toObject().value("fuelId").toString()), fuelName, fuelShortName);
 
                     int nozzle = 0;
                     int trkFuelCode = 0;
@@ -657,17 +709,22 @@ void MainWindow::processOrders(Partner aPartner, QJsonDocument aOrders) {
                         nozzle = 5;
                         trkFuelCode = std::move(fuelCode5);
                     }
+                    if ((requestTotalPriceDB > -1) && (requestVolumeDB > -1) && (requestUnitPriceDB > -1) && (moneyTakenDB > -1) && (fullTankDB > -1)) {
+                        transactionVCode = (_db.getLastVCode("ADAST_TRKTransaction", true) + 1) * 100 + agzs;
 
-                    _db.createTrkTransaction(agzsName, transactionVCode, "ADAST", deviceName, serial, fuelName, fuelShortName, side,
-                                      order.toObject().value("columnId").toInt(), nozzle, trkFuelCode, "", 0, 0, 0, requestTotalPriceDB,
-                                      requestVolumeDB, requestUnitPriceDB, "V", "Завершение выдачи", 8, "P", 0, 0, 0, 0, 0, 0, "Выдача завершена: 1", now, now,
-                                      -100, 0, "СИТИМОБИЛ", 0, "SERVER", now, "SERVER", now, "SERVER", "SERVER", transactionVCode, 0, 0, 0, 0, _db.getSmena(), trkVCode,
-                                      _db.GetCashBoxIndex("10"), pumpPlace, moneyTakenDB, 10, 0, 0, fullTankDB, agzs,
-                                      getFuelID(order.toObject().value("fuelId").toString()), 0);
+                        _db.createTrkTransaction(agzsName, transactionVCode, "ADAST", deviceName, serial, fuelName, fuelShortName, side,
+                                          order.toObject().value("columnId").toInt(), nozzle, trkFuelCode, "", 0, 0, 0, requestTotalPriceDB,
+                                          requestVolumeDB, requestUnitPriceDB, "V", "Завершение выдачи", 8, "P", 0, 0, 0, 0, 0, 0, "Выдача завершена: 1", now, now,
+                                          -100, 0, "СИТИМОБИЛ", 0, "SERVER", now, "SERVER", now, "SERVER", "SERVER", transactionVCode, 0, 0, 0, 0, _db.getSmena(), trkVCode,
+                                          _db.getCashBoxIndex("10"), pumpPlace, moneyTakenDB, 10, 0, 0, fullTankDB, agzs,
+                                          getFuelID(order.toObject().value("fuelId").toString()), 0);
+                    } else {
+                        _cityMobile->setStatusCanceled(order.toObject().value("id").toString(), "Указанная колонка не найдена.", QString::number(lastAPIVCode), now);
+                    }
                     break;
                 }
                 case 1: {
-                    _cityMobile->setStatusCanceled(order.toObject().value("id").toString(), "Указанная колонка не найдена.", QString::number(lastAPIVCode), now);
+                    _cityMobile->setStatusCanceled(order.toObject().value("id").toString(), "Неизвестная ошибка.", QString::number(lastAPIVCode), now);
                     break;
                 }
                 case 2: {
@@ -689,8 +746,10 @@ void MainWindow::processOrders(Partner aPartner, QJsonDocument aOrders) {
                 QString localState = "0";
                 int apiVCode = 0, headVCode = 0, iState = 0;
                 QDateTime dateOpen, dateClose;
-                _db.getApiTransactionState(order.toObject().value("id").toString(), localState, apiVCode, headVCode, iState, dateOpen, dateClose);
-    //TODO рано срабатывает
+                double apiLitre = 0.0f;
+                _db.getApiTransactionState(order.toObject().value("id").toString(), localState, apiLitre, apiVCode, headVCode, iState, dateOpen, dateClose);
+
+    //TODO поздно срабатывает
                 if (QString::number(iState) != localState) {
                     if (iState > 0) {
                         _db.updateApiTransactionState(localState, dateClose, apiVCode);
@@ -701,7 +760,21 @@ void MainWindow::processOrders(Partner aPartner, QJsonDocument aOrders) {
                 QString localState;
                 int apiVCode = 0, headVCode = 0, iState = 0;
                 QDateTime dateOpen, dateClose;
-                _db.getApiTransactionState(order.toObject().value("id").toString(), localState, apiVCode, headVCode, iState, dateOpen, dateClose);
+                double apiLitre = 0.0f;
+                _db.getApiTransactionState(order.toObject().value("id").toString(), localState, apiLitre, apiVCode, headVCode, iState, dateOpen, dateClose);
+
+                double requestTotalPrice = 0.0f, requestVolume = 0.0f, requestUnitPrice = 0.0f, trkTotalPrice = 0.0f, trkVolume = 0.0f, trkUnitPrice = 0.0f;
+                QDateTime transactionDateOpen, transactionDateClose;
+                _db.getTransactionData(headVCode, requestTotalPrice, requestVolume, requestUnitPrice, trkTotalPrice, trkVolume, trkUnitPrice, transactionDateOpen, transactionDateClose);
+
+                QDateTime now = QDateTime::currentDateTime();
+                QDateTime diffTime = QDateTime::fromMSecsSinceEpoch(now.toMSecsSinceEpoch() - transactionDateOpen.toMSecsSinceEpoch());
+                diffTime = diffTime.addSecs(-20);
+
+                double litersNow = diffTime.toSecsSinceEpoch() * (c_litersForMin / 60);
+                if ((litersNow > 0) && (litersNow < apiLitre)) {
+                    _cityMobile->setStatusFuelNow(order.toObject().value("id").toString(), litersNow);
+                }
 
                 if (QString::number(iState) != localState) {
                     switch (iState) {
@@ -730,7 +803,8 @@ void MainWindow::processOrders(Partner aPartner, QJsonDocument aOrders) {
                 QString localState;
                 int apiVCode = 0, headVCode = 0, iState = 0;
                 QDateTime dateOpen, dateClose;
-                _db.getApiTransactionState(order.toObject().value("id").toString(), localState, apiVCode, headVCode, iState, dateOpen, dateClose);
+                double apiLitre = 0.0f;
+                _db.getApiTransactionState(order.toObject().value("id").toString(), localState, apiLitre, apiVCode, headVCode, iState, dateOpen, dateClose);
 
                 _db.updateApiTransactionState("Ошибка: 30 минут", dateClose, apiVCode);
 
@@ -740,23 +814,24 @@ void MainWindow::processOrders(Partner aPartner, QJsonDocument aOrders) {
             } else if (order.toObject().value("status").toString() == "StationCanceled") { //заказ отменен оператором АЗС или же интегрируемой системой
 
             } else if (order.toObject().value("status").toString() == "UserCanceled") { //заказ отменен пользователем
+                QString localState;
+                int apiVCode = 0, headVCode = 0, iState = 0;
+                QDateTime dateOpen, dateClose;
+                double apiLitre = 0.0f;
+                _db.getApiTransactionState(order.toObject().value("id").toString(), localState, apiLitre, apiVCode, headVCode, iState, dateOpen, dateClose);
 
+                _db.updateApiTransactionState("Ошибка: отменен пользователем", dateClose, apiVCode);
+
+                _db.setTransactionClosed(order.toObject().value("id").toString(), 1);
+
+                _cityMobile->setStatusCanceled(order.toObject().value("id").toString(), "Заказ отменен пользователем", QString::number(apiVCode), dateOpen);
             } else if (order.toObject().value("status").toString() == "Completed") { //заказа завершен успешно
 
             }
         }
-        qDebug()<<aOrders.object().value("nextRetryMs");
-        if (!aOrders.object().value("nextRetryMs").isNull())
-            _timerCityMobile.setInterval(aOrders.object().value("nextRetryMs").toInt());
+        if (aOrders.object().value("nextRetryMs").isDouble())
+            _timerCityMobileOrders.setInterval(aOrders.object().value("nextRetryMs").toInt());
     }
     }
 }
-
-void MainWindow::on_pushButton_5_clicked(){
-    _yandex->setStatusCanceled(ui->lineEdit->text(),"1",ui->lineEdit->text(), QDateTime::currentDateTime());
-}
-
-void MainWindow::on_ButtonSettings_clicked() {
-    FormSettings *settings = new FormSettings();
-    settings->show();
-}
+#define FunctionsEnd }

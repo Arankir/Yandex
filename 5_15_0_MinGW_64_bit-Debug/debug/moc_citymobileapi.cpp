@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_CityMobileAPI_t {
-    QByteArrayData data[14];
-    char stringdata0[124];
+    QByteArrayData data[16];
+    char stringdata0[143];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -37,21 +37,23 @@ QT_MOC_LITERAL(1, 14, 10), // "s_finished"
 QT_MOC_LITERAL(2, 25, 0), // ""
 QT_MOC_LITERAL(3, 26, 12), // "RequestData*"
 QT_MOC_LITERAL(4, 39, 7), // "request"
-QT_MOC_LITERAL(5, 47, 7), // "s_error"
-QT_MOC_LITERAL(6, 55, 6), // "status"
-QT_MOC_LITERAL(7, 62, 5), // "order"
-QT_MOC_LITERAL(8, 68, 4), // "code"
-QT_MOC_LITERAL(9, 73, 13), // "createRequest"
-QT_MOC_LITERAL(10, 87, 15), // "QNetworkRequest"
-QT_MOC_LITERAL(11, 103, 3), // "url"
-QT_MOC_LITERAL(12, 107, 11), // "contentType"
-QT_MOC_LITERAL(13, 119, 4) // "auth"
+QT_MOC_LITERAL(5, 47, 11), // "s_gotOrders"
+QT_MOC_LITERAL(6, 59, 6), // "orders"
+QT_MOC_LITERAL(7, 66, 7), // "s_error"
+QT_MOC_LITERAL(8, 74, 6), // "status"
+QT_MOC_LITERAL(9, 81, 5), // "order"
+QT_MOC_LITERAL(10, 87, 4), // "code"
+QT_MOC_LITERAL(11, 92, 13), // "createRequest"
+QT_MOC_LITERAL(12, 106, 15), // "QNetworkRequest"
+QT_MOC_LITERAL(13, 122, 3), // "url"
+QT_MOC_LITERAL(14, 126, 11), // "contentType"
+QT_MOC_LITERAL(15, 138, 4) // "auth"
 
     },
     "CityMobileAPI\0s_finished\0\0RequestData*\0"
-    "request\0s_error\0status\0order\0code\0"
-    "createRequest\0QNetworkRequest\0url\0"
-    "contentType\0auth"
+    "request\0s_gotOrders\0orders\0s_error\0"
+    "status\0order\0code\0createRequest\0"
+    "QNetworkRequest\0url\0contentType\0auth"
 };
 #undef QT_MOC_LITERAL
 
@@ -61,26 +63,28 @@ static const uint qt_meta_data_CityMobileAPI[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-       3,   14, // methods
+       4,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       2,       // signalCount
+       3,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   29,    2, 0x06 /* Public */,
-       5,    3,   32,    2, 0x06 /* Public */,
+       1,    1,   34,    2, 0x06 /* Public */,
+       5,    1,   37,    2, 0x06 /* Public */,
+       7,    3,   40,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       9,    3,   39,    2, 0x08 /* Private */,
+      11,    3,   47,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, 0x80000000 | 3,    4,
-    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::Int,    6,    7,    8,
+    QMetaType::Void, QMetaType::QJsonDocument,    6,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::Int,    8,    9,   10,
 
  // slots: parameters
-    0x80000000 | 10, QMetaType::QString, QMetaType::QString, QMetaType::Bool,   11,   12,   13,
+    0x80000000 | 12, QMetaType::QString, QMetaType::QString, QMetaType::Bool,   13,   14,   15,
 
        0        // eod
 };
@@ -92,8 +96,9 @@ void CityMobileAPI::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->s_finished((*reinterpret_cast< RequestData*(*)>(_a[1]))); break;
-        case 1: _t->s_error((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3]))); break;
-        case 2: { QNetworkRequest _r = _t->createRequest((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< bool(*)>(_a[3])));
+        case 1: _t->s_gotOrders((*reinterpret_cast< QJsonDocument(*)>(_a[1]))); break;
+        case 2: _t->s_error((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3]))); break;
+        case 3: { QNetworkRequest _r = _t->createRequest((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< bool(*)>(_a[3])));
             if (_a[0]) *reinterpret_cast< QNetworkRequest*>(_a[0]) = std::move(_r); }  break;
         default: ;
         }
@@ -118,9 +123,16 @@ void CityMobileAPI::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
             }
         }
         {
+            using _t = void (CityMobileAPI::*)(QJsonDocument );
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&CityMobileAPI::s_gotOrders)) {
+                *result = 1;
+                return;
+            }
+        }
+        {
             using _t = void (CityMobileAPI::*)(QString , QString , int );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&CityMobileAPI::s_error)) {
-                *result = 1;
+                *result = 2;
                 return;
             }
         }
@@ -156,13 +168,13 @@ int CityMobileAPI::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 3)
+        if (_id < 4)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 3;
+        _id -= 4;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 3)
+        if (_id < 4)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 3;
+        _id -= 4;
     }
     return _id;
 }
@@ -175,10 +187,17 @@ void CityMobileAPI::s_finished(RequestData * _t1)
 }
 
 // SIGNAL 1
+void CityMobileAPI::s_gotOrders(QJsonDocument _t1)
+{
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
+    QMetaObject::activate(this, &staticMetaObject, 1, _a);
+}
+
+// SIGNAL 2
 void CityMobileAPI::s_error(QString _t1, QString _t2, int _t3)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t3))) };
-    QMetaObject::activate(this, &staticMetaObject, 1, _a);
+    QMetaObject::activate(this, &staticMetaObject, 2, _a);
 }
 QT_WARNING_POP
 QT_END_MOC_NAMESPACE

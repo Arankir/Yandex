@@ -1,8 +1,8 @@
 #include "citymobileapi.h"
 
 CityMobileAPI::CityMobileAPI(QObject *parent) : QObject(parent), _request(new RequestData()), _reestr("RegionPostavka", "Partners"),
-    _apiKey(_reestr.value("CityMobile Token", "").toString()) {
-    qDebug()<<"CityMobile Token = "<<_apiKey;
+    _apiKey(_reestr.value("CityMobile Token", "").toString()), c_baseUrl(_reestr.value("isTest").toBool()? c_baseTest: c_baseRelease) {
+    qDebug()<<"CityMobile Token ="<<_apiKey<<"\nisTest ="<<_reestr.value("isTest").toString();
 }
 
 CityMobileAPI::~CityMobileAPI() {
@@ -10,13 +10,11 @@ CityMobileAPI::~CityMobileAPI() {
 }
 
 void CityMobileAPI::updateConfigurationAGZS(QJsonDocument aPost) {
-    qDebug()<<"Data"<<aPost;
     QNetworkRequest request = createRequest("api/station", "application/json", true);
     _request->post(request,QString(aPost.toJson(QJsonDocument::Compact)).toUtf8());
 }
 
 void CityMobileAPI::updatePriceList(QString aPost) {
-    qDebug()<<"Price"<<aPost;
     QNetworkRequest request = createRequest("api/price", "application/x-www-form-urlencoded", true);
     _request->post(request,aPost.toUtf8());
 }
@@ -26,6 +24,7 @@ void CityMobileAPI::checkOrders() {
     _request->get(request);
     QJsonDocument jsonRequest = QJsonDocument::fromJson(_request->getAnswer());
     emit s_gotOrders(jsonRequest);
+    //qDebug() << "Ситимобил заказы:" << _request->getAnswer();
     //connect(_request, &RequestData::s_finished, this, &CityMobileAPI::checkOrders);
 }
 
@@ -48,11 +47,11 @@ void CityMobileAPI::setStatusFueling(QString aOrderId, int aVCode) {
 }
 
 void CityMobileAPI::setStatusCanceled(QString aOrderId, QString aReason, QString aExtendedOrderId, QDateTime aExtendedDate) {
-    QNetworkRequest request = createRequest(QString("api/orders/canceled?orderId=%&reason=%2&extendedOrderId=%3&extendedDate=%4").arg(
-                                                aOrderId,
-                                                aReason,
-                                                aExtendedOrderId,
-                                                aExtendedDate.toString("dd.MM.yyyy HH:mm:ss")), "application/x-www-form-urlencoded", true);
+    QNetworkRequest request = createRequest("api/orders/canceled?orderId=" + aOrderId +
+                                                    "&reason=\"" + aReason.replace(" ","%20") + "\""
+                                                    "&extendedOrderId=" + aExtendedOrderId +
+                                                    "&extendedDate=" + aExtendedDate.toString("dd.MM.yyyy HH:mm:ss")
+                                            , "application/x-www-form-urlencoded", true);
     _request->get(request);
 }
 
