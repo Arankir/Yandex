@@ -54,7 +54,21 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWin
     });
 
     connect(_yandex, &YandexAPI::s_request, this, [=](QString request) {
-        _db.logAppend(request);
+        if (request.indexOf("price") > 0) {
+            if (_reestr.value("agzsPriceLog") != false) {
+                _db.logAppend(request);
+            }
+        } else if(request.indexOf("station") > 0) {
+            if (_reestr.value("agzsDataLog") != false) {
+                _db.logAppend(request);
+            }
+        } else if (request.indexOf("items") > 0) {
+            if (_reestr.value("ordersLog") != false) {
+                _db.logAppend(request);
+            }
+        } else {
+            _db.logAppend(request);
+        }
     });
     #define yandexEnd }
     #define cityMobileStart {
@@ -384,7 +398,9 @@ void MainWindow::updateConfiguration(Partner aPartner) {
             QJsonObject sideJ;
             QJsonArray fuelsJ;
             for (int i = 1; i < side.size(); i++) {
-                fuelsJ.push_back(getFuelAPIName(side[i]));
+                if (side[i] > 0) {
+                    fuelsJ.push_back(getFuelAPIName(side[i]));
+                }
             }
             sideJ["Fuels"] = fuelsJ;
             columns[QString::number(side[0])] = sideJ;
@@ -458,20 +474,22 @@ void MainWindow::updateConfiguration(Partner aPartner) {
             QJsonObject sideJ;
             QJsonArray fuelsJ;
             for (int i = 1; i < side.size(); i++) {
-                fuelsJ.push_back(getFuelAPIName(side[i]));
+                if (side[i] > 0) {
+                    fuelsJ.push_back(getFuelAPIName(side[i]));
 
-                bool insert = true;
-                for (auto fuel: fuelNames) {
-                    if (fuel.toObject().value("Fuel") == getFuelAPIName(side[i])) {
-                        insert = false;
-                        break;
+                    bool insert = true;
+                    for (auto fuel: fuelNames) {
+                        if (fuel.toObject().value("Fuel") == getFuelAPIName(side[i])) {
+                            insert = false;
+                            break;
+                        }
                     }
-                }
-                if (insert) {
-                    QJsonObject fuel;
-                    fuel["Fuel"] = getFuelAPIName(side[i]);
-                    fuel["FuelName"] = getFuelName(side[i]);
-                    fuelNames.append(std::move(fuel));
+                    if (insert) {
+                        QJsonObject fuel;
+                        fuel["Fuel"] = getFuelAPIName(side[i]);
+                        fuel["FuelName"] = getFuelName(side[i]);
+                        fuelNames.append(std::move(fuel));
+                    }
                 }
             }
             sideJ["Fuels"] = fuelsJ;
@@ -551,14 +569,17 @@ void MainWindow::processOrders(Partner aPartner, QJsonDocument aOrders) {
                     break;
                 }
                 case 1: {
+                    _db.logAppend("Error 1");
                     _yandex->setStatusCanceled(order.toObject().value("id").toString(), "Указанная колонка не найдена.", QString::number(lastAPIVCode), now);
                     break;
                 }
                 case 2: {
+                    _db.logAppend("Error 2");
                     _yandex->setStatusCanceled(order.toObject().value("id").toString(), "Не обнаружено указанное топливо.", QString::number(lastAPIVCode), now);
                     break;
                 }
                 case 3: {
+                    _db.logAppend("Error 3");
                     _yandex->setStatusCanceled(order.toObject().value("id").toString(), "Цена на выбранный вид топлива отличается от фактической цены.", QString::number(lastAPIVCode), now);
                     break;
                 }

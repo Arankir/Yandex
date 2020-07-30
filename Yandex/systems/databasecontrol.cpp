@@ -3,7 +3,7 @@
 const QString c_settingPath = "Setting.txt";
 const QString c_logPath = "Log.txt";
 
-const int c_maxRestartCount = 10;
+const int c_maxRestartCount = 7;
 
 #define InitStart {
 DataBaseControl::DataBaseControl(QObject *aParent) : QObject(aParent), _reestr("RegionPostavka", "Partners") {
@@ -39,6 +39,24 @@ bool DataBaseControl::init() {
         return false;
     }
     qDebug()<<setting;
+    if (setting.size() > 4) {
+        _reestr.setValue("ordersLog", setting[4] == "true");
+    } else {
+        _reestr.setValue("ordersLog", false);
+    }
+
+    if (setting.size() > 3) {
+        _reestr.setValue("agzsPriceLog", setting[3] == "true");
+    } else {
+        _reestr.setValue("agzsPriceLog", false);
+    }
+
+    if (setting.size() > 2) {
+        _reestr.setValue("agzsDataLog", setting[2] == "true");
+    } else {
+        _reestr.setValue("agzsDataLog", false);
+    }
+
     if (setting.size() > 1) {
         _reestr.setValue("isTest", setting[1] == "Test");
     } else {
@@ -613,7 +631,11 @@ bool DataBaseControl::createApiTransactionCycle(QString aAgzsName, int aAgzs, QD
         delete qApiRequests;
         return true;
     } else if (_cycles < c_maxRestartCount) {
-        logAppend("createApiTransactionCycle error " + QString::number(_cycles));
+        logAppend("createApiTransactionCycle error " + QString::number(_cycles) + " " + qApiRequests->lastError().text());
+        logAppend(aAgzsName + " " + QString::number(aAgzs) + " " + aCDate.toString() + " " + QString::number(aVCode) + " " + aApiId + " " + aApiStationExtendedId + " " +
+                  QString::number(aApiColumnId) + " " + aApiFuelId + " " + QString::number(aFuelId) + " " + QString::number(aApiPriceFuel) + " " + QString::number(aApiLitre) + " " +
+                  QString::number(aApiSum) + " " + aApiStatus + " " + aApiContractId + " " + aAgent + " " + aLocalState + " " + QString::number(aPrice) + " " + QString::number(aLitre) + " " +
+                  QString::number(aSum) + " " + aDateOpen.toString() + " " + QString::number(aLink) + " " + qApiRequests->lastError().text());
         _cycles++;
         delete qApiRequests;
         init();
