@@ -7,7 +7,7 @@
 *****************************************************************************/
 
 #include <memory>
-#include "../../Yandex/partners/yandexapi.h"
+#include "../../Partners/partners/yandexapi.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_YandexAPI_t {
-    QByteArrayData data[24];
-    char stringdata0[220];
+    QByteArrayData data[27];
+    char stringdata0[245];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -46,22 +46,26 @@ QT_MOC_LITERAL(10, 92, 7), // "s_error"
 QT_MOC_LITERAL(11, 100, 6), // "status"
 QT_MOC_LITERAL(12, 107, 5), // "order"
 QT_MOC_LITERAL(13, 113, 4), // "code"
-QT_MOC_LITERAL(14, 118, 9), // "s_request"
-QT_MOC_LITERAL(15, 128, 7), // "request"
-QT_MOC_LITERAL(16, 136, 13), // "createRequest"
-QT_MOC_LITERAL(17, 150, 15), // "QNetworkRequest"
-QT_MOC_LITERAL(18, 166, 3), // "url"
-QT_MOC_LITERAL(19, 170, 11), // "contentType"
-QT_MOC_LITERAL(20, 182, 4), // "auth"
-QT_MOC_LITERAL(21, 187, 9), // "checkAuth"
-QT_MOC_LITERAL(22, 197, 12), // "RequestData*"
-QT_MOC_LITERAL(23, 210, 9) // "saveToken"
+QT_MOC_LITERAL(14, 118, 20), // "s_networkRequestInfo"
+QT_MOC_LITERAL(15, 139, 3), // "api"
+QT_MOC_LITERAL(16, 143, 4), // "type"
+QT_MOC_LITERAL(17, 148, 7), // "request"
+QT_MOC_LITERAL(18, 156, 4), // "post"
+QT_MOC_LITERAL(19, 161, 13), // "createRequest"
+QT_MOC_LITERAL(20, 175, 15), // "QNetworkRequest"
+QT_MOC_LITERAL(21, 191, 3), // "url"
+QT_MOC_LITERAL(22, 195, 11), // "contentType"
+QT_MOC_LITERAL(23, 207, 4), // "auth"
+QT_MOC_LITERAL(24, 212, 9), // "checkAuth"
+QT_MOC_LITERAL(25, 222, 12), // "RequestData*"
+QT_MOC_LITERAL(26, 235, 9) // "saveToken"
 
     },
     "YandexAPI\0s_setTimer\0\0mSec\0s_needAuth\0"
     "s_authComplete\0token\0s_updatePrice\0"
     "s_gotOrders\0orders\0s_error\0status\0"
-    "order\0code\0s_request\0request\0createRequest\0"
+    "order\0code\0s_networkRequestInfo\0api\0"
+    "type\0request\0post\0createRequest\0"
     "QNetworkRequest\0url\0contentType\0auth\0"
     "checkAuth\0RequestData*\0saveToken"
 };
@@ -87,12 +91,12 @@ static const uint qt_meta_data_YandexAPI[] = {
        7,    0,   73,    2, 0x06 /* Public */,
        8,    1,   74,    2, 0x06 /* Public */,
       10,    3,   77,    2, 0x06 /* Public */,
-      14,    1,   84,    2, 0x06 /* Public */,
+      14,    5,   84,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-      16,    3,   87,    2, 0x08 /* Private */,
-      21,    1,   94,    2, 0x08 /* Private */,
-      23,    1,   97,    2, 0x08 /* Private */,
+      19,    3,   95,    2, 0x08 /* Private */,
+      24,    1,  102,    2, 0x08 /* Private */,
+      26,    1,  105,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Int,    3,
@@ -101,12 +105,12 @@ static const uint qt_meta_data_YandexAPI[] = {
     QMetaType::Void,
     QMetaType::Void, QMetaType::QJsonDocument,    9,
     QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::Int,   11,   12,   13,
-    QMetaType::Void, QMetaType::QString,   15,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::Int,   15,   16,   17,   18,   13,
 
  // slots: parameters
-    0x80000000 | 17, QMetaType::QString, QMetaType::QString, QMetaType::Bool,   18,   19,   20,
-    QMetaType::Void, 0x80000000 | 22,    2,
-    QMetaType::Void, 0x80000000 | 22,    2,
+    0x80000000 | 20, QMetaType::QString, QMetaType::QString, QMetaType::Bool,   21,   22,   23,
+    QMetaType::Void, 0x80000000 | 25,    2,
+    QMetaType::Void, 0x80000000 | 25,    2,
 
        0        // eod
 };
@@ -123,7 +127,7 @@ void YandexAPI::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         case 3: _t->s_updatePrice(); break;
         case 4: _t->s_gotOrders((*reinterpret_cast< QJsonDocument(*)>(_a[1]))); break;
         case 5: _t->s_error((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3]))); break;
-        case 6: _t->s_request((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 6: _t->s_networkRequestInfo((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3])),(*reinterpret_cast< QString(*)>(_a[4])),(*reinterpret_cast< int(*)>(_a[5]))); break;
         case 7: { QNetworkRequest _r = _t->createRequest((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< bool(*)>(_a[3])));
             if (_a[0]) *reinterpret_cast< QNetworkRequest*>(_a[0]) = std::move(_r); }  break;
         case 8: _t->checkAuth((*reinterpret_cast< RequestData*(*)>(_a[1]))); break;
@@ -193,8 +197,8 @@ void YandexAPI::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
             }
         }
         {
-            using _t = void (YandexAPI::*)(QString );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&YandexAPI::s_request)) {
+            using _t = void (YandexAPI::*)(QString , QString , QString , QString , int );
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&YandexAPI::s_networkRequestInfo)) {
                 *result = 6;
                 return;
             }
@@ -284,9 +288,9 @@ void YandexAPI::s_error(QString _t1, QString _t2, int _t3)
 }
 
 // SIGNAL 6
-void YandexAPI::s_request(QString _t1)
+void YandexAPI::s_networkRequestInfo(QString _t1, QString _t2, QString _t3, QString _t4, int _t5)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t3))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t4))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t5))) };
     QMetaObject::activate(this, &staticMetaObject, 6, _a);
 }
 QT_WARNING_POP

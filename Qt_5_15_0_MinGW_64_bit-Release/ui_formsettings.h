@@ -31,7 +31,7 @@ public:
     {
         if (FormSettings->objectName().isEmpty())
             FormSettings->setObjectName(QString::fromUtf8("FormSettings"));
-        FormSettings->resize(132, 83);
+        FormSettings->resize(231, 83);
         verticalLayout_2 = new QVBoxLayout(FormSettings);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         verticalLayout = new QVBoxLayout();
@@ -62,7 +62,7 @@ public:
 
     void retranslateUi(QWidget *FormSettings)
     {
-        FormSettings->setWindowTitle(QCoreApplication::translate("FormSettings", "Form", nullptr));
+        FormSettings->setWindowTitle(QCoreApplication::translate("FormSettings", "\320\235\320\260\321\201\321\202\321\200\320\276\320\271\320\272\320\270", nullptr));
         label->setText(QCoreApplication::translate("FormSettings", "\320\237\320\260\321\200\321\202\320\275\321\221\321\200\321\213", nullptr));
         checkBoxYandex->setText(QCoreApplication::translate("FormSettings", "\320\257\320\275\320\264\320\265\320\272\321\201 \320\267\320\260\320\277\321\200\320\260\320\262\320\272\320\270", nullptr));
         checkBoxCityMobile->setText(QCoreApplication::translate("FormSettings", "\320\241\320\270\321\202\320\270\320\274\320\276\320\261\320\270\320\273", nullptr));

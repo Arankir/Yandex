@@ -40,10 +40,12 @@ void RequestData::completeRequest(RequestData::RequestType aType, QNetworkReques
     _post = aPost.toUtf8();
     switch (aType) {
     case RequestType::get: {
+        _type = "GET";
         _manager->get(aRequest);
         break;
     }
     case RequestType::post: {
+        _type = "POST";
         _manager->post(aRequest, aPost.toUtf8());
         break;
     }
@@ -58,12 +60,12 @@ void RequestData::completeRequest(RequestData::RequestType aType, QNetworkReques
 
 void RequestData::onResult(QNetworkReply *aReply) {
     _code = aReply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();
-    if (_post == "") {
+    if (_type == "GET") {
         qDebug()<< "GET(" << _url << ") Код:" << _code;
-        emit s_request("GET(" + _url + ") Код:" + QString::number(_code));
-    } else {
+        emit s_request("GET", _url, "", _code);
+    } else if (_type == "POST") {
         qDebug()<< "POST(" << _url << _post << ") Код:" << _code;
-        emit s_request("POST(" + _url + " " + _post + ") Код:" + QString::number(_code));
+        emit s_request("POST", _url, _post, _code);
     }
     _answer = aReply->readAll();
     if (aReply->rawHeaderList().indexOf("Authorization") > -1) {

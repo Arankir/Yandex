@@ -7,7 +7,7 @@
 *****************************************************************************/
 
 #include <memory>
-#include "../../Yandex/partners/networking/requestdata.h"
+#include "../../Partners/partners/networking/requestdata.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_RequestData_t {
-    QByteArrayData data[15];
-    char stringdata0[148];
+    QByteArrayData data[16];
+    char stringdata0[153];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -38,20 +38,21 @@ QT_MOC_LITERAL(2, 23, 0), // ""
 QT_MOC_LITERAL(3, 24, 12), // "RequestData*"
 QT_MOC_LITERAL(4, 37, 7), // "request"
 QT_MOC_LITERAL(5, 45, 9), // "s_request"
-QT_MOC_LITERAL(6, 55, 15), // "completeRequest"
-QT_MOC_LITERAL(7, 71, 11), // "RequestType"
-QT_MOC_LITERAL(8, 83, 4), // "type"
-QT_MOC_LITERAL(9, 88, 15), // "QNetworkRequest"
-QT_MOC_LITERAL(10, 104, 4), // "post"
-QT_MOC_LITERAL(11, 109, 8), // "parallel"
-QT_MOC_LITERAL(12, 118, 8), // "onResult"
-QT_MOC_LITERAL(13, 127, 14), // "QNetworkReply*"
-QT_MOC_LITERAL(14, 142, 5) // "reply"
+QT_MOC_LITERAL(6, 55, 4), // "type"
+QT_MOC_LITERAL(7, 60, 4), // "post"
+QT_MOC_LITERAL(8, 65, 4), // "code"
+QT_MOC_LITERAL(9, 70, 15), // "completeRequest"
+QT_MOC_LITERAL(10, 86, 11), // "RequestType"
+QT_MOC_LITERAL(11, 98, 15), // "QNetworkRequest"
+QT_MOC_LITERAL(12, 114, 8), // "parallel"
+QT_MOC_LITERAL(13, 123, 8), // "onResult"
+QT_MOC_LITERAL(14, 132, 14), // "QNetworkReply*"
+QT_MOC_LITERAL(15, 147, 5) // "reply"
 
     },
     "RequestData\0s_finished\0\0RequestData*\0"
-    "request\0s_request\0completeRequest\0"
-    "RequestType\0type\0QNetworkRequest\0post\0"
+    "request\0s_request\0type\0post\0code\0"
+    "completeRequest\0RequestType\0QNetworkRequest\0"
     "parallel\0onResult\0QNetworkReply*\0reply"
 };
 #undef QT_MOC_LITERAL
@@ -71,19 +72,19 @@ static const uint qt_meta_data_RequestData[] = {
 
  // signals: name, argc, parameters, tag, flags
        1,    1,   34,    2, 0x06 /* Public */,
-       5,    1,   37,    2, 0x06 /* Public */,
+       5,    4,   37,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       6,    4,   40,    2, 0x08 /* Private */,
-      12,    1,   49,    2, 0x08 /* Private */,
+       9,    4,   46,    2, 0x08 /* Private */,
+      13,    1,   55,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, 0x80000000 | 3,    4,
-    QMetaType::Void, QMetaType::QString,    2,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::Int,    6,    4,    7,    8,
 
  // slots: parameters
-    QMetaType::Void, 0x80000000 | 7, 0x80000000 | 9, QMetaType::QString, QMetaType::Bool,    8,    4,   10,   11,
-    QMetaType::Void, 0x80000000 | 13,   14,
+    QMetaType::Void, 0x80000000 | 10, 0x80000000 | 11, QMetaType::QString, QMetaType::Bool,    6,    4,    7,   12,
+    QMetaType::Void, 0x80000000 | 14,   15,
 
        0        // eod
 };
@@ -95,7 +96,7 @@ void RequestData::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->s_finished((*reinterpret_cast< RequestData*(*)>(_a[1]))); break;
-        case 1: _t->s_request((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 1: _t->s_request((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3])),(*reinterpret_cast< int(*)>(_a[4]))); break;
         case 2: _t->completeRequest((*reinterpret_cast< RequestType(*)>(_a[1])),(*reinterpret_cast< QNetworkRequest(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3])),(*reinterpret_cast< bool(*)>(_a[4]))); break;
         case 3: _t->onResult((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
         default: ;
@@ -135,7 +136,7 @@ void RequestData::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
             }
         }
         {
-            using _t = void (RequestData::*)(QString );
+            using _t = void (RequestData::*)(QString , QString , QString , int );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&RequestData::s_request)) {
                 *result = 1;
                 return;
@@ -192,9 +193,9 @@ void RequestData::s_finished(RequestData * _t1)
 }
 
 // SIGNAL 1
-void RequestData::s_request(QString _t1)
+void RequestData::s_request(QString _t1, QString _t2, QString _t3, int _t4)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t3))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t4))) };
     QMetaObject::activate(this, &staticMetaObject, 1, _a);
 }
 QT_WARNING_POP

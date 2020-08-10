@@ -1,5 +1,1 @@
-2020-07-29  17:18:33 DB open
-2020-07-29  17:18:39 POST(https://cabinet.tanker.yandex.net/api/price propane=24.5) Код:401
-2020-07-29  17:18:40 POST(https://cabinet.tanker.yandex.net/api/station {"Columns":{"0":{"Fuels":[]},"1":{"Fuels":["propane"]},"2":{"Fuels":["propane"]},"3":{"Fuels":["propane"]}},"StationExtendedId":"2"}) Код:401
-2020-07-29  17:18:40 GET(https://cabinet.tanker.yandex.net/api/orders/items) Код:401
-2020-07-29  17:18:41 GET(https://cabinet.tanker.yandex.net/api/auth?login=102502) Код:200
+2020-08-07  15:48:57 DB open

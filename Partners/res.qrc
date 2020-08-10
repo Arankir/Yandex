@@ -3,5 +3,6 @@
         <file>images/settings.png</file>
         <file>images/login password.png</file>
         <file>images/login.png</file>
+        <file>images/tray.png</file>
     </qresource>
 </RCC>

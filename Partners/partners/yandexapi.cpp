@@ -3,8 +3,8 @@
 YandexAPI::YandexAPI(QObject *aParent): QObject(aParent), _request(new RequestData(this)),
 _reestr("RegionPostavka", "Partners"), _timer(new QTimer()), c_baseUrl(_reestr.value("isTest").toBool()? c_baseTest: c_baseRelease) {
     QObject::connect(_request, &RequestData::s_finished, this, &YandexAPI::checkAuth);
-    QObject::connect(_request, &RequestData::s_request, this, [=](QString request) {
-        emit s_request(request);
+    QObject::connect(_request, &RequestData::s_request, this, [=](QString type, QString request, QString post, int code) {
+        emit s_networkRequestInfo("Yandex", type, request, post, code);
     });
 }
 

@@ -37,7 +37,7 @@ public:
 
 signals:
     void s_finished(RequestData *request);
-    void s_request(QString);
+    void s_request(QString type, QString request, QString post, int code);
 
 private slots:
     void completeRequest(RequestType type, QNetworkRequest request, QString post, bool parallel);
@@ -46,6 +46,7 @@ private slots:
 private:
     QNetworkAccessManager *_manager;
     QByteArray _answer;
+    QString _type;
     int _code;
     QByteArray _authorization;
     QString _url;

@@ -7,6 +7,9 @@
 #include <partners/citymobileapi.h>
 #include <systems/databasecontrol.h>
 #include <systems/formsettings.h>
+#include <QSystemTrayIcon>
+#include <QMenu>
+#include <QMessageBox>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -35,16 +38,29 @@ public slots:
 private slots:
     void on_ButtonEnter_clicked();
     void on_ButtonGetPassword_clicked();
-    void on_pushButton_5_clicked();
+    void on_ButtonCancelCitymobile_clicked();
+    void on_ButtonCancelYandex_clicked();
     void on_ButtonSettings_clicked();
 
-    void mainFunctionYandex();
+    void updateDataYandex();
+    void getOrdersYandex();
     void updateDataCityMobile();
     void getOrdersCityMobile();
 
     void updatePrice(Partner p);
     void updateConfiguration(Partner p);
     void processOrders(Partner aPartner, QJsonDocument orders);
+
+    void changeEvent(QEvent*);
+    void trayIconActivated(QSystemTrayIcon::ActivationReason reason);
+    void trayActionExecute();
+    void setTrayIconActions();
+    void showTrayIcon();
+
+    void authYandexResult(QString aToken);
+    void needAuth();
+    void requestToLog(QString api, QString type, QString request, QString post, int code);
+    void yandexErrorNotification();
 
 private:
     Ui::MainWindow *ui;
@@ -54,8 +70,16 @@ private:
     DataBaseControl _db;
     QSettings _reestr;
 
-    QTimer _timerYandex;
+    QTimer _timerYandexAgzsData;
+    QTimer _timerYandexOrders;
+    QTimer _timerYandexError;
     QTimer _timerCityMobileAgzsData;
     QTimer _timerCityMobileOrders;
+
+    QMenu *trayIconMenu;
+    QAction *minimizeAction;
+    QAction *restoreAction;
+    QAction *quitAction;
+    QSystemTrayIcon *trayIcon;
 };
 #endif // MAINWINDOW_H

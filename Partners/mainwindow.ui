@@ -11,24 +11,56 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Партнёры</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QGridLayout" name="gridLayout">
-    <item row="4" column="1">
-     <widget class="QPushButton" name="ButtonGetPassword">
-      <property name="font">
-       <font>
-        <pointsize>14</pointsize>
-       </font>
+   <layout class="QVBoxLayout" name="verticalLayout_3">
+    <item>
+     <spacer name="verticalSpacer">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
       </property>
-      <property name="text">
-       <string>Получить пароль</string>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>62</height>
+       </size>
       </property>
-     </widget>
+     </spacer>
     </item>
-    <item row="5" column="0">
-     <spacer name="horizontalSpacer_2">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QLabel" name="LabelVersion">
+        <property name="text">
+         <string>TextLabel</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_5">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="ButtonSettings">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <spacer name="horizontalSpacer">
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
@@ -40,48 +72,7 @@
       </property>
      </spacer>
     </item>
-    <item row="5" column="2">
-     <spacer name="horizontalSpacer_4">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>107</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item row="3" column="2">
-     <spacer name="horizontalSpacer_3">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>107</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item row="7" column="1">
-     <widget class="QPushButton" name="ButtonEnter">
-      <property name="font">
-       <font>
-        <pointsize>14</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>Войти</string>
-      </property>
-     </widget>
-    </item>
-    <item row="9" column="1">
-     <widget class="QLineEdit" name="lineEdit"/>
-    </item>
-    <item row="3" column="1">
+    <item>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
        <widget class="QLabel" name="label">
@@ -106,20 +97,32 @@
       </item>
      </layout>
     </item>
-    <item row="11" column="1">
-     <spacer name="verticalSpacer_2">
+    <item>
+     <spacer name="horizontalSpacer_3">
       <property name="orientation">
-       <enum>Qt::Vertical</enum>
+       <enum>Qt::Horizontal</enum>
       </property>
       <property name="sizeHint" stdset="0">
        <size>
-        <width>20</width>
-        <height>62</height>
+        <width>107</width>
+        <height>20</height>
        </size>
       </property>
      </spacer>
     </item>
-    <item row="5" column="1">
+    <item>
+     <widget class="QPushButton" name="ButtonGetPassword">
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Получить пароль</string>
+      </property>
+     </widget>
+    </item>
+    <item>
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
        <widget class="QLabel" name="label_2">
@@ -144,21 +147,8 @@
       </item>
      </layout>
     </item>
-    <item row="0" column="1">
-     <spacer name="verticalSpacer">
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>20</width>
-        <height>62</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item row="3" column="0">
-     <spacer name="horizontalSpacer">
+    <item>
+     <spacer name="horizontalSpacer_4">
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
@@ -170,31 +160,32 @@
       </property>
      </spacer>
     </item>
-    <item row="1" column="1">
-     <layout class="QHBoxLayout" name="horizontalLayout">
-      <item>
-       <spacer name="horizontalSpacer_5">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <widget class="QPushButton" name="ButtonSettings">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-     </layout>
+    <item>
+     <spacer name="horizontalSpacer_2">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>107</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
     </item>
-    <item row="8" column="1">
+    <item>
+     <widget class="QPushButton" name="ButtonEnter">
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Войти</string>
+      </property>
+     </widget>
+    </item>
+    <item>
      <widget class="QLabel" name="labelAuthError">
       <property name="font">
        <font>
@@ -209,12 +200,39 @@
       </property>
      </widget>
     </item>
-    <item row="10" column="1">
-     <widget class="QPushButton" name="pushButton_5">
-      <property name="text">
-       <string>Отмена</string>
+    <item>
+     <widget class="QLineEdit" name="lineEdit"/>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QPushButton" name="ButtonCancelYandex">
+        <property name="text">
+         <string>Отмена Яндекс</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="ButtonCancelCitymobile">
+        <property name="text">
+         <string>Отмена Ситимобил</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <spacer name="verticalSpacer_2">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
       </property>
-     </widget>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>62</height>
+       </size>
+      </property>
+     </spacer>
     </item>
    </layout>
   </widget>

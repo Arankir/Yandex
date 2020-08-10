@@ -3,6 +3,9 @@
 CityMobileAPI::CityMobileAPI(QObject *parent) : QObject(parent), _request(new RequestData()), _reestr("RegionPostavka", "Partners"),
     _apiKey(_reestr.value("CityMobile Token", "").toString()), c_baseUrl(_reestr.value("isTest").toBool()? c_baseTest: c_baseRelease) {
     qDebug()<<"CityMobile Token ="<<_apiKey<<"\nisTest ="<<_reestr.value("isTest").toString();
+    QObject::connect(_request, &RequestData::s_request, this, [=](QString type, QString request, QString post, int code) {
+        emit s_networkRequestInfo("CityMobile", type, request, post, code);
+    });
 }
 
 CityMobileAPI::~CityMobileAPI() {
