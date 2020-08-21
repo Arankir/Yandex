@@ -30,9 +30,9 @@ public:
     ~MainWindow();
 
 public slots:
-    int getFuelID(QString aFuelIdApi);
+    int FuelApiToFuelId(QString aFuelIdApi);
     QString getFuelName(int aFuelVCode);
-    QString getFuelAPIName(int aFuelVCode);
+    QString FuelIdToFuelApi(int aFuelVCode);
     void moneyData(Partner aPartner, QJsonObject aRequest, double &aRequestTotalPriceDB, double &aRequestVolumeDB, double &aRequestUnitPriceDB, double &aMoneyTakenDB, int &aFullTankDB);
 
 private slots:

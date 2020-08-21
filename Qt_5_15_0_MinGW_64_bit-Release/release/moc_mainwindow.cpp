@@ -23,7 +23,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
     QByteArrayData data[50];
-    char stringdata0[701];
+    char stringdata0[708];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -33,59 +33,59 @@ struct qt_meta_stringdata_MainWindow_t {
 static const qt_meta_stringdata_MainWindow_t qt_meta_stringdata_MainWindow = {
     {
 QT_MOC_LITERAL(0, 0, 10), // "MainWindow"
-QT_MOC_LITERAL(1, 11, 9), // "getFuelID"
-QT_MOC_LITERAL(2, 21, 0), // ""
-QT_MOC_LITERAL(3, 22, 10), // "aFuelIdApi"
-QT_MOC_LITERAL(4, 33, 11), // "getFuelName"
-QT_MOC_LITERAL(5, 45, 10), // "aFuelVCode"
-QT_MOC_LITERAL(6, 56, 14), // "getFuelAPIName"
-QT_MOC_LITERAL(7, 71, 9), // "moneyData"
-QT_MOC_LITERAL(8, 81, 7), // "Partner"
-QT_MOC_LITERAL(9, 89, 8), // "aPartner"
-QT_MOC_LITERAL(10, 98, 8), // "aRequest"
-QT_MOC_LITERAL(11, 107, 7), // "double&"
-QT_MOC_LITERAL(12, 115, 20), // "aRequestTotalPriceDB"
-QT_MOC_LITERAL(13, 136, 16), // "aRequestVolumeDB"
-QT_MOC_LITERAL(14, 153, 19), // "aRequestUnitPriceDB"
-QT_MOC_LITERAL(15, 173, 13), // "aMoneyTakenDB"
-QT_MOC_LITERAL(16, 187, 4), // "int&"
-QT_MOC_LITERAL(17, 192, 11), // "aFullTankDB"
-QT_MOC_LITERAL(18, 204, 22), // "on_ButtonEnter_clicked"
-QT_MOC_LITERAL(19, 227, 28), // "on_ButtonGetPassword_clicked"
-QT_MOC_LITERAL(20, 256, 33), // "on_ButtonCancelCitymobile_cli..."
-QT_MOC_LITERAL(21, 290, 29), // "on_ButtonCancelYandex_clicked"
-QT_MOC_LITERAL(22, 320, 25), // "on_ButtonSettings_clicked"
-QT_MOC_LITERAL(23, 346, 16), // "updateDataYandex"
-QT_MOC_LITERAL(24, 363, 15), // "getOrdersYandex"
-QT_MOC_LITERAL(25, 379, 20), // "updateDataCityMobile"
-QT_MOC_LITERAL(26, 400, 19), // "getOrdersCityMobile"
-QT_MOC_LITERAL(27, 420, 11), // "updatePrice"
-QT_MOC_LITERAL(28, 432, 1), // "p"
-QT_MOC_LITERAL(29, 434, 19), // "updateConfiguration"
-QT_MOC_LITERAL(30, 454, 13), // "processOrders"
-QT_MOC_LITERAL(31, 468, 6), // "orders"
-QT_MOC_LITERAL(32, 475, 11), // "changeEvent"
-QT_MOC_LITERAL(33, 487, 7), // "QEvent*"
-QT_MOC_LITERAL(34, 495, 17), // "trayIconActivated"
-QT_MOC_LITERAL(35, 513, 33), // "QSystemTrayIcon::ActivationRe..."
-QT_MOC_LITERAL(36, 547, 6), // "reason"
-QT_MOC_LITERAL(37, 554, 17), // "trayActionExecute"
-QT_MOC_LITERAL(38, 572, 18), // "setTrayIconActions"
-QT_MOC_LITERAL(39, 591, 12), // "showTrayIcon"
-QT_MOC_LITERAL(40, 604, 16), // "authYandexResult"
-QT_MOC_LITERAL(41, 621, 6), // "aToken"
-QT_MOC_LITERAL(42, 628, 8), // "needAuth"
-QT_MOC_LITERAL(43, 637, 12), // "requestToLog"
-QT_MOC_LITERAL(44, 650, 3), // "api"
-QT_MOC_LITERAL(45, 654, 4), // "type"
-QT_MOC_LITERAL(46, 659, 7), // "request"
-QT_MOC_LITERAL(47, 667, 4), // "post"
-QT_MOC_LITERAL(48, 672, 4), // "code"
-QT_MOC_LITERAL(49, 677, 23) // "yandexErrorNotification"
+QT_MOC_LITERAL(1, 11, 15), // "FuelApiToFuelId"
+QT_MOC_LITERAL(2, 27, 0), // ""
+QT_MOC_LITERAL(3, 28, 10), // "aFuelIdApi"
+QT_MOC_LITERAL(4, 39, 11), // "getFuelName"
+QT_MOC_LITERAL(5, 51, 10), // "aFuelVCode"
+QT_MOC_LITERAL(6, 62, 15), // "FuelIdToFuelApi"
+QT_MOC_LITERAL(7, 78, 9), // "moneyData"
+QT_MOC_LITERAL(8, 88, 7), // "Partner"
+QT_MOC_LITERAL(9, 96, 8), // "aPartner"
+QT_MOC_LITERAL(10, 105, 8), // "aRequest"
+QT_MOC_LITERAL(11, 114, 7), // "double&"
+QT_MOC_LITERAL(12, 122, 20), // "aRequestTotalPriceDB"
+QT_MOC_LITERAL(13, 143, 16), // "aRequestVolumeDB"
+QT_MOC_LITERAL(14, 160, 19), // "aRequestUnitPriceDB"
+QT_MOC_LITERAL(15, 180, 13), // "aMoneyTakenDB"
+QT_MOC_LITERAL(16, 194, 4), // "int&"
+QT_MOC_LITERAL(17, 199, 11), // "aFullTankDB"
+QT_MOC_LITERAL(18, 211, 22), // "on_ButtonEnter_clicked"
+QT_MOC_LITERAL(19, 234, 28), // "on_ButtonGetPassword_clicked"
+QT_MOC_LITERAL(20, 263, 33), // "on_ButtonCancelCitymobile_cli..."
+QT_MOC_LITERAL(21, 297, 29), // "on_ButtonCancelYandex_clicked"
+QT_MOC_LITERAL(22, 327, 25), // "on_ButtonSettings_clicked"
+QT_MOC_LITERAL(23, 353, 16), // "updateDataYandex"
+QT_MOC_LITERAL(24, 370, 15), // "getOrdersYandex"
+QT_MOC_LITERAL(25, 386, 20), // "updateDataCityMobile"
+QT_MOC_LITERAL(26, 407, 19), // "getOrdersCityMobile"
+QT_MOC_LITERAL(27, 427, 11), // "updatePrice"
+QT_MOC_LITERAL(28, 439, 1), // "p"
+QT_MOC_LITERAL(29, 441, 19), // "updateConfiguration"
+QT_MOC_LITERAL(30, 461, 13), // "processOrders"
+QT_MOC_LITERAL(31, 475, 6), // "orders"
+QT_MOC_LITERAL(32, 482, 11), // "changeEvent"
+QT_MOC_LITERAL(33, 494, 7), // "QEvent*"
+QT_MOC_LITERAL(34, 502, 17), // "trayIconActivated"
+QT_MOC_LITERAL(35, 520, 33), // "QSystemTrayIcon::ActivationRe..."
+QT_MOC_LITERAL(36, 554, 6), // "reason"
+QT_MOC_LITERAL(37, 561, 17), // "trayActionExecute"
+QT_MOC_LITERAL(38, 579, 18), // "setTrayIconActions"
+QT_MOC_LITERAL(39, 598, 12), // "showTrayIcon"
+QT_MOC_LITERAL(40, 611, 16), // "authYandexResult"
+QT_MOC_LITERAL(41, 628, 6), // "aToken"
+QT_MOC_LITERAL(42, 635, 8), // "needAuth"
+QT_MOC_LITERAL(43, 644, 12), // "requestToLog"
+QT_MOC_LITERAL(44, 657, 3), // "api"
+QT_MOC_LITERAL(45, 661, 4), // "type"
+QT_MOC_LITERAL(46, 666, 7), // "request"
+QT_MOC_LITERAL(47, 674, 4), // "post"
+QT_MOC_LITERAL(48, 679, 4), // "code"
+QT_MOC_LITERAL(49, 684, 23) // "yandexErrorNotification"
 
     },
-    "MainWindow\0getFuelID\0\0aFuelIdApi\0"
-    "getFuelName\0aFuelVCode\0getFuelAPIName\0"
+    "MainWindow\0FuelApiToFuelId\0\0aFuelIdApi\0"
+    "getFuelName\0aFuelVCode\0FuelIdToFuelApi\0"
     "moneyData\0Partner\0aPartner\0aRequest\0"
     "double&\0aRequestTotalPriceDB\0"
     "aRequestVolumeDB\0aRequestUnitPriceDB\0"
@@ -183,11 +183,11 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         auto *_t = static_cast<MainWindow *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: { int _r = _t->getFuelID((*reinterpret_cast< QString(*)>(_a[1])));
+        case 0: { int _r = _t->FuelApiToFuelId((*reinterpret_cast< QString(*)>(_a[1])));
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
         case 1: { QString _r = _t->getFuelName((*reinterpret_cast< int(*)>(_a[1])));
             if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
-        case 2: { QString _r = _t->getFuelAPIName((*reinterpret_cast< int(*)>(_a[1])));
+        case 2: { QString _r = _t->FuelIdToFuelApi((*reinterpret_cast< int(*)>(_a[1])));
             if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
         case 3: _t->moneyData((*reinterpret_cast< Partner(*)>(_a[1])),(*reinterpret_cast< QJsonObject(*)>(_a[2])),(*reinterpret_cast< double(*)>(_a[3])),(*reinterpret_cast< double(*)>(_a[4])),(*reinterpret_cast< double(*)>(_a[5])),(*reinterpret_cast< double(*)>(_a[6])),(*reinterpret_cast< int(*)>(_a[7]))); break;
         case 4: _t->on_ButtonEnter_clicked(); break;
