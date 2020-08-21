@@ -1,5 +1,3 @@
-2020-08-10  11:14:18 DB open
-2020-08-10  11:14:23 Yandex GET(http://cabinet.tst.tanker.yandex.ru/api/orders/items) Код:200
-2020-08-10  11:14:23 CityMobile GET(https://terminal.api.test.fuelup.ru/api/orders/items) Код:200
-2020-08-10  11:14:26 Yandex GET(http://cabinet.tst.tanker.yandex.ru/api/orders/items) Код:200
-2020-08-10  11:14:26 CityMobile GET(https://terminal.api.test.fuelup.ru/api/orders/items) Код:200
+2020-08-21  15:32:42 DB open
+2020-08-21  15:32:48 CityMobile GET(https://terminal.api.test.fuelup.ru/api/orders/items) Код:200
+2020-08-21  15:32:48 Yandex GET(http://cabinet.tst.tanker.yandex.ru/api/orders/items) Код:200

@@ -23,8 +23,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_DataBaseControl_t {
-    QByteArrayData data[167];
-    char stringdata0[1801];
+    QByteArrayData data[169];
+    char stringdata0[1840];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -199,7 +199,9 @@ QT_MOC_LITERAL(162, 1734, 18), // "getTransactionData"
 QT_MOC_LITERAL(163, 1753, 14), // "setYandexToken"
 QT_MOC_LITERAL(164, 1768, 6), // "aToken"
 QT_MOC_LITERAL(165, 1775, 18), // "isTransactionExist"
-QT_MOC_LITERAL(166, 1794, 6) // "openDB"
+QT_MOC_LITERAL(166, 1794, 18), // "getRealSideAddress"
+QT_MOC_LITERAL(167, 1813, 19), // "aPartnerSideAddress"
+QT_MOC_LITERAL(168, 1833, 6) // "openDB"
 
     },
     "DataBaseControl\0getCurrentAgzs\0\0"
@@ -253,7 +255,8 @@ QT_MOC_LITERAL(166, 1794, 6) // "openDB"
     "volume\0amount\0getPayOperationLiters\0"
     "setTransactionClosed\0closed\0"
     "getTransactionData\0setYandexToken\0"
-    "aToken\0isTransactionExist\0openDB"
+    "aToken\0isTransactionExist\0getRealSideAddress\0"
+    "aPartnerSideAddress\0openDB"
 };
 #undef QT_MOC_LITERAL
 
@@ -263,7 +266,7 @@ static const uint qt_meta_data_DataBaseControl[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      22,   14, // methods
+      23,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -271,28 +274,29 @@ static const uint qt_meta_data_DataBaseControl[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,  124,    2, 0x0a /* Public */,
-       3,    3,  125,    2, 0x0a /* Public */,
-       8,    1,  132,    2, 0x0a /* Public */,
-      11,    1,  135,    2, 0x0a /* Public */,
-      13,   20,  138,    2, 0x0a /* Public */,
-      36,    9,  179,    2, 0x0a /* Public */,
-      42,   17,  198,    2, 0x0a /* Public */,
-      60,    3,  233,    2, 0x0a /* Public */,
-      63,    2,  240,    2, 0x0a /* Public */,
-      66,    5,  245,    2, 0x0a /* Public */,
-      72,   58,  256,    2, 0x0a /* Public */,
-     131,    0,  373,    2, 0x0a /* Public */,
-     132,   21,  374,    2, 0x0a /* Public */,
-     148,    8,  417,    2, 0x0a /* Public */,
-     154,    3,  434,    2, 0x0a /* Public */,
-     155,    7,  441,    2, 0x0a /* Public */,
-     159,    4,  456,    2, 0x0a /* Public */,
-     160,    2,  465,    2, 0x0a /* Public */,
-     162,    9,  470,    2, 0x0a /* Public */,
-     163,    1,  489,    2, 0x0a /* Public */,
-     165,    1,  492,    2, 0x0a /* Public */,
-     166,    0,  495,    2, 0x08 /* Private */,
+       1,    0,  129,    2, 0x0a /* Public */,
+       3,    3,  130,    2, 0x0a /* Public */,
+       8,    1,  137,    2, 0x0a /* Public */,
+      11,    1,  140,    2, 0x0a /* Public */,
+      13,   20,  143,    2, 0x0a /* Public */,
+      36,    9,  184,    2, 0x0a /* Public */,
+      42,   17,  203,    2, 0x0a /* Public */,
+      60,    3,  238,    2, 0x0a /* Public */,
+      63,    2,  245,    2, 0x0a /* Public */,
+      66,    5,  250,    2, 0x0a /* Public */,
+      72,   58,  261,    2, 0x0a /* Public */,
+     131,    0,  378,    2, 0x0a /* Public */,
+     132,   21,  379,    2, 0x0a /* Public */,
+     148,    8,  422,    2, 0x0a /* Public */,
+     154,    3,  439,    2, 0x0a /* Public */,
+     155,    7,  446,    2, 0x0a /* Public */,
+     159,    4,  461,    2, 0x0a /* Public */,
+     160,    2,  470,    2, 0x0a /* Public */,
+     162,    9,  475,    2, 0x0a /* Public */,
+     163,    1,  494,    2, 0x0a /* Public */,
+     165,    1,  497,    2, 0x0a /* Public */,
+     166,    2,  500,    2, 0x0a /* Public */,
+     168,    0,  505,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Int,
@@ -316,6 +320,7 @@ static const uint qt_meta_data_DataBaseControl[] = {
     QMetaType::Bool, QMetaType::Int, 0x80000000 | 22, 0x80000000 | 22, 0x80000000 | 22, 0x80000000 | 22, 0x80000000 | 22, 0x80000000 | 22, 0x80000000 | 19, 0x80000000 | 19,  114,   88,   89,   90,   85,   86,   87,  102,  103,
     QMetaType::Bool, QMetaType::QString,  164,
     QMetaType::Bool, QMetaType::QString,  133,
+    QMetaType::Int, QMetaType::Int, QMetaType::Int,  128,  167,
     QMetaType::Bool,
 
        0        // eod
@@ -369,7 +374,9 @@ void DataBaseControl::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
         case 20: { bool _r = _t->isTransactionExist((*reinterpret_cast< QString(*)>(_a[1])));
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
-        case 21: { bool _r = _t->openDB();
+        case 21: { int _r = _t->getRealSideAddress((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])));
+            if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
+        case 22: { bool _r = _t->openDB();
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
         default: ;
         }
@@ -405,13 +412,13 @@ int DataBaseControl::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 22)
+        if (_id < 23)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 22;
+        _id -= 23;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 22)
+        if (_id < 23)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 22;
+        _id -= 23;
     }
     return _id;
 }

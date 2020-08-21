@@ -119,53 +119,73 @@ bool DataBaseControl::getFuels(QVector<QPair<int, QVector<int>>> &aFuels) {
     int cycles = 0;
     while (cycles < c_maxRestartCount) {
         QSqlQuery qFuels(_db);
-        qFuels.exec("SELECT [DeviceName], [Serial], [Description], "
-                     "[SideA_Address], [SideA_Nozzle1FuelCode], [SideA_Nozzle2FuelCode], [SideA_Nozzle3FuelCode], [SideA_Nozzle4FuelCode], [SideA_Nozzle5FuelCode], "
-                     "[SideB_Address], [SideB_Nozzle1FuelCode], [SideB_Nozzle2FuelCode], [SideB_Nozzle3FuelCode], [SideB_Nozzle4FuelCode], [SideB_Nozzle5FuelCode], "
-                     "[SystemSettings], [CDate], [VCode], "
+        qFuels.exec("SELECT "//[DeviceName], [Serial], [Description], "
+                     "[SideA_Address], "//[SideA_Nozzle1FuelCode], [SideA_Nozzle2FuelCode], [SideA_Nozzle3FuelCode], [SideA_Nozzle4FuelCode], [SideA_Nozzle5FuelCode], "
+                     //"[SideB_Address], [SideB_Nozzle1FuelCode], [SideB_Nozzle2FuelCode], [SideB_Nozzle3FuelCode], [SideB_Nozzle4FuelCode], [SideB_Nozzle5FuelCode], "
+                     //"[SystemSettings], trk.[CDate], trk.[VCode], "
                      "[SideA_PumpPlace], [SideA_Nozzle1Fuel], [SideA_Nozzle2Fuel], [SideA_Nozzle3Fuel], [SideA_Nozzle4Fuel], [SideA_Nozzle5Fuel], "
-                     "[SideB_PumpPlace], [SideB_Nozzle1Fuel], [SideB_Nozzle2Fuel], [SideB_Nozzle3Fuel], [SideB_Nozzle4Fuel], [SideB_Nozzle5Fuel] "
-                    "FROM [agzs].[dbo].[ADAST_AdastTRK] ");
+                     //"[SideB_PumpPlace], [SideB_Nozzle1Fuel], [SideB_Nozzle2Fuel], [SideB_Nozzle3Fuel], [SideB_Nozzle4Fuel], [SideB_Nozzle5Fuel] "
+                     "columnn.[Partner_TrkNum] "
+                    "FROM [agzs].[dbo].[ADAST_AdastTRK] trk "
+                    "INNER JOIN [agzs].[dbo].[PR_Columns] columnn ON columnn.SideAdress = trk.[SideA_Address] "
+                    "WHERE columnn.agzs = (SELECT TOP 1 AGZS "
+                                  "FROM [agzs].[dbo].[Identification]) "
+                      "AND trk.agzs = columnn.agzs "
+                      "AND columnn.visible = 1 ");
         if (qFuels.lastError().type() == QSqlError::NoError) {
             while (qFuels.next()) {
-                if (qFuels.value(3).toInt() > 0) {
+                if (qFuels.value(0).toInt() > 0) {
                     QVector<int> fuelsLocalA;
-                    if (!qFuels.value(19).isNull()) {
-                        fuelsLocalA.append(qFuels.value(19).toInt());
+                    if (!qFuels.value(2).isNull()) {
+                        fuelsLocalA.append(qFuels.value(2).toInt());
                     }
-                    if (!qFuels.value(20).isNull()) {
-                        fuelsLocalA.append(qFuels.value(20).toInt());
+                    if (!qFuels.value(3).isNull()) {
+                        fuelsLocalA.append(qFuels.value(3).toInt());
                     }
-                    if (!qFuels.value(21).isNull()) {
-                        fuelsLocalA.append(qFuels.value(21).toInt());
+                    if (!qFuels.value(4).isNull()) {
+                        fuelsLocalA.append(qFuels.value(4).toInt());
                     }
-                    if (!qFuels.value(22).isNull()) {
-                        fuelsLocalA.append(qFuels.value(22).toInt());
+                    if (!qFuels.value(5).isNull()) {
+                        fuelsLocalA.append(qFuels.value(5).toInt());
                     }
-                    if (!qFuels.value(23).isNull()) {
-                        fuelsLocalA.append(qFuels.value(23).toInt());
+                    if (!qFuels.value(6).isNull()) {
+                        fuelsLocalA.append(qFuels.value(6).toInt());
                     }
-                    aFuels.append(QPair<int, QVector<int>>(qFuels.value(3).toInt(), fuelsLocalA));
+                    aFuels.append(QPair<int, QVector<int>>(qFuels.value(7).toInt(), fuelsLocalA));
                 }
-                if (qFuels.value(9).toInt() > 0) {
-                    QVector<int> fuelsLocalB;
-                    fuelsLocalB.append(qFuels.value(9).toInt());
-                    if (!qFuels.value(25).isNull()) {
-                        fuelsLocalB.append(qFuels.value(25).toInt());
+            }
+            qFuels.exec("SELECT "//[DeviceName], [Serial], [Description], "
+                         //"[SideA_Address], [SideA_Nozzle1FuelCode], [SideA_Nozzle2FuelCode], [SideA_Nozzle3FuelCode], [SideA_Nozzle4FuelCode], [SideA_Nozzle5FuelCode], "
+                         "[SideB_Address], "//[SideB_Nozzle1FuelCode], [SideB_Nozzle2FuelCode], [SideB_Nozzle3FuelCode], [SideB_Nozzle4FuelCode], [SideB_Nozzle5FuelCode], "
+                         //"[SystemSettings], [CDate], [VCode], "
+                         //"[SideA_PumpPlace], [SideA_Nozzle1Fuel], [SideA_Nozzle2Fuel], [SideA_Nozzle3Fuel], [SideA_Nozzle4Fuel], [SideA_Nozzle5Fuel], "
+                         "[SideB_PumpPlace], [SideB_Nozzle1Fuel], [SideB_Nozzle2Fuel], [SideB_Nozzle3Fuel], [SideB_Nozzle4Fuel], [SideB_Nozzle5Fuel], "
+                         "columnn.[Partner_TrkNum] "
+                        "FROM [agzs].[dbo].[ADAST_AdastTRK] trk "
+                        "INNER JOIN [agzs].[dbo].[PR_Columns] columnn ON columnn.SideAdress = trk.[SideB_Address] "
+                        "WHERE columnn.agzs = (SELECT TOP 1 AGZS "
+                                      "FROM [agzs].[dbo].[Identification]) "
+                          "AND trk.agzs = columnn.agzs "
+                          "AND columnn.visible = 1 ");
+            while (qFuels.next()) {
+                if (qFuels.value(0).toInt() > 0) {
+                    QVector<int> fuelsLocalA;
+                    if (!qFuels.value(2).isNull()) {
+                        fuelsLocalA.append(qFuels.value(2).toInt());
                     }
-                    if (!qFuels.value(26).isNull()) {
-                        fuelsLocalB.append(qFuels.value(26).toInt());
+                    if (!qFuels.value(3).isNull()) {
+                        fuelsLocalA.append(qFuels.value(3).toInt());
                     }
-                    if (!qFuels.value(27).isNull()) {
-                        fuelsLocalB.append(qFuels.value(27).toInt());
+                    if (!qFuels.value(4).isNull()) {
+                        fuelsLocalA.append(qFuels.value(4).toInt());
                     }
-                    if (!qFuels.value(28).isNull()) {
-                        fuelsLocalB.append(qFuels.value(28).toInt());
+                    if (!qFuels.value(5).isNull()) {
+                        fuelsLocalA.append(qFuels.value(5).toInt());
                     }
-                    if (!qFuels.value(29).isNull()) {
-                        fuelsLocalB.append(qFuels.value(29).toInt());
+                    if (!qFuels.value(6).isNull()) {
+                        fuelsLocalA.append(qFuels.value(6).toInt());
                     }
-                    aFuels.append(QPair<int, QVector<int>>(qFuels.value(9).toInt(), fuelsLocalB));
+                    aFuels.append(QPair<int, QVector<int>>(qFuels.value(7).toInt(), fuelsLocalA));
                 }
             }
             return true;
@@ -176,6 +196,26 @@ bool DataBaseControl::getFuels(QVector<QPair<int, QVector<int>>> &aFuels) {
         cycles++;
     }
     return false;
+}
+
+int DataBaseControl::getRealSideAddress(int aAgzs, int aPartnerSideAddress) {
+    int cycles = 0;
+    while (cycles < c_maxRestartCount) {
+        QSqlQuery query(_db);
+        query.exec("SELECT TOP 1 [SideAdress] "
+                   "FROM [agzs].[dbo].[PR_Columns] "
+                   "WHERE agzs = " + QString::number(aAgzs) + " "
+                     "AND [Partner_TrkNum] = " + QString::number(aPartnerSideAddress) + " "
+                   "ORDER BY CDate DESC");
+        if (query.next()) {
+            return query.value(0).toInt();
+        } else {
+            openDB();
+            logAppend("getRealSideAddress error " + QString::number(cycles));
+        }
+        cycles++;
+    }
+    return 0;
 }
 
 int DataBaseControl::getSmena() {

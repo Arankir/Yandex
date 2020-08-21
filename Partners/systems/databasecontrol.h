@@ -42,6 +42,7 @@ public slots:
     bool setYandexToken(QString aToken);
     bool isTransactionExist(QString aApiId);
 
+    int getRealSideAddress(int aAgzs, int aPartnerSideAddress);
 signals:
 
 private slots:

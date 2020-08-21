@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 
 const double c_litersForMin = 25;
+const QString c_host = "partner api";
 
 MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWindow), _reestr("RegionPostavka", "Partners") {
     ui->setupUi(this);
@@ -17,7 +18,7 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWin
     ui->label  ->setText("<img height=25 style=\"vertical-align: top\" src=\"://images/login.png\"> Логин</a>");
     ui->label_2->setText("<img height=25 style=\"vertical-align: top\" src=\"://images/login password.png\"> Пароль</a>");
     ui->ButtonSettings->setIcon(QIcon("://images/settings.png"));
-    ui->LabelVersion->setText("v1.1");
+    ui->LabelVersion->setText("v1.2");
 
     setTrayIconActions();
     showTrayIcon();
@@ -391,6 +392,12 @@ void MainWindow::updateConfiguration(Partner aPartner) {
         for (auto &side: fuels) {
             if (side.first > 0) {//без 0 колонки
                 if (side.first != 3 || agzsD != 2) {//на 2 заправке без 3 колонки
+                    if (side.first == 2 && agzsD == 35) {
+                        side.first = 1;
+                    }
+                    if (side.first == 1 && agzsD == 35) {
+                        side.first = 2;
+                    }
                     QJsonObject sideJ;
                     QJsonArray fuelsJ;
                     for (auto &fuel: side.second) {
@@ -471,6 +478,12 @@ void MainWindow::updateConfiguration(Partner aPartner) {
         for (auto &side: fuels) {
             if (side.first > 0) {
                 if (side.first != 3 || agzsD != 2) {
+                    if (side.first == 2 && agzsD == 35) {
+                        side.first = 1;
+                    }
+                    if (side.first == 1 && agzsD == 35) {
+                        side.first = 2;
+                    }
                     QJsonObject sideJ;
                     QJsonArray fuelsJ;
                     for (auto &fuelCode: side.second) {
@@ -515,17 +528,20 @@ void MainWindow::processOrders(Partner aPartner, QJsonDocument aOrders) {
                 if (!_db.isTransactionExist(order.toObject().value("id").toString())) {
                     QDateTime now = QDateTime::currentDateTime();
                     int lastAPIVCode = (_db.getLastVCode("PR_APITransaction", true) + 1) * 100 + _db.getCurrentAgzs();
-                    int error = _db.checkError(QString::number(order.toObject().value("columnId").toInt()),
-                                           order.toObject().value("fuelId").toString(),
-                                           getFuelID(order.toObject().value("fuelId").toString()),
-                                           QString::number(order.toObject().value("priceFuel").toDouble()),
-                                           11);
 
                     QString agzsName, id, adress;
                     int agzs, vCode, columnCount;
                     QDateTime cDate;
                     double loc_x, loc_y;
                     _db.getAgzsData(agzsName, agzs, cDate, vCode, id, adress, loc_x, loc_y, columnCount);
+
+                    int sideAdress = _db.getRealSideAddress(agzs, order.toObject().value("columnId").toInt());
+
+                    int error = _db.checkError(QString::number(sideAdress),
+                                           order.toObject().value("fuelId").toString(),
+                                           getFuelID(order.toObject().value("fuelId").toString()),
+                                           QString::number(order.toObject().value("priceFuel").toDouble()),
+                                           11);
 
                     int transactionVCode = 0;
                     switch (error) {
@@ -538,7 +554,7 @@ void MainWindow::processOrders(Partner aPartner, QJsonDocument aOrders) {
 
                         int fuelCode1 = 0, fuelCode2 = 0, fuelCode3 = 0, fuelCode4 = 0, fuelCode5 = 0, trkVCode = 0, pumpPlace = 0, fuel1 = 0, fuel2 = 0, fuel3 = 0, fuel4 = 0, fuel5 = 0;
                         QString deviceName, serial, description, side;
-                        _db.getAgzsAdastTrk(order.toObject().value("columnId").toInt(), side, deviceName, serial, description, fuelCode1, fuelCode2, fuelCode3, fuelCode4, fuelCode5, trkVCode,
+                        _db.getAgzsAdastTrk(sideAdress, side, deviceName, serial, description, fuelCode1, fuelCode2, fuelCode3, fuelCode4, fuelCode5, trkVCode,
                                             pumpPlace, fuel1, fuel2, fuel3, fuel4, fuel5);
 
                         int nozzle = 0;
@@ -564,9 +580,9 @@ void MainWindow::processOrders(Partner aPartner, QJsonDocument aOrders) {
                         _db.getFuelNames(getFuelID(order.toObject().value("fuelId").toString()), fuelName, fuelShortName);
 
                         _db.createTrkTransaction(agzsName, transactionVCode, "ADAST", deviceName, serial, fuelName, fuelShortName, side,
-                                          order.toObject().value("columnId").toInt(), nozzle, trkFuelCode, "", 0, 0, 0, requestTotalPriceDB,
+                                          sideAdress, nozzle, trkFuelCode, "", 0, 0, 0, requestTotalPriceDB,
                                           requestVolumeDB, requestUnitPriceDB, "V", "Завершение выдачи", 8, "P", 0, 0, 0, 0, 0, 0, "Выдача завершена: 1", now, now,
-                                          -100, 0, "ЯНДЕКС", 0, "SERVER", now, "SERVER", now, "SERVER", "SERVER", transactionVCode, 0, 0, 0, 0, _db.getSmena(), trkVCode,
+                                          -100, 0, "ЯНДЕКС", 0, c_host, now, c_host, now, c_host, c_host, transactionVCode, 0, 0, 0, 0, _db.getSmena(), trkVCode,
                                           _db.getCashBoxIndex("11"), pumpPlace, moneyTakenDB, 11, 0, 0, fullTankDB, agzs,
                                           getFuelID(order.toObject().value("fuelId").toString()), 0);
                         break;
@@ -637,7 +653,7 @@ void MainWindow::processOrders(Partner aPartner, QJsonDocument aOrders) {
                             double amount = 0.0f, volume = 0.0f, price = 0.0f;
                             _db.getPayOperationLiters(headVCode, amount, volume, price);
 
-                            if((amount > 0.1) && (volume > 0.1) && (price > 0.1)){
+                            if((amount > 0.1) && (volume > 0.1) && (price > 0.1)) {
                                 _db.finalUpdateApiTransactionState("5", price, volume, amount, dateOpen, dateClose, apiVCode);
                                 _yandex->setStatusCompleted(order.toObject().value("id").toString(), volume, QString::number(apiVCode), dateClose);
                             }
@@ -649,7 +665,7 @@ void MainWindow::processOrders(Partner aPartner, QJsonDocument aOrders) {
                     }
                     }
                 }
-            } else if (order.toObject().value("status").toString()=="Expire") { //статус от АЗС не поступил в течение 30 минут
+            } else if (order.toObject().value("status").toString() == "Expire") { //статус от АЗС не поступил в течение 30 минут
                 QString localState;
                 int apiVCode = 0, headVCode = 0, iState = 0;
                 QDateTime dateOpen, dateClose;
@@ -690,17 +706,20 @@ void MainWindow::processOrders(Partner aPartner, QJsonDocument aOrders) {
                     //            }
                     QDateTime now = QDateTime::currentDateTime();
                     int lastAPIVCode = (_db.getLastVCode("PR_APITransaction", true) + 1) * 100 + _db.getCurrentAgzs();
-                    int error = _db.checkError(QString::number(order.toObject().value("columnId").toInt()),
-                                           order.toObject().value("fuelId").toString(),
-                                           getFuelID(order.toObject().value("fuelId").toString()),
-                                           QString::number(order.toObject().value("priceFuel").toDouble()),
-                                           10);
 
                     QString agzsName, id, adress;
                     int agzs, vCode, columnCount;
                     QDateTime cDate;
                     double loc_x, loc_y;
                     _db.getAgzsData(agzsName, agzs, cDate, vCode, id, adress, loc_x, loc_y, columnCount);
+
+                    int sideAdress = _db.getRealSideAddress(agzs, order.toObject().value("columnId").toInt());
+
+                    int error = _db.checkError(QString::number(sideAdress),
+                                           order.toObject().value("fuelId").toString(),
+                                           getFuelID(order.toObject().value("fuelId").toString()),
+                                           QString::number(order.toObject().value("priceFuel").toDouble()),
+                                           10);
 
                     int transactionVCode = 0;
                     switch (error) {
@@ -711,7 +730,7 @@ void MainWindow::processOrders(Partner aPartner, QJsonDocument aOrders) {
 
                         int fuelCode1 = 0, fuelCode2 = 0, fuelCode3 = 0, fuelCode4 = 0, fuelCode5 = 0, trkVCode = 0, pumpPlace = 0, fuel1 = 0, fuel2 = 0, fuel3 = 0, fuel4 = 0, fuel5 = 0;
                         QString deviceName, serial, description, side;
-                        _db.getAgzsAdastTrk(order.toObject().value("columnId").toInt(), side, deviceName, serial, description, fuelCode1, fuelCode2, fuelCode3, fuelCode4, fuelCode5, trkVCode,
+                        _db.getAgzsAdastTrk(sideAdress, side, deviceName, serial, description, fuelCode1, fuelCode2, fuelCode3, fuelCode4, fuelCode5, trkVCode,
                                             pumpPlace, fuel1, fuel2, fuel3, fuel4, fuel5);
 
                         QString fuelName, fuelShortName;
@@ -739,9 +758,9 @@ void MainWindow::processOrders(Partner aPartner, QJsonDocument aOrders) {
                             transactionVCode = (_db.getLastVCode("ADAST_TRKTransaction", true) + 1) * 100 + agzs;
 
                             _db.createTrkTransaction(agzsName, transactionVCode, "ADAST", deviceName, serial, fuelName, fuelShortName, side,
-                                              order.toObject().value("columnId").toInt(), nozzle, trkFuelCode, "", 0, 0, 0, requestTotalPriceDB,
+                                              sideAdress, nozzle, trkFuelCode, "", 0, 0, 0, requestTotalPriceDB,
                                               requestVolumeDB, requestUnitPriceDB, "V", "Завершение выдачи", 8, "P", 0, 0, 0, 0, 0, 0, "Выдача завершена: 1", now, now,
-                                              -100, 0, "СИТИМОБИЛ", 0, "SERVER", now, "SERVER", now, "SERVER", "SERVER", transactionVCode, 0, 0, 0, 0, _db.getSmena(), trkVCode,
+                                              -100, 0, "СИТИМОБИЛ", 0, c_host, now, c_host, now, c_host, c_host, transactionVCode, 0, 0, 0, 0, _db.getSmena(), trkVCode,
                                               _db.getCashBoxIndex("10"), pumpPlace, moneyTakenDB, 10, 0, 0, fullTankDB, agzs,
                                               getFuelID(order.toObject().value("fuelId").toString()), 0);
                         } else {
