@@ -13,12 +13,12 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWin
         ui->lineEdit->setVisible(false);
     }
 
-    ui->label->setTextFormat(Qt::RichText);
+    ui->label  ->setTextFormat(Qt::RichText);
     ui->label_2->setTextFormat(Qt::RichText);
     ui->label  ->setText("<img height=25 style=\"vertical-align: top\" src=\"://images/login.png\"> Логин</a>");
     ui->label_2->setText("<img height=25 style=\"vertical-align: top\" src=\"://images/login password.png\"> Пароль</a>");
     ui->ButtonSettings->setIcon(QIcon("://images/settings.png"));
-    ui->LabelVersion->setText("v1.3");
+    ui->LabelVersion->setText("v1.4");
 
     setTrayIconActions();
     showTrayIcon();
@@ -318,6 +318,12 @@ void MainWindow::updatePrice(Partner aPartner) {
 }
 
 void MainWindow::updateConfiguration(Partner aPartner) {
+    QString agzsNameD, idD, adress;
+    int agzsD, vCodeD, columnCount;
+    QDateTime cDateD;
+    double loc_x, loc_y;
+    _db.getAgzsData(agzsNameD, agzsD, cDateD, vCodeD, idD, adress, loc_x, loc_y, columnCount);
+
     switch (aPartner) {
     case Partner::yandex: {
         //        {
@@ -340,11 +346,6 @@ void MainWindow::updateConfiguration(Partner aPartner) {
         //                }
         //            }
         //        }
-        QString agzsNameD, idD, adress;
-        int agzsD, vCodeD, columnCount;
-        QDateTime cDateD;
-        double loc_x, loc_y;
-        _db.getAgzsData(agzsNameD, agzsD, cDateD, vCodeD, idD, adress, loc_x, loc_y, columnCount);
 
         QJsonObject AGZS;
         AGZS["StationExtendedId"] = QString::number(agzsD);
@@ -411,11 +412,6 @@ void MainWindow::updateConfiguration(Partner aPartner) {
         //        }
         //        ]
         //    }
-        QString agzsNameD, idD, adress;
-        int agzsD, vCodeD, columnCount;
-        QDateTime cDateD;
-        double lat, lon;
-        _db.getAgzsData(agzsNameD, agzsD, cDateD, vCodeD, idD, adress, lat, lon, columnCount);
 
         QJsonObject AGZS;
         AGZS["StationExtendedId"] = QString::number(agzsD);
@@ -424,8 +420,8 @@ void MainWindow::updateConfiguration(Partner aPartner) {
         AGZS["Adress"] = adress;
 
         QJsonObject Location;
-        Location["Lon"] = QString::number(lon).replace(",",".");
-        Location["Lat"] = QString::number(lat).replace(",",".");
+        Location["Lon"] = QString::number(loc_y).replace(",",".");
+        Location["Lat"] = QString::number(loc_x).replace(",",".");
         AGZS["Location"] = Location;
         //Columns
         QJsonObject columns;
@@ -559,7 +555,9 @@ void MainWindow::processOrders(Partner aPartner, QJsonDocument aOrders) {
                                          FuelApiToFuelId(order.toObject().value("fuelId").toString()), order.toObject().value("priceFuel").toDouble(), order.toObject().value("litre").toDouble(),
                                          order.toObject().value("sum").toDouble(), order.toObject().value("status").toString(), order.toObject().value("contractId").toString(), "Yandex",
                                          error != 0 ? "Error: " + QString::number(error) : "0", 0, 0, 0, now, transactionVCode);
-                    _yandex->setStatusAccept(order.toObject().value("id").toString(), lastAPIVCode);
+                    if (error == 0) {
+                        _yandex->setStatusAccept(order.toObject().value("id").toString(), lastAPIVCode);
+                    }
                 }
             } else if (order.toObject().value("status").toString() == "WaitingRefueling") { //ожидаем включения налива на ТРК
                 QString localState = "0";
@@ -585,8 +583,7 @@ void MainWindow::processOrders(Partner aPartner, QJsonDocument aOrders) {
                 _db.getTransactionData(headVCode, requestTotalPrice, requestVolume, requestUnitPrice, trkTotalPrice, trkVolume, trkUnitPrice, transactionDateOpen, transactionDateClose);
 
                 QDateTime now = QDateTime::currentDateTime();
-                QDateTime diffTime = QDateTime::fromMSecsSinceEpoch(now.toMSecsSinceEpoch() - transactionDateOpen.toMSecsSinceEpoch());
-                diffTime = diffTime.addSecs(-20);
+                QDateTime diffTime = QDateTime::fromMSecsSinceEpoch(now.toMSecsSinceEpoch() - transactionDateOpen.toMSecsSinceEpoch()).addSecs(-20);
 
                 double litersNow = diffTime.toSecsSinceEpoch() * (c_litersForMin / 60);
                 if ((litersNow > 0) && (litersNow < apiLitre)) {
@@ -765,8 +762,7 @@ void MainWindow::processOrders(Partner aPartner, QJsonDocument aOrders) {
                 _db.getTransactionData(headVCode, requestTotalPrice, requestVolume, requestUnitPrice, trkTotalPrice, trkVolume, trkUnitPrice, transactionDateOpen, transactionDateClose);
 
                 QDateTime now = QDateTime::currentDateTime();
-                QDateTime diffTime = QDateTime::fromMSecsSinceEpoch(now.toMSecsSinceEpoch() - transactionDateOpen.toMSecsSinceEpoch());
-                diffTime = diffTime.addSecs(-20);
+                QDateTime diffTime = QDateTime::fromMSecsSinceEpoch(now.toMSecsSinceEpoch() - transactionDateOpen.toMSecsSinceEpoch()).addSecs(-20);
 
                 double litersNow = diffTime.toSecsSinceEpoch() * (c_litersForMin / 60);
                 if ((litersNow > 0) && (litersNow < apiLitre)) {
@@ -779,7 +775,7 @@ void MainWindow::processOrders(Partner aPartner, QJsonDocument aOrders) {
                         _db.updateApiTransactionState(localState, dateClose, apiVCode);
                         break;
                     }
-                    case 5 ... 8 :{//Выдано //Подтверждение   Завершение выдачи //Обновление счетчиков //Завершение выдачи
+                    case 5 ... 8 : {//Выдано //Подтверждение   Завершение выдачи //Обновление счетчиков //Завершение выдачи
                         if (localState != 5) {
                             double amount = 0.0f, volume = 0.0f, price = 0.0f;
                             _db.getPayOperationLiters(headVCode, amount, volume, price);
@@ -791,7 +787,7 @@ void MainWindow::processOrders(Partner aPartner, QJsonDocument aOrders) {
                         }
                         break;
                     }
-                    default:{
+                    default: {
 
                     }
                     }
@@ -834,10 +830,8 @@ void MainWindow::processOrders(Partner aPartner, QJsonDocument aOrders) {
 
 void MainWindow::changeEvent(QEvent *aEvent) {
     QMainWindow::changeEvent(aEvent);
-    if (aEvent -> type() == QEvent::WindowStateChange)
-    {
-        if (isMinimized())
-        {
+    if (aEvent -> type() == QEvent::WindowStateChange) {
+        if (isMinimized()) {
             this->hide();
         }
     }
@@ -847,7 +841,7 @@ void MainWindow::trayIconActivated(QSystemTrayIcon::ActivationReason aReason) {
     switch (aReason) {
         case QSystemTrayIcon::Trigger:
         case QSystemTrayIcon::DoubleClick:
-            this -> trayActionExecute();
+            this->trayActionExecute();
             break;
         default:
             break;
@@ -862,27 +856,27 @@ void MainWindow::trayActionExecute() {
 void MainWindow::setTrayIconActions() {
     // Setting actions...
     minimizeAction = new QAction("Свернуть", this);
-    restoreAction = new QAction("Восстановить", this);
-    quitAction = new QAction("Выход", this);
+    restoreAction =  new QAction("Восстановить", this);
+    quitAction =     new QAction("Выход", this);
 
     // Connecting actions to slots...
     connect (minimizeAction, SIGNAL(triggered()), this, SLOT(hide()));
-    connect (restoreAction, SIGNAL(triggered()), this, SLOT(showNormal()));
-    connect (quitAction, SIGNAL(triggered()), qApp, SLOT(quit()));
+    connect (restoreAction,  SIGNAL(triggered()), this, SLOT(showNormal()));
+    connect (quitAction,     SIGNAL(triggered()), qApp, SLOT(quit()));
 
     // Setting system tray's icon menu...
     trayIconMenu = new QMenu(this);
-    trayIconMenu -> addAction (minimizeAction);
-    trayIconMenu -> addAction (restoreAction);
-    trayIconMenu -> addAction (quitAction);
+    trayIconMenu->addAction(minimizeAction);
+    trayIconMenu->addAction(restoreAction);
+    trayIconMenu->addAction(quitAction);
 }
 
 void MainWindow::showTrayIcon() {
     // Создаём экземпляр класса и задаём его свойства...
     trayIcon = new QSystemTrayIcon(this);
     QIcon trayImage("://images/tray.png");
-    trayIcon -> setIcon(trayImage);
-    trayIcon -> setContextMenu(trayIconMenu);
+    trayIcon->setIcon(trayImage);
+    trayIcon->setContextMenu(trayIconMenu);
 
     // Подключаем обработчик клика по иконке...
     connect(trayIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(trayIconActivated(QSystemTrayIcon::ActivationReason)));
