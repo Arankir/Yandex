@@ -17,12 +17,26 @@ namespace Ui {
 }
 QT_END_NAMESPACE
 
+struct Order {
+    QString id;
+    QDateTime dateCreate;
+    QString orderType;
+    double orderVolume;
+    int columnId;
+    double litre;
+    QString status;
+    QString fuelId;
+    double priceFuel;
+    double sum;
+    QString contractId;
+};
+
 class MainWindow: public QMainWindow {
     Q_OBJECT
 
     enum class Partner {
-        yandex,
-        citymobile
+        yandex = 11,
+        citymobile = 10
     };
 
 public:
@@ -33,8 +47,13 @@ public slots:
     int FuelApiToFuelId(QString aFuelIdApi);
     QString getFuelName(int aFuelVCode);
     QString FuelIdToFuelApi(int aFuelVCode);
-    void moneyData(Partner aPartner, QJsonObject aRequest, double &aRequestTotalPriceDB, double &aRequestVolumeDB, double &aRequestUnitPriceDB, double &aMoneyTakenDB, int &aFullTankDB);
+    void moneyData(Partner aPartner, Order aOrder, double &aRequestTotalPriceDB, double &aRequestVolumeDB, double &aRequestUnitPriceDB, double &aMoneyTakenDB, int &aFullTankDB);
 
+    void getNozzleFuelCode(AdastTrk aTrk, QString aFuelId, int &aNozzle, int &aFuelCode);
+    Transaction createEmptyTransaction();
+    int createTransaction(Agzs currentAgzs, Order order, Partner aPartner, int sideAdress, QDateTime now);
+    Order JsonToOrder(Partner aPartner, QJsonValue aOrder);
+    void sendLiters(Partner aPartner, ApiTransaction aApiTransaction, QString aOrderId);
 private slots:
     void on_ButtonEnter_clicked();
     void on_ButtonGetPassword_clicked();
