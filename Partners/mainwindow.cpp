@@ -691,7 +691,6 @@ void MainWindow::processOrders(Partner aPartner, QJsonDocument aOrders) {
                 if (error == ErrorsOrder::noError) {
                     transactionVCode = createTransaction(currentAgzs, currentOrder, aPartner, sideAdress, now);
                 }
-                qDebug()<<errorToString(error);
                 _db.createApiTransaction(currentAgzs.agzsName, currentAgzs.agzs, currentOrder.dateCreate,
                                      lastAPIVCode, currentOrder.id, "", currentOrder.columnId, currentOrder.fuelId,
                                      FuelApiToFuelId(currentOrder.fuelId), currentOrder.priceFuel, currentOrder.litre,
@@ -722,7 +721,6 @@ void MainWindow::processOrders(Partner aPartner, QJsonDocument aOrders) {
             }
             case OrderStatus::waitingRefueling: {
                 ApiTransaction apiTransaction = _db.getApiTransactionState(currentOrder.id);
-                qDebug()<<QString::number(apiTransaction.iState)<<apiTransaction.localState<<apiTransaction.id<<apiTransaction.dateOpen<<currentOrder.id;
                 if ((QString::number(apiTransaction.iState) == apiTransaction.localState) || (apiTransaction.id == "")) {
                     break;
                 }
@@ -833,7 +831,7 @@ void MainWindow::processOrders(Partner aPartner, QJsonDocument aOrders) {
             }
             case OrderStatus::waitingRefueling: {
                 ApiTransaction apiTransaction = _db.getApiTransactionState(currentOrder.id);
-                if (QString::number(apiTransaction.iState) == apiTransaction.localState) {
+                if ((QString::number(apiTransaction.iState) == apiTransaction.localState) || (apiTransaction.id == "")) {
                     break;
                 }
                 if (apiTransaction.iState > 0) {
