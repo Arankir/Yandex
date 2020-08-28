@@ -31,6 +31,17 @@ struct Order {
     QString contractId;
 };
 
+enum class OrderStatus {
+    unknown,
+    acceptOrder,
+    waitingRefueling,
+    fueling,
+    expire,
+    stationCanceled,
+    userCanceled,
+    completed
+};
+
 class MainWindow: public QMainWindow {
     Q_OBJECT
 
@@ -54,6 +65,7 @@ public slots:
     int createTransaction(Agzs currentAgzs, Order order, Partner aPartner, int sideAdress, QDateTime now);
     Order JsonToOrder(Partner aPartner, QJsonValue aOrder);
     void sendLiters(Partner aPartner, ApiTransaction aApiTransaction, QString aOrderId);
+    OrderStatus stringToStatus(QString aStatus);
 private slots:
     void on_ButtonEnter_clicked();
     void on_ButtonGetPassword_clicked();
@@ -81,6 +93,7 @@ private slots:
     void requestToLog(QString api, QString type, QString request, QString post, int code);
     void yandexErrorNotification();
 
+    QString errorToString(ErrorsOrder aError);
 private:
     Ui::MainWindow *ui;
     YandexAPI *_yandex;

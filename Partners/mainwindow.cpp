@@ -18,7 +18,7 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWin
     ui->label  ->setText("<img height=25 style=\"vertical-align: top\" src=\"://images/login.png\"> Логин</a>");
     ui->label_2->setText("<img height=25 style=\"vertical-align: top\" src=\"://images/login password.png\"> Пароль</a>");
     ui->ButtonSettings->setIcon(QIcon("://images/settings.png"));
-    ui->LabelVersion->setText("v1.5");
+    ui->LabelVersion->setText("v1.6");
 
     setTrayIconActions();
     showTrayIcon();
@@ -409,6 +409,7 @@ Order MainWindow::JsonToOrder(Partner aPartner, QJsonValue aOrder) {
         break;
     }
     }
+    return Order();
 }
 
 void MainWindow::sendLiters(Partner aPartner, ApiTransaction aApiTransaction, QString aOrderId) {
@@ -428,6 +429,48 @@ void MainWindow::sendLiters(Partner aPartner, ApiTransaction aApiTransaction, QS
         }
         }
     }
+}
+
+QString MainWindow::errorToString(ErrorsOrder aError) {
+    switch (aError) {
+    case ErrorsOrder::noError: {
+        return "0";
+    }
+    case ErrorsOrder::trkError: {
+        return "Error: trk is not found";
+    }
+    case ErrorsOrder::fuelError: {
+        return "Error: fuel is not found";
+    }
+    case ErrorsOrder::priceError: {
+        return "Error: different price";
+    }
+    }
+}
+
+OrderStatus MainWindow::stringToStatus(QString aStatus) {
+    if (aStatus == "AcceptOrder") {
+        return OrderStatus::acceptOrder;
+    }
+    if (aStatus == "WaitingRefueling") {
+        return OrderStatus::waitingRefueling;
+    }
+    if (aStatus == "Fueling") {
+        return OrderStatus::fueling;
+    }
+    if (aStatus == "Expire") {
+        return OrderStatus::expire;
+    }
+    if (aStatus == "StationCanceled") {
+        return OrderStatus::stationCanceled;
+    }
+    if (aStatus == "UserCanceled") {
+        return OrderStatus::userCanceled;
+    }
+    if (aStatus == "Completed") {
+        return OrderStatus::completed;
+    }
+    return OrderStatus::unknown;
 }
 
 #define FunctionsStart {
@@ -517,20 +560,20 @@ void MainWindow::updateConfiguration(Partner aPartner) {
         //Columns
         QJsonObject columns;
 
-        QVector<QPair<int, QVector<int>>> fuels;
-        _db.getFuels(fuels);//first = Адрес, second = Топлива
+        QVector<SideFuel> fuels = _db.getFuels();
         for (auto &side: fuels) {
-            if (side.first > 0) {//без 0 колонки
-                QJsonObject sideJ;
-                QJsonArray fuelsJ;
-                for (auto &fuel: side.second) {
-                    if (fuel > 0) {
-                        fuelsJ.push_back(FuelIdToFuelApi(fuel));
-                    }
-                }
-                sideJ["Fuels"] = fuelsJ;
-                columns[QString::number(side.first)] = sideJ;
+            if ((side.partnerSideAdress <= 0) || (side.sideAdress <= 0)) {//без 0 колонки
+                continue;
             }
+            QJsonObject sideJ;
+            QJsonArray fuelsJ;
+            for (auto &fuel: side.fuels) {
+                if (fuel > 0) {
+                    fuelsJ.push_back(FuelIdToFuelApi(fuel));
+                }
+            }
+            sideJ["Fuels"] = fuelsJ;
+            columns[QString::number(side.partnerSideAdress)] = sideJ;
         }
         AGZS["Columns"] = columns;
 
@@ -590,33 +633,29 @@ void MainWindow::updateConfiguration(Partner aPartner) {
         QJsonObject columns;
         QJsonArray fuelNames;
 
-        QVector<QPair<int, QVector<int>>> fuels;
-        _db.getFuels(fuels);
+        QVector<SideFuel> fuels = _db.getFuels();
         for (auto &side: fuels) {
-            if (side.first > 0) {
-                QJsonObject sideJ;
-                QJsonArray fuelsJ;
-                for (auto &fuelCode: side.second) {
-                    if (fuelCode > 0) {
-                        fuelsJ.push_back(FuelIdToFuelApi(fuelCode));
-                        bool isNeedInsert = true;
-                        for (auto fuel: fuelNames) {
-                            if (fuel.toObject().value("Fuel").toString() == FuelIdToFuelApi(fuelCode)) {
-                                isNeedInsert = false;
-                                break;
-                            }
-                        }
-                        if (isNeedInsert) {
-                            QJsonObject fuel;
-                            fuel["Fuel"] = FuelIdToFuelApi(fuelCode);
-                            fuel["FuelName"] = getFuelName(fuelCode);
-                            fuelNames.append(fuel);
-                        }
-                    }
-                }
-                sideJ["Fuels"] = fuelsJ;
-                columns[QString::number(side.first)] = sideJ;
+            if ((side.partnerSideAdress <= 0) || (side.sideAdress <= 0)) {
+                continue;
             }
+            QJsonObject sideJ;
+            QJsonArray fuelsJ;
+            for (auto &fuelCode: side.fuels) {
+                if (fuelCode <= 0) {
+                    continue;
+                }
+                fuelsJ.push_back(FuelIdToFuelApi(fuelCode));
+                bool isExist = std::any_of(fuelNames.cbegin(), fuelNames.cend(),
+                                                 [=](const QJsonValue fuel) {return fuel.toObject().value("Fuel").toString() == FuelIdToFuelApi(fuelCode);});
+                if (!isExist) {
+                    QJsonObject fuel;
+                    fuel["Fuel"] = FuelIdToFuelApi(fuelCode);
+                    fuel["FuelName"] = getFuelName(fuelCode);
+                    fuelNames.append(fuel);
+                }
+            }
+            sideJ["Fuels"] = fuelsJ;
+            columns[QString::number(side.partnerSideAdress)] = sideJ;
         }
         AGZS["Columns"] = columns;
         AGZS["FuelNames"] = fuelNames;
@@ -633,91 +672,109 @@ void MainWindow::processOrders(Partner aPartner, QJsonDocument aOrders) {
     case Partner::yandex: {
         for (auto order: aOrders.object().value("orders").toArray()) {
             Order currentOrder = JsonToOrder(aPartner, order);
-            if (currentOrder.status == "AcceptOrder") { //заказ ожидает подтверждения от АСУ АЗС
-                if (!_db.isTransactionExist(currentOrder.id)) {
-                    QDateTime now           = QDateTime::currentDateTime();
-                    int lastAPIVCode        = (_db.getLastVCode("PR_APITransaction", true) + 1) * 100 + _db.getCurrentAgzs();
-                    Agzs currentAgzs        = _db.getAgzsData();
-                    int sideAdress          = _db.getRealSideAddress(currentAgzs.agzs, currentOrder.columnId);
-                    int error               = _db.checkError(QString::number(sideAdress),
-                                                currentOrder.fuelId,
-                                                FuelApiToFuelId(currentOrder.fuelId),
-                                                QString::number(currentOrder.priceFuel),
-                                                static_cast<int>(aPartner));
-                    int transactionVCode    = -1;
-
-                    switch (error) {
-                    case 0: {
-                        transactionVCode = createTransaction(currentAgzs, currentOrder, aPartner, sideAdress, now);
-                        break;
-                    }
-                    case 1: {
-                        _db.logAppend("Error Указанная колонка не найдена " + currentOrder.id);
-                        _yandex->setStatusCanceled(currentOrder.id, "Указанная колонка не найдена.", QString::number(lastAPIVCode), now);
-                        break;
-                    }
-                    case 2: {
-                        _db.logAppend("Error Не обнаружено указанное топливо " + currentOrder.id);
-                        _yandex->setStatusCanceled(currentOrder.id, "Не обнаружено указанное топливо.", QString::number(lastAPIVCode), now);
-                        break;
-                    }
-                    case 3: {
-                        _db.logAppend("Error Цена на выбранный вид топлива отличается от фактической цены " + currentOrder.id);
-                        _yandex->setStatusCanceled(currentOrder.id, "Цена на выбранный вид топлива отличается от фактической цены.", QString::number(lastAPIVCode), now);
-                        break;
-                    }
-                    }
-
-                    _db.createApiTransaction(currentAgzs.agzsName, currentAgzs.agzs, currentOrder.dateCreate,
-                                         lastAPIVCode, currentOrder.id, "", currentOrder.columnId, currentOrder.fuelId,
-                                         FuelApiToFuelId(currentOrder.fuelId), currentOrder.priceFuel, currentOrder.litre,
-                                         currentOrder.sum, currentOrder.status, currentOrder.contractId, "Yandex",
-                                         error != 0 ? "Error: " + QString::number(error) : "0", 0, 0, 0, now, transactionVCode);
-                    if (error == 0) {
-                        _yandex->setStatusAccept(currentOrder.id, lastAPIVCode);
-                    }
+            switch (stringToStatus(currentOrder.status)) {
+            case OrderStatus::acceptOrder: {
+                if (_db.isTransactionExist(currentOrder.id)) {
+                    break;
                 }
-            } else {
+                QDateTime now           = QDateTime::currentDateTime();
+                int lastAPIVCode        = (_db.getLastVCode("PR_APITransaction", true) + 1) * 100 + _db.getCurrentAgzs();
+                Agzs currentAgzs        = _db.getAgzsData();
+                int sideAdress          = _db.getRealSideAddress(currentAgzs.agzs, currentOrder.columnId);
+                ErrorsOrder error       = _db.checkError(QString::number(sideAdress),
+                                            currentOrder.fuelId,
+                                            FuelApiToFuelId(currentOrder.fuelId),
+                                            QString::number(currentOrder.priceFuel),
+                                            static_cast<int>(aPartner));
+                int transactionVCode    = -1;
+
+                if (error == ErrorsOrder::noError) {
+                    transactionVCode = createTransaction(currentAgzs, currentOrder, aPartner, sideAdress, now);
+                }
+                qDebug()<<errorToString(error);
+                _db.createApiTransaction(currentAgzs.agzsName, currentAgzs.agzs, currentOrder.dateCreate,
+                                     lastAPIVCode, currentOrder.id, "", currentOrder.columnId, currentOrder.fuelId,
+                                     FuelApiToFuelId(currentOrder.fuelId), currentOrder.priceFuel, currentOrder.litre,
+                                     currentOrder.sum, currentOrder.status, currentOrder.contractId, "Yandex",
+                                     errorToString(error), 0, 0, 0, now, transactionVCode);
+                switch (error) {
+                case ErrorsOrder::noError: {
+                    _yandex->setStatusAccept(currentOrder.id, lastAPIVCode);
+                    break;
+                }
+                case ErrorsOrder::trkError: {
+                    _db.logAppend("Error Указанная колонка не найдена " + currentOrder.id);
+                    _yandex->setStatusCanceled(currentOrder.id, "Указанная колонка не найдена.", QString::number(lastAPIVCode), now);
+                    break;
+                }
+                case ErrorsOrder::fuelError: {
+                    _db.logAppend("Error Не обнаружено указанное топливо " + currentOrder.id);
+                    _yandex->setStatusCanceled(currentOrder.id, "Не обнаружено указанное топливо.", QString::number(lastAPIVCode), now);
+                    break;
+                }
+                case ErrorsOrder::priceError: {
+                    _db.logAppend("Error Цена на выбранный вид топлива отличается от фактической цены " + currentOrder.id);
+                    _yandex->setStatusCanceled(currentOrder.id, "Цена на выбранный вид топлива отличается от фактической цены.", QString::number(lastAPIVCode), now);
+                    break;
+                }
+                }
+                break;
+            }
+            case OrderStatus::waitingRefueling: {
                 ApiTransaction apiTransaction = _db.getApiTransactionState(currentOrder.id);
-                if (currentOrder.status == "WaitingRefueling") { //ожидаем включения налива на ТРК
-                    if (QString::number(apiTransaction.iState) != apiTransaction.localState) {
-                        if (apiTransaction.iState > 0) {
-                            _db.updateApiTransactionState(apiTransaction.localState, apiTransaction.dateClose, apiTransaction.apiVCode);
-                        }
-                        _yandex->setStatusFueling(currentOrder.id, apiTransaction.apiVCode);
-                    }
-                } else if (currentOrder.status == "Fueling") { //идет налив
-                    sendLiters(aPartner, apiTransaction, currentOrder.id);
-
-                    if (QString::number(apiTransaction.iState) != apiTransaction.localState) {
-                        switch (apiTransaction.iState) {
-                        case 1 ... 4: {//Цена установлена
-                            _db.updateApiTransactionState(apiTransaction.localState, apiTransaction.dateClose, apiTransaction.apiVCode);
-                            break;
-                        }
-                        case 5 ... 8 :{//Выдано //Подтверждение   Завершение выдачи //Обновление счетчиков //Завершение выдачи
-                            if (apiTransaction.localState != 5) {
-                                double amount = 0.0f, volume = 0.0f, price = 0.0f;
-                                _db.getPayOperationLiters(apiTransaction.headVCode, amount, volume, price);
-
-                                if((amount > 0.1) && (volume > 0.1) && (price > 0.1)) {
-                                    _db.finalUpdateApiTransactionState("5", price, volume, amount, apiTransaction.dateOpen, apiTransaction.dateClose, apiTransaction.apiVCode);
-                                    _yandex->setStatusCompleted(currentOrder.id, volume, QString::number(apiTransaction.apiVCode), apiTransaction.dateClose);
-                                }
-                            }
-                            break;
-                        }
-                        default: {
-
-                        }
-                        }
-                    }
-                } else if (currentOrder.status == "Expire") { //статус от АЗС не поступил в течение 30 минут
-                    _db.updateApiTransactionState("Ошибка: 30 минут", apiTransaction.dateClose, apiTransaction.apiVCode);
-                    _db.setTransactionClosed(currentOrder.id, 1);
-
-                    _yandex->setStatusCanceled(currentOrder.id, "Истекло время ожидания", QString::number(apiTransaction.apiVCode), apiTransaction.dateOpen);
+                qDebug()<<QString::number(apiTransaction.iState)<<apiTransaction.localState<<apiTransaction.id<<apiTransaction.dateOpen<<currentOrder.id;
+                if ((QString::number(apiTransaction.iState) == apiTransaction.localState) || (apiTransaction.id == "")) {
+                    break;
                 }
+                if (apiTransaction.iState > 0) {
+                    _db.updateApiTransactionState(apiTransaction.localState, apiTransaction.dateClose, apiTransaction.apiVCode);
+                }
+                _yandex->setStatusFueling(currentOrder.id, apiTransaction.apiVCode);
+                break;
+            }
+            case OrderStatus::fueling: {
+                ApiTransaction apiTransaction = _db.getApiTransactionState(currentOrder.id);
+                sendLiters(aPartner, apiTransaction, currentOrder.id);
+
+                if (QString::number(apiTransaction.iState) == apiTransaction.localState) {
+                    break;
+                }
+                switch (apiTransaction.iState) {
+                case 1 ... 4: {//Цена установлена
+                    _db.updateApiTransactionState(apiTransaction.localState, apiTransaction.dateClose, apiTransaction.apiVCode);
+                    break;
+                }
+                case 5 ... 8 :{//Выдано //Подтверждение   Завершение выдачи //Обновление счетчиков //Завершение выдачи
+                    if (apiTransaction.localState == 5) {
+                        break;
+                    }
+                    double amount = 0.0, volume = 0.0, price = 0.0;
+                    _db.getPayOperationLiters(apiTransaction.headVCode, amount, volume, price);
+
+                    if((amount > 0.1) && (volume > 0.1) && (price > 0.1)) {
+                        _db.finalUpdateApiTransactionState("5", price, volume, amount, apiTransaction.dateOpen, apiTransaction.dateClose, apiTransaction.apiVCode);
+                        _yandex->setStatusCompleted(currentOrder.id, volume, QString::number(apiTransaction.apiVCode), apiTransaction.dateClose);
+                    }
+                    break;
+                }
+                }
+                break;
+            }
+            case OrderStatus::expire: {
+                ApiTransaction apiTransaction = _db.getApiTransactionState(currentOrder.id);
+                _db.updateApiTransactionState("Ошибка: 30 минут", apiTransaction.dateClose, apiTransaction.apiVCode);
+                _db.setTransactionClosed(currentOrder.id, 1);
+
+                _yandex->setStatusCanceled(currentOrder.id, "Истекло время ожидания", QString::number(apiTransaction.apiVCode), apiTransaction.dateOpen);
+                break;
+            }
+            case OrderStatus::unknown: {
+
+                break;
+            }
+            default: {
+
+            }
             }
         }
         if (aOrders.object().value("nextRetryMs").isDouble()) {
@@ -726,110 +783,122 @@ void MainWindow::processOrders(Partner aPartner, QJsonDocument aOrders) {
         break;
     }
     case Partner::citymobile: {
-        //AcceptOrder, Expire, Completed, StationCanceled, UserCanceled, WaitingRefueling, Fueling
         for(auto order: aOrders.object().value("orders").toArray()) {
             Order currentOrder = JsonToOrder(aPartner, order);
-            if (currentOrder.status == "AcceptOrder") { //заказ создан, полностью оплачен и ожидает подтверждения от АСУ АЗС
-                if (!_db.isTransactionExist(currentOrder.id)) {
-                    QDateTime now = QDateTime::currentDateTime();
-                    int lastAPIVCode = (_db.getLastVCode("PR_APITransaction", true) + 1) * 100 + _db.getCurrentAgzs();
-                    Agzs currentAgzs = _db.getAgzsData();
-                    int sideAdress = _db.getRealSideAddress(currentAgzs.agzs, currentOrder.columnId);
-                    int error = _db.checkError(QString::number(sideAdress),
+            switch (stringToStatus(currentOrder.status)) {
+            case OrderStatus::acceptOrder: {
+                if (_db.isTransactionExist(currentOrder.id)) {
+                    break;
+                }
+                QDateTime now           = QDateTime::currentDateTime();
+                int lastAPIVCode        = (_db.getLastVCode("PR_APITransaction", true) + 1) * 100 + _db.getCurrentAgzs();
+                Agzs currentAgzs        = _db.getAgzsData();
+                int sideAdress          = _db.getRealSideAddress(currentAgzs.agzs, currentOrder.columnId);
+                ErrorsOrder error       = _db.checkError(QString::number(sideAdress),
                                             currentOrder.fuelId,
                                             FuelApiToFuelId(currentOrder.fuelId),
                                             QString::number(currentOrder.priceFuel),
                                             static_cast<int>(aPartner));
-                    int transactionVCode = 0;
-
-                    switch (error) {
-                    case 0: {
-                        transactionVCode = createTransaction(currentAgzs, currentOrder, aPartner, sideAdress, now);
-                        if (transactionVCode == -2) {
-                            _cityMobile->setStatusCanceled(currentOrder.id, "Указанная колонка не найдена.", QString::number(lastAPIVCode), now);
-                        }
-                        break;
-                    }
-                    case 1: {
-                        _db.logAppend("Error Неизвестная ошибка " + currentOrder.id);
-                        _cityMobile->setStatusCanceled(currentOrder.id, "Неизвестная ошибка.", QString::number(lastAPIVCode), now);
-                        break;
-                    }
-                    case 2: {
-                        _db.logAppend("Error Не обнаружено указанное топливо " + currentOrder.id);
-                        _cityMobile->setStatusCanceled(currentOrder.id, "Не обнаружено указанное топливо.", QString::number(lastAPIVCode), now);
-                        break;
-                    }
-                    case 3: {
-                        _db.logAppend("Error Цена на выбранный вид топлива отличается от фактической цены " + currentOrder.id);
-                        _cityMobile->setStatusCanceled(currentOrder.id, "Цена на выбранный вид топлива отличается от фактической цены.", QString::number(lastAPIVCode), now);
-                        break;
-                    }
-                    }
-                    _db.createApiTransaction(currentAgzs.agzsName, currentAgzs.agzs, currentOrder.dateCreate,
-                                         lastAPIVCode, currentOrder.id, "", currentOrder.columnId, currentOrder.fuelId,
-                                         FuelApiToFuelId(currentOrder.fuelId), currentOrder.priceFuel, currentOrder.litre,
-                                         currentOrder.sum, currentOrder.status, currentOrder.contractId, "CityMobile",
-                                         error != 0 ? "Error: " + QString::number(error) : "0", 0, 0, 0, now, transactionVCode);
-                    if (error == 0) {
-                        _cityMobile->setStatusAccept(currentOrder.id, lastAPIVCode);
-                    }
+                int transactionVCode    = -1;
+                if (error == ErrorsOrder::noError) {
+                    transactionVCode = createTransaction(currentAgzs, currentOrder, aPartner, sideAdress, now);
                 }
-            } else {
+                _db.createApiTransaction(currentAgzs.agzsName, currentAgzs.agzs, currentOrder.dateCreate,
+                                     lastAPIVCode, currentOrder.id, "", currentOrder.columnId, currentOrder.fuelId,
+                                     FuelApiToFuelId(currentOrder.fuelId), currentOrder.priceFuel, currentOrder.litre,
+                                     currentOrder.sum, currentOrder.status, currentOrder.contractId, "CityMobile",
+                                     errorToString(error), 0, 0, 0, now, transactionVCode);
+                switch (error) {
+                case ErrorsOrder::noError: {
+                    _cityMobile->setStatusAccept(currentOrder.id, lastAPIVCode);
+                    break;
+                }
+                case ErrorsOrder::trkError: {
+                    _db.logAppend("Error Указанная колонка не найдена " + currentOrder.id);
+                    _cityMobile->setStatusCanceled(currentOrder.id, "Указанная колонка не найдена.", QString::number(lastAPIVCode), now);
+                    break;
+                }
+                case ErrorsOrder::fuelError: {
+                    _db.logAppend("Error Не обнаружено указанное топливо " + currentOrder.id);
+                    _cityMobile->setStatusCanceled(currentOrder.id, "Не обнаружено указанное топливо.", QString::number(lastAPIVCode), now);
+                    break;
+                }
+                case ErrorsOrder::priceError: {
+                    _db.logAppend("Error Цена на выбранный вид топлива отличается от фактической цены " + currentOrder.id);
+                    _cityMobile->setStatusCanceled(currentOrder.id, "Цена на выбранный вид топлива отличается от фактической цены.", QString::number(lastAPIVCode), now);
+                    break;
+                }
+                }
+                break;
+            }
+            case OrderStatus::waitingRefueling: {
                 ApiTransaction apiTransaction = _db.getApiTransactionState(currentOrder.id);
-                if (currentOrder.status == "WaitingRefueling") { //ожидание включения налива на ТРК
-                    if (QString::number(apiTransaction.iState) != apiTransaction.localState) {
-                        if (apiTransaction.iState > 0) {
-                            _db.updateApiTransactionState(apiTransaction.localState, apiTransaction.dateClose, apiTransaction.apiVCode);
-                        }
-                        _cityMobile->setStatusFueling(currentOrder.id, apiTransaction.apiVCode);
-                    }
-                } else if (currentOrder.status == "Fueling") { //идет налив
-                    sendLiters(aPartner, apiTransaction, currentOrder.id);
-
-                    if (QString::number(apiTransaction.iState) != apiTransaction.localState) {
-                        switch (apiTransaction.iState) {
-                        case 1 ... 4: {//Цена установлена
-                            _db.updateApiTransactionState(apiTransaction.localState, apiTransaction.dateClose, apiTransaction.apiVCode);
-                            break;
-                        }
-                        case 5 ... 8 : {//Выдано //Подтверждение   Завершение выдачи //Обновление счетчиков //Завершение выдачи
-                            if (apiTransaction.localState != 5) {
-                                double amount = 0.0f, volume = 0.0f, price = 0.0f;
-                                _db.getPayOperationLiters(apiTransaction.headVCode, amount, volume, price);
-
-                                if((amount > 0.1) && (volume > 0.1) && (price > 0.1)){
-                                    _db.finalUpdateApiTransactionState("5", price, volume, amount, apiTransaction.dateOpen, apiTransaction.dateClose, apiTransaction.apiVCode);
-                                    _cityMobile->setStatusCompleted(currentOrder.id, volume, QString::number(apiTransaction.apiVCode), apiTransaction.dateClose);
-                                }
-                            }
-                            break;
-                        }
-                        default: {
-
-                        }
-                        }
-                    }
-                } else if (currentOrder.status == "Expire") { //статус от АЗС не поступил в течение 30 минут
-                    _db.updateApiTransactionState("Ошибка: 30 минут", apiTransaction.dateClose, apiTransaction.apiVCode);
-                    _db.setTransactionClosed(currentOrder.id, 1);
-
-                    _cityMobile->setStatusCanceled(currentOrder.id, "Истекло время ожидания", QString::number(apiTransaction.apiVCode), apiTransaction.dateOpen);
-                } else if (currentOrder.status == "StationCanceled") { //заказ отменен оператором АЗС или же интегрируемой системой
-
-                } else if (currentOrder.status == "UserCanceled") { //заказ отменен пользователем
-                    //_db.updateApiTransactionState("Ошибка: отменен пользователем", apiTransaction.dateClose, apiTransaction.apiVCode);
-                    //_db.setTransactionClosed(currentOrder.id, 1);
-
-                    //_cityMobile->setStatusCanceled(currentOrder.id, "Заказ отменен пользователем", QString::number(apiTransaction.apiVCode), apiTransaction.dateOpen);
-                } else if (currentOrder.status == "Completed") { //заказа завершен успешно
-
+                if (QString::number(apiTransaction.iState) == apiTransaction.localState) {
+                    break;
                 }
+                if (apiTransaction.iState > 0) {
+                    _db.updateApiTransactionState(apiTransaction.localState, apiTransaction.dateClose, apiTransaction.apiVCode);
+                }
+                _cityMobile->setStatusFueling(currentOrder.id, apiTransaction.apiVCode);
+                break;
+            }
+            case OrderStatus::fueling: {
+                ApiTransaction apiTransaction = _db.getApiTransactionState(currentOrder.id);
+                sendLiters(aPartner, apiTransaction, currentOrder.id);
+                if (QString::number(apiTransaction.iState) == apiTransaction.localState) {
+                    break;
+                }
+                switch (apiTransaction.iState) {
+                case 1 ... 4: {//Цена установлена
+                    _db.updateApiTransactionState(apiTransaction.localState, apiTransaction.dateClose, apiTransaction.apiVCode);
+                    break;
+                }
+                case 5 ... 8 : {//Выдано //Подтверждение   Завершение выдачи //Обновление счетчиков //Завершение выдачи
+                    if (apiTransaction.localState == 5) {
+                        break;
+                    }
+                    double amount = 0.0, volume = 0.0, price = 0.0;
+                    _db.getPayOperationLiters(apiTransaction.headVCode, amount, volume, price);
+
+                    if((amount > 0.1) && (volume > 0.1) && (price > 0.1)) {
+                        _db.finalUpdateApiTransactionState("5", price, volume, amount, apiTransaction.dateOpen, apiTransaction.dateClose, apiTransaction.apiVCode);
+                        _cityMobile->setStatusCompleted(currentOrder.id, volume, QString::number(apiTransaction.apiVCode), apiTransaction.dateClose);
+                    }
+                    break;
+                }
+                }
+                break;
+            }
+            case OrderStatus::expire: {
+                ApiTransaction apiTransaction = _db.getApiTransactionState(currentOrder.id);
+                _db.updateApiTransactionState("Ошибка: 30 минут", apiTransaction.dateClose, apiTransaction.apiVCode);
+                _db.setTransactionClosed(currentOrder.id, 1);
+
+                _cityMobile->setStatusCanceled(currentOrder.id, "Истекло время ожидания", QString::number(apiTransaction.apiVCode), apiTransaction.dateOpen);
+                break;
+            }
+            case OrderStatus::stationCanceled: {
+
+                break;
+            }
+            case OrderStatus::userCanceled: {
+
+                break;
+            }
+            case OrderStatus::completed: {
+
+                break;
+            }
+            case OrderStatus::unknown: {
+
+                break;
+            }
             }
         }
         if (aOrders.object().value("nextRetryMs").isDouble()) {
             _timerCityMobileOrders.setInterval(aOrders.object().value("nextRetryMs").toInt());
         }
+        break;
     }
     }
 }

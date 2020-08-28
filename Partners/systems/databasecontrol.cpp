@@ -116,7 +116,7 @@ FuelNames DataBaseControl::getFuelNames(int aFuelId) {
     return FuelNames();
 }
 
-bool DataBaseControl::getFuels(QVector<QPair<int, QVector<int>>> &aFuels) {
+QVector<SideFuel> DataBaseControl::getFuels() {
     int cycles = 0;
     while (cycles < c_maxRestartCount) {
         QSqlQuery qFuels(_db);
@@ -128,35 +128,40 @@ bool DataBaseControl::getFuels(QVector<QPair<int, QVector<int>>> &aFuels) {
                      "AND trk.agzs = columnn.agzs "
                      "AND columnn.visible = 1 ");
         if (qFuels.lastError().type() == QSqlError::NoError) {
+            QVector<SideFuel> result;
             while (qFuels.next()) {
                 if (qFuels.value(0).toInt() > 0) {
-                    QVector<int> fuelsLocalA;
+                    SideFuel side;
+                    side.sideAdress = qFuels.value(0).toInt();
+                    side.partnerSideAdress = qFuels.value(1).toInt();
+                    QVector<int> fuels;
                     if (!qFuels.value(2).isNull()) {
-                        fuelsLocalA.append(qFuels.value(2).toInt());
+                        fuels.append(qFuels.value(2).toInt());
                     }
                     if (!qFuels.value(3).isNull()) {
-                        fuelsLocalA.append(qFuels.value(3).toInt());
+                        fuels.append(qFuels.value(3).toInt());
                     }
                     if (!qFuels.value(4).isNull()) {
-                        fuelsLocalA.append(qFuels.value(4).toInt());
+                        fuels.append(qFuels.value(4).toInt());
                     }
                     if (!qFuels.value(5).isNull()) {
-                        fuelsLocalA.append(qFuels.value(5).toInt());
+                        fuels.append(qFuels.value(5).toInt());
                     }
                     if (!qFuels.value(6).isNull()) {
-                        fuelsLocalA.append(qFuels.value(6).toInt());
+                        fuels.append(qFuels.value(6).toInt());
                     }
-                    aFuels.append(QPair<int, QVector<int>>(qFuels.value(1).toInt(), fuelsLocalA));
+                    side.fuels = fuels;
+                    result.append(std::move(side));
                 }
             }
-            return true;
+            return result;
         } else {
             openDB();
             logAppend("GetFuels error " + QString::number(cycles));
         }
         cycles++;
     }
-    return false;
+    return QVector<SideFuel>();
 }
 
 int DataBaseControl::getRealSideAddress(int aAgzs, int aPartnerSideAddress) {
@@ -840,7 +845,7 @@ int DataBaseControl::getLastVCode(QString aKey, bool aUpdate) {
     }
 }
 
-int DataBaseControl::checkError(QString aColumnID, QString aFuelID, int aiFuelID, QString aPriceFuel, int aIPartner) {
+ErrorsOrder DataBaseControl::checkError(QString aColumnID, QString aFuelID, int aiFuelID, QString aPriceFuel, int aIPartner) {
     QSqlQuery query(_db);
     query.exec("SELECT d.AGZS, d.VCode, d.Id "
                "FROM [agzs].[dbo].PR_AGZSData d "
@@ -890,15 +895,15 @@ int DataBaseControl::checkError(QString aColumnID, QString aFuelID, int aiFuelID
                             "and p.iPartner = " + QString::number(aIPartner) +
                         "ORDER BY d.CDate DESC");
             if (query.next()) {
-                return 0;
+                return ErrorsOrder::noError;
             } else {
-                return 3;
+                return ErrorsOrder::priceError;
             }
         } else {
-            return 2;
+            return ErrorsOrder::fuelError;
         }
     } else {
-        return 1;
+        return ErrorsOrder::trkError;
     }
 }
 

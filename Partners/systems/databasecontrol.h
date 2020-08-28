@@ -142,6 +142,20 @@ struct Transaction {
     int propan = 0;
 };
 
+struct SideFuel {
+    int sideAdress;
+    int partnerSideAdress;
+    QString side;
+    QVector<int> fuels;
+};
+
+enum class ErrorsOrder {
+    noError = 0,
+    trkError = 1,
+    fuelError = 2,
+    priceError = 3
+};
+
 #define StructsEnd }
 
 class DataBaseControl : public QObject {
@@ -154,14 +168,14 @@ public:
 public slots:
     int getCurrentAgzs();
     FuelNames getFuelNames(int aFuelId);
-    bool getFuels(QVector<QPair<int, QVector<int> > > &fuels);
+    QVector<SideFuel> getFuels();
     int getCashBoxIndex(QString iPartner);
     Price getPrices(QString iPartner);
     Agzs getAgzsData();
     AdastTrk getAgzsAdastTrk(int sideAdress);
     bool updateApiTransaction(int localState, QDateTime date, int vCode);
     int getLastVCode(QString key, bool update);
-    int checkError(QString aColumnID, QString aFuelID, int aiFuelID, QString aPriceFuel, int aIPartner);
+    ErrorsOrder checkError(QString aColumnID, QString aFuelID, int aiFuelID, QString aPriceFuel, int aIPartner);
     bool createTrkTransaction(QString aAgzsName, int aLocalVCode, QString aTrkType, QString aDeviceName, QString aSerial, QString aFuelName, QString aFuelShortName, QString aSide, int aSideAdress, int aNozzle, int aTrkFuelCode, QString aTransNum, double aTrkTotalPrice, double aTrkVolume, double aTrkUnitPrice, double aRequestTotalPrice, double aRequestVolume, double aRequestUnitPrice, QString aRequestField, QString aState, int aIState, QString aTrkTransType, double aLitersCountBefore, double aMoneyCountBefore, int aTransCountBefore, double aLitersCountAfter, double aMoneyCountAfter, int aTransCountAfter, QString aResult, QDateTime aDateOpen, QDateTime aDateClose, double aTemperature, int aPayOperationVCode, QString aPayWay, int aPrePostPay, QString aWUser, QDateTime aWDate, QString aCUser, QDateTime aCDate, QString aCHost, QString aWHost, int aVCode, int aAddedForTransVCode, int aAditionalTransVCode, int aActive, double aMass, int aSmena, int aTrkVcode, int aCapacityVcode, int aPumpPlace, double aMoneyTaken, int aIPayWay, int aAutoCheck, int aClosed, int aFullTank, int aAgzs, int aFuelVCode, int aPropan);
     bool createTrkTransaction(Transaction transaction);
     int getSmena();

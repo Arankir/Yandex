@@ -10,7 +10,6 @@
 #include "../../Partners/systems/databasecontrol.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
-#include <QtCore/QVector>
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'databasecontrol.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
@@ -24,7 +23,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_DataBaseControl_t {
     QByteArrayData data[131];
-    char stringdata0[1540];
+    char stringdata0[1528];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -40,161 +39,160 @@ QT_MOC_LITERAL(3, 32, 12), // "getFuelNames"
 QT_MOC_LITERAL(4, 45, 9), // "FuelNames"
 QT_MOC_LITERAL(5, 55, 7), // "aFuelId"
 QT_MOC_LITERAL(6, 63, 8), // "getFuels"
-QT_MOC_LITERAL(7, 72, 35), // "QVector<QPair<int,QVector<int..."
-QT_MOC_LITERAL(8, 108, 5), // "fuels"
-QT_MOC_LITERAL(9, 114, 15), // "getCashBoxIndex"
-QT_MOC_LITERAL(10, 130, 8), // "iPartner"
-QT_MOC_LITERAL(11, 139, 9), // "getPrices"
-QT_MOC_LITERAL(12, 149, 5), // "Price"
-QT_MOC_LITERAL(13, 155, 11), // "getAgzsData"
-QT_MOC_LITERAL(14, 167, 4), // "Agzs"
-QT_MOC_LITERAL(15, 172, 15), // "getAgzsAdastTrk"
-QT_MOC_LITERAL(16, 188, 8), // "AdastTrk"
-QT_MOC_LITERAL(17, 197, 10), // "sideAdress"
-QT_MOC_LITERAL(18, 208, 20), // "updateApiTransaction"
-QT_MOC_LITERAL(19, 229, 10), // "localState"
-QT_MOC_LITERAL(20, 240, 4), // "date"
-QT_MOC_LITERAL(21, 245, 5), // "vCode"
-QT_MOC_LITERAL(22, 251, 12), // "getLastVCode"
-QT_MOC_LITERAL(23, 264, 3), // "key"
-QT_MOC_LITERAL(24, 268, 6), // "update"
-QT_MOC_LITERAL(25, 275, 10), // "checkError"
-QT_MOC_LITERAL(26, 286, 9), // "aColumnID"
-QT_MOC_LITERAL(27, 296, 7), // "aFuelID"
-QT_MOC_LITERAL(28, 304, 8), // "aiFuelID"
-QT_MOC_LITERAL(29, 313, 10), // "aPriceFuel"
-QT_MOC_LITERAL(30, 324, 9), // "aIPartner"
-QT_MOC_LITERAL(31, 334, 20), // "createTrkTransaction"
-QT_MOC_LITERAL(32, 355, 9), // "aAgzsName"
-QT_MOC_LITERAL(33, 365, 11), // "aLocalVCode"
-QT_MOC_LITERAL(34, 377, 8), // "aTrkType"
-QT_MOC_LITERAL(35, 386, 11), // "aDeviceName"
-QT_MOC_LITERAL(36, 398, 7), // "aSerial"
-QT_MOC_LITERAL(37, 406, 9), // "aFuelName"
-QT_MOC_LITERAL(38, 416, 14), // "aFuelShortName"
-QT_MOC_LITERAL(39, 431, 5), // "aSide"
-QT_MOC_LITERAL(40, 437, 11), // "aSideAdress"
-QT_MOC_LITERAL(41, 449, 7), // "aNozzle"
-QT_MOC_LITERAL(42, 457, 12), // "aTrkFuelCode"
-QT_MOC_LITERAL(43, 470, 9), // "aTransNum"
-QT_MOC_LITERAL(44, 480, 14), // "aTrkTotalPrice"
-QT_MOC_LITERAL(45, 495, 10), // "aTrkVolume"
-QT_MOC_LITERAL(46, 506, 13), // "aTrkUnitPrice"
-QT_MOC_LITERAL(47, 520, 18), // "aRequestTotalPrice"
-QT_MOC_LITERAL(48, 539, 14), // "aRequestVolume"
-QT_MOC_LITERAL(49, 554, 17), // "aRequestUnitPrice"
-QT_MOC_LITERAL(50, 572, 13), // "aRequestField"
-QT_MOC_LITERAL(51, 586, 6), // "aState"
-QT_MOC_LITERAL(52, 593, 7), // "aIState"
-QT_MOC_LITERAL(53, 601, 13), // "aTrkTransType"
-QT_MOC_LITERAL(54, 615, 18), // "aLitersCountBefore"
-QT_MOC_LITERAL(55, 634, 17), // "aMoneyCountBefore"
-QT_MOC_LITERAL(56, 652, 17), // "aTransCountBefore"
-QT_MOC_LITERAL(57, 670, 17), // "aLitersCountAfter"
-QT_MOC_LITERAL(58, 688, 16), // "aMoneyCountAfter"
-QT_MOC_LITERAL(59, 705, 16), // "aTransCountAfter"
-QT_MOC_LITERAL(60, 722, 7), // "aResult"
-QT_MOC_LITERAL(61, 730, 9), // "aDateOpen"
-QT_MOC_LITERAL(62, 740, 10), // "aDateClose"
-QT_MOC_LITERAL(63, 751, 12), // "aTemperature"
-QT_MOC_LITERAL(64, 764, 18), // "aPayOperationVCode"
-QT_MOC_LITERAL(65, 783, 7), // "aPayWay"
-QT_MOC_LITERAL(66, 791, 11), // "aPrePostPay"
-QT_MOC_LITERAL(67, 803, 6), // "aWUser"
-QT_MOC_LITERAL(68, 810, 6), // "aWDate"
-QT_MOC_LITERAL(69, 817, 6), // "aCUser"
-QT_MOC_LITERAL(70, 824, 6), // "aCDate"
-QT_MOC_LITERAL(71, 831, 6), // "aCHost"
-QT_MOC_LITERAL(72, 838, 6), // "aWHost"
-QT_MOC_LITERAL(73, 845, 6), // "aVCode"
-QT_MOC_LITERAL(74, 852, 19), // "aAddedForTransVCode"
-QT_MOC_LITERAL(75, 872, 20), // "aAditionalTransVCode"
-QT_MOC_LITERAL(76, 893, 7), // "aActive"
-QT_MOC_LITERAL(77, 901, 5), // "aMass"
-QT_MOC_LITERAL(78, 907, 6), // "aSmena"
-QT_MOC_LITERAL(79, 914, 9), // "aTrkVcode"
-QT_MOC_LITERAL(80, 924, 14), // "aCapacityVcode"
-QT_MOC_LITERAL(81, 939, 10), // "aPumpPlace"
-QT_MOC_LITERAL(82, 950, 11), // "aMoneyTaken"
-QT_MOC_LITERAL(83, 962, 8), // "aIPayWay"
-QT_MOC_LITERAL(84, 971, 10), // "aAutoCheck"
-QT_MOC_LITERAL(85, 982, 7), // "aClosed"
-QT_MOC_LITERAL(86, 990, 9), // "aFullTank"
-QT_MOC_LITERAL(87, 1000, 5), // "aAgzs"
-QT_MOC_LITERAL(88, 1006, 10), // "aFuelVCode"
-QT_MOC_LITERAL(89, 1017, 7), // "aPropan"
-QT_MOC_LITERAL(90, 1025, 11), // "Transaction"
-QT_MOC_LITERAL(91, 1037, 11), // "transaction"
-QT_MOC_LITERAL(92, 1049, 8), // "getSmena"
-QT_MOC_LITERAL(93, 1058, 20), // "createApiTransaction"
-QT_MOC_LITERAL(94, 1079, 6), // "aApiId"
-QT_MOC_LITERAL(95, 1086, 21), // "aApiStationExtendedId"
-QT_MOC_LITERAL(96, 1108, 12), // "aApiColumnId"
-QT_MOC_LITERAL(97, 1121, 10), // "aApiFuelId"
-QT_MOC_LITERAL(98, 1132, 13), // "aApiPriceFuel"
-QT_MOC_LITERAL(99, 1146, 9), // "aApiLitre"
-QT_MOC_LITERAL(100, 1156, 7), // "aApiSum"
-QT_MOC_LITERAL(101, 1164, 10), // "aApiStatus"
-QT_MOC_LITERAL(102, 1175, 14), // "aApiContractId"
-QT_MOC_LITERAL(103, 1190, 6), // "aAgent"
-QT_MOC_LITERAL(104, 1197, 11), // "aLocalState"
-QT_MOC_LITERAL(105, 1209, 6), // "aPrice"
-QT_MOC_LITERAL(106, 1216, 6), // "aLitre"
-QT_MOC_LITERAL(107, 1223, 4), // "aSum"
-QT_MOC_LITERAL(108, 1228, 5), // "aLink"
-QT_MOC_LITERAL(109, 1234, 22), // "getApiTransactionState"
-QT_MOC_LITERAL(110, 1257, 14), // "ApiTransaction"
-QT_MOC_LITERAL(111, 1272, 2), // "id"
-QT_MOC_LITERAL(112, 1275, 25), // "updateApiTransactionState"
-QT_MOC_LITERAL(113, 1301, 9), // "dateClose"
-QT_MOC_LITERAL(114, 1311, 30), // "finalUpdateApiTransactionState"
-QT_MOC_LITERAL(115, 1342, 5), // "price"
-QT_MOC_LITERAL(116, 1348, 6), // "volume"
-QT_MOC_LITERAL(117, 1355, 6), // "amount"
-QT_MOC_LITERAL(118, 1362, 8), // "dateOpen"
-QT_MOC_LITERAL(119, 1371, 21), // "getPayOperationLiters"
-QT_MOC_LITERAL(120, 1393, 4), // "link"
-QT_MOC_LITERAL(121, 1398, 7), // "double&"
-QT_MOC_LITERAL(122, 1406, 20), // "setTransactionClosed"
-QT_MOC_LITERAL(123, 1427, 6), // "closed"
-QT_MOC_LITERAL(124, 1434, 18), // "getTransactionData"
-QT_MOC_LITERAL(125, 1453, 14), // "setYandexToken"
-QT_MOC_LITERAL(126, 1468, 6), // "aToken"
-QT_MOC_LITERAL(127, 1475, 18), // "isTransactionExist"
-QT_MOC_LITERAL(128, 1494, 18), // "getRealSideAddress"
-QT_MOC_LITERAL(129, 1513, 19), // "aPartnerSideAddress"
-QT_MOC_LITERAL(130, 1533, 6) // "openDB"
+QT_MOC_LITERAL(7, 72, 17), // "QVector<SideFuel>"
+QT_MOC_LITERAL(8, 90, 15), // "getCashBoxIndex"
+QT_MOC_LITERAL(9, 106, 8), // "iPartner"
+QT_MOC_LITERAL(10, 115, 9), // "getPrices"
+QT_MOC_LITERAL(11, 125, 5), // "Price"
+QT_MOC_LITERAL(12, 131, 11), // "getAgzsData"
+QT_MOC_LITERAL(13, 143, 4), // "Agzs"
+QT_MOC_LITERAL(14, 148, 15), // "getAgzsAdastTrk"
+QT_MOC_LITERAL(15, 164, 8), // "AdastTrk"
+QT_MOC_LITERAL(16, 173, 10), // "sideAdress"
+QT_MOC_LITERAL(17, 184, 20), // "updateApiTransaction"
+QT_MOC_LITERAL(18, 205, 10), // "localState"
+QT_MOC_LITERAL(19, 216, 4), // "date"
+QT_MOC_LITERAL(20, 221, 5), // "vCode"
+QT_MOC_LITERAL(21, 227, 12), // "getLastVCode"
+QT_MOC_LITERAL(22, 240, 3), // "key"
+QT_MOC_LITERAL(23, 244, 6), // "update"
+QT_MOC_LITERAL(24, 251, 10), // "checkError"
+QT_MOC_LITERAL(25, 262, 11), // "ErrorsOrder"
+QT_MOC_LITERAL(26, 274, 9), // "aColumnID"
+QT_MOC_LITERAL(27, 284, 7), // "aFuelID"
+QT_MOC_LITERAL(28, 292, 8), // "aiFuelID"
+QT_MOC_LITERAL(29, 301, 10), // "aPriceFuel"
+QT_MOC_LITERAL(30, 312, 9), // "aIPartner"
+QT_MOC_LITERAL(31, 322, 20), // "createTrkTransaction"
+QT_MOC_LITERAL(32, 343, 9), // "aAgzsName"
+QT_MOC_LITERAL(33, 353, 11), // "aLocalVCode"
+QT_MOC_LITERAL(34, 365, 8), // "aTrkType"
+QT_MOC_LITERAL(35, 374, 11), // "aDeviceName"
+QT_MOC_LITERAL(36, 386, 7), // "aSerial"
+QT_MOC_LITERAL(37, 394, 9), // "aFuelName"
+QT_MOC_LITERAL(38, 404, 14), // "aFuelShortName"
+QT_MOC_LITERAL(39, 419, 5), // "aSide"
+QT_MOC_LITERAL(40, 425, 11), // "aSideAdress"
+QT_MOC_LITERAL(41, 437, 7), // "aNozzle"
+QT_MOC_LITERAL(42, 445, 12), // "aTrkFuelCode"
+QT_MOC_LITERAL(43, 458, 9), // "aTransNum"
+QT_MOC_LITERAL(44, 468, 14), // "aTrkTotalPrice"
+QT_MOC_LITERAL(45, 483, 10), // "aTrkVolume"
+QT_MOC_LITERAL(46, 494, 13), // "aTrkUnitPrice"
+QT_MOC_LITERAL(47, 508, 18), // "aRequestTotalPrice"
+QT_MOC_LITERAL(48, 527, 14), // "aRequestVolume"
+QT_MOC_LITERAL(49, 542, 17), // "aRequestUnitPrice"
+QT_MOC_LITERAL(50, 560, 13), // "aRequestField"
+QT_MOC_LITERAL(51, 574, 6), // "aState"
+QT_MOC_LITERAL(52, 581, 7), // "aIState"
+QT_MOC_LITERAL(53, 589, 13), // "aTrkTransType"
+QT_MOC_LITERAL(54, 603, 18), // "aLitersCountBefore"
+QT_MOC_LITERAL(55, 622, 17), // "aMoneyCountBefore"
+QT_MOC_LITERAL(56, 640, 17), // "aTransCountBefore"
+QT_MOC_LITERAL(57, 658, 17), // "aLitersCountAfter"
+QT_MOC_LITERAL(58, 676, 16), // "aMoneyCountAfter"
+QT_MOC_LITERAL(59, 693, 16), // "aTransCountAfter"
+QT_MOC_LITERAL(60, 710, 7), // "aResult"
+QT_MOC_LITERAL(61, 718, 9), // "aDateOpen"
+QT_MOC_LITERAL(62, 728, 10), // "aDateClose"
+QT_MOC_LITERAL(63, 739, 12), // "aTemperature"
+QT_MOC_LITERAL(64, 752, 18), // "aPayOperationVCode"
+QT_MOC_LITERAL(65, 771, 7), // "aPayWay"
+QT_MOC_LITERAL(66, 779, 11), // "aPrePostPay"
+QT_MOC_LITERAL(67, 791, 6), // "aWUser"
+QT_MOC_LITERAL(68, 798, 6), // "aWDate"
+QT_MOC_LITERAL(69, 805, 6), // "aCUser"
+QT_MOC_LITERAL(70, 812, 6), // "aCDate"
+QT_MOC_LITERAL(71, 819, 6), // "aCHost"
+QT_MOC_LITERAL(72, 826, 6), // "aWHost"
+QT_MOC_LITERAL(73, 833, 6), // "aVCode"
+QT_MOC_LITERAL(74, 840, 19), // "aAddedForTransVCode"
+QT_MOC_LITERAL(75, 860, 20), // "aAditionalTransVCode"
+QT_MOC_LITERAL(76, 881, 7), // "aActive"
+QT_MOC_LITERAL(77, 889, 5), // "aMass"
+QT_MOC_LITERAL(78, 895, 6), // "aSmena"
+QT_MOC_LITERAL(79, 902, 9), // "aTrkVcode"
+QT_MOC_LITERAL(80, 912, 14), // "aCapacityVcode"
+QT_MOC_LITERAL(81, 927, 10), // "aPumpPlace"
+QT_MOC_LITERAL(82, 938, 11), // "aMoneyTaken"
+QT_MOC_LITERAL(83, 950, 8), // "aIPayWay"
+QT_MOC_LITERAL(84, 959, 10), // "aAutoCheck"
+QT_MOC_LITERAL(85, 970, 7), // "aClosed"
+QT_MOC_LITERAL(86, 978, 9), // "aFullTank"
+QT_MOC_LITERAL(87, 988, 5), // "aAgzs"
+QT_MOC_LITERAL(88, 994, 10), // "aFuelVCode"
+QT_MOC_LITERAL(89, 1005, 7), // "aPropan"
+QT_MOC_LITERAL(90, 1013, 11), // "Transaction"
+QT_MOC_LITERAL(91, 1025, 11), // "transaction"
+QT_MOC_LITERAL(92, 1037, 8), // "getSmena"
+QT_MOC_LITERAL(93, 1046, 20), // "createApiTransaction"
+QT_MOC_LITERAL(94, 1067, 6), // "aApiId"
+QT_MOC_LITERAL(95, 1074, 21), // "aApiStationExtendedId"
+QT_MOC_LITERAL(96, 1096, 12), // "aApiColumnId"
+QT_MOC_LITERAL(97, 1109, 10), // "aApiFuelId"
+QT_MOC_LITERAL(98, 1120, 13), // "aApiPriceFuel"
+QT_MOC_LITERAL(99, 1134, 9), // "aApiLitre"
+QT_MOC_LITERAL(100, 1144, 7), // "aApiSum"
+QT_MOC_LITERAL(101, 1152, 10), // "aApiStatus"
+QT_MOC_LITERAL(102, 1163, 14), // "aApiContractId"
+QT_MOC_LITERAL(103, 1178, 6), // "aAgent"
+QT_MOC_LITERAL(104, 1185, 11), // "aLocalState"
+QT_MOC_LITERAL(105, 1197, 6), // "aPrice"
+QT_MOC_LITERAL(106, 1204, 6), // "aLitre"
+QT_MOC_LITERAL(107, 1211, 4), // "aSum"
+QT_MOC_LITERAL(108, 1216, 5), // "aLink"
+QT_MOC_LITERAL(109, 1222, 22), // "getApiTransactionState"
+QT_MOC_LITERAL(110, 1245, 14), // "ApiTransaction"
+QT_MOC_LITERAL(111, 1260, 2), // "id"
+QT_MOC_LITERAL(112, 1263, 25), // "updateApiTransactionState"
+QT_MOC_LITERAL(113, 1289, 9), // "dateClose"
+QT_MOC_LITERAL(114, 1299, 30), // "finalUpdateApiTransactionState"
+QT_MOC_LITERAL(115, 1330, 5), // "price"
+QT_MOC_LITERAL(116, 1336, 6), // "volume"
+QT_MOC_LITERAL(117, 1343, 6), // "amount"
+QT_MOC_LITERAL(118, 1350, 8), // "dateOpen"
+QT_MOC_LITERAL(119, 1359, 21), // "getPayOperationLiters"
+QT_MOC_LITERAL(120, 1381, 4), // "link"
+QT_MOC_LITERAL(121, 1386, 7), // "double&"
+QT_MOC_LITERAL(122, 1394, 20), // "setTransactionClosed"
+QT_MOC_LITERAL(123, 1415, 6), // "closed"
+QT_MOC_LITERAL(124, 1422, 18), // "getTransactionData"
+QT_MOC_LITERAL(125, 1441, 14), // "setYandexToken"
+QT_MOC_LITERAL(126, 1456, 6), // "aToken"
+QT_MOC_LITERAL(127, 1463, 18), // "isTransactionExist"
+QT_MOC_LITERAL(128, 1482, 18), // "getRealSideAddress"
+QT_MOC_LITERAL(129, 1501, 19), // "aPartnerSideAddress"
+QT_MOC_LITERAL(130, 1521, 6) // "openDB"
 
     },
     "DataBaseControl\0getCurrentAgzs\0\0"
     "getFuelNames\0FuelNames\0aFuelId\0getFuels\0"
-    "QVector<QPair<int,QVector<int> > >&\0"
-    "fuels\0getCashBoxIndex\0iPartner\0getPrices\0"
-    "Price\0getAgzsData\0Agzs\0getAgzsAdastTrk\0"
-    "AdastTrk\0sideAdress\0updateApiTransaction\0"
-    "localState\0date\0vCode\0getLastVCode\0"
-    "key\0update\0checkError\0aColumnID\0aFuelID\0"
-    "aiFuelID\0aPriceFuel\0aIPartner\0"
-    "createTrkTransaction\0aAgzsName\0"
-    "aLocalVCode\0aTrkType\0aDeviceName\0"
-    "aSerial\0aFuelName\0aFuelShortName\0aSide\0"
-    "aSideAdress\0aNozzle\0aTrkFuelCode\0"
-    "aTransNum\0aTrkTotalPrice\0aTrkVolume\0"
-    "aTrkUnitPrice\0aRequestTotalPrice\0"
-    "aRequestVolume\0aRequestUnitPrice\0"
-    "aRequestField\0aState\0aIState\0aTrkTransType\0"
-    "aLitersCountBefore\0aMoneyCountBefore\0"
-    "aTransCountBefore\0aLitersCountAfter\0"
-    "aMoneyCountAfter\0aTransCountAfter\0"
-    "aResult\0aDateOpen\0aDateClose\0aTemperature\0"
-    "aPayOperationVCode\0aPayWay\0aPrePostPay\0"
-    "aWUser\0aWDate\0aCUser\0aCDate\0aCHost\0"
-    "aWHost\0aVCode\0aAddedForTransVCode\0"
-    "aAditionalTransVCode\0aActive\0aMass\0"
-    "aSmena\0aTrkVcode\0aCapacityVcode\0"
-    "aPumpPlace\0aMoneyTaken\0aIPayWay\0"
-    "aAutoCheck\0aClosed\0aFullTank\0aAgzs\0"
-    "aFuelVCode\0aPropan\0Transaction\0"
+    "QVector<SideFuel>\0getCashBoxIndex\0"
+    "iPartner\0getPrices\0Price\0getAgzsData\0"
+    "Agzs\0getAgzsAdastTrk\0AdastTrk\0sideAdress\0"
+    "updateApiTransaction\0localState\0date\0"
+    "vCode\0getLastVCode\0key\0update\0checkError\0"
+    "ErrorsOrder\0aColumnID\0aFuelID\0aiFuelID\0"
+    "aPriceFuel\0aIPartner\0createTrkTransaction\0"
+    "aAgzsName\0aLocalVCode\0aTrkType\0"
+    "aDeviceName\0aSerial\0aFuelName\0"
+    "aFuelShortName\0aSide\0aSideAdress\0"
+    "aNozzle\0aTrkFuelCode\0aTransNum\0"
+    "aTrkTotalPrice\0aTrkVolume\0aTrkUnitPrice\0"
+    "aRequestTotalPrice\0aRequestVolume\0"
+    "aRequestUnitPrice\0aRequestField\0aState\0"
+    "aIState\0aTrkTransType\0aLitersCountBefore\0"
+    "aMoneyCountBefore\0aTransCountBefore\0"
+    "aLitersCountAfter\0aMoneyCountAfter\0"
+    "aTransCountAfter\0aResult\0aDateOpen\0"
+    "aDateClose\0aTemperature\0aPayOperationVCode\0"
+    "aPayWay\0aPrePostPay\0aWUser\0aWDate\0"
+    "aCUser\0aCDate\0aCHost\0aWHost\0aVCode\0"
+    "aAddedForTransVCode\0aAditionalTransVCode\0"
+    "aActive\0aMass\0aSmena\0aTrkVcode\0"
+    "aCapacityVcode\0aPumpPlace\0aMoneyTaken\0"
+    "aIPayWay\0aAutoCheck\0aClosed\0aFullTank\0"
+    "aAgzs\0aFuelVCode\0aPropan\0Transaction\0"
     "transaction\0getSmena\0createApiTransaction\0"
     "aApiId\0aApiStationExtendedId\0aApiColumnId\0"
     "aApiFuelId\0aApiPriceFuel\0aApiLitre\0"
@@ -228,47 +226,47 @@ static const uint qt_meta_data_DataBaseControl[] = {
  // slots: name, argc, parameters, tag, flags
        1,    0,  134,    2, 0x0a /* Public */,
        3,    1,  135,    2, 0x0a /* Public */,
-       6,    1,  138,    2, 0x0a /* Public */,
-       9,    1,  141,    2, 0x0a /* Public */,
-      11,    1,  144,    2, 0x0a /* Public */,
-      13,    0,  147,    2, 0x0a /* Public */,
-      15,    1,  148,    2, 0x0a /* Public */,
-      18,    3,  151,    2, 0x0a /* Public */,
-      22,    2,  158,    2, 0x0a /* Public */,
-      25,    5,  163,    2, 0x0a /* Public */,
-      31,   58,  174,    2, 0x0a /* Public */,
-      31,    1,  291,    2, 0x0a /* Public */,
-      92,    0,  294,    2, 0x0a /* Public */,
-      93,   21,  295,    2, 0x0a /* Public */,
-     109,    1,  338,    2, 0x0a /* Public */,
-     112,    3,  341,    2, 0x0a /* Public */,
-     114,    7,  348,    2, 0x0a /* Public */,
-     119,    4,  363,    2, 0x0a /* Public */,
-     122,    2,  372,    2, 0x0a /* Public */,
-     124,    1,  377,    2, 0x0a /* Public */,
-     125,    1,  380,    2, 0x0a /* Public */,
-     127,    1,  383,    2, 0x0a /* Public */,
-     128,    2,  386,    2, 0x0a /* Public */,
-     130,    0,  391,    2, 0x08 /* Private */,
+       6,    0,  138,    2, 0x0a /* Public */,
+       8,    1,  139,    2, 0x0a /* Public */,
+      10,    1,  142,    2, 0x0a /* Public */,
+      12,    0,  145,    2, 0x0a /* Public */,
+      14,    1,  146,    2, 0x0a /* Public */,
+      17,    3,  149,    2, 0x0a /* Public */,
+      21,    2,  156,    2, 0x0a /* Public */,
+      24,    5,  161,    2, 0x0a /* Public */,
+      31,   58,  172,    2, 0x0a /* Public */,
+      31,    1,  289,    2, 0x0a /* Public */,
+      92,    0,  292,    2, 0x0a /* Public */,
+      93,   21,  293,    2, 0x0a /* Public */,
+     109,    1,  336,    2, 0x0a /* Public */,
+     112,    3,  339,    2, 0x0a /* Public */,
+     114,    7,  346,    2, 0x0a /* Public */,
+     119,    4,  361,    2, 0x0a /* Public */,
+     122,    2,  370,    2, 0x0a /* Public */,
+     124,    1,  375,    2, 0x0a /* Public */,
+     125,    1,  378,    2, 0x0a /* Public */,
+     127,    1,  381,    2, 0x0a /* Public */,
+     128,    2,  384,    2, 0x0a /* Public */,
+     130,    0,  389,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Int,
     0x80000000 | 4, QMetaType::Int,    5,
-    QMetaType::Bool, 0x80000000 | 7,    8,
-    QMetaType::Int, QMetaType::QString,   10,
-    0x80000000 | 12, QMetaType::QString,   10,
-    0x80000000 | 14,
-    0x80000000 | 16, QMetaType::Int,   17,
-    QMetaType::Bool, QMetaType::Int, QMetaType::QDateTime, QMetaType::Int,   19,   20,   21,
-    QMetaType::Int, QMetaType::QString, QMetaType::Bool,   23,   24,
-    QMetaType::Int, QMetaType::QString, QMetaType::QString, QMetaType::Int, QMetaType::QString, QMetaType::Int,   26,   27,   28,   29,   30,
+    0x80000000 | 7,
+    QMetaType::Int, QMetaType::QString,    9,
+    0x80000000 | 11, QMetaType::QString,    9,
+    0x80000000 | 13,
+    0x80000000 | 15, QMetaType::Int,   16,
+    QMetaType::Bool, QMetaType::Int, QMetaType::QDateTime, QMetaType::Int,   18,   19,   20,
+    QMetaType::Int, QMetaType::QString, QMetaType::Bool,   22,   23,
+    0x80000000 | 25, QMetaType::QString, QMetaType::QString, QMetaType::Int, QMetaType::QString, QMetaType::Int,   26,   27,   28,   29,   30,
     QMetaType::Bool, QMetaType::QString, QMetaType::Int, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::QString, QMetaType::Double, QMetaType::Double, QMetaType::Double, QMetaType::Double, QMetaType::Double, QMetaType::Double, QMetaType::QString, QMetaType::QString, QMetaType::Int, QMetaType::QString, QMetaType::Double, QMetaType::Double, QMetaType::Int, QMetaType::Double, QMetaType::Double, QMetaType::Int, QMetaType::QString, QMetaType::QDateTime, QMetaType::QDateTime, QMetaType::Double, QMetaType::Int, QMetaType::QString, QMetaType::Int, QMetaType::QString, QMetaType::QDateTime, QMetaType::QString, QMetaType::QDateTime, QMetaType::QString, QMetaType::QString, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Double, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Double, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Int,   32,   33,   34,   35,   36,   37,   38,   39,   40,   41,   42,   43,   44,   45,   46,   47,   48,   49,   50,   51,   52,   53,   54,   55,   56,   57,   58,   59,   60,   61,   62,   63,   64,   65,   66,   67,   68,   69,   70,   71,   72,   73,   74,   75,   76,   77,   78,   79,   80,   81,   82,   83,   84,   85,   86,   87,   88,   89,
     QMetaType::Bool, 0x80000000 | 90,   91,
     QMetaType::Int,
     QMetaType::Bool, QMetaType::QString, QMetaType::Int, QMetaType::QDateTime, QMetaType::Int, QMetaType::QString, QMetaType::QString, QMetaType::Int, QMetaType::QString, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::Double, QMetaType::Double, QMetaType::Double, QMetaType::QDateTime, QMetaType::Int,   32,   87,   70,   73,   94,   95,   96,   97,    5,   98,   99,  100,  101,  102,  103,  104,  105,  106,  107,   61,  108,
     0x80000000 | 110, QMetaType::QString,  111,
-    QMetaType::Bool, QMetaType::QString, QMetaType::QDateTime, QMetaType::Int,   19,  113,   21,
-    QMetaType::Bool, QMetaType::QString, QMetaType::Double, QMetaType::Double, QMetaType::Double, QMetaType::QDateTime, QMetaType::QDateTime, QMetaType::Int,   19,  115,  116,  117,  118,  113,   21,
+    QMetaType::Bool, QMetaType::QString, QMetaType::QDateTime, QMetaType::Int,   18,  113,   20,
+    QMetaType::Bool, QMetaType::QString, QMetaType::Double, QMetaType::Double, QMetaType::Double, QMetaType::QDateTime, QMetaType::QDateTime, QMetaType::Int,   18,  115,  116,  117,  118,  113,   20,
     QMetaType::Bool, QMetaType::Int, 0x80000000 | 121, 0x80000000 | 121, 0x80000000 | 121,  120,  117,  116,  115,
     QMetaType::Bool, QMetaType::QString, QMetaType::Int,  111,  123,
     0x80000000 | 90, QMetaType::Int,   73,
@@ -290,8 +288,8 @@ void DataBaseControl::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
         case 1: { FuelNames _r = _t->getFuelNames((*reinterpret_cast< int(*)>(_a[1])));
             if (_a[0]) *reinterpret_cast< FuelNames*>(_a[0]) = std::move(_r); }  break;
-        case 2: { bool _r = _t->getFuels((*reinterpret_cast< QVector<QPair<int,QVector<int> > >(*)>(_a[1])));
-            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
+        case 2: { QVector<SideFuel> _r = _t->getFuels();
+            if (_a[0]) *reinterpret_cast< QVector<SideFuel>*>(_a[0]) = std::move(_r); }  break;
         case 3: { int _r = _t->getCashBoxIndex((*reinterpret_cast< QString(*)>(_a[1])));
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
         case 4: { Price _r = _t->getPrices((*reinterpret_cast< QString(*)>(_a[1])));
@@ -304,8 +302,8 @@ void DataBaseControl::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
         case 8: { int _r = _t->getLastVCode((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2])));
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
-        case 9: { int _r = _t->checkError((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])),(*reinterpret_cast< QString(*)>(_a[4])),(*reinterpret_cast< int(*)>(_a[5])));
-            if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
+        case 9: { ErrorsOrder _r = _t->checkError((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])),(*reinterpret_cast< QString(*)>(_a[4])),(*reinterpret_cast< int(*)>(_a[5])));
+            if (_a[0]) *reinterpret_cast< ErrorsOrder*>(_a[0]) = std::move(_r); }  break;
         case 10: { bool _r = _t->createTrkTransaction((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3])),(*reinterpret_cast< QString(*)>(_a[4])),(*reinterpret_cast< QString(*)>(_a[5])),(*reinterpret_cast< QString(*)>(_a[6])),(*reinterpret_cast< QString(*)>(_a[7])),(*reinterpret_cast< QString(*)>(_a[8])),(*reinterpret_cast< int(*)>(_a[9])),(*reinterpret_cast< int(*)>(_a[10])),(*reinterpret_cast< int(*)>(_a[11])),(*reinterpret_cast< QString(*)>(_a[12])),(*reinterpret_cast< double(*)>(_a[13])),(*reinterpret_cast< double(*)>(_a[14])),(*reinterpret_cast< double(*)>(_a[15])),(*reinterpret_cast< double(*)>(_a[16])),(*reinterpret_cast< double(*)>(_a[17])),(*reinterpret_cast< double(*)>(_a[18])),(*reinterpret_cast< QString(*)>(_a[19])),(*reinterpret_cast< QString(*)>(_a[20])),(*reinterpret_cast< int(*)>(_a[21])),(*reinterpret_cast< QString(*)>(_a[22])),(*reinterpret_cast< double(*)>(_a[23])),(*reinterpret_cast< double(*)>(_a[24])),(*reinterpret_cast< int(*)>(_a[25])),(*reinterpret_cast< double(*)>(_a[26])),(*reinterpret_cast< double(*)>(_a[27])),(*reinterpret_cast< int(*)>(_a[28])),(*reinterpret_cast< QString(*)>(_a[29])),(*reinterpret_cast< QDateTime(*)>(_a[30])),(*reinterpret_cast< QDateTime(*)>(_a[31])),(*reinterpret_cast< double(*)>(_a[32])),(*reinterpret_cast< int(*)>(_a[33])),(*reinterpret_cast< QString(*)>(_a[34])),(*reinterpret_cast< int(*)>(_a[35])),(*reinterpret_cast< QString(*)>(_a[36])),(*reinterpret_cast< QDateTime(*)>(_a[37])),(*reinterpret_cast< QString(*)>(_a[38])),(*reinterpret_cast< QDateTime(*)>(_a[39])),(*reinterpret_cast< QString(*)>(_a[40])),(*reinterpret_cast< QString(*)>(_a[41])),(*reinterpret_cast< int(*)>(_a[42])),(*reinterpret_cast< int(*)>(_a[43])),(*reinterpret_cast< int(*)>(_a[44])),(*reinterpret_cast< int(*)>(_a[45])),(*reinterpret_cast< double(*)>(_a[46])),(*reinterpret_cast< int(*)>(_a[47])),(*reinterpret_cast< int(*)>(_a[48])),(*reinterpret_cast< int(*)>(_a[49])),(*reinterpret_cast< int(*)>(_a[50])),(*reinterpret_cast< double(*)>(_a[51])),(*reinterpret_cast< int(*)>(_a[52])),(*reinterpret_cast< int(*)>(_a[53])),(*reinterpret_cast< int(*)>(_a[54])),(*reinterpret_cast< int(*)>(_a[55])),(*reinterpret_cast< int(*)>(_a[56])),(*reinterpret_cast< int(*)>(_a[57])),(*reinterpret_cast< int(*)>(_a[58])));
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
         case 11: { bool _r = _t->createTrkTransaction((*reinterpret_cast< Transaction(*)>(_a[1])));
