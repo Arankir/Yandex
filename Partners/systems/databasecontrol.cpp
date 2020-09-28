@@ -579,7 +579,7 @@ bool DataBaseControl::createApiTransaction(QString aAgzsName, int aAgzs, QDateTi
     return false;
 }
 
-ApiTransaction DataBaseControl::getApiTransactionState(QString aId) {
+ApiTransaction DataBaseControl::getApiTransaction(QString aId) {
     int cycles = 0;
     while (cycles < c_maxRestartCount) {
         QSqlQuery query(_db);
@@ -708,7 +708,7 @@ bool DataBaseControl::setTransactionClosed(QString aId, int aClosed) {
     return false;
 }
 
-Transaction DataBaseControl::getTransactionData(int aVCode) {
+Transaction DataBaseControl::getTransaction(int aVCode) {
     int cycles = 0;
     while (cycles < c_maxRestartCount) {
         QSqlQuery query(_db);

@@ -66,6 +66,14 @@ public slots:
     Order JsonToOrder(Partner aPartner, QJsonValue aOrder);
     void sendLiters(Partner aPartner, ApiTransaction aApiTransaction, QString aOrderId);
     OrderStatus stringToStatus(QString aStatus);
+    bool processAcceptOrder(Order aOrder, Partner aPartner);
+    bool processWaitingRefueling(Order aOrder, Partner aPartner);
+    bool processFueling(Order aOrder, Partner aPartner);
+    bool processExpire(Order aOrder, Partner aPartner);
+    bool processStationCanceled(Order aOrder, Partner aPartner);
+    bool processUserCanceled(Order aOrder, Partner aPartner);
+    bool processCompleted(Order aOrder, Partner aPartner);
+    bool processUnknown(Order aOrder, Partner aPartner);
 private slots:
     void on_ButtonEnter_clicked();
     void on_ButtonGetPassword_clicked();

@@ -41,6 +41,7 @@ void CityMobileAPI::setStatusAccept(QString aOrderId, int aVCode) {
 }
 
 void CityMobileAPI::setStatusFueling(QString aOrderId, int aVCode) {
+    Q_UNUSED(aVCode);
     QNetworkRequest request = createRequest("api/orders/fueling?orderId=" + aOrderId, "application/x-www-form-urlencoded", true);
     _request->get(request);
     if ((_request->getCode() != 200) && (_request->getCode() != 401)) {

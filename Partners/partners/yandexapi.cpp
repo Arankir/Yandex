@@ -234,6 +234,7 @@ void YandexAPI::setStatusAccept(QString aOrderId, int aVCode) {
 }
 
 void YandexAPI::setStatusFueling(QString aOrderId, int aVCode) {
+    Q_UNUSED(aVCode);
     QNetworkRequest request = createRequest(QString("%1/api/orders/fueling?orderId=%2").arg(c_baseUrl, aOrderId), "application/x-www-form-urlencoded", true);
     _request->get(request);
     checkAuth(_request);

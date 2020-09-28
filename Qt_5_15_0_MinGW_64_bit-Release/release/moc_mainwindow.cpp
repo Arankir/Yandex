@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[76];
-    char stringdata0[992];
+    QByteArrayData data[84];
+    char stringdata0[1139];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -73,41 +73,49 @@ QT_MOC_LITERAL(37, 418, 8), // "aOrderId"
 QT_MOC_LITERAL(38, 427, 14), // "stringToStatus"
 QT_MOC_LITERAL(39, 442, 11), // "OrderStatus"
 QT_MOC_LITERAL(40, 454, 7), // "aStatus"
-QT_MOC_LITERAL(41, 462, 22), // "on_ButtonEnter_clicked"
-QT_MOC_LITERAL(42, 485, 28), // "on_ButtonGetPassword_clicked"
-QT_MOC_LITERAL(43, 514, 33), // "on_ButtonCancelCitymobile_cli..."
-QT_MOC_LITERAL(44, 548, 29), // "on_ButtonCancelYandex_clicked"
-QT_MOC_LITERAL(45, 578, 25), // "on_ButtonSettings_clicked"
-QT_MOC_LITERAL(46, 604, 16), // "updateDataYandex"
-QT_MOC_LITERAL(47, 621, 15), // "getOrdersYandex"
-QT_MOC_LITERAL(48, 637, 20), // "updateDataCityMobile"
-QT_MOC_LITERAL(49, 658, 19), // "getOrdersCityMobile"
-QT_MOC_LITERAL(50, 678, 11), // "updatePrice"
-QT_MOC_LITERAL(51, 690, 1), // "p"
-QT_MOC_LITERAL(52, 692, 19), // "updateConfiguration"
-QT_MOC_LITERAL(53, 712, 13), // "processOrders"
-QT_MOC_LITERAL(54, 726, 6), // "orders"
-QT_MOC_LITERAL(55, 733, 11), // "changeEvent"
-QT_MOC_LITERAL(56, 745, 7), // "QEvent*"
-QT_MOC_LITERAL(57, 753, 17), // "trayIconActivated"
-QT_MOC_LITERAL(58, 771, 33), // "QSystemTrayIcon::ActivationRe..."
-QT_MOC_LITERAL(59, 805, 6), // "reason"
-QT_MOC_LITERAL(60, 812, 17), // "trayActionExecute"
-QT_MOC_LITERAL(61, 830, 18), // "setTrayIconActions"
-QT_MOC_LITERAL(62, 849, 12), // "showTrayIcon"
-QT_MOC_LITERAL(63, 862, 16), // "authYandexResult"
-QT_MOC_LITERAL(64, 879, 6), // "aToken"
-QT_MOC_LITERAL(65, 886, 8), // "needAuth"
-QT_MOC_LITERAL(66, 895, 12), // "requestToLog"
-QT_MOC_LITERAL(67, 908, 3), // "api"
-QT_MOC_LITERAL(68, 912, 4), // "type"
-QT_MOC_LITERAL(69, 917, 7), // "request"
-QT_MOC_LITERAL(70, 925, 4), // "post"
-QT_MOC_LITERAL(71, 930, 4), // "code"
-QT_MOC_LITERAL(72, 935, 23), // "yandexErrorNotification"
-QT_MOC_LITERAL(73, 959, 13), // "errorToString"
-QT_MOC_LITERAL(74, 973, 11), // "ErrorsOrder"
-QT_MOC_LITERAL(75, 985, 6) // "aError"
+QT_MOC_LITERAL(41, 462, 18), // "processAcceptOrder"
+QT_MOC_LITERAL(42, 481, 23), // "processWaitingRefueling"
+QT_MOC_LITERAL(43, 505, 14), // "processFueling"
+QT_MOC_LITERAL(44, 520, 13), // "processExpire"
+QT_MOC_LITERAL(45, 534, 22), // "processStationCanceled"
+QT_MOC_LITERAL(46, 557, 19), // "processUserCanceled"
+QT_MOC_LITERAL(47, 577, 16), // "processCompleted"
+QT_MOC_LITERAL(48, 594, 14), // "processUnknown"
+QT_MOC_LITERAL(49, 609, 22), // "on_ButtonEnter_clicked"
+QT_MOC_LITERAL(50, 632, 28), // "on_ButtonGetPassword_clicked"
+QT_MOC_LITERAL(51, 661, 33), // "on_ButtonCancelCitymobile_cli..."
+QT_MOC_LITERAL(52, 695, 29), // "on_ButtonCancelYandex_clicked"
+QT_MOC_LITERAL(53, 725, 25), // "on_ButtonSettings_clicked"
+QT_MOC_LITERAL(54, 751, 16), // "updateDataYandex"
+QT_MOC_LITERAL(55, 768, 15), // "getOrdersYandex"
+QT_MOC_LITERAL(56, 784, 20), // "updateDataCityMobile"
+QT_MOC_LITERAL(57, 805, 19), // "getOrdersCityMobile"
+QT_MOC_LITERAL(58, 825, 11), // "updatePrice"
+QT_MOC_LITERAL(59, 837, 1), // "p"
+QT_MOC_LITERAL(60, 839, 19), // "updateConfiguration"
+QT_MOC_LITERAL(61, 859, 13), // "processOrders"
+QT_MOC_LITERAL(62, 873, 6), // "orders"
+QT_MOC_LITERAL(63, 880, 11), // "changeEvent"
+QT_MOC_LITERAL(64, 892, 7), // "QEvent*"
+QT_MOC_LITERAL(65, 900, 17), // "trayIconActivated"
+QT_MOC_LITERAL(66, 918, 33), // "QSystemTrayIcon::ActivationRe..."
+QT_MOC_LITERAL(67, 952, 6), // "reason"
+QT_MOC_LITERAL(68, 959, 17), // "trayActionExecute"
+QT_MOC_LITERAL(69, 977, 18), // "setTrayIconActions"
+QT_MOC_LITERAL(70, 996, 12), // "showTrayIcon"
+QT_MOC_LITERAL(71, 1009, 16), // "authYandexResult"
+QT_MOC_LITERAL(72, 1026, 6), // "aToken"
+QT_MOC_LITERAL(73, 1033, 8), // "needAuth"
+QT_MOC_LITERAL(74, 1042, 12), // "requestToLog"
+QT_MOC_LITERAL(75, 1055, 3), // "api"
+QT_MOC_LITERAL(76, 1059, 4), // "type"
+QT_MOC_LITERAL(77, 1064, 7), // "request"
+QT_MOC_LITERAL(78, 1072, 4), // "post"
+QT_MOC_LITERAL(79, 1077, 4), // "code"
+QT_MOC_LITERAL(80, 1082, 23), // "yandexErrorNotification"
+QT_MOC_LITERAL(81, 1106, 13), // "errorToString"
+QT_MOC_LITERAL(82, 1120, 11), // "ErrorsOrder"
+QT_MOC_LITERAL(83, 1132, 6) // "aError"
 
     },
     "MainWindow\0FuelApiToFuelId\0\0aFuelIdApi\0"
@@ -122,7 +130,11 @@ QT_MOC_LITERAL(75, 985, 6) // "aError"
     "currentAgzs\0order\0sideAdress\0now\0"
     "JsonToOrder\0sendLiters\0ApiTransaction\0"
     "aApiTransaction\0aOrderId\0stringToStatus\0"
-    "OrderStatus\0aStatus\0on_ButtonEnter_clicked\0"
+    "OrderStatus\0aStatus\0processAcceptOrder\0"
+    "processWaitingRefueling\0processFueling\0"
+    "processExpire\0processStationCanceled\0"
+    "processUserCanceled\0processCompleted\0"
+    "processUnknown\0on_ButtonEnter_clicked\0"
     "on_ButtonGetPassword_clicked\0"
     "on_ButtonCancelCitymobile_clicked\0"
     "on_ButtonCancelYandex_clicked\0"
@@ -146,7 +158,7 @@ static const uint qt_meta_data_MainWindow[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      32,   14, // methods
+      40,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -154,38 +166,46 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    1,  174,    2, 0x0a /* Public */,
-       4,    1,  177,    2, 0x0a /* Public */,
-       6,    1,  180,    2, 0x0a /* Public */,
-       7,    7,  183,    2, 0x0a /* Public */,
-      19,    4,  198,    2, 0x0a /* Public */,
-      25,    0,  207,    2, 0x0a /* Public */,
-      27,    5,  208,    2, 0x0a /* Public */,
-      33,    2,  219,    2, 0x0a /* Public */,
-      34,    3,  224,    2, 0x0a /* Public */,
-      38,    1,  231,    2, 0x0a /* Public */,
-      41,    0,  234,    2, 0x08 /* Private */,
-      42,    0,  235,    2, 0x08 /* Private */,
-      43,    0,  236,    2, 0x08 /* Private */,
-      44,    0,  237,    2, 0x08 /* Private */,
-      45,    0,  238,    2, 0x08 /* Private */,
-      46,    0,  239,    2, 0x08 /* Private */,
-      47,    0,  240,    2, 0x08 /* Private */,
-      48,    0,  241,    2, 0x08 /* Private */,
-      49,    0,  242,    2, 0x08 /* Private */,
-      50,    1,  243,    2, 0x08 /* Private */,
-      52,    1,  246,    2, 0x08 /* Private */,
-      53,    2,  249,    2, 0x08 /* Private */,
-      55,    1,  254,    2, 0x08 /* Private */,
-      57,    1,  257,    2, 0x08 /* Private */,
-      60,    0,  260,    2, 0x08 /* Private */,
-      61,    0,  261,    2, 0x08 /* Private */,
-      62,    0,  262,    2, 0x08 /* Private */,
-      63,    1,  263,    2, 0x08 /* Private */,
-      65,    0,  266,    2, 0x08 /* Private */,
-      66,    5,  267,    2, 0x08 /* Private */,
-      72,    0,  278,    2, 0x08 /* Private */,
-      73,    1,  279,    2, 0x08 /* Private */,
+       1,    1,  214,    2, 0x0a /* Public */,
+       4,    1,  217,    2, 0x0a /* Public */,
+       6,    1,  220,    2, 0x0a /* Public */,
+       7,    7,  223,    2, 0x0a /* Public */,
+      19,    4,  238,    2, 0x0a /* Public */,
+      25,    0,  247,    2, 0x0a /* Public */,
+      27,    5,  248,    2, 0x0a /* Public */,
+      33,    2,  259,    2, 0x0a /* Public */,
+      34,    3,  264,    2, 0x0a /* Public */,
+      38,    1,  271,    2, 0x0a /* Public */,
+      41,    2,  274,    2, 0x0a /* Public */,
+      42,    2,  279,    2, 0x0a /* Public */,
+      43,    2,  284,    2, 0x0a /* Public */,
+      44,    2,  289,    2, 0x0a /* Public */,
+      45,    2,  294,    2, 0x0a /* Public */,
+      46,    2,  299,    2, 0x0a /* Public */,
+      47,    2,  304,    2, 0x0a /* Public */,
+      48,    2,  309,    2, 0x0a /* Public */,
+      49,    0,  314,    2, 0x08 /* Private */,
+      50,    0,  315,    2, 0x08 /* Private */,
+      51,    0,  316,    2, 0x08 /* Private */,
+      52,    0,  317,    2, 0x08 /* Private */,
+      53,    0,  318,    2, 0x08 /* Private */,
+      54,    0,  319,    2, 0x08 /* Private */,
+      55,    0,  320,    2, 0x08 /* Private */,
+      56,    0,  321,    2, 0x08 /* Private */,
+      57,    0,  322,    2, 0x08 /* Private */,
+      58,    1,  323,    2, 0x08 /* Private */,
+      60,    1,  326,    2, 0x08 /* Private */,
+      61,    2,  329,    2, 0x08 /* Private */,
+      63,    1,  334,    2, 0x08 /* Private */,
+      65,    1,  337,    2, 0x08 /* Private */,
+      68,    0,  340,    2, 0x08 /* Private */,
+      69,    0,  341,    2, 0x08 /* Private */,
+      70,    0,  342,    2, 0x08 /* Private */,
+      71,    1,  343,    2, 0x08 /* Private */,
+      73,    0,  346,    2, 0x08 /* Private */,
+      74,    5,  347,    2, 0x08 /* Private */,
+      80,    0,  358,    2, 0x08 /* Private */,
+      81,    1,  359,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Int, QMetaType::QString,    3,
@@ -198,6 +218,14 @@ static const uint qt_meta_data_MainWindow[] = {
     0x80000000 | 10, 0x80000000 | 8, QMetaType::QJsonValue,    9,   11,
     QMetaType::Void, 0x80000000 | 8, 0x80000000 | 35, QMetaType::QString,    9,   36,   37,
     0x80000000 | 39, QMetaType::QString,   40,
+    QMetaType::Bool, 0x80000000 | 10, 0x80000000 | 8,   11,    9,
+    QMetaType::Bool, 0x80000000 | 10, 0x80000000 | 8,   11,    9,
+    QMetaType::Bool, 0x80000000 | 10, 0x80000000 | 8,   11,    9,
+    QMetaType::Bool, 0x80000000 | 10, 0x80000000 | 8,   11,    9,
+    QMetaType::Bool, 0x80000000 | 10, 0x80000000 | 8,   11,    9,
+    QMetaType::Bool, 0x80000000 | 10, 0x80000000 | 8,   11,    9,
+    QMetaType::Bool, 0x80000000 | 10, 0x80000000 | 8,   11,    9,
+    QMetaType::Bool, 0x80000000 | 10, 0x80000000 | 8,   11,    9,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -207,19 +235,19 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 8,   51,
-    QMetaType::Void, 0x80000000 | 8,   51,
-    QMetaType::Void, 0x80000000 | 8, QMetaType::QJsonDocument,    9,   54,
-    QMetaType::Void, 0x80000000 | 56,    2,
-    QMetaType::Void, 0x80000000 | 58,   59,
+    QMetaType::Void, 0x80000000 | 8,   59,
+    QMetaType::Void, 0x80000000 | 8,   59,
+    QMetaType::Void, 0x80000000 | 8, QMetaType::QJsonDocument,    9,   62,
+    QMetaType::Void, 0x80000000 | 64,    2,
+    QMetaType::Void, 0x80000000 | 66,   67,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString,   64,
+    QMetaType::Void, QMetaType::QString,   72,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::Int,   67,   68,   69,   70,   71,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::Int,   75,   76,   77,   78,   79,
     QMetaType::Void,
-    QMetaType::QString, 0x80000000 | 74,   75,
+    QMetaType::QString, 0x80000000 | 82,   83,
 
        0        // eod
 };
@@ -247,28 +275,44 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 8: _t->sendLiters((*reinterpret_cast< Partner(*)>(_a[1])),(*reinterpret_cast< ApiTransaction(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3]))); break;
         case 9: { OrderStatus _r = _t->stringToStatus((*reinterpret_cast< QString(*)>(_a[1])));
             if (_a[0]) *reinterpret_cast< OrderStatus*>(_a[0]) = std::move(_r); }  break;
-        case 10: _t->on_ButtonEnter_clicked(); break;
-        case 11: _t->on_ButtonGetPassword_clicked(); break;
-        case 12: _t->on_ButtonCancelCitymobile_clicked(); break;
-        case 13: _t->on_ButtonCancelYandex_clicked(); break;
-        case 14: _t->on_ButtonSettings_clicked(); break;
-        case 15: _t->updateDataYandex(); break;
-        case 16: _t->getOrdersYandex(); break;
-        case 17: _t->updateDataCityMobile(); break;
-        case 18: _t->getOrdersCityMobile(); break;
-        case 19: _t->updatePrice((*reinterpret_cast< Partner(*)>(_a[1]))); break;
-        case 20: _t->updateConfiguration((*reinterpret_cast< Partner(*)>(_a[1]))); break;
-        case 21: _t->processOrders((*reinterpret_cast< Partner(*)>(_a[1])),(*reinterpret_cast< QJsonDocument(*)>(_a[2]))); break;
-        case 22: _t->changeEvent((*reinterpret_cast< QEvent*(*)>(_a[1]))); break;
-        case 23: _t->trayIconActivated((*reinterpret_cast< QSystemTrayIcon::ActivationReason(*)>(_a[1]))); break;
-        case 24: _t->trayActionExecute(); break;
-        case 25: _t->setTrayIconActions(); break;
-        case 26: _t->showTrayIcon(); break;
-        case 27: _t->authYandexResult((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 28: _t->needAuth(); break;
-        case 29: _t->requestToLog((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3])),(*reinterpret_cast< QString(*)>(_a[4])),(*reinterpret_cast< int(*)>(_a[5]))); break;
-        case 30: _t->yandexErrorNotification(); break;
-        case 31: { QString _r = _t->errorToString((*reinterpret_cast< ErrorsOrder(*)>(_a[1])));
+        case 10: { bool _r = _t->processAcceptOrder((*reinterpret_cast< Order(*)>(_a[1])),(*reinterpret_cast< Partner(*)>(_a[2])));
+            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
+        case 11: { bool _r = _t->processWaitingRefueling((*reinterpret_cast< Order(*)>(_a[1])),(*reinterpret_cast< Partner(*)>(_a[2])));
+            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
+        case 12: { bool _r = _t->processFueling((*reinterpret_cast< Order(*)>(_a[1])),(*reinterpret_cast< Partner(*)>(_a[2])));
+            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
+        case 13: { bool _r = _t->processExpire((*reinterpret_cast< Order(*)>(_a[1])),(*reinterpret_cast< Partner(*)>(_a[2])));
+            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
+        case 14: { bool _r = _t->processStationCanceled((*reinterpret_cast< Order(*)>(_a[1])),(*reinterpret_cast< Partner(*)>(_a[2])));
+            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
+        case 15: { bool _r = _t->processUserCanceled((*reinterpret_cast< Order(*)>(_a[1])),(*reinterpret_cast< Partner(*)>(_a[2])));
+            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
+        case 16: { bool _r = _t->processCompleted((*reinterpret_cast< Order(*)>(_a[1])),(*reinterpret_cast< Partner(*)>(_a[2])));
+            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
+        case 17: { bool _r = _t->processUnknown((*reinterpret_cast< Order(*)>(_a[1])),(*reinterpret_cast< Partner(*)>(_a[2])));
+            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
+        case 18: _t->on_ButtonEnter_clicked(); break;
+        case 19: _t->on_ButtonGetPassword_clicked(); break;
+        case 20: _t->on_ButtonCancelCitymobile_clicked(); break;
+        case 21: _t->on_ButtonCancelYandex_clicked(); break;
+        case 22: _t->on_ButtonSettings_clicked(); break;
+        case 23: _t->updateDataYandex(); break;
+        case 24: _t->getOrdersYandex(); break;
+        case 25: _t->updateDataCityMobile(); break;
+        case 26: _t->getOrdersCityMobile(); break;
+        case 27: _t->updatePrice((*reinterpret_cast< Partner(*)>(_a[1]))); break;
+        case 28: _t->updateConfiguration((*reinterpret_cast< Partner(*)>(_a[1]))); break;
+        case 29: _t->processOrders((*reinterpret_cast< Partner(*)>(_a[1])),(*reinterpret_cast< QJsonDocument(*)>(_a[2]))); break;
+        case 30: _t->changeEvent((*reinterpret_cast< QEvent*(*)>(_a[1]))); break;
+        case 31: _t->trayIconActivated((*reinterpret_cast< QSystemTrayIcon::ActivationReason(*)>(_a[1]))); break;
+        case 32: _t->trayActionExecute(); break;
+        case 33: _t->setTrayIconActions(); break;
+        case 34: _t->showTrayIcon(); break;
+        case 35: _t->authYandexResult((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 36: _t->needAuth(); break;
+        case 37: _t->requestToLog((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3])),(*reinterpret_cast< QString(*)>(_a[4])),(*reinterpret_cast< int(*)>(_a[5]))); break;
+        case 38: _t->yandexErrorNotification(); break;
+        case 39: { QString _r = _t->errorToString((*reinterpret_cast< ErrorsOrder(*)>(_a[1])));
             if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
         default: ;
         }
@@ -304,13 +348,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 32)
+        if (_id < 40)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 32;
+        _id -= 40;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 32)
+        if (_id < 40)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 32;
+        _id -= 40;
     }
     return _id;
 }

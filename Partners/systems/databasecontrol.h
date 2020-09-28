@@ -180,12 +180,12 @@ public slots:
     bool createTrkTransaction(Transaction transaction);
     int getSmena();
     bool createApiTransaction(QString aAgzsName, int aAgzs, QDateTime aCDate, int aVCode, QString aApiId, QString aApiStationExtendedId, int aApiColumnId, QString aApiFuelId, int aFuelId, int aApiPriceFuel, int aApiLitre, int aApiSum, QString aApiStatus, QString aApiContractId, QString aAgent, QString aLocalState, double aPrice, double aLitre, double aSum, QDateTime aDateOpen, int aLink);
-    ApiTransaction getApiTransactionState(QString id);
+    ApiTransaction getApiTransaction(QString id);
     bool updateApiTransactionState(QString localState, QDateTime dateClose, int vCode);
     bool finalUpdateApiTransactionState(QString localState, double price, double volume, double amount, QDateTime dateOpen, QDateTime dateClose, int vCode);
     bool getPayOperationLiters(int link, double &amount, double &volume, double &price);
     bool setTransactionClosed(QString id, int closed);
-    Transaction getTransactionData(int aVCode);
+    Transaction getTransaction(int aVCode);
     bool setYandexToken(QString aToken);
     bool isTransactionExist(QString aApiId);
 

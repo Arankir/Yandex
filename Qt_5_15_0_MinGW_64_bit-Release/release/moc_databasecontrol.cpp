@@ -23,7 +23,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_DataBaseControl_t {
     QByteArrayData data[131];
-    char stringdata0[1528];
+    char stringdata0[1519];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -141,28 +141,28 @@ QT_MOC_LITERAL(105, 1197, 6), // "aPrice"
 QT_MOC_LITERAL(106, 1204, 6), // "aLitre"
 QT_MOC_LITERAL(107, 1211, 4), // "aSum"
 QT_MOC_LITERAL(108, 1216, 5), // "aLink"
-QT_MOC_LITERAL(109, 1222, 22), // "getApiTransactionState"
-QT_MOC_LITERAL(110, 1245, 14), // "ApiTransaction"
-QT_MOC_LITERAL(111, 1260, 2), // "id"
-QT_MOC_LITERAL(112, 1263, 25), // "updateApiTransactionState"
-QT_MOC_LITERAL(113, 1289, 9), // "dateClose"
-QT_MOC_LITERAL(114, 1299, 30), // "finalUpdateApiTransactionState"
-QT_MOC_LITERAL(115, 1330, 5), // "price"
-QT_MOC_LITERAL(116, 1336, 6), // "volume"
-QT_MOC_LITERAL(117, 1343, 6), // "amount"
-QT_MOC_LITERAL(118, 1350, 8), // "dateOpen"
-QT_MOC_LITERAL(119, 1359, 21), // "getPayOperationLiters"
-QT_MOC_LITERAL(120, 1381, 4), // "link"
-QT_MOC_LITERAL(121, 1386, 7), // "double&"
-QT_MOC_LITERAL(122, 1394, 20), // "setTransactionClosed"
-QT_MOC_LITERAL(123, 1415, 6), // "closed"
-QT_MOC_LITERAL(124, 1422, 18), // "getTransactionData"
-QT_MOC_LITERAL(125, 1441, 14), // "setYandexToken"
-QT_MOC_LITERAL(126, 1456, 6), // "aToken"
-QT_MOC_LITERAL(127, 1463, 18), // "isTransactionExist"
-QT_MOC_LITERAL(128, 1482, 18), // "getRealSideAddress"
-QT_MOC_LITERAL(129, 1501, 19), // "aPartnerSideAddress"
-QT_MOC_LITERAL(130, 1521, 6) // "openDB"
+QT_MOC_LITERAL(109, 1222, 17), // "getApiTransaction"
+QT_MOC_LITERAL(110, 1240, 14), // "ApiTransaction"
+QT_MOC_LITERAL(111, 1255, 2), // "id"
+QT_MOC_LITERAL(112, 1258, 25), // "updateApiTransactionState"
+QT_MOC_LITERAL(113, 1284, 9), // "dateClose"
+QT_MOC_LITERAL(114, 1294, 30), // "finalUpdateApiTransactionState"
+QT_MOC_LITERAL(115, 1325, 5), // "price"
+QT_MOC_LITERAL(116, 1331, 6), // "volume"
+QT_MOC_LITERAL(117, 1338, 6), // "amount"
+QT_MOC_LITERAL(118, 1345, 8), // "dateOpen"
+QT_MOC_LITERAL(119, 1354, 21), // "getPayOperationLiters"
+QT_MOC_LITERAL(120, 1376, 4), // "link"
+QT_MOC_LITERAL(121, 1381, 7), // "double&"
+QT_MOC_LITERAL(122, 1389, 20), // "setTransactionClosed"
+QT_MOC_LITERAL(123, 1410, 6), // "closed"
+QT_MOC_LITERAL(124, 1417, 14), // "getTransaction"
+QT_MOC_LITERAL(125, 1432, 14), // "setYandexToken"
+QT_MOC_LITERAL(126, 1447, 6), // "aToken"
+QT_MOC_LITERAL(127, 1454, 18), // "isTransactionExist"
+QT_MOC_LITERAL(128, 1473, 18), // "getRealSideAddress"
+QT_MOC_LITERAL(129, 1492, 19), // "aPartnerSideAddress"
+QT_MOC_LITERAL(130, 1512, 6) // "openDB"
 
     },
     "DataBaseControl\0getCurrentAgzs\0\0"
@@ -198,13 +198,12 @@ QT_MOC_LITERAL(130, 1521, 6) // "openDB"
     "aApiFuelId\0aApiPriceFuel\0aApiLitre\0"
     "aApiSum\0aApiStatus\0aApiContractId\0"
     "aAgent\0aLocalState\0aPrice\0aLitre\0aSum\0"
-    "aLink\0getApiTransactionState\0"
-    "ApiTransaction\0id\0updateApiTransactionState\0"
-    "dateClose\0finalUpdateApiTransactionState\0"
-    "price\0volume\0amount\0dateOpen\0"
-    "getPayOperationLiters\0link\0double&\0"
-    "setTransactionClosed\0closed\0"
-    "getTransactionData\0setYandexToken\0"
+    "aLink\0getApiTransaction\0ApiTransaction\0"
+    "id\0updateApiTransactionState\0dateClose\0"
+    "finalUpdateApiTransactionState\0price\0"
+    "volume\0amount\0dateOpen\0getPayOperationLiters\0"
+    "link\0double&\0setTransactionClosed\0"
+    "closed\0getTransaction\0setYandexToken\0"
     "aToken\0isTransactionExist\0getRealSideAddress\0"
     "aPartnerSideAddress\0openDB"
 };
@@ -312,7 +311,7 @@ void DataBaseControl::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
         case 13: { bool _r = _t->createApiTransaction((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< QDateTime(*)>(_a[3])),(*reinterpret_cast< int(*)>(_a[4])),(*reinterpret_cast< QString(*)>(_a[5])),(*reinterpret_cast< QString(*)>(_a[6])),(*reinterpret_cast< int(*)>(_a[7])),(*reinterpret_cast< QString(*)>(_a[8])),(*reinterpret_cast< int(*)>(_a[9])),(*reinterpret_cast< int(*)>(_a[10])),(*reinterpret_cast< int(*)>(_a[11])),(*reinterpret_cast< int(*)>(_a[12])),(*reinterpret_cast< QString(*)>(_a[13])),(*reinterpret_cast< QString(*)>(_a[14])),(*reinterpret_cast< QString(*)>(_a[15])),(*reinterpret_cast< QString(*)>(_a[16])),(*reinterpret_cast< double(*)>(_a[17])),(*reinterpret_cast< double(*)>(_a[18])),(*reinterpret_cast< double(*)>(_a[19])),(*reinterpret_cast< QDateTime(*)>(_a[20])),(*reinterpret_cast< int(*)>(_a[21])));
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
-        case 14: { ApiTransaction _r = _t->getApiTransactionState((*reinterpret_cast< QString(*)>(_a[1])));
+        case 14: { ApiTransaction _r = _t->getApiTransaction((*reinterpret_cast< QString(*)>(_a[1])));
             if (_a[0]) *reinterpret_cast< ApiTransaction*>(_a[0]) = std::move(_r); }  break;
         case 15: { bool _r = _t->updateApiTransactionState((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QDateTime(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])));
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
@@ -322,7 +321,7 @@ void DataBaseControl::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
         case 18: { bool _r = _t->setTransactionClosed((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])));
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
-        case 19: { Transaction _r = _t->getTransactionData((*reinterpret_cast< int(*)>(_a[1])));
+        case 19: { Transaction _r = _t->getTransaction((*reinterpret_cast< int(*)>(_a[1])));
             if (_a[0]) *reinterpret_cast< Transaction*>(_a[0]) = std::move(_r); }  break;
         case 20: { bool _r = _t->setYandexToken((*reinterpret_cast< QString(*)>(_a[1])));
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
