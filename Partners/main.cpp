@@ -9,6 +9,6 @@ int main(int argc, char *argv[])
     QCoreApplication::setApplicationName("Agents api");
     QApplication a(argc, argv);
     MainWindow w;
-    w.show();
+    //w.show();
     return a.exec();
 }

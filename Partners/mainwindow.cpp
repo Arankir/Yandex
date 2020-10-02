@@ -18,7 +18,8 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWin
     ui->label  ->setText("<img height=25 style=\"vertical-align: top\" src=\"://images/login.png\"> Логин</a>");
     ui->label_2->setText("<img height=25 style=\"vertical-align: top\" src=\"://images/login password.png\"> Пароль</a>");
     ui->ButtonSettings->setIcon(QIcon("://images/settings.png"));
-    ui->LabelVersion->setText("v1.7");
+    this->setWindowFlags(Qt::Window | Qt::WindowMinimizeButtonHint);
+    ui->LabelVersion->setText("v1.8");
 
     setTrayIconActions();
     showTrayIcon();
@@ -444,6 +445,9 @@ QString MainWindow::errorToString(ErrorsOrder aError) {
     }
     case ErrorsOrder::priceError: {
         return "Error: different price";
+    }
+    default : {
+        return "";
     }
     }
 }
