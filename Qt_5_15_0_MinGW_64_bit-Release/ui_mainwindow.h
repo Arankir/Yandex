@@ -34,19 +34,15 @@ public:
     QLabel *LabelVersion;
     QSpacerItem *horizontalSpacer_5;
     QPushButton *ButtonSettings;
-    QSpacerItem *horizontalSpacer;
+    QLabel *labelAuthError;
     QVBoxLayout *verticalLayout;
     QLabel *label;
     QLineEdit *LineEditLogin;
-    QSpacerItem *horizontalSpacer_3;
     QPushButton *ButtonGetPassword;
     QVBoxLayout *verticalLayout_2;
     QLabel *label_2;
     QLineEdit *LineEditPassword;
-    QSpacerItem *horizontalSpacer_4;
-    QSpacerItem *horizontalSpacer_2;
     QPushButton *ButtonEnter;
-    QLabel *labelAuthError;
     QLineEdit *lineEdit;
     QHBoxLayout *horizontalLayout_2;
     QPushButton *ButtonCancelYandex;
@@ -59,7 +55,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(240, 416);
+        MainWindow->resize(240, 391);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         verticalLayout_3 = new QVBoxLayout(centralwidget);
@@ -87,16 +83,19 @@ public:
 
         verticalLayout_3->addLayout(horizontalLayout);
 
-        horizontalSpacer = new QSpacerItem(107, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        labelAuthError = new QLabel(centralwidget);
+        labelAuthError->setObjectName(QString::fromUtf8("labelAuthError"));
+        QFont font;
+        font.setPointSize(14);
+        labelAuthError->setFont(font);
+        labelAuthError->setStyleSheet(QString::fromUtf8("color: rgb(102, 97, 255);"));
 
-        verticalLayout_3->addItem(horizontalSpacer);
+        verticalLayout_3->addWidget(labelAuthError);
 
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         label = new QLabel(centralwidget);
         label->setObjectName(QString::fromUtf8("label"));
-        QFont font;
-        font.setPointSize(14);
         label->setFont(font);
 
         verticalLayout->addWidget(label);
@@ -109,10 +108,6 @@ public:
 
 
         verticalLayout_3->addLayout(verticalLayout);
-
-        horizontalSpacer_3 = new QSpacerItem(107, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        verticalLayout_3->addItem(horizontalSpacer_3);
 
         ButtonGetPassword = new QPushButton(centralwidget);
         ButtonGetPassword->setObjectName(QString::fromUtf8("ButtonGetPassword"));
@@ -137,26 +132,11 @@ public:
 
         verticalLayout_3->addLayout(verticalLayout_2);
 
-        horizontalSpacer_4 = new QSpacerItem(107, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        verticalLayout_3->addItem(horizontalSpacer_4);
-
-        horizontalSpacer_2 = new QSpacerItem(107, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        verticalLayout_3->addItem(horizontalSpacer_2);
-
         ButtonEnter = new QPushButton(centralwidget);
         ButtonEnter->setObjectName(QString::fromUtf8("ButtonEnter"));
         ButtonEnter->setFont(font);
 
         verticalLayout_3->addWidget(ButtonEnter);
-
-        labelAuthError = new QLabel(centralwidget);
-        labelAuthError->setObjectName(QString::fromUtf8("labelAuthError"));
-        labelAuthError->setFont(font);
-        labelAuthError->setStyleSheet(QString::fromUtf8("color: rgb(102, 97, 255);"));
-
-        verticalLayout_3->addWidget(labelAuthError);
 
         lineEdit = new QLineEdit(centralwidget);
         lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
@@ -201,11 +181,11 @@ public:
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "\320\237\320\260\321\200\321\202\320\275\321\221\321\200\321\213", nullptr));
         LabelVersion->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
         ButtonSettings->setText(QString());
+        labelAuthError->setText(QCoreApplication::translate("MainWindow", "\320\243\321\201\320\277\320\265\321\210\320\275\320\276 \320\260\320\262\321\202\320\276\321\200\320\270\320\267\320\276\320\262\320\260\320\275\320\276!", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "\320\233\320\276\320\263\320\270\320\275", nullptr));
         ButtonGetPassword->setText(QCoreApplication::translate("MainWindow", "\320\237\320\276\320\273\321\203\321\207\320\270\321\202\321\214 \320\277\320\260\321\200\320\276\320\273\321\214", nullptr));
         label_2->setText(QCoreApplication::translate("MainWindow", "\320\237\320\260\321\200\320\276\320\273\321\214", nullptr));
         ButtonEnter->setText(QCoreApplication::translate("MainWindow", "\320\222\320\276\320\271\321\202\320\270", nullptr));
-        labelAuthError->setText(QCoreApplication::translate("MainWindow", "\320\243\321\201\320\277\320\265\321\210\320\275\320\276 \320\260\320\262\321\202\320\276\321\200\320\270\320\267\320\276\320\262\320\260\320\275\320\276!", nullptr));
         ButtonCancelYandex->setText(QCoreApplication::translate("MainWindow", "\320\236\321\202\320\274\320\265\320\275\320\260 \320\257\320\275\320\264\320\265\320\272\321\201", nullptr));
         ButtonCancelCitymobile->setText(QCoreApplication::translate("MainWindow", "\320\236\321\202\320\274\320\265\320\275\320\260 \320\241\320\270\321\202\320\270\320\274\320\276\320\261\320\270\320\273", nullptr));
     } // retranslateUi

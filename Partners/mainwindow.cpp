@@ -93,7 +93,8 @@ void MainWindow::requestToLog(QString api, QString type, QString request, QStrin
 }
 
 void MainWindow::yandexErrorNotification() {
-    QMessageBox::warning(0, tr("Ошибка"), tr("Авторизуйтесь в Яндексе заново!"));
+    this->show();
+    QMessageBox::warning(this, tr("Ошибка"), tr("Авторизуйтесь в Яндексе заново!"));
     QApplication::alert(this);
     _timerYandexError.setInterval(300000);
 }
