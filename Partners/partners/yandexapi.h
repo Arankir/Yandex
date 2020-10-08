@@ -9,7 +9,7 @@
 class YandexAPI : public QObject {
     Q_OBJECT
 public:
-    YandexAPI(QObject *parent=nullptr);
+    YandexAPI(QObject *parent = nullptr);
     void getPassword(QString login);
     void authorization(QString login, QString password);
     void updatePriceList(QString pricelist);
@@ -31,7 +31,7 @@ signals:
     void s_updatePrice();
     void s_gotOrders(QJsonDocument orders);
     void s_error(QString status, QString order, int code);
-    void s_networkRequestInfo(QString api, QString type, QString request, QString post, int code);
+    //void s_networkRequestInfo(QString api, QString type, QString request, QString post, int code);
 
 private slots:
     QNetworkRequest createRequest(QString url, QString contentType, bool auth);

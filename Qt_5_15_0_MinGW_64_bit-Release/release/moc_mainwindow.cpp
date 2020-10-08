@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[84];
-    char stringdata0[1139];
+    QByteArrayData data[78];
+    char stringdata0[1099];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -106,16 +106,10 @@ QT_MOC_LITERAL(70, 996, 12), // "showTrayIcon"
 QT_MOC_LITERAL(71, 1009, 16), // "authYandexResult"
 QT_MOC_LITERAL(72, 1026, 6), // "aToken"
 QT_MOC_LITERAL(73, 1033, 8), // "needAuth"
-QT_MOC_LITERAL(74, 1042, 12), // "requestToLog"
-QT_MOC_LITERAL(75, 1055, 3), // "api"
-QT_MOC_LITERAL(76, 1059, 4), // "type"
-QT_MOC_LITERAL(77, 1064, 7), // "request"
-QT_MOC_LITERAL(78, 1072, 4), // "post"
-QT_MOC_LITERAL(79, 1077, 4), // "code"
-QT_MOC_LITERAL(80, 1082, 23), // "yandexErrorNotification"
-QT_MOC_LITERAL(81, 1106, 13), // "errorToString"
-QT_MOC_LITERAL(82, 1120, 11), // "ErrorsOrder"
-QT_MOC_LITERAL(83, 1132, 6) // "aError"
+QT_MOC_LITERAL(74, 1042, 23), // "yandexErrorNotification"
+QT_MOC_LITERAL(75, 1066, 13), // "errorToString"
+QT_MOC_LITERAL(76, 1080, 11), // "ErrorsOrder"
+QT_MOC_LITERAL(77, 1092, 6) // "aError"
 
     },
     "MainWindow\0FuelApiToFuelId\0\0aFuelIdApi\0"
@@ -146,8 +140,7 @@ QT_MOC_LITERAL(83, 1132, 6) // "aError"
     "QSystemTrayIcon::ActivationReason\0"
     "reason\0trayActionExecute\0setTrayIconActions\0"
     "showTrayIcon\0authYandexResult\0aToken\0"
-    "needAuth\0requestToLog\0api\0type\0request\0"
-    "post\0code\0yandexErrorNotification\0"
+    "needAuth\0yandexErrorNotification\0"
     "errorToString\0ErrorsOrder\0aError"
 };
 #undef QT_MOC_LITERAL
@@ -158,7 +151,7 @@ static const uint qt_meta_data_MainWindow[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      40,   14, // methods
+      39,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -166,46 +159,45 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    1,  214,    2, 0x0a /* Public */,
-       4,    1,  217,    2, 0x0a /* Public */,
-       6,    1,  220,    2, 0x0a /* Public */,
-       7,    7,  223,    2, 0x0a /* Public */,
-      19,    4,  238,    2, 0x0a /* Public */,
-      25,    0,  247,    2, 0x0a /* Public */,
-      27,    5,  248,    2, 0x0a /* Public */,
-      33,    2,  259,    2, 0x0a /* Public */,
-      34,    3,  264,    2, 0x0a /* Public */,
-      38,    1,  271,    2, 0x0a /* Public */,
-      41,    2,  274,    2, 0x0a /* Public */,
-      42,    2,  279,    2, 0x0a /* Public */,
-      43,    2,  284,    2, 0x0a /* Public */,
-      44,    2,  289,    2, 0x0a /* Public */,
-      45,    2,  294,    2, 0x0a /* Public */,
-      46,    2,  299,    2, 0x0a /* Public */,
-      47,    2,  304,    2, 0x0a /* Public */,
-      48,    2,  309,    2, 0x0a /* Public */,
-      49,    0,  314,    2, 0x08 /* Private */,
-      50,    0,  315,    2, 0x08 /* Private */,
-      51,    0,  316,    2, 0x08 /* Private */,
-      52,    0,  317,    2, 0x08 /* Private */,
-      53,    0,  318,    2, 0x08 /* Private */,
-      54,    0,  319,    2, 0x08 /* Private */,
-      55,    0,  320,    2, 0x08 /* Private */,
-      56,    0,  321,    2, 0x08 /* Private */,
-      57,    0,  322,    2, 0x08 /* Private */,
-      58,    1,  323,    2, 0x08 /* Private */,
-      60,    1,  326,    2, 0x08 /* Private */,
-      61,    2,  329,    2, 0x08 /* Private */,
-      63,    1,  334,    2, 0x08 /* Private */,
-      65,    1,  337,    2, 0x08 /* Private */,
-      68,    0,  340,    2, 0x08 /* Private */,
-      69,    0,  341,    2, 0x08 /* Private */,
-      70,    0,  342,    2, 0x08 /* Private */,
-      71,    1,  343,    2, 0x08 /* Private */,
-      73,    0,  346,    2, 0x08 /* Private */,
-      74,    5,  347,    2, 0x08 /* Private */,
-      80,    0,  358,    2, 0x08 /* Private */,
-      81,    1,  359,    2, 0x08 /* Private */,
+       1,    1,  209,    2, 0x0a /* Public */,
+       4,    1,  212,    2, 0x0a /* Public */,
+       6,    1,  215,    2, 0x0a /* Public */,
+       7,    7,  218,    2, 0x0a /* Public */,
+      19,    4,  233,    2, 0x0a /* Public */,
+      25,    0,  242,    2, 0x0a /* Public */,
+      27,    5,  243,    2, 0x0a /* Public */,
+      33,    2,  254,    2, 0x0a /* Public */,
+      34,    3,  259,    2, 0x0a /* Public */,
+      38,    1,  266,    2, 0x0a /* Public */,
+      41,    2,  269,    2, 0x0a /* Public */,
+      42,    2,  274,    2, 0x0a /* Public */,
+      43,    2,  279,    2, 0x0a /* Public */,
+      44,    2,  284,    2, 0x0a /* Public */,
+      45,    2,  289,    2, 0x0a /* Public */,
+      46,    2,  294,    2, 0x0a /* Public */,
+      47,    2,  299,    2, 0x0a /* Public */,
+      48,    2,  304,    2, 0x0a /* Public */,
+      49,    0,  309,    2, 0x08 /* Private */,
+      50,    0,  310,    2, 0x08 /* Private */,
+      51,    0,  311,    2, 0x08 /* Private */,
+      52,    0,  312,    2, 0x08 /* Private */,
+      53,    0,  313,    2, 0x08 /* Private */,
+      54,    0,  314,    2, 0x08 /* Private */,
+      55,    0,  315,    2, 0x08 /* Private */,
+      56,    0,  316,    2, 0x08 /* Private */,
+      57,    0,  317,    2, 0x08 /* Private */,
+      58,    1,  318,    2, 0x08 /* Private */,
+      60,    1,  321,    2, 0x08 /* Private */,
+      61,    2,  324,    2, 0x08 /* Private */,
+      63,    1,  329,    2, 0x08 /* Private */,
+      65,    1,  332,    2, 0x08 /* Private */,
+      68,    0,  335,    2, 0x08 /* Private */,
+      69,    0,  336,    2, 0x08 /* Private */,
+      70,    0,  337,    2, 0x08 /* Private */,
+      71,    1,  338,    2, 0x08 /* Private */,
+      73,    0,  341,    2, 0x08 /* Private */,
+      74,    0,  342,    2, 0x08 /* Private */,
+      75,    1,  343,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Int, QMetaType::QString,    3,
@@ -245,9 +237,8 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void, QMetaType::QString,   72,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::Int,   75,   76,   77,   78,   79,
     QMetaType::Void,
-    QMetaType::QString, 0x80000000 | 82,   83,
+    QMetaType::QString, 0x80000000 | 76,   77,
 
        0        // eod
 };
@@ -310,9 +301,8 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 34: _t->showTrayIcon(); break;
         case 35: _t->authYandexResult((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 36: _t->needAuth(); break;
-        case 37: _t->requestToLog((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3])),(*reinterpret_cast< QString(*)>(_a[4])),(*reinterpret_cast< int(*)>(_a[5]))); break;
-        case 38: _t->yandexErrorNotification(); break;
-        case 39: { QString _r = _t->errorToString((*reinterpret_cast< ErrorsOrder(*)>(_a[1])));
+        case 37: _t->yandexErrorNotification(); break;
+        case 38: { QString _r = _t->errorToString((*reinterpret_cast< ErrorsOrder(*)>(_a[1])));
             if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
         default: ;
         }
@@ -348,13 +338,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 40)
+        if (_id < 39)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 40;
+        _id -= 39;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 40)
+        if (_id < 39)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 40;
+        _id -= 39;
     }
     return _id;
 }

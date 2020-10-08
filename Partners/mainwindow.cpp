@@ -6,7 +6,7 @@ const QString c_host = "api";
 
 MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWindow), _reestr("RegionPostavka", "Partners") {
     ui->setupUi(this);
-
+    qInfo() << "STARTED";
     if (!_reestr.value("isTest").toBool()) {
         ui->ButtonCancelYandex->setVisible(false);
         ui->ButtonCancelCitymobile->setVisible(false);
@@ -19,7 +19,7 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWin
     ui->label_2->setText("<img height=25 style=\"vertical-align: top\" src=\"://images/login password.png\"> Пароль</a>");
     ui->ButtonSettings->setIcon(QIcon("://images/settings.png"));
     this->setWindowFlags(Qt::Window | Qt::WindowMinimizeButtonHint);
-    ui->LabelVersion->setText("v1.8");
+    ui->LabelVersion->setText("v1.9");
 
     setTrayIconActions();
     showTrayIcon();
@@ -34,8 +34,8 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWin
     connect(&_timerYandexError,         &QTimer::timeout,                       this, &MainWindow::yandexErrorNotification);
     connect(_yandex,                    &YandexAPI::s_needAuth,                 this, &MainWindow::needAuth);
     connect(_yandex,                    &YandexAPI::s_authComplete,             this, &MainWindow::authYandexResult);
-    connect(_yandex,                    &YandexAPI::s_networkRequestInfo,       this, &MainWindow::requestToLog);
-    connect(_cityMobile,                &CityMobileAPI::s_networkRequestInfo,   this, &MainWindow::requestToLog);
+    //connect(_yandex,                    &YandexAPI::s_networkRequestInfo,       this, &MainWindow::requestToLog);
+    //connect(_cityMobile,                &CityMobileAPI::s_networkRequestInfo,   this, &MainWindow::requestToLog);
     connect(_yandex,                    &YandexAPI::s_updatePrice,              this, [=](                    ) {updatePrice(Partner::yandex);});
     connect(_yandex,                    &YandexAPI::s_gotOrders,                this, [=](QJsonDocument orders) {processOrders(Partner::yandex, orders);});
     connect(_cityMobile,                &CityMobileAPI::s_gotOrders,            this, [=](QJsonDocument orders) {processOrders(Partner::citymobile, orders);});
@@ -45,6 +45,10 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWin
     _timerCityMobileAgzsData.start(60000);
     _timerCityMobileOrders  .start(5000);
 
+}
+
+void MainWindow::closeEvent(QCloseEvent *) {
+    qInfo() << "CLOSED";
 }
 
 MainWindow::~MainWindow() {
@@ -75,22 +79,22 @@ void MainWindow::needAuth() {
     _timerYandexError.start(0);
 }
 
-void MainWindow::requestToLog(QString api, QString type, QString request, QString post, int code) {
-    if ((request.indexOf("price") > 0) && (_reestr.value("agzsPriceLog") == false)) {
-        return;
-    }
-    if ((request.indexOf("station") > 0) && (_reestr.value("agzsDataLog") == false)) {
-        return;
-    }
-    if ((request.indexOf("items") > 0) && (_reestr.value("ordersLog") == false)) {
-        return;
-    }
-    if (type == "GET") {
-        _db.logAppend(api + " " + type + "(" + request + ") Код:" + QString::number(code));
-    } else if (type == "POST") {
-        _db.logAppend(api + " " + type + "(" + request + " '" + post + "') Код:" + QString::number(code));
-    }
-}
+//void MainWindow::requestToLog(QString api, QString type, QString request, QString post, int code) {
+//    if ((request.indexOf("price") > 0) && (_reestr.value("agzsPriceLog") == false)) {
+//        return;
+//    }
+//    if ((request.indexOf("station") > 0) && (_reestr.value("agzsDataLog") == false)) {
+//        return;
+//    }
+//    if ((request.indexOf("items") > 0) && (_reestr.value("ordersLog") == false)) {
+//        return;
+//    }
+//    if (type == "GET") {
+//        _db.logAppend(api + " " + type + "(" + request + ") Код:" + QString::number(code));
+//    } else if (type == "POST") {
+//        _db.logAppend(api + " " + type + "(" + request + " '" + post + "') Код:" + QString::number(code));
+//    }
+//}
 
 void MainWindow::yandexErrorNotification() {
     this->show();
@@ -760,19 +764,22 @@ bool MainWindow::processAcceptOrder(Order aOrder, Partner aPartner) {
             break;
         }
         case ErrorsOrder::trkError: {
-            _db.logAppend("Error Указанная колонка не найдена " + aOrder.id);
+            qWarning(logError) << "Указанная колонка не найдена" << aOrder.id;
+            //_db.logAppend("Error Указанная колонка не найдена " + aOrder.id);
             _yandex->setStatusCanceled(aOrder.id, "Указанная колонка не найдена.", QString::number(lastAPIVCode), now);
             return false;
             break;
         }
         case ErrorsOrder::fuelError: {
-            _db.logAppend("Error Не обнаружено указанное топливо " + aOrder.id);
+            qWarning(logError) << "Не обнаружено указанное топливо" << aOrder.id;
+            //_db.logAppend("Error Не обнаружено указанное топливо " + aOrder.id);
             _yandex->setStatusCanceled(aOrder.id, "Не обнаружено указанное топливо.", QString::number(lastAPIVCode), now);
             return false;
             break;
         }
         case ErrorsOrder::priceError: {
-            _db.logAppend("Error Цена на выбранный вид топлива отличается от фактической цены " + aOrder.id);
+            qWarning(logError) << "Цена на выбранный вид топлива отличается от фактической цены" << aOrder.id;
+            //_db.logAppend("Error Цена на выбранный вид топлива отличается от фактической цены " + aOrder.id);
             _yandex->setStatusCanceled(aOrder.id, "Цена на выбранный вид топлива отличается от фактической цены.", QString::number(lastAPIVCode), now);
             return false;
             break;
@@ -793,19 +800,22 @@ bool MainWindow::processAcceptOrder(Order aOrder, Partner aPartner) {
             break;
         }
         case ErrorsOrder::trkError: {
-            _db.logAppend("Error Указанная колонка не найдена " + aOrder.id);
+            qWarning(logError) << "Указанная колонка не найдена" << aOrder.id;
+            //_db.logAppend("Error Указанная колонка не найдена " + aOrder.id);
             _cityMobile->setStatusCanceled(aOrder.id, "Указанная колонка не найдена.", QString::number(lastAPIVCode), now);
             return false;
             break;
         }
         case ErrorsOrder::fuelError: {
-            _db.logAppend("Error Не обнаружено указанное топливо " + aOrder.id);
+            qWarning(logError) << "Не обнаружено указанное топливо" << aOrder.id;
+            //_db.logAppend("Error Не обнаружено указанное топливо " + aOrder.id);
             _cityMobile->setStatusCanceled(aOrder.id, "Не обнаружено указанное топливо.", QString::number(lastAPIVCode), now);
             return false;
             break;
         }
         case ErrorsOrder::priceError: {
-            _db.logAppend("Error Цена на выбранный вид топлива отличается от фактической цены " + aOrder.id);
+            qWarning(logError) << "Цена на выбранный вид топлива отличается от фактической цены" << aOrder.id;
+            //_db.logAppend("Error Цена на выбранный вид топлива отличается от фактической цены " + aOrder.id);
             _cityMobile->setStatusCanceled(aOrder.id, "Цена на выбранный вид топлива отличается от фактической цены.", QString::number(lastAPIVCode), now);
             return false;
             break;
@@ -939,14 +949,14 @@ void MainWindow::trayActionExecute() {
 
 void MainWindow::setTrayIconActions() {
     // Setting actions...
-    minimizeAction = new QAction("Свернуть", this);
-    restoreAction =  new QAction("Восстановить", this);
-    quitAction =     new QAction("Выход", this);
+    minimizeAction = new QAction("Свернуть",        this);
+    restoreAction  = new QAction("Восстановить",    this);
+    quitAction     = new QAction("Выход",           this);
 
     // Connecting actions to slots...
     connect (minimizeAction, SIGNAL(triggered()), this, SLOT(hide()));
     connect (restoreAction,  SIGNAL(triggered()), this, SLOT(showNormal()));
-    connect (quitAction,     SIGNAL(triggered()), qApp, SLOT(quit()));
+    connect (quitAction,     SIGNAL(triggered()), this, SLOT(close()));
 
     // Setting system tray's icon menu...
     trayIconMenu = new QMenu(this);

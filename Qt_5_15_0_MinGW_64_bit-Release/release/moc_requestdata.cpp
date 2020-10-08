@@ -38,11 +38,11 @@ QT_MOC_LITERAL(2, 23, 0), // ""
 QT_MOC_LITERAL(3, 24, 12), // "RequestData*"
 QT_MOC_LITERAL(4, 37, 7), // "request"
 QT_MOC_LITERAL(5, 45, 9), // "s_request"
-QT_MOC_LITERAL(6, 55, 4), // "type"
-QT_MOC_LITERAL(7, 60, 4), // "post"
-QT_MOC_LITERAL(8, 65, 4), // "code"
-QT_MOC_LITERAL(9, 70, 15), // "completeRequest"
-QT_MOC_LITERAL(10, 86, 11), // "RequestType"
+QT_MOC_LITERAL(6, 55, 11), // "RequestType"
+QT_MOC_LITERAL(7, 67, 4), // "type"
+QT_MOC_LITERAL(8, 72, 4), // "post"
+QT_MOC_LITERAL(9, 77, 4), // "code"
+QT_MOC_LITERAL(10, 82, 15), // "completeRequest"
 QT_MOC_LITERAL(11, 98, 15), // "QNetworkRequest"
 QT_MOC_LITERAL(12, 114, 8), // "parallel"
 QT_MOC_LITERAL(13, 123, 8), // "onResult"
@@ -51,8 +51,8 @@ QT_MOC_LITERAL(15, 147, 5) // "reply"
 
     },
     "RequestData\0s_finished\0\0RequestData*\0"
-    "request\0s_request\0type\0post\0code\0"
-    "completeRequest\0RequestType\0QNetworkRequest\0"
+    "request\0s_request\0RequestType\0type\0"
+    "post\0code\0completeRequest\0QNetworkRequest\0"
     "parallel\0onResult\0QNetworkReply*\0reply"
 };
 #undef QT_MOC_LITERAL
@@ -75,15 +75,15 @@ static const uint qt_meta_data_RequestData[] = {
        5,    4,   37,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       9,    4,   46,    2, 0x08 /* Private */,
+      10,    4,   46,    2, 0x08 /* Private */,
       13,    1,   55,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, 0x80000000 | 3,    4,
-    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::Int,    6,    4,    7,    8,
+    QMetaType::Void, 0x80000000 | 6, QMetaType::QString, QMetaType::QString, QMetaType::Int,    7,    4,    8,    9,
 
  // slots: parameters
-    QMetaType::Void, 0x80000000 | 10, 0x80000000 | 11, QMetaType::QString, QMetaType::Bool,    6,    4,    7,   12,
+    QMetaType::Void, 0x80000000 | 6, 0x80000000 | 11, QMetaType::QString, QMetaType::Bool,    7,    4,    8,   12,
     QMetaType::Void, 0x80000000 | 14,   15,
 
        0        // eod
@@ -96,7 +96,7 @@ void RequestData::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->s_finished((*reinterpret_cast< RequestData*(*)>(_a[1]))); break;
-        case 1: _t->s_request((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3])),(*reinterpret_cast< int(*)>(_a[4]))); break;
+        case 1: _t->s_request((*reinterpret_cast< RequestType(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3])),(*reinterpret_cast< int(*)>(_a[4]))); break;
         case 2: _t->completeRequest((*reinterpret_cast< RequestType(*)>(_a[1])),(*reinterpret_cast< QNetworkRequest(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3])),(*reinterpret_cast< bool(*)>(_a[4]))); break;
         case 3: _t->onResult((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
         default: ;
@@ -136,7 +136,7 @@ void RequestData::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
             }
         }
         {
-            using _t = void (RequestData::*)(QString , QString , QString , int );
+            using _t = void (RequestData::*)(RequestType , QString , QString , int );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&RequestData::s_request)) {
                 *result = 1;
                 return;
@@ -193,7 +193,7 @@ void RequestData::s_finished(RequestData * _t1)
 }
 
 // SIGNAL 1
-void RequestData::s_request(QString _t1, QString _t2, QString _t3, int _t4)
+void RequestData::s_request(RequestType _t1, QString _t2, QString _t3, int _t4)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t3))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t4))) };
     QMetaObject::activate(this, &staticMetaObject, 1, _a);

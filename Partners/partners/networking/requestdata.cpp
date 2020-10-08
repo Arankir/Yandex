@@ -1,8 +1,14 @@
 #include "requestdata.h"
 
-RequestData::RequestData(QString aUrl, bool aParallel, QObject *aParent): QObject(aParent), _manager(new QNetworkAccessManager()), _answer(""),
-_authorization(""), _url(aUrl), _parallel(aParallel) {
-    connect(_manager,&QNetworkAccessManager::finished,this,&RequestData::onResult);
+Q_LOGGING_CATEGORY(logAgzs,     "AGZS")
+Q_LOGGING_CATEGORY(logPrice,    "Price")
+Q_LOGGING_CATEGORY(logOrders,   "Orders")
+Q_LOGGING_CATEGORY(logRequest,  "Request")
+Q_LOGGING_CATEGORY(logError,    "Error")
+
+RequestData::RequestData(QString aUrl, bool aParallel, QObject *aParent): QObject(aParent), manager_(new QNetworkAccessManager()), answer_(""),
+authorization_(""), url_(aUrl), parallel_(aParallel) {
+    connect(manager_, &QNetworkAccessManager::finished, this, &RequestData::onResult);
 }
 
 RequestData::RequestData(QObject *aParent): RequestData("", false, aParent) {
@@ -10,9 +16,9 @@ RequestData::RequestData(QObject *aParent): RequestData("", false, aParent) {
 }
 
 void RequestData::get(QString aUrl, bool aParallel) {
-    _url = aUrl;
-    _post = "";
-    get(QNetworkRequest(QUrl(_url)), aParallel);
+    url_  = aUrl;
+    post_ = "";
+    get(QNetworkRequest(QUrl(url_)), aParallel);
 }
 
 void RequestData::get(QNetworkRequest aRequest, bool aParallel) {
@@ -24,57 +30,59 @@ void RequestData::post(QNetworkRequest aRequest, QString aPost, bool aParallel) 
 }
 
 QByteArray RequestData::getAnswer() {
-    return _answer;
+    return answer_;
 }
 
 QByteArray RequestData::getAuthorization() {
-    return _authorization;
+    return authorization_;
 }
 
 int RequestData::getCode() {
-    return _code;
+    return code_;
 }
 
-void RequestData::completeRequest(RequestData::RequestType aType, QNetworkRequest aRequest, QString aPost, bool aParallel) {
-    _url = aRequest.url().toString();
-    _post = aPost.toUtf8();
-    switch (aType) {
+void RequestData::completeRequest(RequestType aType, QNetworkRequest aRequest, QString aPost, bool aParallel) {
+    url_ = aRequest.url().toString();
+    post_ = aPost.toUtf8();
+    type_ = aType;
+    switch (type_) {
     case RequestType::get: {
-        _type = "GET";
-        _manager->get(aRequest);
+        manager_->get(aRequest);
         break;
     }
     case RequestType::post: {
-        _type = "POST";
-        _manager->post(aRequest, aPost.toUtf8());
+        manager_->post(aRequest, aPost.toUtf8());
         break;
     }
+    default: ;
     }
     if (!aParallel) {
         QEventLoop loop;
-        connect(_manager, &QNetworkAccessManager::finished, &loop, &QEventLoop::quit);
+        connect(manager_, &QNetworkAccessManager::finished, &loop, &QEventLoop::quit);
         loop.exec();
-        disconnect(_manager, &QNetworkAccessManager::finished, &loop, &QEventLoop::quit);
+        disconnect(manager_, &QNetworkAccessManager::finished, &loop, &QEventLoop::quit);
     }
 }
 
 void RequestData::onResult(QNetworkReply *aReply) {
-    _code = aReply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();
-    if (_type == "GET") {
-        qDebug()<< "GET(" << _url << ") Код:" << _code;
-        emit s_request("GET", _url, "", _code);
-    } else if (_type == "POST") {
-        qDebug()<< "POST(" << _url << _post << ") Код:" << _code;
-        emit s_request("POST", _url, _post, _code);
-    }
-    _answer = aReply->readAll();
+    code_ = aReply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();
+    emit s_request(type_, url_, type_ == RequestType::post ? post_ : "", code_);
+//    if (type_ == "GET") {
+//        //qDebug()<< "GET(" << _url << ") Код:" << _code;
+//        emit s_request(RequestType::get, url_, "", code_);
+//    } else if (type_ == "POST") {
+//        //qDebug()<< "POST(" << _url << _post << ") Код:" << _code;
+//        emit s_request(RequestType::post, url_, post_, code_);
+//    }
+    answer_ = aReply->readAll();
     if (aReply->rawHeaderList().indexOf("Authorization") > -1) {
-        _authorization = aReply->rawHeader("Authorization");
+        authorization_ = aReply->rawHeader("Authorization");
     }
+    type_ = RequestType::unknown;
     emit s_finished(this);
 }
 
-RequestData::~RequestData(){
-    disconnect(_manager);
-    delete _manager;
+RequestData::~RequestData() {
+    disconnect(manager_);
+    delete manager_;
 }

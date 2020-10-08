@@ -16,13 +16,23 @@
 #include <QHttpMultiPart>
 #include <QUrl>
 #include <QUrlQuery>
+#include <QDebug>
+#include <QLoggingCategory>
+
+Q_DECLARE_LOGGING_CATEGORY(logAgzs)
+Q_DECLARE_LOGGING_CATEGORY(logPrice)
+Q_DECLARE_LOGGING_CATEGORY(logOrders)
+Q_DECLARE_LOGGING_CATEGORY(logRequest)
+Q_DECLARE_LOGGING_CATEGORY(logError)
+
+enum class RequestType {
+    get,
+    post,
+    unknown
+};
 
 class RequestData : public QObject {
     Q_OBJECT
-    enum class RequestType {
-        get,
-        post
-    };
 
 public:
     explicit RequestData(QString url, bool parallel = false, QObject *parent = nullptr);
@@ -37,21 +47,21 @@ public:
 
 signals:
     void s_finished(RequestData *request);
-    void s_request(QString type, QString request, QString post, int code);
+    void s_request(RequestType type, QString request, QString post, int code);
 
 private slots:
     void completeRequest(RequestType type, QNetworkRequest request, QString post, bool parallel);
     void onResult(QNetworkReply *reply);
 
 private:
-    QNetworkAccessManager *_manager;
-    QByteArray _answer;
-    QString _type;
-    int _code;
-    QByteArray _authorization;
-    QString _url;
-    QString _post;
-    bool _parallel;
+    QNetworkAccessManager *manager_;
+    QByteArray answer_;
+    RequestType type_;
+    int code_;
+    QByteArray authorization_;
+    QString url_;
+    QString post_;
+    bool parallel_;
 
 };
 

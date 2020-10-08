@@ -9,6 +9,7 @@
 #include <QDebug>
 #include <QDateTime>
 #include <QSettings>
+#include "partners/networking/requestdata.h"
 
 #define Structs {
 struct FuelNames {
@@ -163,7 +164,7 @@ class DataBaseControl : public QObject {
 public:
     explicit DataBaseControl(QObject *parent = nullptr);
     bool init();
-    bool logAppend(QString string);
+    //bool logAppend(QString string);
 
 public slots:
     int getCurrentAgzs();

@@ -52,6 +52,7 @@ class MainWindow: public QMainWindow {
 
 public:
     MainWindow(QWidget *parent = nullptr);
+    void closeEvent(QCloseEvent*) override;
     ~MainWindow();
 
 public slots:
@@ -98,7 +99,7 @@ private slots:
 
     void authYandexResult(QString aToken);
     void needAuth();
-    void requestToLog(QString api, QString type, QString request, QString post, int code);
+    //void requestToLog(QString api, QString type, QString request, QString post, int code);
     void yandexErrorNotification();
 
     QString errorToString(ErrorsOrder aError);

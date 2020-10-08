@@ -1,14 +1,19 @@
 #include "yandexapi.h"
 
 YandexAPI::YandexAPI(QObject *aParent): QObject(aParent), _request(new RequestData(this)),
-_reestr("RegionPostavka", "Partners"), _timer(new QTimer()), c_baseUrl(_reestr.value("isTest").toBool()? c_baseTest: c_baseRelease) {
+_reestr("RegionPostavka", "Partners"), _timer(new QTimer()), c_baseUrl(_reestr.value("isTest").toBool() ? c_baseTest : c_baseRelease) {
     QObject::connect(_request, &RequestData::s_finished, this, &YandexAPI::checkAuth);
-    QObject::connect(_request, &RequestData::s_request, this, [=](QString type, QString request, QString post, int code) {
-        emit s_networkRequestInfo("Yandex", type, request, post, code);
-    });
+    QObject::connect(_request, &RequestData::s_request, this,   [=](RequestType type, QString request, QString post, int code) {
+                                                                    if (type == RequestType::get) {
+                                                                        qInfo(logRequest) << "Yandex    " << "GET " << code << request;
+                                                                    } else {
+                                                                        qInfo(logRequest) << "Yandex    " << "POST" << code << request << "(" + post + ")";
+                                                                    }
+                                                                    //emit s_networkRequestInfo("Yandex", type, request, post, code);
+                                                                });
 }
 
-void YandexAPI::getPassword(QString aLogin){
+void YandexAPI::getPassword(QString aLogin) {
     _request->get(QString("%1/api/auth?login=%2").arg(c_baseUrl, aLogin));
     //GET базовый url + /api/auth?login={login}
     //Система вышлет пароль на закрепленный за компанией Telegram канал, почту или смс
@@ -116,8 +121,8 @@ int YandexAPI::checkOrders() {
     QNetworkRequest request = createRequest(QString("%1/api/orders/items").arg(c_baseUrl), "application/x-www-form-urlencoded", true);
     _request->get(request);
     QJsonDocument jsonRequest = QJsonDocument::fromJson(_request->getAnswer());
+    qDebug() << _request->getAnswer();
     emit s_gotOrders(jsonRequest);
-    qDebug() << "Яндекс заказы:" << _request->getAnswer();
     checkAuth(_request);
     return jsonRequest.object().value("nextRetryMs").toInt();
 //    АСУ АЗС должна постоянно опрашивать систему Яндекс.Заправки для проверки поступления
@@ -190,6 +195,7 @@ void YandexAPI::receiveVolumeReport(QDateTime aStartDate, QDateTime aEndDate, in
     _request->post(request, QString("sdate=%1&edate=%2&page=%3").arg(aStartDate.toString("dd.MM.yyyy HH:mm:ss"), aEndDate.toString("dd.MM.yyyy HH:mm:ss"), QString::number(aPage)));
     checkAuth(_request);
     if ((_request->getCode() != 200) && (_request->getCode() != 401)) {
+        qWarning(logError) << "receiveVolumeReport" << "" << _request->getCode();
         emit s_error("receiveVolumeReport", "", _request->getCode());
     }
 //    Отчет возвращается в формате JSON, массив объектов Order
@@ -205,6 +211,7 @@ void YandexAPI::getStateAGZS(QString aApikey) {
     _request->get(QString("%1/api/station/enable?apikey=%2").arg(c_baseUrl, aApikey));
     checkAuth(_request);
     if ((_request->getCode() != 200) && (_request->getCode() != 401)) {
+        qWarning(logError) << "getStateAGZS" << "" << _request->getCode();
         emit s_error("getStateAGZS", "", _request->getCode());
     }
 //    Отчет возвращается в формате JSON, массив объектов StationStatus
@@ -217,6 +224,7 @@ void YandexAPI::setStatusAccept(QString aOrderId, int aVCode) {
     _request->get(request);
     checkAuth(_request);
     if ((_request->getCode() != 200) && (_request->getCode() != 401)) {
+        qWarning(logError) << "setStatusAccept" << aOrderId << _request->getCode();
         emit s_error("setStatusAccept", aOrderId, _request->getCode());
         setStatusCanceled(aOrderId, "Неизвестная ошибка.", QString::number(aVCode), QDateTime::currentDateTime());
     }
@@ -239,6 +247,7 @@ void YandexAPI::setStatusFueling(QString aOrderId, int aVCode) {
     _request->get(request);
     checkAuth(_request);
     if ((_request->getCode() != 200) && (_request->getCode() != 401)) {
+        qWarning(logError) << "setStatusFueling" << aOrderId << _request->getCode();
         emit s_error("setStatusFueling", aOrderId, _request->getCode());
         //setStatusCanceled(orderId, "Неизвестная ошибка.", QString::number(vCode), QDateTime::currentDateTime());
     }
@@ -258,6 +267,7 @@ void YandexAPI::setStatusCanceled(QString aOrderId, QString aReason, QString aEx
     _request->get(request);
     checkAuth(_request);
     if ((_request->getCode() != 200) && (_request->getCode() != 401)) {
+        qWarning(logError) << "setStatusCanceled" << aOrderId << _request->getCode();
         emit s_error("setStatusCanceled", "\"" + aOrderId + "\"", _request->getCode());
     }
 //    Данный статус сообщает системе Яндекс.Заправки о том, что заказ следует отменить
@@ -305,6 +315,7 @@ void YandexAPI::setFuelNow(QString aOrderId, double aLitre) {
     _request->post(request, QString("orderId=%1&litre=%2").arg(aOrderId, QString::number(aLitre).replace(".",",")));
     checkAuth(_request);
     if ((_request->getCode() != 200) && (_request->getCode() != 401)) {
+        qWarning(logError) << "setFuelNow" << aOrderId << _request->getCode();
         emit s_error("setFuelNow", aOrderId, _request->getCode());
     }
 //    В момент процесса налива интегрируемая система может сообщать Яндекс.Запракам статус
@@ -339,7 +350,7 @@ void YandexAPI::checkAuth(RequestData *aRequest) {
 
 void YandexAPI::saveToken(RequestData *aRequest){
     disconnect(_request, &RequestData::s_finished, this, &YandexAPI::saveToken);
-    qDebug()<<"Яндекс Токен:"<<QString::fromUtf8(aRequest->getAuthorization());
+    qDebug() << "Яндекс Токен:" << QString::fromUtf8(aRequest->getAuthorization());
     emit s_authComplete(QString::fromUtf8(aRequest->getAuthorization()));
 //    В ответе 200 ОК будет прислан Head параметр Authorization
 //    Авторизационный токен следует запомнить в реестре, файле системы, или конфигурации,

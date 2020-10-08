@@ -1,5 +1,3 @@
 deb_agzs
 Test
 true
-true
-true

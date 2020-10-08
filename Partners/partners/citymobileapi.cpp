@@ -1,11 +1,19 @@
 #include "citymobileapi.h"
 
 CityMobileAPI::CityMobileAPI(QObject *parent) : QObject(parent), _request(new RequestData()), _reestr("RegionPostavka", "Partners"),
-    _apiKey(_reestr.value("CityMobile Token", "").toString()), c_baseUrl(_reestr.value("isTest").toBool()? c_baseTest: c_baseRelease) {
-    qDebug()<<"CityMobile Token ="<<_apiKey<<"\nisTest ="<<_reestr.value("isTest").toString();
-    QObject::connect(_request, &RequestData::s_request, this, [=](QString type, QString request, QString post, int code) {
-        emit s_networkRequestInfo("CityMobile", type, request, post, code);
-    });
+_apiKey(_reestr.value("CityMobile Token", "").toString()), c_baseUrl(_reestr.value("isTest").toBool() ? c_baseTest : c_baseRelease) {
+
+    qDebug() << "CityMobile Token =" << _apiKey;
+    qDebug() << "isTest =" << _reestr.value("isTest").toString();
+
+    QObject::connect(_request, &RequestData::s_request, this,   [=](RequestType type, QString request, QString post, int code) {
+                                                                    if (type == RequestType::get) {
+                                                                        qInfo(logRequest) << "CityMobile" << "GET " << code << request;
+                                                                    } else {
+                                                                        qInfo(logRequest) << "CityMobile" << "POST" << code << request << "(" + post + ")";
+                                                                    }
+                                                                    //emit s_networkRequestInfo("CityMobile", type, request, post, code);
+                                                                });
 }
 
 CityMobileAPI::~CityMobileAPI() {
@@ -35,6 +43,7 @@ void CityMobileAPI::setStatusAccept(QString aOrderId, int aVCode) {
     QNetworkRequest request = createRequest("api/orders/accept?orderId=" + aOrderId, "application/x-www-form-urlencoded", true);
     _request->get(request);
     if ((_request->getCode() != 200) && (_request->getCode() != 401)) {
+        qWarning(logError) << "setStatusAccept" << aOrderId << _request->getCode();
         emit s_error("setStatusAccept", aOrderId, _request->getCode());
         setStatusCanceled(aOrderId, "Неизвестная ошибка.", QString::number(aVCode), QDateTime::currentDateTime());
     }
@@ -45,6 +54,7 @@ void CityMobileAPI::setStatusFueling(QString aOrderId, int aVCode) {
     QNetworkRequest request = createRequest("api/orders/fueling?orderId=" + aOrderId, "application/x-www-form-urlencoded", true);
     _request->get(request);
     if ((_request->getCode() != 200) && (_request->getCode() != 401)) {
+        qWarning(logError) << "setStatusFueling" << aOrderId << _request->getCode();
         emit s_error("setStatusFueling", aOrderId, _request->getCode());
         //setStatusCanceled(orderId, "Неизвестная ошибка.", QString::number(vCode), QDateTime::currentDateTime());
     }
@@ -81,9 +91,9 @@ void CityMobileAPI::setStatusMessage(QString aOrderId, QString aMessage) {
 QNetworkRequest CityMobileAPI::createRequest(QString aUrl, QString aContentType, bool aAuth) {
     QNetworkRequest request;
     request.setUrl(QUrl(c_baseUrl + aUrl));
-    request.setHeader(QNetworkRequest::ContentTypeHeader,aContentType);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, aContentType);
     if (aAuth) {
-        request.setRawHeader("Authorization",_apiKey.toUtf8());
+        request.setRawHeader("Authorization", _apiKey.toUtf8());
     }
     return request;
 }
