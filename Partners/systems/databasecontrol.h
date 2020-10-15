@@ -197,8 +197,8 @@ private slots:
     bool openDB();
 
 private:
-    QSqlDatabase _db;
-    QSettings _reestr;
+    QSqlDatabase db_;
+    QSettings reestr_;
 
 };
 

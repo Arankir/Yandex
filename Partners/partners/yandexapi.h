@@ -39,9 +39,9 @@ private slots:
     void saveToken(RequestData*);
 
 private:
-    RequestData *_request;
-    QSettings _reestr;
-    QTimer _timer;
+    RequestData *request_;
+    QSettings reestr_;
+    QTimer timer_;
     const QString c_baseTest = "http://cabinet.tst.tanker.yandex.ru";
     const QString c_baseRelease = "https://cabinet.tanker.yandex.net";
     const QString c_baseUrl;

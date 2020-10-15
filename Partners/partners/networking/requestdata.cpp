@@ -1,8 +1,8 @@
 #include "requestdata.h"
 
-Q_LOGGING_CATEGORY(logAgzs,     "AGZS")
-Q_LOGGING_CATEGORY(logPrice,    "Price")
-Q_LOGGING_CATEGORY(logOrders,   "Orders")
+//Q_LOGGING_CATEGORY(logAgzs,     "AGZS")
+//Q_LOGGING_CATEGORY(logPrice,    "Price")
+//Q_LOGGING_CATEGORY(logOrders,   "Orders")
 Q_LOGGING_CATEGORY(logRequest,  "Request")
 Q_LOGGING_CATEGORY(logError,    "Error")
 

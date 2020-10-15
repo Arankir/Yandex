@@ -76,6 +76,9 @@ public slots:
     bool processCompleted(Order aOrder, Partner aPartner);
     bool processUnknown(Order aOrder, Partner aPartner);
 private slots:
+    void InitTray();
+    void InitTimers();
+    void InitPartners();
     void on_ButtonEnter_clicked();
     void on_ButtonGetPassword_clicked();
     void on_ButtonCancelCitymobile_clicked();
@@ -91,11 +94,8 @@ private slots:
     void updateConfiguration(Partner p);
     void processOrders(Partner aPartner, QJsonDocument orders);
 
-    void changeEvent(QEvent*);
+    void changeEvent(QEvent*) override;
     void trayIconActivated(QSystemTrayIcon::ActivationReason reason);
-    void trayActionExecute();
-    void setTrayIconActions();
-    void showTrayIcon();
 
     void authYandexResult(QString aToken);
     void needAuth();
@@ -105,22 +105,15 @@ private slots:
     QString errorToString(ErrorsOrder aError);
 private:
     Ui::MainWindow *ui;
-    YandexAPI *_yandex;
-    CityMobileAPI *_cityMobile;
-    int _errorPassword = 0;
-    DataBaseControl _db;
-    QSettings _reestr;
+    YandexAPI *yandex_;
+    CityMobileAPI *cityMobile_;
+    DataBaseControl db_;
+    QSettings reestr_;
 
-    QTimer _timerYandexAgzsData;
-    QTimer _timerYandexOrders;
-    QTimer _timerYandexError;
-    QTimer _timerCityMobileAgzsData;
-    QTimer _timerCityMobileOrders;
-
-    QMenu *trayIconMenu;
-    QAction *minimizeAction;
-    QAction *restoreAction;
-    QAction *quitAction;
-    QSystemTrayIcon *trayIcon;
+    QTimer timerYandexAgzsData_;
+    QTimer timerYandexOrders_;
+    QTimer timerYandexError_;
+    QTimer timerCityMobileAgzsData_;
+    QTimer timerCityMobileOrders_;
 };
 #endif // MAINWINDOW_H

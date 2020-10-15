@@ -30,9 +30,9 @@ private slots:
     QNetworkRequest createRequest(QString url, QString contentType, bool auth);
 
 private:
-    RequestData *_request;
-    QSettings _reestr;
-    QString _apiKey;
+    RequestData *request_;
+    QSettings reestr_;
+    QString apiKey_;
     const QString c_baseTest = "https://terminal.api.test.fuelup.ru/";
     const QString c_baseRelease = "https://terminal.api.fuelup.ru/";
     const QString c_baseUrl;

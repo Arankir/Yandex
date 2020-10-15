@@ -19,6 +19,9 @@ bool createDir(const QString &aPath) {
         path += "/";
     }
     QStringList dirs = path.split("/");
+    if (dirs.last() == "") {
+        dirs.removeLast();
+    }
     QString pathNow = "";
     for (auto &dir: dirs) {
         if (dir != dirs.last()) {

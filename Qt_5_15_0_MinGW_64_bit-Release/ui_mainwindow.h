@@ -55,7 +55,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(240, 391);
+        MainWindow->resize(216, 391);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         verticalLayout_3 = new QVBoxLayout(centralwidget);
@@ -89,6 +89,7 @@ public:
         font.setPointSize(14);
         labelAuthError->setFont(font);
         labelAuthError->setStyleSheet(QString::fromUtf8("color: rgb(102, 97, 255);"));
+        labelAuthError->setWordWrap(true);
 
         verticalLayout_3->addWidget(labelAuthError);
 
@@ -165,7 +166,7 @@ public:
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 240, 20));
+        menubar->setGeometry(QRect(0, 0, 216, 20));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));

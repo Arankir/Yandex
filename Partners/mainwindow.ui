@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>240</width>
+    <width>216</width>
     <height>391</height>
    </rect>
   </property>
@@ -71,6 +71,9 @@
       </property>
       <property name="text">
        <string>Успешно авторизовано!</string>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
       </property>
      </widget>
     </item>
@@ -189,7 +192,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>240</width>
+     <width>216</width>
      <height>20</height>
     </rect>
    </property>
