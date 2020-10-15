@@ -1,0 +1,40 @@
+15:56:12 DB is open
+15:56:13 STARTED
+15:56:18 Yandex     GET  200 "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+15:56:19 CityMobile GET  200 "https://terminal.api.test.fuelup.ru/api/orders/items"
+15:56:21 Yandex     GET  200 "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+15:56:22 CityMobile GET  200 "https://terminal.api.test.fuelup.ru/api/orders/items"
+15:56:25 Yandex     GET  200 "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+15:56:25 CityMobile GET  200 "https://terminal.api.test.fuelup.ru/api/orders/items"
+15:56:28 CityMobile GET  200 "https://terminal.api.test.fuelup.ru/api/orders/items"
+15:56:28 Yandex     GET  200 "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+15:56:31 CityMobile GET  200 "https://terminal.api.test.fuelup.ru/api/orders/items"
+15:56:31 Yandex     GET  200 "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+15:56:34 CityMobile GET  200 "https://terminal.api.test.fuelup.ru/api/orders/items"
+15:56:34 Yandex     GET  200 "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+15:56:55 DB is open
+15:56:55 STARTED
+15:57:00 Yandex     GET  200 "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+15:57:00 CityMobile GET  200 "https://terminal.api.test.fuelup.ru/api/orders/items"
+15:57:03 CityMobile GET  200 "https://terminal.api.test.fuelup.ru/api/orders/items"
+15:57:03 Yandex     GET  200 "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+15:57:06 CityMobile GET  200 "https://terminal.api.test.fuelup.ru/api/orders/items"
+15:57:07 Yandex     GET  200 "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+15:57:29 DB is open
+15:57:29 STARTED
+15:57:34 Yandex     GET  200 "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+15:57:34 CityMobile GET  200 "https://terminal.api.test.fuelup.ru/api/orders/items"
+15:57:37 CityMobile GET  200 "https://terminal.api.test.fuelup.ru/api/orders/items"
+15:57:37 Yandex     GET  200 "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+15:57:55 DB is open
+15:57:55 STARTED
+15:58:23 DB is open
+15:58:23 STARTED
+15:58:28 Yandex     GET  200 "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+15:58:28 CityMobile GET  200 "https://terminal.api.test.fuelup.ru/api/orders/items"
+15:59:21 DB is open
+15:59:21 STARTED
+15:59:26 Yandex     GET  200 "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+15:59:26 CityMobile GET  200 "https://terminal.api.test.fuelup.ru/api/orders/items"
+16:04:30 DB is open
+16:04:31 STARTED
