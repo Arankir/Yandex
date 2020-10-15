@@ -18,6 +18,7 @@ DataBaseControl::DataBaseControl(QObject *aParent) : QObject(aParent), _reestr("
 //        qWarning(logError) << "log file not found";
 //    }
     while(!init());
+    qInfo () << "DB is open";
 }
 
 bool DataBaseControl::init() {
@@ -70,7 +71,6 @@ bool DataBaseControl::openDB() {
             cityMobileToken = query.value(0).toString();
         }
         _reestr.setValue("CityMobile Token", cityMobileToken);
-        qInfo () << "DB is open";
         //logAppend("DB open");
         return true;
     } else {
@@ -696,7 +696,7 @@ bool DataBaseControl::getPayOperationLiters(int aLink, double &aAmount, double &
             return true;
         } else {
             openDB();
-            qWarning(logError) << "getPayOperationLiters" << cycles;
+            qDebug(logError) << "getPayOperationLiters" << aLink << cycles;
             //logAppend("getPayOperationLiters error " + QString::number(cycles));
         }
         cycles++;

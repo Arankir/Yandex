@@ -75,6 +75,9 @@ void RequestData::onResult(QNetworkReply *aReply) {
 //        emit s_request(RequestType::post, url_, post_, code_);
 //    }
     answer_ = aReply->readAll();
+    if (code_ != 200) {
+        qWarning() << code_ << answer_;
+    }
     if (aReply->rawHeaderList().indexOf("Authorization") > -1) {
         authorization_ = aReply->rawHeader("Authorization");
     }

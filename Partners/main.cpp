@@ -78,15 +78,14 @@ void initLog() {
     QFileInfoList list = dirLogs.entryInfoList();
     for(auto &file: list) {
         if (file.fileName().indexOf("log_") == 0) {
-            QDateTime date;
-            date.fromString(file.fileName().remove("log_"), "yyyy.MM.dd");
-            if (date < QDateTime::currentDateTime().addMonths(-2)) {
+            QDate date = QDate::fromString(file.fileName().remove("log_").remove(".txt"), "yyyy.MM.dd");
+            if (date < QDate::currentDate().addMonths(-2)) {
                 QFile::remove(file.filePath() + "/" + file.fileName());
             }
         }
     }
 
-    logFile_.reset(new QFile("logs/" + QDateTime::currentDateTime().toString("log_yyyy.MM.dd") + ".txt"));
+    logFile_.reset(new QFile("logs/" + QDate::currentDate().toString("log_yyyy.MM.dd") + ".txt"));
     logFile_.data()->open(QFile::Append | QFile::Text);
     qInstallMessageHandler(log);
 }
