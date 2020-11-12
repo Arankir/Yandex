@@ -33,13 +33,14 @@ bool DataBaseControl::init() {
     //_reestr.setValue("agzsPriceLog", setting.size() > 3 ? setting[3] == "true" : false);
     //_reestr.setValue("agzsDataLog",  setting.size() > 2 ? setting[2] == "true" : false);
     reestr_.setValue("isTest",       setting.size() > 1 ? setting[1] == "Test" : false);
+    agzsName_ = setting[0];
     if (setting.size() > 0) {
         db_.setDatabaseName(QString("DRIVER={SQL Server};"
                                     "SERVER=%1;"
                                     "DATABASE=agzs;"
                                     "Persist Security Info=true;"
                                     "uid=sa;"
-                                    "pwd=Gfhf743Djpbr").arg(setting[0]));
+                                    "pwd=Gfhf743Djpbr").arg(agzsName_));
         return openDB();
     }
     return false;
@@ -422,8 +423,7 @@ bool DataBaseControl::createTrkTransaction(QString aAgzsName, int aLocalVCode, Q
         query.bindValue(":AGZS", aAgzs);
         query.bindValue(":FuelVCode", aFuelVCode);
         query.bindValue(":Propan", aPropan);
-        query.exec();
-        if (query.lastError().type() == QSqlError::NoError) {
+        if (query.exec()) {
             return true;
         } else {
             qWarning(logError) << "createTrkTransaction" << cycles;
@@ -509,8 +509,7 @@ bool DataBaseControl::createTrkTransaction(Transaction aTransaction) {
         query.bindValue(":AGZS", aTransaction.agzs);
         query.bindValue(":FuelVCode", aTransaction.fuelVCode);
         query.bindValue(":Propan", aTransaction.propan);
-        query.exec();
-        if (query.lastError().type() == QSqlError::NoError) {
+        if (query.exec()) {
             return true;
         } else {
             qWarning(logError) << "createTrkTransaction" << cycles;
@@ -553,10 +552,9 @@ bool DataBaseControl::createApiTransaction(QString aAgzsName, int aAgzs, QDateTi
         query.bindValue(":Litre", aLitre);
         query.bindValue(":Sum", aSum);
         query.bindValue(":DateOpen", aDateOpen.toString("yyyyMMdd hh:mm:ss.zzz"));
-        //q_APIRequests.bindValue(":DateClose", "DEFAULT");
+        //query.bindValue(":DateClose", "DEFAULT");
         query.bindValue(":Link", aLink);
-        query.exec();
-        if (query.lastError().type() == QSqlError::NoError) {
+        if (query.exec()) {
             return true;
         } else  {
             qWarning(logError) << "createApiTransaction" << cycles;
@@ -613,8 +611,7 @@ bool DataBaseControl::updateApiTransactionState(QString aLocalState, QDateTime a
         query.bindValue(":localState", aLocalState);
         query.bindValue(":date",       aDateClose);
         query.bindValue(":VCode",      aVCode);
-        query.exec();
-        if (query.lastError().type() == QSqlError::NoError) {
+        if (query.exec()) {
             return true;
         } else {
             qWarning(logError) << "updateApiTransactionState" << cycles;
@@ -646,8 +643,7 @@ bool DataBaseControl::finalUpdateApiTransactionState(QString aLocalState, double
         query.bindValue(":dateOpen",   aDateOpen);
         query.bindValue(":dateClose",  aDateClose);
         query.bindValue(":VCode",      aVCode);
-        query.exec();
-        if (query.lastError().type() == QSqlError::NoError) {
+        if (query.exec()) {
             return true;
         } else {
             qWarning(logError) << "finalUpdateApiTransactionState" << cycles;
@@ -694,8 +690,7 @@ bool DataBaseControl::setTransactionClosed(QString aId, int aClosed) {
                                      "WHERE ApiId = :id)");
         query.bindValue(":closed", aClosed);
         query.bindValue(":id",     aId);
-        query.exec();
-        if (query.lastError().type() == QSqlError::NoError) {
+        if (query.exec()) {
             return true;
         } else {
             qWarning(logError) << "setTransactionClosed" << cycles;
@@ -816,8 +811,7 @@ bool DataBaseControl::updateApiTransaction(int aLocalState, QDateTime aDate, int
         query.bindValue(":localState", aLocalState);
         query.bindValue(":date",       aDate);
         query.bindValue(":VCode",      aVCode);
-        query.exec();
-        if (query.lastError().type() == QSqlError::NoError) {
+        if (query.exec()) {
             return true;
         } else {
             qWarning(logError) << "updateApiTransaction" << cycles;

@@ -9,6 +9,7 @@ Q_LOGGING_CATEGORY(logError,    "Error")
 RequestData::RequestData(QString aUrl, bool aParallel, QObject *aParent): QObject(aParent), manager_(new QNetworkAccessManager()), answer_(""),
 authorization_(""), url_(aUrl), parallel_(aParallel) {
     connect(manager_, &QNetworkAccessManager::finished, this, &RequestData::onResult);
+    manager_->setTransferTimeout(3000);
 }
 
 RequestData::RequestData(QObject *aParent): RequestData("", false, aParent) {
@@ -76,7 +77,7 @@ void RequestData::onResult(QNetworkReply *aReply) {
 //    }
     answer_ = aReply->readAll();
     if (code_ != 200) {
-        qWarning() << code_ << answer_;
+        qWarning() << code_ << url_ << answer_;
     }
     if (aReply->rawHeaderList().indexOf("Authorization") > -1) {
         authorization_ = aReply->rawHeader("Authorization");

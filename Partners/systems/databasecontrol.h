@@ -164,6 +164,7 @@ class DataBaseControl : public QObject {
 public:
     explicit DataBaseControl(QObject *parent = nullptr);
     bool init();
+    QString getAgzsName() {return agzsName_;}
     //bool logAppend(QString string);
 
 public slots:
@@ -199,6 +200,7 @@ private slots:
 private:
     QSqlDatabase db_;
     QSettings reestr_;
+    QString agzsName_;
 
 };
 

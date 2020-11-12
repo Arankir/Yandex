@@ -24,7 +24,7 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWin
     ui->label_2->setText("<img height=25 style=\"vertical-align: top\" src=\"://images/login password.png\"> Пароль</a>");
     ui->ButtonSettings->setIcon(QIcon("://images/settings.png"));
     this->setWindowFlags(Qt::Window | Qt::WindowMinimizeButtonHint);
-    ui->LabelVersion->setText("v1.9");
+    ui->LabelVersion->setText("v1.10");
 }
 
 void MainWindow::InitTray() {
@@ -104,6 +104,7 @@ void MainWindow::changeEvent(QEvent *aEvent) {
         }
     }
 }
+
 MainWindow::~MainWindow() {
     delete ui;
 }
@@ -133,23 +134,6 @@ void MainWindow::needAuth() {
     timerYandexOrders_.stop();
     timerYandexError_.start(0);
 }
-
-//void MainWindow::requestToLog(QString api, QString type, QString request, QString post, int code) {
-//    if ((request.indexOf("price") > 0) && (_reestr.value("agzsPriceLog") == false)) {
-//        return;
-//    }
-//    if ((request.indexOf("station") > 0) && (_reestr.value("agzsDataLog") == false)) {
-//        return;
-//    }
-//    if ((request.indexOf("items") > 0) && (_reestr.value("ordersLog") == false)) {
-//        return;
-//    }
-//    if (type == "GET") {
-//        _db.logAppend(api + " " + type + "(" + request + ") Код:" + QString::number(code));
-//    } else if (type == "POST") {
-//        _db.logAppend(api + " " + type + "(" + request + " '" + post + "') Код:" + QString::number(code));
-//    }
-//}
 
 void MainWindow::yandexErrorNotification() {
     this->show();
@@ -253,6 +237,9 @@ void MainWindow::updateDataYandex() {
         updatePrice(Partner::yandex);
         updateConfiguration(Partner::yandex);
         //_yandex->checkOrders();
+        if (!timerYandexOrders_.isActive()) {
+            timerYandexOrders_.start(5000);
+        }
     }
 }
 
@@ -329,6 +316,8 @@ void MainWindow::getNozzleFuelCode(AdastTrk aTrk, QString aFuelId, int &aNozzle,
 }
 
 Transaction MainWindow::createEmptyTransaction() {
+    QString agzsName = db_.getAgzsName();
+
     Transaction transaction;
     transaction.trkType = "ADAST";
     transaction.transNum = "";
@@ -347,10 +336,10 @@ Transaction MainWindow::createEmptyTransaction() {
     transaction.transCountAfter = 0;
     transaction.result = "Выдача завершена: 1";
     transaction.temperature = -100;
-    transaction.cHost = c_host;
-    transaction.wHost = c_host;
-    transaction.cUser = c_host;
-    transaction.wUser = c_host;
+    transaction.cHost = agzsName;
+    transaction.wHost = agzsName;
+    transaction.cUser = agzsName;
+    transaction.wUser = agzsName;
     transaction.addedForTransVCode = 0;
     transaction.aditionalTransVCode = 0;
     transaction.active = 0;
