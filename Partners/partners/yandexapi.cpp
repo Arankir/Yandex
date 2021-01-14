@@ -1,16 +1,28 @@
 #include "yandexapi.h"
 
-YandexAPI::YandexAPI(QObject *aParent): QObject(aParent), _request(new RequestData(this)),
-_reestr("RegionPostavka", "Partners"), _timer(new QTimer()), c_baseUrl(_reestr.value("isTest").toBool() ? c_baseTest : c_baseRelease) {
+YandexAPI::YandexAPI(QObject *aParent):
+QObject(aParent),
+_request(new RequestData(this)),
+_reestr("RegionPostavka", "Partners"),
+_timer(new QTimer()),
+c_baseUrl(_reestr.value("isTest").toBool() ? c_baseTest : c_baseRelease) {
     QObject::connect(_request, &RequestData::s_finished, this, &YandexAPI::checkAuth);
-    QObject::connect(_request, &RequestData::s_request, this,   [=](RequestType type, QString request, QString post, int code) {
-                                                                    if (type == RequestType::get) {
-                                                                        qInfo(logRequest) << "Yandex    " << "GET " << code << request;
-                                                                    } else {
-                                                                        qInfo(logRequest) << "Yandex    " << "POST" << code << request << "(" + post + ")";
-                                                                    }
-                                                                    //emit s_networkRequestInfo("Yandex", type, request, post, code);
-                                                                });
+    QObject::connect(_request, &RequestData::s_request, this,
+                     [=](QNetworkAccessManager::Operation operation, QString request, QString post, int code) {
+                        switch (operation) {
+                        case QNetworkAccessManager::Operation::GetOperation: {
+                            qInfo(logRequest) << "GET " << code << "Yandex    " << request;
+                            break;
+                        }
+                        case QNetworkAccessManager::Operation::PostOperation: {
+                            qInfo(logRequest) << "POST" << code << "Yandex    " << request << "(" + post + ")";
+                            break;
+                        }
+                        default: {
+
+                        }
+                        }
+                     });
 }
 
 void YandexAPI::getPassword(QString aLogin) {
@@ -32,7 +44,7 @@ void YandexAPI::authorization(QString aLogin, QString aPassword) {
 }
 
 void YandexAPI::updatePriceList(QString aPricelist) {
-    QNetworkRequest request = createRequest(QString("%1/api/price").arg(c_baseUrl), "application/x-www-form-urlencoded", true);
+    QNetworkRequest request = createRequest(QString("%1/api/price").arg(c_baseUrl));
     _request->post(request, aPricelist);
 //    Для передачи прайс-листа в систему Яндекс.Заправки, АСУ АЗС после авторизации и в
 //    момент обновления прайс-листа должна присылать HTTP запрос вида
@@ -118,7 +130,7 @@ void YandexAPI::updateConfigurationAGZS(QString aConfiguration) {
 }
 
 int YandexAPI::checkOrders() {
-    QNetworkRequest request = createRequest(QString("%1/api/orders/items").arg(c_baseUrl), "application/x-www-form-urlencoded", true);
+    QNetworkRequest request = createRequest(QString("%1/api/orders/items").arg(c_baseUrl));
     _request->get(request);
     QJsonDocument jsonRequest = QJsonDocument::fromJson(_request->getAnswer());
     qDebug() << _request->getAnswer();
@@ -191,7 +203,7 @@ int YandexAPI::checkOrders() {
 }
 
 void YandexAPI::receiveVolumeReport(QDateTime aStartDate, QDateTime aEndDate, int aPage) {
-    QNetworkRequest request = createRequest(QString("%1/api/orders/report").arg(c_baseUrl), "application/x-www-form-urlencoded", true);
+    QNetworkRequest request = createRequest(QString("%1/api/orders/report").arg(c_baseUrl));
     _request->post(request, QString("sdate=%1&edate=%2&page=%3").arg(aStartDate.toString("dd.MM.yyyy HH:mm:ss"), aEndDate.toString("dd.MM.yyyy HH:mm:ss"), QString::number(aPage)));
     checkAuth(_request);
     if ((_request->getCode() != 200) && (_request->getCode() != 401)) {
@@ -220,7 +232,7 @@ void YandexAPI::getStateAGZS(QString aApikey) {
 }
 
 void YandexAPI::setStatusAccept(QString aOrderId, int aVCode) {
-    QNetworkRequest request = createRequest(QString("%1/api/orders/accept?orderId=%2").arg(c_baseUrl, aOrderId), "application/x-www-form-urlencoded", true);
+    QNetworkRequest request = createRequest(QString("%1/api/orders/accept?orderId=%2").arg(c_baseUrl, aOrderId));
     _request->get(request);
     checkAuth(_request);
     if ((_request->getCode() != 200) && (_request->getCode() != 401)) {
@@ -243,7 +255,7 @@ void YandexAPI::setStatusAccept(QString aOrderId, int aVCode) {
 
 void YandexAPI::setStatusFueling(QString aOrderId, int aVCode) {
     Q_UNUSED(aVCode);
-    QNetworkRequest request = createRequest(QString("%1/api/orders/fueling?orderId=%2").arg(c_baseUrl, aOrderId), "application/x-www-form-urlencoded", true);
+    QNetworkRequest request = createRequest(QString("%1/api/orders/fueling?orderId=%2").arg(c_baseUrl, aOrderId));
     _request->get(request);
     checkAuth(_request);
     if ((_request->getCode() != 200) && (_request->getCode() != 401)) {
@@ -263,7 +275,7 @@ void YandexAPI::setStatusFueling(QString aOrderId, int aVCode) {
 
 void YandexAPI::setStatusCanceled(QString aOrderId, QString aReason, QString aExtendedOrderId, QDateTime aExtendedDate) {
     QNetworkRequest request = createRequest(QString("%1/api/orders/canceled?orderId=%2&reason=%3&extendedOrderId=%4&extendedDate=%5").arg(
-                                            c_baseUrl, aOrderId, aReason, aExtendedOrderId, aExtendedDate.toString("dd.MM.yyyy HH:mm:ss")), "application/x-www-form-urlencoded", true);
+                                            c_baseUrl, aOrderId, aReason, aExtendedOrderId, aExtendedDate.toString("dd.MM.yyyy HH:mm:ss")));
     _request->get(request);
     checkAuth(_request);
     if ((_request->getCode() != 200) && (_request->getCode() != 401)) {
@@ -283,8 +295,7 @@ void YandexAPI::setStatusCanceled(QString aOrderId, QString aReason, QString aEx
 
 void YandexAPI::setStatusCompleted(QString aOrderId, double aLitre, QString aExtendedOrderId, QDateTime aExtendedDate) {
     QNetworkRequest request = createRequest(QString("%1/api/orders/completed?orderId=%2&litre=%3&extendedOrderId=%4&extendedDate=%5").arg(
-                                            c_baseUrl, aOrderId, QString::number(aLitre), aExtendedOrderId, aExtendedDate.toString("dd.MM.yyyy HH:mm:ss")),
-                                            "application/x-www-form-urlencoded", true);
+                                            c_baseUrl, aOrderId, QString::number(aLitre), aExtendedOrderId, aExtendedDate.toString("dd.MM.yyyy HH:mm:ss")));
     _request->get(request);
     checkAuth(_request);
     if (_request->getCode() != 200) {
@@ -311,7 +322,7 @@ void YandexAPI::setStatusCompleted(QString aOrderId, double aLitre, QString aExt
 }
 
 void YandexAPI::setFuelNow(QString aOrderId, double aLitre) {
-    QNetworkRequest request = createRequest(QString("%1/api/orders/volume").arg(c_baseUrl), "application/x-www-form-urlencoded", true);
+    QNetworkRequest request = createRequest(QString("%1/api/orders/volume").arg(c_baseUrl));
     _request->post(request, QString("orderId=%1&litre=%2").arg(aOrderId, QString::number(aLitre).replace(".",",")));
     checkAuth(_request);
     if ((_request->getCode() != 200) && (_request->getCode() != 401)) {

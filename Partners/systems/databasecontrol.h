@@ -164,7 +164,6 @@ class DataBaseControl : public QObject {
 public:
     explicit DataBaseControl(QObject *parent = nullptr);
     bool init();
-    //bool logAppend(QString string);
 
 public slots:
     int getCurrentAgzs();

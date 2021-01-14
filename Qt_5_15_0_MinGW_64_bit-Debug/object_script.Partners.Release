@@ -1,0 +1,14 @@
+release/main.o
+release/mainwindow.o
+release/citymobileapi.o
+release/requestdata.o
+release/yandexapi.o
+release/databasecontrol.o
+release/formsettings.o
+release/qrc_res.o
+release/moc_mainwindow.o
+release/moc_citymobileapi.o
+release/moc_requestdata.o
+release/moc_yandexapi.o
+release/moc_databasecontrol.o
+release/moc_formsettings.o

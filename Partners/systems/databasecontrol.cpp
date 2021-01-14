@@ -7,16 +7,6 @@ const int c_maxRestartCount = 7;
 
 #define InitStart {
 DataBaseControl::DataBaseControl(QObject *aParent) : QObject(aParent), _reestr("RegionPostavka", "Partners") {
-//    if (QFile::exists(c_logPath)) {
-//        QFile fLog(c_logPath);
-//        if (fLog.open(QIODevice::WriteOnly)) {
-//            fLog.close();
-//        } else {
-//            qWarning(logError) << "log file is already open";
-//        }
-//    } else {
-//        qWarning(logError) << "log file not found";
-//    }
     while(!init());
 }
 
@@ -32,19 +22,17 @@ bool DataBaseControl::init() {
             settings.close();
         } else {
             qWarning(logError) << "setting file is already open";
-            //logAppend("Error: setting file is already open");
             return false;
         }
     } else {
         qWarning(logError) << "setting file not found";
-        //logAppend("Error: setting file not found");
         return false;
     }
     qDebug() << setting;
     _reestr.setValue("ordersLog",    setting.size() > 2 ? setting[2] == "true" : false);
     //_reestr.setValue("agzsPriceLog", setting.size() > 3 ? setting[3] == "true" : false);
     //_reestr.setValue("agzsDataLog",  setting.size() > 2 ? setting[2] == "true" : false);
-    _reestr.setValue("isTest",       setting.size() > 1 ? setting[1] == "Test" : false);
+    _reestr.setValue("isTest",       setting.size() > 1 ? setting[1] == "test" : false);
     if (setting.size() > 0) {
         _db.setDatabaseName(QString("DRIVER={SQL Server};"
                                     "SERVER=%1;"
@@ -71,32 +59,12 @@ bool DataBaseControl::openDB() {
         }
         _reestr.setValue("CityMobile Token", cityMobileToken);
         qInfo () << "DB is open";
-        //logAppend("DB open");
         return true;
     } else {
         qInfo () << "DB isn't open";
-        //logAppend("DB close");
         return false;
     }
 }
-
-//bool DataBaseControl::logAppend(QString aMessage) {
-//    if (QFile::exists(c_logPath)) {
-//        QFile fLog(c_logPath);
-//        if (fLog.open(QIODevice::Append)) {
-//            QTextStream writeStream(&fLog);
-//            QDateTime time;
-//            writeStream <<time.currentDateTime().toString("yyyy-MM-dd  HH:mm:ss") <<" "+aMessage <<"\n";
-//            fLog.close();
-//            return true;
-//        } else {
-//            qWarning(logError) << "log file is already open";
-//        }
-//    } else {
-//        qWarning(logError) << "log file not found";
-//    }
-//    return false;
-//}
 #define InitEnd }
 
 FuelNames DataBaseControl::getFuelNames(int aFuelId) {
@@ -114,7 +82,6 @@ FuelNames DataBaseControl::getFuelNames(int aFuelId) {
         } else {
             openDB();
             qWarning(logError) << "getFuelNames" << cycles;
-            //logAppend("GetFuelNames error " + QString::number(cycles));
         }
         cycles++;
     }
@@ -163,7 +130,6 @@ QVector<SideFuel> DataBaseControl::getFuels() {
         } else {
             openDB();
             qWarning(logError) << "getFuels" << cycles;
-            //logAppend("GetFuels error " + QString::number(cycles));
         }
         cycles++;
     }
@@ -184,7 +150,6 @@ int DataBaseControl::getRealSideAddress(int aAgzs, int aPartnerSideAddress) {
         } else {
             openDB();
             qWarning(logError) << "getRealSideAddress" << cycles;
-            //logAppend("getRealSideAddress error " + QString::number(cycles));
         }
         cycles++;
     }
@@ -203,7 +168,6 @@ int DataBaseControl::getSmena() {
         } else {
             openDB();
             qWarning(logError) << "getSmena" << cycles;
-            //logAppend("GetSmena error " + QString::number(cycles));
         }
         cycles++;
     }
@@ -222,7 +186,6 @@ int DataBaseControl::getCashBoxIndex(QString aIPartner) {
         } else {
             openDB();
             qWarning(logError) << "getCashBoxIndex" << cycles;
-            //logAppend("GetCashBoxIndex error " + QString::number(cycles));
         }
         cycles++;
     }
@@ -241,7 +204,9 @@ Price DataBaseControl::getPrices(QString aIPartner) {
                                  "FROM [agzs].[dbo].PR_AGZSData "
                                  "WHERE AGZS = (SELECT TOP 1 AGZS "
                                                "FROM [agzs].[dbo].[Identification])) "
-                   "and iPartner = " + aIPartner);
+                   "and iPartner = " + aIPartner + " "
+                   "and DateStart < '" + QDateTime::currentDateTime().toString("yyyyMMdd hh:mm:ss.zzz") + "' "
+                   "ORDER BY [CDate] desc");
         if (query.next()) {
             Price price;
             price.agzsName          = query.value(0).toString();
@@ -267,7 +232,6 @@ Price DataBaseControl::getPrices(QString aIPartner) {
         } else {
             openDB();
             qWarning(logError) << "getPrices" << cycles;
-            //logAppend("GetPrices error " + QString::number(cycles));
         }
         cycles++;
     }
@@ -298,7 +262,6 @@ Agzs DataBaseControl::getAgzsData() {
         } else {
             openDB();
             qWarning(logError) << "getAgzsData" << cycles;
-            //logAppend("GetAgzsData error " + QString::number(cycles));
         }
         cycles++;
     }
@@ -357,7 +320,6 @@ AdastTrk DataBaseControl::getAgzsAdastTrk(int aSideAdress) {
         } else {
             openDB();
             qWarning(logError) << "getAgzsAdastTrk" << cycles;
-            //logAppend("GetAgzsAdastTrk error " + QString::number(cycles));
         }
         cycles++;
     }
@@ -452,7 +414,6 @@ bool DataBaseControl::createTrkTransaction(QString aAgzsName, int aLocalVCode, Q
         } else {
             openDB();
             qWarning(logError) << "createTrkTransaction" << cycles;
-            //logAppend("createTrkTransaction error " + QString::number(cycles));
         }
         cycles++;
     }
@@ -538,7 +499,6 @@ bool DataBaseControl::createTrkTransaction(Transaction aTransaction) {
         } else {
             openDB();
             qWarning(logError) << "createTrkTransaction" << cycles;
-            //logAppend("createTrkTransaction error " + QString::number(cycles));
         }
         cycles++;
     }
@@ -583,11 +543,6 @@ bool DataBaseControl::createApiTransaction(QString aAgzsName, int aAgzs, QDateTi
         } else  {
             openDB();
             qWarning(logError) << "createApiTransaction" << cycles;
-            //logAppend("createApiTransaction error " + QString::number(cycles) + " " + query.lastError().text());
-//            logAppend(aAgzsName + " " + QString::number(aAgzs) + " " + aCDate.toString() + " " + QString::number(aVCode) + " " + aApiId + " " + aApiStationExtendedId + " " +
-//                      QString::number(aApiColumnId) + " " + aApiFuelId + " " + QString::number(aFuelId) + " " + QString::number(aApiPriceFuel) + " " + QString::number(aApiLitre) + " " +
-//                      QString::number(aApiSum) + " " + aApiStatus + " " + aApiContractId + " " + aAgent + " " + aLocalState + " " + QString::number(aPrice) + " " + QString::number(aLitre) + " " +
-//                      QString::number(aSum) + " " + aDateOpen.toString() + " " + QString::number(aLink) + " " + query.lastError().text());
         }
         cycles++;
     }
@@ -620,7 +575,6 @@ ApiTransaction DataBaseControl::getApiTransaction(QString aId) {
         } else {
             openDB();
             qWarning(logError) << "getApiTransactionState" << cycles;
-            //logAppend("getApiTransactionState error " + QString::number(cycles));
         }
         cycles++;
     }
@@ -643,7 +597,6 @@ bool DataBaseControl::updateApiTransactionState(QString aLocalState, QDateTime a
         } else {
             openDB();
             qWarning(logError) << "updateApiTransactionState" << cycles;
-            //logAppend("updateApiTransactionState error " + QString::number(cycles));
         }
         cycles++;
     }
@@ -675,7 +628,6 @@ bool DataBaseControl::finalUpdateApiTransactionState(QString aLocalState, double
         } else {
             openDB();
             qWarning(logError) << "finalUpdateApiTransactionState" << cycles;
-            //logAppend("finalUpdateApiTransactionState error " + QString::number(cycles));
         }
         cycles++;
     }
@@ -697,7 +649,6 @@ bool DataBaseControl::getPayOperationLiters(int aLink, double &aAmount, double &
         } else {
             openDB();
             qWarning(logError) << "getPayOperationLiters" << cycles;
-            //logAppend("getPayOperationLiters error " + QString::number(cycles));
         }
         cycles++;
     }
@@ -721,7 +672,6 @@ bool DataBaseControl::setTransactionClosed(QString aId, int aClosed) {
         } else {
             openDB();
             qWarning(logError) << "setTransactionClosed" << cycles;
-            //logAppend("setTransactionClosed error " + QString::number(cycles));
         }
         cycles++;
     }
@@ -808,7 +758,6 @@ Transaction DataBaseControl::getTransaction(int aVCode) {
         } else {
             openDB();
             qWarning(logError) << "getTransactionData" << cycles;
-            //logAppend("getTransactionData error " + QString::number(cycles));
         }
         cycles++;
     }
@@ -841,7 +790,6 @@ bool DataBaseControl::updateApiTransaction(int aLocalState, QDateTime aDate, int
         } else {
             openDB();
             qWarning(logError) << "updateApiTransaction" << cycles;
-            //logAppend("updateApiTransaction error " + QString::number(cycles));
         }
         cycles++;
     }
@@ -931,14 +879,19 @@ ErrorsOrder DataBaseControl::checkError(QString aColumnID, QString aFuelID, int 
 
 bool DataBaseControl::setYandexToken(QString aToken) {
     QSqlQuery query(_db);
-    query.prepare("UPDATE [agzs].[dbo].[PR_AGZSData] "
-                         "SET YandexToken = :token "
+    query.prepare("UPDATE [grimnir].[agzs].[dbo].[PR_AGZSData] "
+                         "SET [YandexToken] = :token "
                   "WHERE AGZS = (SELECT TOP 1 AGZS "
                                 "FROM [agzs].[dbo].[Identification]) ");
     query.bindValue(":token", aToken);
     query.exec();
     _reestr.setValue("Yandex Token", aToken);
-    return true;
+    if (query.next() || query.lastError().type() != QSqlError::NoError) {
+        return true;
+    } else {
+        qWarning(logError) << "setYandexToken" << aToken;
+        return false;
+    }
 }
 
 bool DataBaseControl::isTransactionExist(QString aApiId) {

@@ -1,0 +1,5 @@
+10:04:07 DB isn't open
+10:04:07 WRNG QSqlDatabasePrivate::removeDatabase: connection 'qt_sql_default_connection' is still in use, all queries will cease to work.
+10:04:07 WRNG QSqlDatabasePrivate::addDatabase: duplicate connection name 'qt_sql_default_connection', old connection removed.
+10:04:21 DB is open
+10:04:23 STARTED

@@ -7,7 +7,7 @@
 *****************************************************************************/
 
 #include <memory>
-#include "../../Yandex/partners/yandexapi.h"
+#include "../../Partners/partners/yandexapi.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_YandexAPI_t {
-    QByteArrayData data[21];
-    char stringdata0[196];
+    QByteArrayData data[22];
+    char stringdata0[202];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -38,29 +38,30 @@ QT_MOC_LITERAL(2, 21, 0), // ""
 QT_MOC_LITERAL(3, 22, 4), // "mSec"
 QT_MOC_LITERAL(4, 27, 10), // "s_needAuth"
 QT_MOC_LITERAL(5, 38, 14), // "s_authComplete"
-QT_MOC_LITERAL(6, 53, 13), // "s_updatePrice"
-QT_MOC_LITERAL(7, 67, 11), // "s_gotOrders"
-QT_MOC_LITERAL(8, 79, 6), // "orders"
-QT_MOC_LITERAL(9, 86, 7), // "s_error"
-QT_MOC_LITERAL(10, 94, 6), // "status"
-QT_MOC_LITERAL(11, 101, 5), // "order"
-QT_MOC_LITERAL(12, 107, 4), // "code"
-QT_MOC_LITERAL(13, 112, 13), // "createRequest"
-QT_MOC_LITERAL(14, 126, 15), // "QNetworkRequest"
-QT_MOC_LITERAL(15, 142, 3), // "url"
-QT_MOC_LITERAL(16, 146, 11), // "contentType"
-QT_MOC_LITERAL(17, 158, 4), // "auth"
-QT_MOC_LITERAL(18, 163, 9), // "checkAuth"
-QT_MOC_LITERAL(19, 173, 12), // "RequestData*"
-QT_MOC_LITERAL(20, 186, 9) // "saveToken"
+QT_MOC_LITERAL(6, 53, 5), // "token"
+QT_MOC_LITERAL(7, 59, 13), // "s_updatePrice"
+QT_MOC_LITERAL(8, 73, 11), // "s_gotOrders"
+QT_MOC_LITERAL(9, 85, 6), // "orders"
+QT_MOC_LITERAL(10, 92, 7), // "s_error"
+QT_MOC_LITERAL(11, 100, 6), // "status"
+QT_MOC_LITERAL(12, 107, 5), // "order"
+QT_MOC_LITERAL(13, 113, 4), // "code"
+QT_MOC_LITERAL(14, 118, 13), // "createRequest"
+QT_MOC_LITERAL(15, 132, 15), // "QNetworkRequest"
+QT_MOC_LITERAL(16, 148, 3), // "url"
+QT_MOC_LITERAL(17, 152, 11), // "contentType"
+QT_MOC_LITERAL(18, 164, 4), // "auth"
+QT_MOC_LITERAL(19, 169, 9), // "checkAuth"
+QT_MOC_LITERAL(20, 179, 12), // "RequestData*"
+QT_MOC_LITERAL(21, 192, 9) // "saveToken"
 
     },
     "YandexAPI\0s_setTimer\0\0mSec\0s_needAuth\0"
-    "s_authComplete\0s_updatePrice\0s_gotOrders\0"
-    "orders\0s_error\0status\0order\0code\0"
-    "createRequest\0QNetworkRequest\0url\0"
-    "contentType\0auth\0checkAuth\0RequestData*\0"
-    "saveToken"
+    "s_authComplete\0token\0s_updatePrice\0"
+    "s_gotOrders\0orders\0s_error\0status\0"
+    "order\0code\0createRequest\0QNetworkRequest\0"
+    "url\0contentType\0auth\0checkAuth\0"
+    "RequestData*\0saveToken"
 };
 #undef QT_MOC_LITERAL
 
@@ -81,27 +82,27 @@ static const uint qt_meta_data_YandexAPI[] = {
        1,    1,   59,    2, 0x06 /* Public */,
        4,    1,   62,    2, 0x06 /* Public */,
        5,    1,   65,    2, 0x06 /* Public */,
-       6,    0,   68,    2, 0x06 /* Public */,
-       7,    1,   69,    2, 0x06 /* Public */,
-       9,    3,   72,    2, 0x06 /* Public */,
+       7,    0,   68,    2, 0x06 /* Public */,
+       8,    1,   69,    2, 0x06 /* Public */,
+      10,    3,   72,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-      13,    3,   79,    2, 0x08 /* Private */,
-      18,    1,   86,    2, 0x08 /* Private */,
-      20,    1,   89,    2, 0x08 /* Private */,
+      14,    3,   79,    2, 0x08 /* Private */,
+      19,    1,   86,    2, 0x08 /* Private */,
+      21,    1,   89,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Int,    3,
     QMetaType::Void, QMetaType::Bool,    2,
-    QMetaType::Void, QMetaType::Bool,    2,
+    QMetaType::Void, QMetaType::QString,    6,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QJsonDocument,    8,
-    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::Int,   10,   11,   12,
+    QMetaType::Void, QMetaType::QJsonDocument,    9,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::Int,   11,   12,   13,
 
  // slots: parameters
-    0x80000000 | 14, QMetaType::QString, QMetaType::QString, QMetaType::Bool,   15,   16,   17,
-    QMetaType::Void, 0x80000000 | 19,    2,
-    QMetaType::Void, 0x80000000 | 19,    2,
+    0x80000000 | 15, QMetaType::QString, QMetaType::QString, QMetaType::Bool,   16,   17,   18,
+    QMetaType::Void, 0x80000000 | 20,    2,
+    QMetaType::Void, 0x80000000 | 20,    2,
 
        0        // eod
 };
@@ -114,7 +115,7 @@ void YandexAPI::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         switch (_id) {
         case 0: _t->s_setTimer((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 1: _t->s_needAuth((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 2: _t->s_authComplete((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 2: _t->s_authComplete((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 3: _t->s_updatePrice(); break;
         case 4: _t->s_gotOrders((*reinterpret_cast< QJsonDocument(*)>(_a[1]))); break;
         case 5: _t->s_error((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3]))); break;
@@ -159,7 +160,7 @@ void YandexAPI::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
             }
         }
         {
-            using _t = void (YandexAPI::*)(bool );
+            using _t = void (YandexAPI::*)(QString );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&YandexAPI::s_authComplete)) {
                 *result = 2;
                 return;
@@ -244,7 +245,7 @@ void YandexAPI::s_needAuth(bool _t1)
 }
 
 // SIGNAL 2
-void YandexAPI::s_authComplete(bool _t1)
+void YandexAPI::s_authComplete(QString _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
     QMetaObject::activate(this, &staticMetaObject, 2, _a);

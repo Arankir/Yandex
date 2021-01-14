@@ -6,14 +6,22 @@ _apiKey(_reestr.value("CityMobile Token", "").toString()), c_baseUrl(_reestr.val
     qDebug() << "CityMobile Token =" << _apiKey;
     qDebug() << "isTest =" << _reestr.value("isTest").toString();
 
-    QObject::connect(_request, &RequestData::s_request, this,   [=](RequestType type, QString request, QString post, int code) {
-                                                                    if (type == RequestType::get) {
-                                                                        qInfo(logRequest) << "CityMobile" << "GET " << code << request;
-                                                                    } else {
-                                                                        qInfo(logRequest) << "CityMobile" << "POST" << code << request << "(" + post + ")";
-                                                                    }
-                                                                    //emit s_networkRequestInfo("CityMobile", type, request, post, code);
-                                                                });
+    QObject::connect(_request, &RequestData::s_request, this,
+                     [=](QNetworkAccessManager::Operation operation, QString request, QString post, int code) {
+                        switch (operation) {
+                        case QNetworkAccessManager::Operation::GetOperation: {
+                            qInfo(logRequest) << "GET " << code << "CityMobile" << request;
+                            break;
+                        }
+                        case QNetworkAccessManager::Operation::PostOperation: {
+                            qInfo(logRequest) << "POST" << code << "CityMobile" << request << "(" + post + ")";
+                            break;
+                        }
+                        default: {
+
+                        }
+                        }
+                     });
 }
 
 CityMobileAPI::~CityMobileAPI() {

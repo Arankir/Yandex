@@ -25,43 +25,36 @@ Q_DECLARE_LOGGING_CATEGORY(logOrders)
 Q_DECLARE_LOGGING_CATEGORY(logRequest)
 Q_DECLARE_LOGGING_CATEGORY(logError)
 
-enum class RequestType {
-    get,
-    post,
-    unknown
-};
-
 class RequestData : public QObject {
     Q_OBJECT
 
 public:
-    explicit RequestData(QString url, bool parallel = false, QObject *parent = nullptr);
-    RequestData(QObject *parent = nullptr);
+    RequestData(QObject *parent = nullptr);//: RequestData("", false, parent) {;}
     ~RequestData();
-    void get(QString str, bool parallel = false);
+    void get(QString url, bool parallel = false);
+    void get(QUrl url, bool parallel = false);
     void get(QNetworkRequest request, bool parallel = false);
     void post(QNetworkRequest request, QString post, bool parallel = false);
-    QByteArray getAnswer();
-    QByteArray getAuthorization();
-    int getCode();
+    QByteArray getAnswer() {return answer_;}
+    QByteArray getAuthorization() {return authorization_;}
+    int getCode() {return code_;}
 
 signals:
     void s_finished(RequestData *request);
-    void s_request(RequestType type, QString request, QString post, int code);
+    void s_request(QNetworkAccessManager::Operation type, QString request, QString post, int code);
 
 private slots:
-    void completeRequest(RequestType type, QNetworkRequest request, QString post, bool parallel);
+    void completeRequest(QNetworkAccessManager::Operation type, QNetworkRequest request, QString post, bool parallel);
     void onResult(QNetworkReply *reply);
 
 private:
     QNetworkAccessManager *manager_;
     QByteArray answer_;
-    RequestType type_;
+
+    QString post_;
+
     int code_;
     QByteArray authorization_;
-    QString url_;
-    QString post_;
-    bool parallel_;
 
 };
 

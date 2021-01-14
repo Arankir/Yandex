@@ -19,7 +19,7 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWin
     ui->label_2->setText("<img height=25 style=\"vertical-align: top\" src=\"://images/login password.png\"> Пароль</a>");
     ui->ButtonSettings->setIcon(QIcon("://images/settings.png"));
     this->setWindowFlags(Qt::Window | Qt::WindowMinimizeButtonHint);
-    ui->LabelVersion->setText("v1.9");
+    ui->LabelVersion->setText("v1.10b");
 
     setTrayIconActions();
     showTrayIcon();
@@ -40,9 +40,9 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWin
     connect(_yandex,                    &YandexAPI::s_gotOrders,                this, [=](QJsonDocument orders) {processOrders(Partner::yandex, orders);});
     connect(_cityMobile,                &CityMobileAPI::s_gotOrders,            this, [=](QJsonDocument orders) {processOrders(Partner::citymobile, orders);});
 
-    _timerYandexAgzsData    .start(60000);
+    _timerYandexAgzsData    .start(0);
+    _timerCityMobileAgzsData.start(0);
     _timerYandexOrders      .start(5000);
-    _timerCityMobileAgzsData.start(60000);
     _timerCityMobileOrders  .start(5000);
 
 }
@@ -74,27 +74,10 @@ void MainWindow::authYandexResult(QString aToken) {
 
 void MainWindow::needAuth() {
     ui->labelAuthError->setVisible(true);
-    ui->labelAuthError->setText(tr("Пожалуйста, авторизуйтесь\nв Яндексе заново."));
+    ui->labelAuthError->setText(tr("Пожалуйста, авторизуйтесь в Яндексе заново."));
     _timerYandexOrders.stop();
     _timerYandexError.start(0);
 }
-
-//void MainWindow::requestToLog(QString api, QString type, QString request, QString post, int code) {
-//    if ((request.indexOf("price") > 0) && (_reestr.value("agzsPriceLog") == false)) {
-//        return;
-//    }
-//    if ((request.indexOf("station") > 0) && (_reestr.value("agzsDataLog") == false)) {
-//        return;
-//    }
-//    if ((request.indexOf("items") > 0) && (_reestr.value("ordersLog") == false)) {
-//        return;
-//    }
-//    if (type == "GET") {
-//        _db.logAppend(api + " " + type + "(" + request + ") Код:" + QString::number(code));
-//    } else if (type == "POST") {
-//        _db.logAppend(api + " " + type + "(" + request + " '" + post + "') Код:" + QString::number(code));
-//    }
-//}
 
 void MainWindow::yandexErrorNotification() {
     this->show();
@@ -200,6 +183,7 @@ void MainWindow::updateDataYandex() {
         updateConfiguration(Partner::yandex);
         //_yandex->checkOrders();
     }
+    _timerYandexAgzsData.setInterval(60000);
 }
 
 void MainWindow::getOrdersYandex() {
@@ -214,6 +198,7 @@ void MainWindow::updateDataCityMobile() {
         updateConfiguration(Partner::citymobile);
         //_cityMobile->checkOrders();
     }
+    _timerCityMobileAgzsData.setInterval(60000);
 }
 
 void MainWindow::getOrdersCityMobile() {
@@ -487,43 +472,43 @@ void MainWindow::updatePrice(Partner aPartner) {
     //    key1=value1&key2=value2&...
     QStringList prices;
     Price price = _db.getPrices(QString::number(static_cast<int>(aPartner)));
-    if(price.diesel > 0.1f) {
+    if(price.diesel > 0.1) {
         prices.append("diesel="         + QString::number(price.diesel));
     }
-    if(price.diesel_premium > 0.1f) {
+    if(price.diesel_premium > 0.1) {
         prices.append("diesel_premium=" + QString::number(price.diesel_premium));
     }
-    if(price.a80 > 0.1f) {
+    if(price.a80 > 0.1) {
         prices.append("a80="            + QString::number(price.a80));
     }
-    if(price.a92 > 0.1f) {
+    if(price.a92 > 0.1) {
         prices.append("a92="            + QString::number(price.a92));
     }
-    if(price.a92_premium > 0.1f) {
+    if(price.a92_premium > 0.1) {
         prices.append("a92_premium="    + QString::number(price.a92_premium));
     }
-    if(price.a95 > 0.1f) {
+    if(price.a95 > 0.1) {
         prices.append("a95="            + QString::number(price.a95));
     }
-    if(price.a95_premium > 0.1f) {
+    if(price.a95_premium > 0.1) {
         prices.append("a95_premium="    + QString::number(price.a95_premium));
     }
-    if(price.a98 > 0.1f) {
+    if(price.a98 > 0.1) {
         prices.append("a98="            + QString::number(price.a98));
     }
-    if(price.a98_premium > 0.1f) {
+    if(price.a98_premium > 0.1) {
         prices.append("a98_premium="    + QString::number(price.a98_premium));
     }
-    if(price.a100 > 0.1f) {
+    if(price.a100 > 0.1) {
         prices.append("a100="           + QString::number(price.a100));
     }
-    if(price.a100_premium > 0.1f) {
+    if(price.a100_premium > 0.1) {
         prices.append("a100_premium="   + QString::number(price.a100_premium));
     }
-    if(price.propane > 0.1f) {
+    if(price.propane > 0.1) {
         prices.append("propane="        + QString::number(price.propane));
     }
-    if(price.metan > 0.1f) {
+    if(price.metan > 0.1) {
         prices.append("metan="          + QString::number(price.metan));
     }
     switch (aPartner) {
