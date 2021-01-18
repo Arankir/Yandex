@@ -51,8 +51,8 @@ QT_MOC_LITERAL(15, 132, 15), // "QNetworkRequest"
 QT_MOC_LITERAL(16, 148, 3), // "url"
 QT_MOC_LITERAL(17, 152, 11), // "contentType"
 QT_MOC_LITERAL(18, 164, 4), // "auth"
-QT_MOC_LITERAL(19, 169, 9), // "checkAuth"
-QT_MOC_LITERAL(20, 179, 12), // "RequestData*"
+QT_MOC_LITERAL(19, 169, 12), // "RequestData*"
+QT_MOC_LITERAL(20, 182, 9), // "checkAuth"
 QT_MOC_LITERAL(21, 192, 9) // "saveToken"
 
     },
@@ -60,8 +60,8 @@ QT_MOC_LITERAL(21, 192, 9) // "saveToken"
     "s_authComplete\0token\0s_updatePrice\0"
     "s_gotOrders\0orders\0s_error\0status\0"
     "order\0code\0createRequest\0QNetworkRequest\0"
-    "url\0contentType\0auth\0checkAuth\0"
-    "RequestData*\0saveToken"
+    "url\0contentType\0auth\0RequestData*\0"
+    "checkAuth\0saveToken"
 };
 #undef QT_MOC_LITERAL
 
@@ -71,7 +71,7 @@ static const uint qt_meta_data_YandexAPI[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      11,   14, // methods
+      12,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -79,19 +79,20 @@ static const uint qt_meta_data_YandexAPI[] = {
        6,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   69,    2, 0x06 /* Public */,
-       4,    1,   72,    2, 0x06 /* Public */,
-       5,    1,   75,    2, 0x06 /* Public */,
-       7,    0,   78,    2, 0x06 /* Public */,
-       8,    1,   79,    2, 0x06 /* Public */,
-      10,    3,   82,    2, 0x06 /* Public */,
+       1,    1,   74,    2, 0x06 /* Public */,
+       4,    1,   77,    2, 0x06 /* Public */,
+       5,    1,   80,    2, 0x06 /* Public */,
+       7,    0,   83,    2, 0x06 /* Public */,
+       8,    1,   84,    2, 0x06 /* Public */,
+      10,    3,   87,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-      14,    3,   89,    2, 0x08 /* Private */,
-      14,    2,   96,    2, 0x28 /* Private | MethodCloned */,
-      14,    1,  101,    2, 0x28 /* Private | MethodCloned */,
-      19,    1,  104,    2, 0x08 /* Private */,
-      21,    1,  107,    2, 0x08 /* Private */,
+      14,    3,   94,    2, 0x08 /* Private */,
+      14,    2,  101,    2, 0x28 /* Private | MethodCloned */,
+      14,    1,  106,    2, 0x28 /* Private | MethodCloned */,
+      14,    0,  109,    2, 0x08 /* Private */,
+      20,    1,  110,    2, 0x08 /* Private */,
+      21,    1,  113,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Int,    3,
@@ -105,8 +106,9 @@ static const uint qt_meta_data_YandexAPI[] = {
     0x80000000 | 15, QMetaType::QString, QMetaType::QString, QMetaType::Bool,   16,   17,   18,
     0x80000000 | 15, QMetaType::QString, QMetaType::QString,   16,   17,
     0x80000000 | 15, QMetaType::QString,   16,
-    QMetaType::Void, 0x80000000 | 20,    2,
-    QMetaType::Void, 0x80000000 | 20,    2,
+    0x80000000 | 19,
+    QMetaType::Void, 0x80000000 | 19,    2,
+    QMetaType::Void, 0x80000000 | 19,    2,
 
        0        // eod
 };
@@ -129,21 +131,23 @@ void YandexAPI::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
             if (_a[0]) *reinterpret_cast< QNetworkRequest*>(_a[0]) = std::move(_r); }  break;
         case 8: { QNetworkRequest _r = _t->createRequest((*reinterpret_cast< QString(*)>(_a[1])));
             if (_a[0]) *reinterpret_cast< QNetworkRequest*>(_a[0]) = std::move(_r); }  break;
-        case 9: _t->checkAuth((*reinterpret_cast< RequestData*(*)>(_a[1]))); break;
-        case 10: _t->saveToken((*reinterpret_cast< RequestData*(*)>(_a[1]))); break;
+        case 9: { RequestData* _r = _t->createRequest();
+            if (_a[0]) *reinterpret_cast< RequestData**>(_a[0]) = std::move(_r); }  break;
+        case 10: _t->checkAuth((*reinterpret_cast< RequestData*(*)>(_a[1]))); break;
+        case 11: _t->saveToken((*reinterpret_cast< RequestData*(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
         switch (_id) {
         default: *reinterpret_cast<int*>(_a[0]) = -1; break;
-        case 9:
+        case 10:
             switch (*reinterpret_cast<int*>(_a[1])) {
             default: *reinterpret_cast<int*>(_a[0]) = -1; break;
             case 0:
                 *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< RequestData* >(); break;
             }
             break;
-        case 10:
+        case 11:
             switch (*reinterpret_cast<int*>(_a[1])) {
             default: *reinterpret_cast<int*>(_a[0]) = -1; break;
             case 0:
@@ -227,13 +231,13 @@ int YandexAPI::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 11)
+        if (_id < 12)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 11;
+        _id -= 12;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 11)
+        if (_id < 12)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 11;
+        _id -= 12;
     }
     return _id;
 }

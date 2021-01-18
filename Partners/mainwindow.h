@@ -105,22 +105,22 @@ private slots:
     QString errorToString(ErrorsOrder aError);
 private:
     Ui::MainWindow *ui;
-    YandexAPI *_yandex;
-    CityMobileAPI *_cityMobile;
-    int _errorPassword = 0;
-    DataBaseControl _db;
-    QSettings _reestr;
+    YandexAPI *yandex_;
+    CityMobileAPI *cityMobile_;
+    int errorPassword_ = 0;
+    DataBaseControl db_;
+    QSettings reestr_;
 
-    QTimer _timerYandexAgzsData;
-    QTimer _timerYandexOrders;
-    QTimer _timerYandexError;
-    QTimer _timerCityMobileAgzsData;
-    QTimer _timerCityMobileOrders;
+    QTimer timerYandexAgzsData_;
+    QTimer timerYandexOrders_;
+    QTimer timerYandexError_;
+    QTimer timerCityMobileAgzsData_;
+    QTimer timerCityMobileOrders_;
 
-    QMenu *trayIconMenu;
-    QAction *minimizeAction;
-    QAction *restoreAction;
-    QAction *quitAction;
-    QSystemTrayIcon *trayIcon;
+    QMenu *trayIconMenu_;
+    QAction *minimizeAction_;
+    QAction *restoreAction_;
+    QAction *quitAction_;
+    QSystemTrayIcon *trayIcon_;
 };
 #endif // MAINWINDOW_H

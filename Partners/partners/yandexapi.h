@@ -35,15 +35,15 @@ signals:
 
 private slots:
     QNetworkRequest createRequest(QString url, QString contentType = "application/x-www-form-urlencoded", bool auth = true);
+    RequestData *createRequest();
     void checkAuth(RequestData*);
     void saveToken(RequestData*);
 
 private:
-    RequestData *_request;
-    QSettings _reestr;
-    QTimer _timer;
+    QSettings reestr_;
+    QTimer timer_;
 
-    QString _token;
+    QString token_;
     const QString c_baseTest = "http://cabinet.tst.tanker.yandex.ru";
     const QString c_baseRelease = "https://cabinet.tanker.yandex.net";
     const QString c_baseUrl;

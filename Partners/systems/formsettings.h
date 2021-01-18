@@ -22,7 +22,7 @@ private slots:
 
 private:
     Ui::FormSettings *ui;
-    QSettings _reestr;
+    QSettings reestr_;
 };
 
 #endif // FORMSETTINGS_H

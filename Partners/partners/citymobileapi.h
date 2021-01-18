@@ -27,15 +27,16 @@ signals:
     //void s_networkRequestInfo(QString api, QString type, QString request, QString post, int code);
 
 private slots:
-    QNetworkRequest createRequest(QString url, QString contentType, bool auth);
+    QNetworkRequest createNetworkRequest(QString url, QString contentType = "application/x-www-form-urlencoded", bool auth = true);
+    RequestData *createRequest();
 
 private:
-    RequestData *_request;
-    QSettings _reestr;
-    QString _apiKey;
+    QSettings reestr_;
+    QString apiKey_;
     const QString c_baseTest = "https://terminal.api.test.fuelup.ru/";
     const QString c_baseRelease = "https://terminal.api.fuelup.ru/";
     const QString c_baseUrl;
+
 };
 
 #endif // CITYMOBILEAPI_H

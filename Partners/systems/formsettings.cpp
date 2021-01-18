@@ -1,10 +1,10 @@
 #include "formsettings.h"
 #include "ui_formsettings.h"
 
-FormSettings::FormSettings(QWidget *parent): QWidget(parent), ui(new Ui::FormSettings), _reestr("RegionPostavka", "Partners") {
+FormSettings::FormSettings(QWidget *parent): QWidget(parent), ui(new Ui::FormSettings), reestr_("RegionPostavka", "Partners") {
     ui->setupUi(this);
-    ui->checkBoxYandex->setChecked(_reestr.value("Yandex Enabled", QVariant(false)).toBool());
-    ui->checkBoxCityMobile->setChecked(_reestr.value("CityMobile Enabled", QVariant(false)).toBool());
+    ui->checkBoxYandex->setChecked(reestr_.value("Yandex Enabled", QVariant(false)).toBool());
+    ui->checkBoxCityMobile->setChecked(reestr_.value("CityMobile Enabled", QVariant(false)).toBool());
 }
 
 FormSettings::~FormSettings() {
@@ -12,11 +12,11 @@ FormSettings::~FormSettings() {
 }
 
 void FormSettings::on_checkBoxYandex_stateChanged(int arg1) {
-    _reestr.setValue("Yandex Enabled", arg1 == 2);
-    _reestr.sync();
+    reestr_.setValue("Yandex Enabled", arg1 == 2);
+    reestr_.sync();
 }
 
 void FormSettings::on_checkBoxCityMobile_stateChanged(int arg1) {
-   _reestr.setValue("CityMobile Enabled", arg1 == 2);
-   _reestr.sync();
+   reestr_.setValue("CityMobile Enabled", arg1 == 2);
+   reestr_.sync();
 }
