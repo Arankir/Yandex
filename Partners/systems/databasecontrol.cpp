@@ -83,7 +83,7 @@ FuelNames DataBaseControl::getFuelNames(int aFuelId) {
             openDB();
             qWarning(logError) << "getFuelNames" << cycles;
         }
-        cycles++;
+        ++cycles;
     }
     return FuelNames();
 }
@@ -131,7 +131,7 @@ QVector<SideFuel> DataBaseControl::getFuels() {
             openDB();
             qWarning(logError) << "getFuels" << cycles;
         }
-        cycles++;
+        ++cycles;
     }
     return QVector<SideFuel>();
 }
@@ -151,7 +151,7 @@ int DataBaseControl::getRealSideAddress(int aAgzs, int aPartnerSideAddress) {
             openDB();
             qWarning(logError) << "getRealSideAddress" << cycles;
         }
-        cycles++;
+        ++cycles;
     }
     return 0;
 }
@@ -169,7 +169,7 @@ int DataBaseControl::getSmena() {
             openDB();
             qWarning(logError) << "getSmena" << cycles;
         }
-        cycles++;
+        ++cycles;
     }
     return 0;
 }
@@ -187,7 +187,7 @@ int DataBaseControl::getCashBoxIndex(QString aIPartner) {
             openDB();
             qWarning(logError) << "getCashBoxIndex" << cycles;
         }
-        cycles++;
+        ++cycles;
     }
     return 0;
 }
@@ -233,7 +233,7 @@ Price DataBaseControl::getPrices(QString aIPartner) {
             openDB();
             qWarning(logError) << "getPrices" << cycles;
         }
-        cycles++;
+        ++cycles;
     }
     return Price();
 }
@@ -263,7 +263,7 @@ Agzs DataBaseControl::getAgzsData() {
             openDB();
             qWarning(logError) << "getAgzsData" << cycles;
         }
-        cycles++;
+        ++cycles;
     }
     return Agzs();
 }
@@ -321,7 +321,7 @@ AdastTrk DataBaseControl::getAgzsAdastTrk(int aSideAdress) {
             openDB();
             qWarning(logError) << "getAgzsAdastTrk" << cycles;
         }
-        cycles++;
+        ++cycles;
     }
     return AdastTrk();
 }
@@ -415,7 +415,7 @@ bool DataBaseControl::createTrkTransaction(QString aAgzsName, int aLocalVCode, Q
             openDB();
             qWarning(logError) << "createTrkTransaction" << cycles;
         }
-        cycles++;
+        ++cycles;
     }
     return false;
 }
@@ -500,7 +500,7 @@ bool DataBaseControl::createTrkTransaction(Transaction aTransaction) {
             openDB();
             qWarning(logError) << "createTrkTransaction" << cycles;
         }
-        cycles++;
+        ++cycles;
     }
     return false;
 }
@@ -544,7 +544,7 @@ bool DataBaseControl::createApiTransaction(QString aAgzsName, int aAgzs, QDateTi
             openDB();
             qWarning(logError) << "createApiTransaction" << cycles;
         }
-        cycles++;
+        ++cycles;
     }
     return false;
 }
@@ -576,7 +576,7 @@ ApiTransaction DataBaseControl::getApiTransaction(QString aId) {
             openDB();
             qWarning(logError) << "getApiTransactionState" << cycles;
         }
-        cycles++;
+        ++cycles;
     }
     return ApiTransaction();
 }
@@ -598,7 +598,7 @@ bool DataBaseControl::updateApiTransactionState(QString aLocalState, QDateTime a
             openDB();
             qWarning(logError) << "updateApiTransactionState" << cycles;
         }
-        cycles++;
+        ++cycles;
     }
     return false;
 }
@@ -629,14 +629,14 @@ bool DataBaseControl::finalUpdateApiTransactionState(QString aLocalState, double
             openDB();
             qWarning(logError) << "finalUpdateApiTransactionState" << cycles;
         }
-        cycles++;
+        ++cycles;
     }
     return false;
 }
 
 bool DataBaseControl::getPayOperationLiters(int aLink, double &aAmount, double &aVolume, double &aPrice) {
     int cycles = 0;
-    while (cycles < c_maxRestartCount) {
+    while (cycles < 2) {
         QSqlQuery query(db_);
         query.exec("SELECT [AmountDB], [PriceDB], [VolumeDB] "
                    "FROM [agzs].[dbo].[ARM_PayOperation] "
@@ -647,10 +647,10 @@ bool DataBaseControl::getPayOperationLiters(int aLink, double &aAmount, double &
             aPrice = query.value(1).toDouble();
             return true;
         } else {
+            qWarning() << "getPayOperationLiters" << cycles;
             openDB();
-            qWarning(logError) << "getPayOperationLiters" << cycles;
         }
-        cycles++;
+        ++cycles;
     }
     return false;
 }
@@ -673,7 +673,7 @@ bool DataBaseControl::setTransactionClosed(QString aId, int aClosed) {
             openDB();
             qWarning(logError) << "setTransactionClosed" << cycles;
         }
-        cycles++;
+        ++cycles;
     }
     return false;
 }
@@ -759,7 +759,7 @@ Transaction DataBaseControl::getTransaction(int aVCode) {
             openDB();
             qWarning(logError) << "getTransactionData" << cycles;
         }
-        cycles++;
+        ++cycles;
     }
     return Transaction();
 }
@@ -791,7 +791,7 @@ bool DataBaseControl::updateApiTransaction(int aLocalState, QDateTime aDate, int
             openDB();
             qWarning(logError) << "updateApiTransaction" << cycles;
         }
-        cycles++;
+        ++cycles;
     }
     return false;
 }
