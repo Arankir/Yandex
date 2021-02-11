@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_RequestData_t {
-    QByteArrayData data[17];
-    char stringdata0[186];
+    QByteArrayData data[16];
+    char stringdata0[174];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -43,19 +43,18 @@ QT_MOC_LITERAL(7, 88, 4), // "type"
 QT_MOC_LITERAL(8, 93, 4), // "post"
 QT_MOC_LITERAL(9, 98, 4), // "code"
 QT_MOC_LITERAL(10, 103, 15), // "completeRequest"
-QT_MOC_LITERAL(11, 119, 11), // "RequestType"
-QT_MOC_LITERAL(12, 131, 15), // "QNetworkRequest"
-QT_MOC_LITERAL(13, 147, 8), // "parallel"
-QT_MOC_LITERAL(14, 156, 8), // "onResult"
-QT_MOC_LITERAL(15, 165, 14), // "QNetworkReply*"
-QT_MOC_LITERAL(16, 180, 5) // "reply"
+QT_MOC_LITERAL(11, 119, 15), // "QNetworkRequest"
+QT_MOC_LITERAL(12, 135, 8), // "parallel"
+QT_MOC_LITERAL(13, 144, 8), // "onResult"
+QT_MOC_LITERAL(14, 153, 14), // "QNetworkReply*"
+QT_MOC_LITERAL(15, 168, 5) // "reply"
 
     },
     "RequestData\0s_finished\0\0RequestData*\0"
     "request\0s_request\0QNetworkAccessManager::Operation\0"
     "type\0post\0code\0completeRequest\0"
-    "RequestType\0QNetworkRequest\0parallel\0"
-    "onResult\0QNetworkReply*\0reply"
+    "QNetworkRequest\0parallel\0onResult\0"
+    "QNetworkReply*\0reply"
 };
 #undef QT_MOC_LITERAL
 
@@ -78,15 +77,15 @@ static const uint qt_meta_data_RequestData[] = {
 
  // slots: name, argc, parameters, tag, flags
       10,    4,   46,    2, 0x08 /* Private */,
-      14,    1,   55,    2, 0x08 /* Private */,
+      13,    1,   55,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, 0x80000000 | 3,    4,
     QMetaType::Void, 0x80000000 | 6, QMetaType::QString, QMetaType::QString, QMetaType::Int,    7,    4,    8,    9,
 
  // slots: parameters
-    QMetaType::Void, 0x80000000 | 11, 0x80000000 | 12, QMetaType::QString, QMetaType::Bool,    7,    4,    8,   13,
-    QMetaType::Void, 0x80000000 | 15,   16,
+    QMetaType::Void, 0x80000000 | 6, 0x80000000 | 11, QMetaType::QString, QMetaType::Bool,    7,    4,    8,   12,
+    QMetaType::Void, 0x80000000 | 14,   15,
 
        0        // eod
 };
@@ -99,7 +98,7 @@ void RequestData::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         switch (_id) {
         case 0: _t->s_finished((*reinterpret_cast< RequestData*(*)>(_a[1]))); break;
         case 1: _t->s_request((*reinterpret_cast< QNetworkAccessManager::Operation(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3])),(*reinterpret_cast< int(*)>(_a[4]))); break;
-        case 2: _t->completeRequest((*reinterpret_cast< RequestType(*)>(_a[1])),(*reinterpret_cast< QNetworkRequest(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3])),(*reinterpret_cast< bool(*)>(_a[4]))); break;
+        case 2: _t->completeRequest((*reinterpret_cast< QNetworkAccessManager::Operation(*)>(_a[1])),(*reinterpret_cast< QNetworkRequest(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3])),(*reinterpret_cast< bool(*)>(_a[4]))); break;
         case 3: _t->onResult((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
         default: ;
         }

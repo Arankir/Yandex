@@ -3,10 +3,11 @@
 
 #include <QMainWindow>
 #include <QTimer>
-#include <partners/yandexapi.h>
-#include <partners/citymobileapi.h>
-#include <systems/databasecontrol.h>
-#include <systems/formsettings.h>
+#include "partners/yandexapi.h"
+#include "partners/citymobileapi.h"
+#include "systems/databasecontrol.h"
+#include "systems/formsettings.h"
+#include "formexitpassword.h"
 #include <QSystemTrayIcon>
 #include <QMenu>
 #include <QMessageBox>
@@ -75,6 +76,10 @@ public slots:
     bool processUserCanceled(Order aOrder, Partner aPartner);
     bool processCompleted(Order aOrder, Partner aPartner);
     bool processUnknown(Order aOrder, Partner aPartner);
+    bool processClose(ApiTransaction aApiTransaction);
+
+    void exitPassword();
+
 private slots:
     void on_ButtonEnter_clicked();
     void on_ButtonGetPassword_clicked();

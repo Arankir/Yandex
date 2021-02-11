@@ -19,7 +19,7 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWin
     ui->label_2->setText("<img height=25 style=\"vertical-align: top\" src=\"://images/login password.png\"> Пароль</a>");
     ui->ButtonSettings->setIcon(QIcon("://images/settings.png"));
     this->setWindowFlags(Qt::Window | Qt::WindowMinimizeButtonHint);
-    ui->LabelVersion->setText("v1.10c");
+    ui->LabelVersion->setText("v1.11");
 
     setTrayIconActions();
     showTrayIcon();
@@ -671,8 +671,19 @@ void MainWindow::processOrders(Partner aPartner, QJsonDocument aOrders) {
         break;
     }
     }
+    auto openedTransactions = db_.getOpenedTransactions(static_cast<int>(aPartner));
     for(auto order: aOrders.object().value("orders").toArray()) {
         Order currentOrder = JsonToOrder(aPartner, order);
+        //Найти и исключить из листа эту транзакцию
+        auto iterator = std::find_if(openedTransactions.begin(),
+                                     openedTransactions.end(),
+                                     [=](ApiTransaction &api) {
+                                         return api.id == currentOrder.id;
+                                     });
+        if (iterator != openedTransactions.end()) {
+            openedTransactions.removeOne(*iterator);
+        }
+
         switch (stringToStatus(currentOrder.status)) {
         case OrderStatus::acceptOrder: {
             processAcceptOrder(currentOrder, aPartner);
@@ -708,6 +719,10 @@ void MainWindow::processOrders(Partner aPartner, QJsonDocument aOrders) {
         }
         }
     }
+    //Все оставшиеся транзакции в листе закрыть и записать в лог
+    for(auto &openedTransaction: openedTransactions) {
+        processClose(openedTransaction);
+    }
     if (currentTimer != nullptr && aOrders.object().value("nextRetryMs").isDouble()) {
         currentTimer->setInterval(aOrders.object().value("nextRetryMs").toInt());
     }
@@ -719,6 +734,7 @@ bool MainWindow::processAcceptOrder(Order aOrder, Partner aPartner) {
     if (db_.isTransactionExist(aOrder.id)) {
         return false;
     }
+    qInfo() << aOrder.id << "AcceptOrder";
     QDateTime now           = QDateTime::currentDateTime();
     int lastAPIVCode        = (db_.getLastVCode("PR_APITransaction", true) + 1) * 100 + db_.getCurrentAgzs();
     Agzs currentAgzs        = db_.getAgzsData();
@@ -815,6 +831,7 @@ bool MainWindow::processWaitingRefueling(Order aOrder, Partner aPartner) {
     if (apiTransaction.id == "") {
         return false;
     }
+    qInfo() << aOrder.id << "WaitingRefueling";
     if (apiTransaction.iState > 0) {
         db_.updateApiTransactionState(apiTransaction.localState, apiTransaction.dateClose, apiTransaction.apiVCode);
     }
@@ -836,6 +853,7 @@ bool MainWindow::processWaitingRefueling(Order aOrder, Partner aPartner) {
 bool MainWindow::processFueling(Order aOrder, Partner aPartner) {
     ApiTransaction apiTransaction = db_.getApiTransaction(aOrder.id);
     sendLiters(aPartner, apiTransaction, aOrder.id);
+    qInfo() << aOrder.id << "Fueling";
 
     double amount = 0.0, volume = 0.0, price = 0.0;
     db_.getPayOperationLiters(apiTransaction.headVCode, amount, volume, price);
@@ -863,6 +881,7 @@ bool MainWindow::processExpire(Order aOrder, Partner aPartner) {
     ApiTransaction apiTransaction = db_.getApiTransaction(aOrder.id);
     db_.updateApiTransactionState("Ошибка: 30 минут", apiTransaction.dateClose, apiTransaction.apiVCode);
     db_.setTransactionClosed(aOrder.id, 1);
+    qInfo() << aOrder.id << "Expire";
 
     switch (aPartner) {
     case Partner::yandex: {
@@ -903,6 +922,12 @@ bool MainWindow::processUnknown(Order aOrder, Partner aPartner) {
     return false;
 }
 
+bool MainWindow::processClose(ApiTransaction aApiTransaction) {
+    qInfo() << aApiTransaction.id << "Closed";
+    db_.updateApiTransactionState("Отменена", aApiTransaction.dateClose, aApiTransaction.apiVCode);
+    return db_.setTransactionClosed(aApiTransaction.id, 1);
+}
+
 #define ProcessOrdersEnd }
 
 void MainWindow::changeEvent(QEvent *aEvent) {
@@ -939,13 +964,18 @@ void MainWindow::setTrayIconActions() {
     // Connecting actions to slots...
     connect (minimizeAction_, SIGNAL(triggered()), this, SLOT(hide()));
     connect (restoreAction_,  SIGNAL(triggered()), this, SLOT(showNormal()));
-    connect (quitAction_,     SIGNAL(triggered()), this, SLOT(close()));
+    connect (quitAction_,     SIGNAL(triggered()), this, SLOT(exitPassword()));
 
     // Setting system tray's icon menu...
     trayIconMenu_ = new QMenu(this);
     trayIconMenu_->addAction(minimizeAction_);
     trayIconMenu_->addAction(restoreAction_);
     trayIconMenu_->addAction(quitAction_);
+}
+
+void MainWindow::exitPassword() {
+    FormExitPassword *pass = new FormExitPassword();
+    pass->show();
 }
 
 void MainWindow::showTrayIcon() {

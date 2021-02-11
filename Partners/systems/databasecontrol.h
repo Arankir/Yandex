@@ -80,6 +80,17 @@ struct ApiTransaction {
     int iState = 0;
     QDateTime dateOpen;
     QDateTime dateClose;
+
+    bool operator==(const ApiTransaction &api) {
+        return (this->id == api.id) &&
+               (this->localState == api.localState) &&
+               (this->apiLitre == api.apiLitre) &&
+               (this->apiVCode == api.apiVCode) &&
+               (this->headVCode == api.headVCode) &&
+               (this->iState == api.iState) &&
+               (this->dateOpen == api.dateOpen) &&
+               (this->dateClose == api.dateClose);
+    }
 };
 
 struct Transaction {
@@ -186,6 +197,7 @@ public slots:
     bool getPayOperationLiters(int link, double &amount, double &volume, double &price);
     bool setTransactionClosed(QString id, int closed);
     Transaction getTransaction(int aVCode);
+    QList<ApiTransaction> getOpenedTransactions(int aPartner);
     bool setYandexToken(QString aToken);
     bool isTransactionExist(QString aApiId);
 

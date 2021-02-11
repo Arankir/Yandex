@@ -764,6 +764,40 @@ Transaction DataBaseControl::getTransaction(int aVCode) {
     return Transaction();
 }
 
+QList<ApiTransaction> DataBaseControl::getOpenedTransactions(int aPartner) {
+    QList<ApiTransaction> list;
+    QSqlQuery query(db_);
+    query.exec("SELECT [APIID] "
+                   ",[localState] "
+                   ",[APILitre] "
+                   ",a.[VCode] "
+                   ",t.VCode "
+                   ",a.[DateOpen] "
+                   ",a.[DateClose] "
+               "FROM [agzs].[dbo].[PR_APITransaction] a "
+               "INNER JOIN [agzs].[dbo].[ADAST_TRKTransaction] t "
+                 "ON (a.Link = t.vcode) "
+               "WHERE ((SELECT count(*) FROM agzs.dbo.ARM_PayOperation p WHERE p.Link = t.VCode) = 0) "
+                 "and t.iPayWay = " + QString::number(aPartner) + " "
+                 "and localState <> 'Ошибка: 30 минут' "
+                 "and localState <> 'Отменена' "
+                 "and t.agzs = (SELECT TOP 1 AGZS "
+                             "FROM [agzs].[dbo].[Identification]) "
+               "ORDER BY DateOpen desc ");
+    while (query.next()) {
+        ApiTransaction trans;
+        trans.id = query.value(0).toString();
+        trans.localState = query.value(1).toString();
+        trans.apiLitre = query.value(2).toDouble();
+        trans.apiVCode = query.value(3).toInt();
+        trans.headVCode = query.value(4).toInt();
+        trans.dateOpen = query.value(5).toDateTime();
+        trans.dateClose = query.value(6).toDateTime();
+        list.append(trans);
+    }
+    return list;
+}
+
 int DataBaseControl::getCurrentAgzs() {
     QSqlQuery query(db_);
     query.exec("SELECT TOP 1 AGZS "
@@ -896,12 +930,12 @@ bool DataBaseControl::setYandexToken(QString aToken) {
 
 bool DataBaseControl::isTransactionExist(QString aApiId) {
     QSqlQuery query(db_);
-    query.prepare("SELECT id "
-                  "FROM [agzs].[dbo].[PR_AGZSData] "
-                  "WHERE id = :id ");
+    query.prepare("SELECT [APIID] "
+                  "FROM [agzs].[dbo].[PR_APITransaction] "
+                  "WHERE APIID = :id ");
     query.bindValue(":id", aApiId);
     query.exec();
-    if (query.next() || query.lastError().type() != QSqlError::NoError) {
+    if (query.next()) {
         return true;
     } else {
         return false;

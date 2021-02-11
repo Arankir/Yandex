@@ -127,8 +127,10 @@ int YandexAPI::checkOrders() {
     QNetworkRequest request = createRequest(QString("%1/api/orders/items").arg(c_baseUrl));
     req->get(request);
     QJsonDocument jsonRequest = QJsonDocument::fromJson(req->getAnswer());
-    qDebug() << req->getAnswer();
-    emit s_gotOrders(jsonRequest);
+    qDebug() << req->getCode() << req->getAnswer();
+    if (req->getCode() == 200) {
+        emit s_gotOrders(jsonRequest);
+    }
     checkAuth(req);
     delete req;
     return jsonRequest.object().value("nextRetryMs").toInt();

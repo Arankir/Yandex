@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_DataBaseControl_t {
-    QByteArrayData data[131];
-    char stringdata0[1519];
+    QByteArrayData data[134];
+    char stringdata0[1572];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -157,12 +157,15 @@ QT_MOC_LITERAL(121, 1381, 7), // "double&"
 QT_MOC_LITERAL(122, 1389, 20), // "setTransactionClosed"
 QT_MOC_LITERAL(123, 1410, 6), // "closed"
 QT_MOC_LITERAL(124, 1417, 14), // "getTransaction"
-QT_MOC_LITERAL(125, 1432, 14), // "setYandexToken"
-QT_MOC_LITERAL(126, 1447, 6), // "aToken"
-QT_MOC_LITERAL(127, 1454, 18), // "isTransactionExist"
-QT_MOC_LITERAL(128, 1473, 18), // "getRealSideAddress"
-QT_MOC_LITERAL(129, 1492, 19), // "aPartnerSideAddress"
-QT_MOC_LITERAL(130, 1512, 6) // "openDB"
+QT_MOC_LITERAL(125, 1432, 21), // "getOpenedTransactions"
+QT_MOC_LITERAL(126, 1454, 21), // "QList<ApiTransaction>"
+QT_MOC_LITERAL(127, 1476, 8), // "aPartner"
+QT_MOC_LITERAL(128, 1485, 14), // "setYandexToken"
+QT_MOC_LITERAL(129, 1500, 6), // "aToken"
+QT_MOC_LITERAL(130, 1507, 18), // "isTransactionExist"
+QT_MOC_LITERAL(131, 1526, 18), // "getRealSideAddress"
+QT_MOC_LITERAL(132, 1545, 19), // "aPartnerSideAddress"
+QT_MOC_LITERAL(133, 1565, 6) // "openDB"
 
     },
     "DataBaseControl\0getCurrentAgzs\0\0"
@@ -203,9 +206,11 @@ QT_MOC_LITERAL(130, 1512, 6) // "openDB"
     "finalUpdateApiTransactionState\0price\0"
     "volume\0amount\0dateOpen\0getPayOperationLiters\0"
     "link\0double&\0setTransactionClosed\0"
-    "closed\0getTransaction\0setYandexToken\0"
-    "aToken\0isTransactionExist\0getRealSideAddress\0"
-    "aPartnerSideAddress\0openDB"
+    "closed\0getTransaction\0getOpenedTransactions\0"
+    "QList<ApiTransaction>\0aPartner\0"
+    "setYandexToken\0aToken\0isTransactionExist\0"
+    "getRealSideAddress\0aPartnerSideAddress\0"
+    "openDB"
 };
 #undef QT_MOC_LITERAL
 
@@ -215,7 +220,7 @@ static const uint qt_meta_data_DataBaseControl[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      24,   14, // methods
+      25,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -223,30 +228,31 @@ static const uint qt_meta_data_DataBaseControl[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,  134,    2, 0x0a /* Public */,
-       3,    1,  135,    2, 0x0a /* Public */,
-       6,    0,  138,    2, 0x0a /* Public */,
-       8,    1,  139,    2, 0x0a /* Public */,
-      10,    1,  142,    2, 0x0a /* Public */,
-      12,    0,  145,    2, 0x0a /* Public */,
-      14,    1,  146,    2, 0x0a /* Public */,
-      17,    3,  149,    2, 0x0a /* Public */,
-      21,    2,  156,    2, 0x0a /* Public */,
-      24,    5,  161,    2, 0x0a /* Public */,
-      31,   58,  172,    2, 0x0a /* Public */,
-      31,    1,  289,    2, 0x0a /* Public */,
-      92,    0,  292,    2, 0x0a /* Public */,
-      93,   21,  293,    2, 0x0a /* Public */,
-     109,    1,  336,    2, 0x0a /* Public */,
-     112,    3,  339,    2, 0x0a /* Public */,
-     114,    7,  346,    2, 0x0a /* Public */,
-     119,    4,  361,    2, 0x0a /* Public */,
-     122,    2,  370,    2, 0x0a /* Public */,
-     124,    1,  375,    2, 0x0a /* Public */,
-     125,    1,  378,    2, 0x0a /* Public */,
-     127,    1,  381,    2, 0x0a /* Public */,
-     128,    2,  384,    2, 0x0a /* Public */,
-     130,    0,  389,    2, 0x08 /* Private */,
+       1,    0,  139,    2, 0x0a /* Public */,
+       3,    1,  140,    2, 0x0a /* Public */,
+       6,    0,  143,    2, 0x0a /* Public */,
+       8,    1,  144,    2, 0x0a /* Public */,
+      10,    1,  147,    2, 0x0a /* Public */,
+      12,    0,  150,    2, 0x0a /* Public */,
+      14,    1,  151,    2, 0x0a /* Public */,
+      17,    3,  154,    2, 0x0a /* Public */,
+      21,    2,  161,    2, 0x0a /* Public */,
+      24,    5,  166,    2, 0x0a /* Public */,
+      31,   58,  177,    2, 0x0a /* Public */,
+      31,    1,  294,    2, 0x0a /* Public */,
+      92,    0,  297,    2, 0x0a /* Public */,
+      93,   21,  298,    2, 0x0a /* Public */,
+     109,    1,  341,    2, 0x0a /* Public */,
+     112,    3,  344,    2, 0x0a /* Public */,
+     114,    7,  351,    2, 0x0a /* Public */,
+     119,    4,  366,    2, 0x0a /* Public */,
+     122,    2,  375,    2, 0x0a /* Public */,
+     124,    1,  380,    2, 0x0a /* Public */,
+     125,    1,  383,    2, 0x0a /* Public */,
+     128,    1,  386,    2, 0x0a /* Public */,
+     130,    1,  389,    2, 0x0a /* Public */,
+     131,    2,  392,    2, 0x0a /* Public */,
+     133,    0,  397,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Int,
@@ -269,9 +275,10 @@ static const uint qt_meta_data_DataBaseControl[] = {
     QMetaType::Bool, QMetaType::Int, 0x80000000 | 121, 0x80000000 | 121, 0x80000000 | 121,  120,  117,  116,  115,
     QMetaType::Bool, QMetaType::QString, QMetaType::Int,  111,  123,
     0x80000000 | 90, QMetaType::Int,   73,
-    QMetaType::Bool, QMetaType::QString,  126,
+    0x80000000 | 126, QMetaType::Int,  127,
+    QMetaType::Bool, QMetaType::QString,  129,
     QMetaType::Bool, QMetaType::QString,   94,
-    QMetaType::Int, QMetaType::Int, QMetaType::Int,   87,  129,
+    QMetaType::Int, QMetaType::Int, QMetaType::Int,   87,  132,
     QMetaType::Bool,
 
        0        // eod
@@ -323,13 +330,15 @@ void DataBaseControl::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
         case 19: { Transaction _r = _t->getTransaction((*reinterpret_cast< int(*)>(_a[1])));
             if (_a[0]) *reinterpret_cast< Transaction*>(_a[0]) = std::move(_r); }  break;
-        case 20: { bool _r = _t->setYandexToken((*reinterpret_cast< QString(*)>(_a[1])));
+        case 20: { QList<ApiTransaction> _r = _t->getOpenedTransactions((*reinterpret_cast< int(*)>(_a[1])));
+            if (_a[0]) *reinterpret_cast< QList<ApiTransaction>*>(_a[0]) = std::move(_r); }  break;
+        case 21: { bool _r = _t->setYandexToken((*reinterpret_cast< QString(*)>(_a[1])));
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
-        case 21: { bool _r = _t->isTransactionExist((*reinterpret_cast< QString(*)>(_a[1])));
+        case 22: { bool _r = _t->isTransactionExist((*reinterpret_cast< QString(*)>(_a[1])));
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
-        case 22: { int _r = _t->getRealSideAddress((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])));
+        case 23: { int _r = _t->getRealSideAddress((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])));
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
-        case 23: { bool _r = _t->openDB();
+        case 24: { bool _r = _t->openDB();
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
         default: ;
         }
@@ -365,13 +374,13 @@ int DataBaseControl::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 24)
+        if (_id < 25)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 24;
+        _id -= 25;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 24)
+        if (_id < 25)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 24;
+        _id -= 25;
     }
     return _id;
 }
