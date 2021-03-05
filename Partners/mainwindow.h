@@ -8,9 +8,12 @@
 #include "systems/databasecontrol.h"
 #include "systems/formsettings.h"
 #include "formexitpassword.h"
+#include "formchangeagzs.h"
 #include <QSystemTrayIcon>
 #include <QMenu>
 #include <QMessageBox>
+#include "systems/structs.h"
+#include <QInputDialog>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -18,38 +21,8 @@ namespace Ui {
 }
 QT_END_NAMESPACE
 
-struct Order {
-    QString id;
-    QDateTime dateCreate;
-    QString orderType;
-    double orderVolume;
-    int columnId;
-    double litre;
-    QString status;
-    QString fuelId;
-    double priceFuel;
-    double sum;
-    QString contractId;
-};
-
-enum class OrderStatus {
-    unknown,
-    acceptOrder,
-    waitingRefueling,
-    fueling,
-    expire,
-    stationCanceled,
-    userCanceled,
-    completed
-};
-
 class MainWindow: public QMainWindow {
     Q_OBJECT
-
-    enum class Partner {
-        yandex = 11,
-        citymobile = 10
-    };
 
 public:
     MainWindow(QWidget *parent = nullptr);
@@ -63,11 +36,8 @@ public slots:
     void moneyData(Partner aPartner, Order aOrder, double &aRequestTotalPriceDB, double &aRequestVolumeDB, double &aRequestUnitPriceDB, double &aMoneyTakenDB, int &aFullTankDB);
 
     void getNozzleFuelCode(AdastTrk aTrk, QString aFuelId, int &aNozzle, int &aFuelCode);
-    Transaction createEmptyTransaction();
     int createTransaction(Agzs currentAgzs, Order order, Partner aPartner, int sideAdress, QDateTime now);
-    Order JsonToOrder(Partner aPartner, QJsonValue aOrder);
     void sendLiters(Partner aPartner, ApiTransaction aApiTransaction, QString aOrderId);
-    OrderStatus stringToStatus(QString aStatus);
     bool processAcceptOrder(Order aOrder, Partner aPartner);
     bool processWaitingRefueling(Order aOrder, Partner aPartner);
     bool processFueling(Order aOrder, Partner aPartner);
@@ -81,6 +51,8 @@ public slots:
     void exitPassword();
 
 private slots:
+    bool checkSettings();
+
     void on_ButtonEnter_clicked();
     void on_ButtonGetPassword_clicked();
     void on_ButtonCancelCitymobile_clicked();
@@ -99,33 +71,43 @@ private slots:
     void changeEvent(QEvent*);
     void trayIconActivated(QSystemTrayIcon::ActivationReason reason);
     void trayActionExecute();
-    void setTrayIconActions();
+    QMenu *createTrayIconMenu();
     void showTrayIcon();
 
     void authYandexResult(QString aToken);
     void needAuth();
-    //void requestToLog(QString api, QString type, QString request, QString post, int code);
     void yandexErrorNotification();
 
-    QString errorToString(ErrorsOrder aError);
+    void globalTimerCheck();
+
+    void on_ButtonAgzs_clicked();
+
 private:
     Ui::MainWindow *ui;
+
+    QString agzs_;
+
+    QSettings reestr_;
+    DataBaseControl *db_;
+
     YandexAPI *yandex_;
     CityMobileAPI *cityMobile_;
-    int errorPassword_ = 0;
-    DataBaseControl db_;
-    QSettings reestr_;
 
+    int errorPassword_ = 0;
+    bool isNeedAuth_ = false;
+
+    int yandexOrdersInterval_ = 5000;
+    int cityMobileOrdersInterval_ = 5000;
+    int yandexDataInterval_ = 60000;
+    int cityMobileDataInterval_ = 60000;
+
+    QTimer timerGlobal_;
     QTimer timerYandexAgzsData_;
     QTimer timerYandexOrders_;
     QTimer timerYandexError_;
     QTimer timerCityMobileAgzsData_;
     QTimer timerCityMobileOrders_;
 
-    QMenu *trayIconMenu_;
-    QAction *minimizeAction_;
-    QAction *restoreAction_;
-    QAction *quitAction_;
     QSystemTrayIcon *trayIcon_;
 };
 #endif // MAINWINDOW_H

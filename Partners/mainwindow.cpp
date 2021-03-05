@@ -1,12 +1,31 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+const QString c_settingPath = "Setting.txt";
 const double c_litersForMin = 25;
-const QString c_host = "api";
 
 MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWindow), reestr_("RegionPostavka", "Partners") {
     ui->setupUi(this);
     qInfo() << "STARTED";
+
+    checkSettings();
+    agzs_ = reestr_.value("currentAgzs").toString();
+    if (agzs_ == QString()) {
+        agzs_ = QInputDialog::getText(this, tr("Поменять АГЗС"), tr("Введите АГЗС:"), QLineEdit::Normal, "agzs");
+//        FormChangeAgzs *changeAgzs = new FormChangeAgzs();
+//        changeAgzs->show();
+//        QEventLoop loop;
+//        connect(changeAgzs, &FormChangeAgzs::s_AgzsChanged, &loop, &QEventLoop::quit);
+//        connect(changeAgzs, &FormChangeAgzs::s_AgzsChanged, this, [=](QString agzs) {agzs_ = agzs;});
+//        loop.exec();
+//        changeAgzs->close();
+        reestr_.setValue("currentAgzs", agzs_);
+    }
+    qInfo() << "currentAGZS =" << agzs_;
+    db_ = new DataBaseControl(agzs_);
+
+    reestr_.setValue("CityMobile Token", db_->getCityMobileToken());
+
     if (!reestr_.value("isTest").toBool()) {
         ui->ButtonCancelYandex->setVisible(false);
         ui->ButtonCancelCitymobile->setVisible(false);
@@ -19,9 +38,8 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWin
     ui->label_2->setText("<img height=25 style=\"vertical-align: top\" src=\"://images/login password.png\"> Пароль</a>");
     ui->ButtonSettings->setIcon(QIcon("://images/settings.png"));
     this->setWindowFlags(Qt::Window | Qt::WindowMinimizeButtonHint);
-    ui->LabelVersion->setText("v1.11");
+    ui->LabelVersion->setText("v1.12");
 
-    setTrayIconActions();
     showTrayIcon();
 
     yandex_ = new YandexAPI(this);
@@ -38,10 +56,12 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWin
     connect(yandex_,                    &YandexAPI::s_gotOrders,                this, [=](QJsonDocument orders) {processOrders(Partner::yandex, orders);});
     connect(cityMobile_,                &CityMobileAPI::s_gotOrders,            this, [=](QJsonDocument orders) {processOrders(Partner::citymobile, orders);});
 
+    timerGlobal_.start(300000);
+
     timerYandexAgzsData_    .start(0);
     timerCityMobileAgzsData_.start(0);
-    timerYandexOrders_      .start(5000);
-    timerCityMobileOrders_  .start(5000);
+    timerYandexOrders_      .start(yandexOrdersInterval_);
+    timerCityMobileOrders_  .start(cityMobileOrdersInterval_);
 
 }
 
@@ -53,35 +73,148 @@ MainWindow::~MainWindow() {
     delete ui;
 }
 
+bool MainWindow::checkSettings() {
+    QStringList setting;
+    if (QFile::exists(c_settingPath)) {
+        QFile settings(c_settingPath);
+        if (settings.open(QIODevice::ReadOnly)) {
+            while(!settings.atEnd()) {
+                setting << QString::fromLocal8Bit(settings.readLine()).remove("\r\n").remove("\n");
+            }
+            settings.close();
+        } else {
+            qWarning(logError) << "setting file is already open";
+            return false;
+        }
+    } else {
+        qWarning(logError) << "setting file not found";
+        return false;
+    }
+    qDebug() << setting;
+    reestr_.setValue("ordersLog",    setting.size() > 1 ? setting[1] == "true" : false);
+    //_reestr.setValue("agzsPriceLog", setting.size() > 3 ? setting[3] == "true" : false);
+    //_reestr.setValue("agzsDataLog",  setting.size() > 2 ? setting[2] == "true" : false);
+    reestr_.setValue("isTest",       setting.size() > 0 ? setting[0] == "test" : false);
+    return true;
+}
+
+void MainWindow::globalTimerCheck() {
+    if (reestr_.value("Yandex Enabled", QVariant(false)).toBool()) {
+        if (isNeedAuth_) {
+            yandexErrorNotification();
+        } else {
+            timerYandexOrders_  .start(yandexOrdersInterval_);
+            timerYandexAgzsData_.start(0);
+        }
+    } else {
+        timerYandexOrders_  .stop();
+        timerYandexAgzsData_.start(0);
+    }
+    if (reestr_.value("CityMobile Enabled", QVariant(false)).toBool()) {
+        timerCityMobileOrders_  .start(cityMobileOrdersInterval_);
+        timerCityMobileAgzsData_.start(0);
+    } else {
+        timerCityMobileOrders_  .stop();
+        timerCityMobileAgzsData_.start(0);
+    }
+}
+
+#define tray {
+void MainWindow::changeEvent(QEvent *aEvent) {
+    QMainWindow::changeEvent(aEvent);
+    if (aEvent -> type() == QEvent::WindowStateChange) {
+        if (isMinimized()) {
+            this->hide();
+        }
+    }
+}
+
+void MainWindow::trayIconActivated(QSystemTrayIcon::ActivationReason aReason) {
+    switch (aReason) {
+        case QSystemTrayIcon::Trigger:
+        case QSystemTrayIcon::DoubleClick:
+            this->trayActionExecute();
+            break;
+        default:
+            break;
+    }
+}
+
+void MainWindow::trayActionExecute() {
+    this->show();
+    this->showNormal();
+}
+
+QMenu *MainWindow::createTrayIconMenu() {
+    // Setting actions...
+    QAction *minimizeAction = new QAction("Свернуть",        this);
+    QAction *restoreAction  = new QAction("Восстановить",    this);
+    QAction *quitAction     = new QAction("Выход",           this);
+
+    // Connecting actions to slots...
+    connect (minimizeAction, SIGNAL(triggered()), this, SLOT(hide()));
+    connect (restoreAction,  SIGNAL(triggered()), this, SLOT(showNormal()));
+    connect (quitAction,     SIGNAL(triggered()), this, SLOT(exitPassword()));
+
+    // Setting system tray's icon menu...
+    QMenu *trayIconMenu = new QMenu(this);
+    trayIconMenu->addAction(minimizeAction);
+    trayIconMenu->addAction(restoreAction);
+    trayIconMenu->addAction(quitAction);
+    return trayIconMenu;
+}
+
+void MainWindow::exitPassword() {
+    FormExitPassword *pass = new FormExitPassword();
+    pass->show();
+}
+
+void MainWindow::showTrayIcon() {
+    // Создаём экземпляр класса и задаём его свойства...
+    trayIcon_ = new QSystemTrayIcon(this);
+    QIcon trayImage("://images/tray.png");
+    trayIcon_->setIcon(trayImage);
+    trayIcon_->setContextMenu(createTrayIconMenu());
+
+    // Подключаем обработчик клика по иконке...
+    connect(trayIcon_, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(trayIconActivated(QSystemTrayIcon::ActivationReason)));
+
+    // Выводим значок...
+    trayIcon_->show();
+}
+#define trayEnd }
+
 void MainWindow::authYandexResult(QString aToken) {
     ui->labelAuthError->setVisible(true);
     if (aToken == "") {
-        errorPassword_++;
-        if (errorPassword_ < 5) {
-            ui->labelAuthError->setText(tr("Ошибка при авторизации Яндекса.\nПроверьте пароль.\nОшибок: %1").arg(errorPassword_));
-        } else {
-            ui->labelAuthError->setText(tr("Превышено количество ошибок.\nЗапросите пароль Яндекса заново."));
-        }
+        ui->labelAuthError->setText(++errorPassword_ < 5 ?
+                                    tr("Ошибка при авторизации Яндекса.\nПроверьте пароль.\nОшибок: %1").arg(errorPassword_)
+                                    :
+                                    tr("Превышено количество ошибок.\nЗапросите пароль Яндекса заново.")
+                                    );
     } else {
-        db_.setYandexToken(aToken);
+        db_->setYandexToken(aToken);
+        reestr_.setValue("Yandex Token", aToken);
         timerYandexError_.stop();
+        isNeedAuth_ = false;
         ui->labelAuthError->setText(tr("Успешно авторизовано!"));
         timerYandexOrders_.start(5000);
     }
 }
 
 void MainWindow::needAuth() {
+    isNeedAuth_ = true;
     ui->labelAuthError->setVisible(true);
     ui->labelAuthError->setText(tr("Пожалуйста, авторизуйтесь в Яндексе заново."));
     timerYandexOrders_.stop();
-    timerYandexError_.start(0);
+    //timerYandexError_.start(0);
 }
 
 void MainWindow::yandexErrorNotification() {
     this->show();
     QMessageBox::warning(this, tr("Ошибка"), tr("Авторизуйтесь в Яндексе заново!"));
     QApplication::alert(this);
-    timerYandexError_.setInterval(300000);
+    //timerYandexError_.setInterval(300000);
 }
 
 #define ButtonsStart {
@@ -181,11 +314,11 @@ void MainWindow::updateDataYandex() {
         updateConfiguration(Partner::yandex);
         //_yandex->checkOrders();
     }
-    timerYandexAgzsData_.setInterval(60000);
+    timerYandexAgzsData_.setInterval(yandexDataInterval_);
 }
 
 void MainWindow::getOrdersYandex() {
-    if (reestr_.value("Yandex Enabled", QVariant(false)).toBool()) {
+    if (reestr_.value("Yandex Enabled", QVariant(false)).toBool() && !isNeedAuth_) {
         yandex_->checkOrders();
     }
 }
@@ -196,7 +329,7 @@ void MainWindow::updateDataCityMobile() {
         updateConfiguration(Partner::citymobile);
         //_cityMobile->checkOrders();
     }
-    timerCityMobileAgzsData_.setInterval(60000);
+    timerCityMobileAgzsData_.setInterval(cityMobileDataInterval_);
 }
 
 void MainWindow::getOrdersCityMobile() {
@@ -257,49 +390,19 @@ void MainWindow::getNozzleFuelCode(AdastTrk aTrk, QString aFuelId, int &aNozzle,
     }
 }
 
-Transaction MainWindow::createEmptyTransaction() {
-    Transaction transaction;
-    transaction.trkType = "ADAST";
-    transaction.transNum = "";
-    transaction.trkTotalPrice = 0.0;
-    transaction.trkVolume = 0.0;
-    transaction.trkUnitPrice = 0.0;
-    transaction.requestField = "V";
-    transaction.state = "Завершение выдачи";
-    transaction.iState = 8;
-    transaction.trkTransType = "P";
-    transaction.litersCountBefore = 0.0;
-    transaction.moneyCountBefore = 0.0;
-    transaction.transCountBefore = 0;
-    transaction.litersCountAfter = 0.0;
-    transaction.moneyCountAfter = 0.0;
-    transaction.transCountAfter = 0;
-    transaction.result = "Выдача завершена: 1";
-    transaction.temperature = -100;
-    transaction.cHost = c_host;
-    transaction.wHost = c_host;
-    transaction.cUser = c_host;
-    transaction.wUser = c_host;
-    transaction.addedForTransVCode = 0;
-    transaction.aditionalTransVCode = 0;
-    transaction.active = 0;
-    transaction.mass = 0.0;
-    return transaction;
-}
-
 int MainWindow::createTransaction(Agzs currentAgzs, Order order, Partner aPartner, int sideAdress, QDateTime now) {
-    int transactionVCode = (db_.getLastVCode("ADAST_TRKTransaction", true) + 1) * 100 + currentAgzs.agzs;
+    int transactionVCode = (db_->getLastVCode("ADAST_TRKTransaction", true) + 1) * 100 + currentAgzs.agzs;
     double requestTotalPriceDB = -1, requestVolumeDB = -1, requestUnitPriceDB = -1, moneyTakenDB = -1;
     int fullTankDB = -1;
     moneyData(aPartner, order, requestTotalPriceDB, requestVolumeDB, requestUnitPriceDB, moneyTakenDB, fullTankDB);
-    AdastTrk currentTrk = db_.getAgzsAdastTrk(sideAdress);
+    AdastTrk currentTrk = db_->getAgzsAdastTrk(sideAdress);
     int nozzle = 0;
     int trkFuelCode = 0;
     getNozzleFuelCode(currentTrk, order.fuelId, nozzle, trkFuelCode);
-    FuelNames fuelName = db_.getFuelNames(FuelApiToFuelId(order.fuelId));
+    FuelNames fuelName = db_->getFuelNames(FuelApiToFuelId(order.fuelId));
 
     if ((requestTotalPriceDB > -1) && (requestVolumeDB > -1) && (requestUnitPriceDB > -1) && (moneyTakenDB > -1) && (fullTankDB > -1)) {
-        Transaction transaction = createEmptyTransaction();
+        Transaction transaction;
         transaction.agzsName = currentAgzs.agzsName;
         transaction.localVCode = transactionVCode;
         transaction.deviceName = currentTrk.deviceName;
@@ -328,9 +431,9 @@ int MainWindow::createTransaction(Agzs currentAgzs, Order order, Partner aPartne
         transaction.cDate = now;
         transaction.wDate = now;
         transaction.vCode = transactionVCode;
-        transaction.smena = db_.getSmena();
+        transaction.smena = db_->getSmena();
         transaction.trkVcode = currentTrk.trkVCode;
-        transaction.capacityVcode = db_.getCashBoxIndex(QString::number(static_cast<int>(aPartner)));
+        transaction.capacityVcode = db_->getCashBoxIndex(QString::number(static_cast<int>(aPartner)));
         transaction.pumpPlace = currentTrk.pumpPlace;
         transaction.moneyTaken = moneyTakenDB;
         transaction.iPayWay = static_cast<int>(aPartner);
@@ -339,7 +442,7 @@ int MainWindow::createTransaction(Agzs currentAgzs, Order order, Partner aPartne
         transaction.fuelVCode = FuelApiToFuelId(order.fuelId);
         transaction.propan = 0;
 
-        if (db_.createTrkTransaction(transaction)) {
+        if (db_->createTrkTransaction(transaction)) {
             return transactionVCode;
         }
     } else {
@@ -348,61 +451,8 @@ int MainWindow::createTransaction(Agzs currentAgzs, Order order, Partner aPartne
     return -1;
 }
 
-Order MainWindow::JsonToOrder(Partner aPartner, QJsonValue aOrder) {
-    switch (aPartner) {
-    case Partner::yandex: {
-        Order order;
-        order.id = aOrder.toObject().value("id").toString();
-        order.dateCreate = QDateTime::fromString(aOrder.toObject().value("dateCreate").toString().left(23), "yyyy-MM-ddThh:mm:ss.zzz");
-        order.orderType = aOrder.toObject().value("orderType").toString();
-        order.orderVolume = aOrder.toObject().value("orderVolume").toDouble();
-        order.columnId = aOrder.toObject().value("columnId").toInt();
-        order.litre = aOrder.toObject().value("litre").toDouble();
-        order.status = aOrder.toObject().value("status").toString();
-        order.fuelId = aOrder.toObject().value("fuelId").toString();
-        order.priceFuel = aOrder.toObject().value("priceFuel").toDouble();
-        order.sum = aOrder.toObject().value("sum").toDouble();
-        order.contractId = aOrder.toObject().value("contractId").toString();
-        return order;
-        break;
-    }
-    case Partner::citymobile: {
-//            {
-//            "Id": "088ccc98-73e3-4b4a-aaa9-79dddd02720a",
-//            "DateCreate" :  "2019-11-20T17:28:33.994Z",
-//            "OrderType":  "Litre",
-//            "OrderVolume": "10",
-//            -"StationId":  "1234",
-//            -"StationExtendedId":  "1234",
-//            "ColumnId":  "1",
-//            "FuelId":  "a92",
-//            "PriceFuel":  "42.50",
-//            "Litre":  "10",
-//            "Sum":  "425.00",
-//            "Status":  "OrderCreated",
-//            "ContractId":  "32135"
-//            }
-        Order order;
-        order.id = aOrder.toObject().value("id").toString();
-        order.dateCreate = QDateTime::fromString(aOrder.toObject().value("dateCreate").toString().left(23), "yyyy-MM-ddThh:mm:ss.zzz");
-        order.orderType = aOrder.toObject().value("orderType").toString();
-        order.orderVolume = aOrder.toObject().value("orderVolume").toDouble();
-        order.columnId = aOrder.toObject().value("columnId").toInt();
-        order.litre = aOrder.toObject().value("litre").toDouble();
-        order.status = aOrder.toObject().value("status").toString();
-        order.fuelId = aOrder.toObject().value("fuelId").toString();
-        order.priceFuel = aOrder.toObject().value("priceFuel").toDouble();
-        order.sum = aOrder.toObject().value("sum").toDouble();
-        order.contractId = aOrder.toObject().value("contractId").toString();
-        return order;
-        break;
-    }
-    }
-    return Order();
-}
-
 void MainWindow::sendLiters(Partner aPartner, ApiTransaction aApiTransaction, QString aOrderId) {
-    Transaction transaction = db_.getTransaction(aApiTransaction.headVCode);
+    Transaction transaction = db_->getTransaction(aApiTransaction.headVCode);
     QDateTime now = QDateTime::currentDateTime();
     QDateTime diffTime = QDateTime::fromMSecsSinceEpoch(now.toMSecsSinceEpoch() - transaction.dateOpen.toMSecsSinceEpoch()).addSecs(-20);
     double litersNow = diffTime.toSecsSinceEpoch() * (c_litersForMin / 60);
@@ -420,56 +470,11 @@ void MainWindow::sendLiters(Partner aPartner, ApiTransaction aApiTransaction, QS
     }
 }
 
-QString MainWindow::errorToString(ErrorsOrder aError) {
-    switch (aError) {
-    case ErrorsOrder::noError: {
-        return "0";
-    }
-    case ErrorsOrder::trkError: {
-        return "Error: trk is not found";
-    }
-    case ErrorsOrder::fuelError: {
-        return "Error: fuel is not found";
-    }
-    case ErrorsOrder::priceError: {
-        return "Error: different price";
-    }
-    default : {
-        return "";
-    }
-    }
-}
-
-OrderStatus MainWindow::stringToStatus(QString aStatus) {
-    if (aStatus == "AcceptOrder") {
-        return OrderStatus::acceptOrder;
-    }
-    if (aStatus == "WaitingRefueling") {
-        return OrderStatus::waitingRefueling;
-    }
-    if (aStatus == "Fueling") {
-        return OrderStatus::fueling;
-    }
-    if (aStatus == "Expire") {
-        return OrderStatus::expire;
-    }
-    if (aStatus == "StationCanceled") {
-        return OrderStatus::stationCanceled;
-    }
-    if (aStatus == "UserCanceled") {
-        return OrderStatus::userCanceled;
-    }
-    if (aStatus == "Completed") {
-        return OrderStatus::completed;
-    }
-    return OrderStatus::unknown;
-}
-
 #define FunctionsStart {
 void MainWindow::updatePrice(Partner aPartner) {
     //    key1=value1&key2=value2&...
     QStringList prices;
-    Price price = db_.getPrices(QString::number(static_cast<int>(aPartner)));
+    Price price = db_->getPrices(QString::number(static_cast<int>(aPartner)));
     if(price.diesel > 0.1) {
         prices.append("diesel="         + QString::number(price.diesel));
     }
@@ -522,7 +527,7 @@ void MainWindow::updatePrice(Partner aPartner) {
 }
 
 void MainWindow::updateConfiguration(Partner aPartner) {
-    Agzs currentAgzs = db_.getAgzsData();
+    Agzs currentAgzs = db_->getAgzsData();
 
     switch (aPartner) {
     case Partner::yandex: {
@@ -552,7 +557,7 @@ void MainWindow::updateConfiguration(Partner aPartner) {
         //Columns
         QJsonObject columns;
 
-        QVector<SideFuel> fuels = db_.getFuels();
+        QVector<SideFuel> fuels = db_->getFuels();
         for (auto &side: fuels) {
             if ((side.partnerSideAdress <= 0) || (side.sideAdress <= 0)) {//без 0 колонки
                 continue;
@@ -625,7 +630,7 @@ void MainWindow::updateConfiguration(Partner aPartner) {
         QJsonObject columns;
         QJsonArray fuelNames;
 
-        QVector<SideFuel> fuels = db_.getFuels();
+        QVector<SideFuel> fuels = db_->getFuels();
         for (auto &side: fuels) {
             if ((side.partnerSideAdress <= 0) || (side.sideAdress <= 0)) {
                 continue;
@@ -660,18 +665,7 @@ void MainWindow::updateConfiguration(Partner aPartner) {
 }
 
 void MainWindow::processOrders(Partner aPartner, QJsonDocument aOrders) {
-    QTimer *currentTimer = nullptr;
-    switch (aPartner) {
-    case Partner::yandex: {
-        currentTimer = &timerYandexOrders_;
-        break;
-    }
-    case Partner::citymobile: {
-        currentTimer = &timerCityMobileOrders_;
-        break;
-    }
-    }
-    auto openedTransactions = db_.getOpenedTransactions(static_cast<int>(aPartner));
+    auto openedTransactions = db_->getOpenedTransactions(static_cast<int>(aPartner));
     for(auto order: aOrders.object().value("orders").toArray()) {
         Order currentOrder = JsonToOrder(aPartner, order);
         //Найти и исключить из листа эту транзакцию
@@ -723,23 +717,42 @@ void MainWindow::processOrders(Partner aPartner, QJsonDocument aOrders) {
     for(auto &openedTransaction: openedTransactions) {
         processClose(openedTransaction);
     }
-    if (currentTimer != nullptr && aOrders.object().value("nextRetryMs").isDouble()) {
-        currentTimer->setInterval(aOrders.object().value("nextRetryMs").toInt());
+    int interval = 3000;
+    if (aOrders.object().value("nextRetryMs").isDouble()) {
+        interval = aOrders.object().value("nextRetryMs").toInt();
+    }
+    if (interval <= 0) {
+        interval = 3000;
+    }
+    if (interval > 60000) {
+        interval = 60000;
+    }
+    switch (aPartner) {
+    case Partner::yandex: {
+        yandexOrdersInterval_ = interval;
+        timerYandexOrders_.setInterval(yandexOrdersInterval_);
+        break;
+    }
+    case Partner::citymobile: {
+        cityMobileOrdersInterval_ = interval;
+        timerCityMobileOrders_.setInterval(cityMobileOrdersInterval_);
+        break;
+    }
     }
 }
 
 #define ProcessOrders {
 
 bool MainWindow::processAcceptOrder(Order aOrder, Partner aPartner) {
-    if (db_.isTransactionExist(aOrder.id)) {
+    if (db_->isTransactionExist(aOrder.id)) {
         return false;
     }
     qInfo() << aOrder.id << "AcceptOrder";
     QDateTime now           = QDateTime::currentDateTime();
-    int lastAPIVCode        = (db_.getLastVCode("PR_APITransaction", true) + 1) * 100 + db_.getCurrentAgzs();
-    Agzs currentAgzs        = db_.getAgzsData();
-    int sideAdress          = db_.getRealSideAddress(currentAgzs.agzs, aOrder.columnId);
-    ErrorsOrder error       = db_.checkError(QString::number(sideAdress),
+    int lastAPIVCode        = (db_->getLastVCode("PR_APITransaction", true) + 1) * 100 + db_->getCurrentAgzs();
+    Agzs currentAgzs        = db_->getAgzsData();
+    int sideAdress          = db_->getRealSideAddress(currentAgzs.agzs, aOrder.columnId);
+    ErrorsOrder error       = db_->checkError(QString::number(sideAdress),
                                 aOrder.fuelId,
                                 FuelApiToFuelId(aOrder.fuelId),
                                 QString::number(aOrder.priceFuel),
@@ -751,7 +764,7 @@ bool MainWindow::processAcceptOrder(Order aOrder, Partner aPartner) {
     }
     switch (aPartner) {
     case Partner::yandex: {
-        db_.createApiTransaction(currentAgzs.agzsName, currentAgzs.agzs, aOrder.dateCreate,
+        db_->createApiTransaction(currentAgzs.agzsName, currentAgzs.agzs, aOrder.dateCreate,
                              lastAPIVCode, aOrder.id, "", aOrder.columnId, aOrder.fuelId,
                              FuelApiToFuelId(aOrder.fuelId), aOrder.priceFuel, aOrder.litre,
                              aOrder.sum, aOrder.status, aOrder.contractId, "Yandex",
@@ -787,7 +800,7 @@ bool MainWindow::processAcceptOrder(Order aOrder, Partner aPartner) {
         break;
     }
     case Partner::citymobile: {
-        db_.createApiTransaction(currentAgzs.agzsName, currentAgzs.agzs, aOrder.dateCreate,
+        db_->createApiTransaction(currentAgzs.agzsName, currentAgzs.agzs, aOrder.dateCreate,
                              lastAPIVCode, aOrder.id, "", aOrder.columnId, aOrder.fuelId,
                              FuelApiToFuelId(aOrder.fuelId), aOrder.priceFuel, aOrder.litre,
                              aOrder.sum, aOrder.status, aOrder.contractId, "CityMobile",
@@ -827,13 +840,13 @@ bool MainWindow::processAcceptOrder(Order aOrder, Partner aPartner) {
 }
 
 bool MainWindow::processWaitingRefueling(Order aOrder, Partner aPartner) {
-    ApiTransaction apiTransaction = db_.getApiTransaction(aOrder.id);
+    ApiTransaction apiTransaction = db_->getApiTransaction(aOrder.id);
     if (apiTransaction.id == "") {
         return false;
     }
     qInfo() << aOrder.id << "WaitingRefueling";
     if (apiTransaction.iState > 0) {
-        db_.updateApiTransactionState(apiTransaction.localState, apiTransaction.dateClose, apiTransaction.apiVCode);
+        db_->updateApiTransactionState(apiTransaction.localState, apiTransaction.dateClose, apiTransaction.apiVCode);
     }
     switch (aPartner) {
     case Partner::yandex: {
@@ -851,15 +864,15 @@ bool MainWindow::processWaitingRefueling(Order aOrder, Partner aPartner) {
 }
 
 bool MainWindow::processFueling(Order aOrder, Partner aPartner) {
-    ApiTransaction apiTransaction = db_.getApiTransaction(aOrder.id);
+    ApiTransaction apiTransaction = db_->getApiTransaction(aOrder.id);
     sendLiters(aPartner, apiTransaction, aOrder.id);
     qInfo() << aOrder.id << "Fueling";
 
     double amount = 0.0, volume = 0.0, price = 0.0;
-    db_.getPayOperationLiters(apiTransaction.headVCode, amount, volume, price);
+    db_->getPayOperationLiters(apiTransaction.headVCode, amount, volume, price);
 
     if((amount > 0.1) && (volume > 0.1) && (price > 0.1) && (apiTransaction.localState.toInt() < 5)) {
-        db_.finalUpdateApiTransactionState("5", price, volume, amount, apiTransaction.dateOpen, apiTransaction.dateClose, apiTransaction.apiVCode);
+        db_->finalUpdateApiTransactionState("5", price, volume, amount, apiTransaction.dateOpen, apiTransaction.dateClose, apiTransaction.apiVCode);
 
         switch (aPartner) {
         case Partner::yandex: {
@@ -878,9 +891,9 @@ bool MainWindow::processFueling(Order aOrder, Partner aPartner) {
 }
 
 bool MainWindow::processExpire(Order aOrder, Partner aPartner) {
-    ApiTransaction apiTransaction = db_.getApiTransaction(aOrder.id);
-    db_.updateApiTransactionState("Ошибка: 30 минут", apiTransaction.dateClose, apiTransaction.apiVCode);
-    db_.setTransactionClosed(aOrder.id, 1);
+    ApiTransaction apiTransaction = db_->getApiTransaction(aOrder.id);
+    db_->updateApiTransactionState("Ошибка: 30 минут", apiTransaction.dateClose, apiTransaction.apiVCode);
+    db_->setTransactionClosed(aOrder.id, 1);
     qInfo() << aOrder.id << "Expire";
 
     switch (aPartner) {
@@ -924,71 +937,32 @@ bool MainWindow::processUnknown(Order aOrder, Partner aPartner) {
 
 bool MainWindow::processClose(ApiTransaction aApiTransaction) {
     qInfo() << aApiTransaction.id << "Closed";
-    db_.updateApiTransactionState("Отменена", aApiTransaction.dateClose, aApiTransaction.apiVCode);
-    return db_.setTransactionClosed(aApiTransaction.id, 1);
+    db_->updateApiTransactionState("Отменена", aApiTransaction.dateClose, aApiTransaction.apiVCode);
+    return db_->setTransactionClosed(aApiTransaction.id, 1);
 }
 
 #define ProcessOrdersEnd }
 
-void MainWindow::changeEvent(QEvent *aEvent) {
-    QMainWindow::changeEvent(aEvent);
-    if (aEvent -> type() == QEvent::WindowStateChange) {
-        if (isMinimized()) {
-            this->hide();
-        }
-    }
-}
-
-void MainWindow::trayIconActivated(QSystemTrayIcon::ActivationReason aReason) {
-    switch (aReason) {
-        case QSystemTrayIcon::Trigger:
-        case QSystemTrayIcon::DoubleClick:
-            this->trayActionExecute();
-            break;
-        default:
-            break;
-    }
-}
-
-void MainWindow::trayActionExecute() {
-    this->show();
-    this->showNormal();
-}
-
-void MainWindow::setTrayIconActions() {
-    // Setting actions...
-    minimizeAction_ = new QAction("Свернуть",        this);
-    restoreAction_  = new QAction("Восстановить",    this);
-    quitAction_     = new QAction("Выход",           this);
-
-    // Connecting actions to slots...
-    connect (minimizeAction_, SIGNAL(triggered()), this, SLOT(hide()));
-    connect (restoreAction_,  SIGNAL(triggered()), this, SLOT(showNormal()));
-    connect (quitAction_,     SIGNAL(triggered()), this, SLOT(exitPassword()));
-
-    // Setting system tray's icon menu...
-    trayIconMenu_ = new QMenu(this);
-    trayIconMenu_->addAction(minimizeAction_);
-    trayIconMenu_->addAction(restoreAction_);
-    trayIconMenu_->addAction(quitAction_);
-}
-
-void MainWindow::exitPassword() {
-    FormExitPassword *pass = new FormExitPassword();
-    pass->show();
-}
-
-void MainWindow::showTrayIcon() {
-    // Создаём экземпляр класса и задаём его свойства...
-    trayIcon_ = new QSystemTrayIcon(this);
-    QIcon trayImage("://images/tray.png");
-    trayIcon_->setIcon(trayImage);
-    trayIcon_->setContextMenu(trayIconMenu_);
-
-    // Подключаем обработчик клика по иконке...
-    connect(trayIcon_, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(trayIconActivated(QSystemTrayIcon::ActivationReason)));
-
-    // Выводим значок...
-    trayIcon_->show();
-}
 #define FunctionsEnd }
+
+void MainWindow::on_ButtonAgzs_clicked() {
+    QString password = QInputDialog::getText(this, tr("Поменять АГЗС"), tr("Пароль:"), QLineEdit::Password, "");
+    if (password == "rjrjcs743") {
+        QString agzs = QInputDialog::getText(this, tr("Поменять АГЗС"), tr("Введите АГЗС:"), QLineEdit::Normal, "agzs");
+        if (agzs != "") {
+            agzs_ = agzs;
+            reestr_.setValue("currentAgzs", agzs_);
+            qInfo() << "currentAGZS =" << agzs_;
+            QMessageBox::warning(0, tr("Внимание!"), tr("АГЗС изменена, пожалуйста перезапустите приложение для применения изменений!"));
+        }
+//        FormChangeAgzs *changeAgzs = new FormChangeAgzs();
+//        changeAgzs->show();
+//        connect(changeAgzs, &FormChangeAgzs::s_AgzsChanged, this, [=](QString agzs) {
+//            QString agzs = QInputDialog::getText(this, tr("Поменять АГЗС"), tr("Введите АГЗС:"), QLineEdit::Normal, "agzs2");
+//            reestr_.setValue("currentAgzs", agzs);
+//            QMessageBox::warning(0, tr("Внимание!"), tr("АГЗС изменена, пожалуйста перезапустите приложение для применения изменений!"));
+//        });
+    } else {
+        QMessageBox::warning(0, tr("Ошибка!"), tr("Неверный пароль!"));
+    }
+}

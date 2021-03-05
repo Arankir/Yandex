@@ -16,6 +16,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    formchangeagzs.cpp \
     formexitpassword.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -23,18 +24,22 @@ SOURCES += \
     partners/networking/requestdata.cpp \
     partners/yandexapi.cpp \
     systems/databasecontrol.cpp \
-    systems/formsettings.cpp
+    systems/formsettings.cpp \
+    systems/structs.cpp
 
 HEADERS += \
+    formchangeagzs.h \
     formexitpassword.h \
     mainwindow.h \
     partners/citymobileapi.h \
     partners/networking/requestdata.h \
     partners/yandexapi.h \
     systems/databasecontrol.h \
-    systems/formsettings.h
+    systems/formsettings.h \
+    systems/structs.h
 
 FORMS += \
+    formchangeagzs.ui \
     formexitpassword.ui \
     mainwindow.ui \
     systems/formsettings.ui

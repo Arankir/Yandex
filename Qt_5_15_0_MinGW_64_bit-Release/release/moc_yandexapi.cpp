@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_YandexAPI_t {
-    QByteArrayData data[22];
-    char stringdata0[202];
+    QByteArrayData data[23];
+    char stringdata0[227];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -46,22 +46,24 @@ QT_MOC_LITERAL(10, 92, 7), // "s_error"
 QT_MOC_LITERAL(11, 100, 6), // "status"
 QT_MOC_LITERAL(12, 107, 5), // "order"
 QT_MOC_LITERAL(13, 113, 4), // "code"
-QT_MOC_LITERAL(14, 118, 13), // "createRequest"
-QT_MOC_LITERAL(15, 132, 15), // "QNetworkRequest"
-QT_MOC_LITERAL(16, 148, 3), // "url"
-QT_MOC_LITERAL(17, 152, 11), // "contentType"
-QT_MOC_LITERAL(18, 164, 4), // "auth"
-QT_MOC_LITERAL(19, 169, 12), // "RequestData*"
-QT_MOC_LITERAL(20, 182, 9), // "checkAuth"
-QT_MOC_LITERAL(21, 192, 9) // "saveToken"
+QT_MOC_LITERAL(14, 118, 20), // "createNetworkRequest"
+QT_MOC_LITERAL(15, 139, 15), // "QNetworkRequest"
+QT_MOC_LITERAL(16, 155, 3), // "url"
+QT_MOC_LITERAL(17, 159, 11), // "contentType"
+QT_MOC_LITERAL(18, 171, 4), // "auth"
+QT_MOC_LITERAL(19, 176, 17), // "createRequestData"
+QT_MOC_LITERAL(20, 194, 12), // "RequestData*"
+QT_MOC_LITERAL(21, 207, 9), // "checkAuth"
+QT_MOC_LITERAL(22, 217, 9) // "saveToken"
 
     },
     "YandexAPI\0s_setTimer\0\0mSec\0s_needAuth\0"
     "s_authComplete\0token\0s_updatePrice\0"
     "s_gotOrders\0orders\0s_error\0status\0"
-    "order\0code\0createRequest\0QNetworkRequest\0"
-    "url\0contentType\0auth\0RequestData*\0"
-    "checkAuth\0saveToken"
+    "order\0code\0createNetworkRequest\0"
+    "QNetworkRequest\0url\0contentType\0auth\0"
+    "createRequestData\0RequestData*\0checkAuth\0"
+    "saveToken"
 };
 #undef QT_MOC_LITERAL
 
@@ -90,9 +92,9 @@ static const uint qt_meta_data_YandexAPI[] = {
       14,    3,   94,    2, 0x08 /* Private */,
       14,    2,  101,    2, 0x28 /* Private | MethodCloned */,
       14,    1,  106,    2, 0x28 /* Private | MethodCloned */,
-      14,    0,  109,    2, 0x08 /* Private */,
-      20,    1,  110,    2, 0x08 /* Private */,
-      21,    1,  113,    2, 0x08 /* Private */,
+      19,    0,  109,    2, 0x08 /* Private */,
+      21,    1,  110,    2, 0x08 /* Private */,
+      22,    1,  113,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Int,    3,
@@ -106,9 +108,9 @@ static const uint qt_meta_data_YandexAPI[] = {
     0x80000000 | 15, QMetaType::QString, QMetaType::QString, QMetaType::Bool,   16,   17,   18,
     0x80000000 | 15, QMetaType::QString, QMetaType::QString,   16,   17,
     0x80000000 | 15, QMetaType::QString,   16,
-    0x80000000 | 19,
-    QMetaType::Void, 0x80000000 | 19,    2,
-    QMetaType::Void, 0x80000000 | 19,    2,
+    0x80000000 | 20,
+    QMetaType::Void, 0x80000000 | 20,    2,
+    QMetaType::Void, 0x80000000 | 20,    2,
 
        0        // eod
 };
@@ -125,13 +127,13 @@ void YandexAPI::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         case 3: _t->s_updatePrice(); break;
         case 4: _t->s_gotOrders((*reinterpret_cast< QJsonDocument(*)>(_a[1]))); break;
         case 5: _t->s_error((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3]))); break;
-        case 6: { QNetworkRequest _r = _t->createRequest((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< bool(*)>(_a[3])));
+        case 6: { QNetworkRequest _r = _t->createNetworkRequest((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< bool(*)>(_a[3])));
             if (_a[0]) *reinterpret_cast< QNetworkRequest*>(_a[0]) = std::move(_r); }  break;
-        case 7: { QNetworkRequest _r = _t->createRequest((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])));
+        case 7: { QNetworkRequest _r = _t->createNetworkRequest((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])));
             if (_a[0]) *reinterpret_cast< QNetworkRequest*>(_a[0]) = std::move(_r); }  break;
-        case 8: { QNetworkRequest _r = _t->createRequest((*reinterpret_cast< QString(*)>(_a[1])));
+        case 8: { QNetworkRequest _r = _t->createNetworkRequest((*reinterpret_cast< QString(*)>(_a[1])));
             if (_a[0]) *reinterpret_cast< QNetworkRequest*>(_a[0]) = std::move(_r); }  break;
-        case 9: { RequestData* _r = _t->createRequest();
+        case 9: { RequestData* _r = _t->createRequestData();
             if (_a[0]) *reinterpret_cast< RequestData**>(_a[0]) = std::move(_r); }  break;
         case 10: _t->checkAuth((*reinterpret_cast< RequestData*(*)>(_a[1]))); break;
         case 11: _t->saveToken((*reinterpret_cast< RequestData*(*)>(_a[1]))); break;

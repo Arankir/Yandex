@@ -1,63 +1,28 @@
 #include "databasecontrol.h"
 
-const QString c_settingPath = "Setting.txt";
 const QString c_logPath = "Log.txt";
 
 const int c_maxRestartCount = 7;
 
 #define InitStart {
-DataBaseControl::DataBaseControl(QObject *aParent) : QObject(aParent), reestr_("RegionPostavka", "Partners") {
+DataBaseControl::DataBaseControl(QString aAgzs, QObject *aParent): QObject(aParent), Agzs_(aAgzs) {
     while(!init());
 }
 
 bool DataBaseControl::init() {
     db_ = QSqlDatabase::addDatabase("QODBC3");
-    QStringList setting;
-    if (QFile::exists(c_settingPath)) {
-        QFile settings(c_settingPath);
-        if (settings.open(QIODevice::ReadOnly)) {
-            while(!settings.atEnd()) {
-                setting << QString::fromLocal8Bit(settings.readLine()).remove("\r\n").remove("\n");
-            }
-            settings.close();
-        } else {
-            qWarning(logError) << "setting file is already open";
-            return false;
-        }
-    } else {
-        qWarning(logError) << "setting file not found";
-        return false;
-    }
-    qDebug() << setting;
-    reestr_.setValue("ordersLog",    setting.size() > 2 ? setting[2] == "true" : false);
-    //_reestr.setValue("agzsPriceLog", setting.size() > 3 ? setting[3] == "true" : false);
-    //_reestr.setValue("agzsDataLog",  setting.size() > 2 ? setting[2] == "true" : false);
-    reestr_.setValue("isTest",       setting.size() > 1 ? setting[1] == "test" : false);
-    if (setting.size() > 0) {
-        db_.setDatabaseName(QString("DRIVER={SQL Server};"
-                                    "SERVER=%1;"
-                                    "DATABASE=agzs;"
-                                    "Persist Security Info=true;"
-                                    "uid=sa;"
-                                    "pwd=Gfhf743Djpbr").arg(setting[0]));
-        return openDB();
-    }
+    db_.setDatabaseName(QString("DRIVER={SQL Server};"
+                                "SERVER=%1;"
+                                "DATABASE=agzs;"
+                                "Persist Security Info=true;"
+                                "uid=sa;"
+                                "pwd=Gfhf743Djpbr").arg(Agzs_));
+    return openDB();
     return false;
 }
 
 bool DataBaseControl::openDB() {
     if (db_.open()) {
-        QString cityMobileToken = "";
-
-        QSqlQuery query(db_);
-        query.exec("SELECT TOP 1 [CityMobileToken] "
-                "FROM [agzs].[dbo].[PR_AGZSData] "
-                "WHERE AGZS = (SELECT TOP 1 AGZS "
-                              "FROM [agzs].[dbo].[Identification]) ");
-        if (query.next()) {
-            cityMobileToken = query.value(0).toString();
-        }
-        reestr_.setValue("CityMobile Token", cityMobileToken);
         qInfo () << "DB is open";
         return true;
     } else {
@@ -205,7 +170,7 @@ Price DataBaseControl::getPrices(QString aIPartner) {
                                  "WHERE AGZS = (SELECT TOP 1 AGZS "
                                                "FROM [agzs].[dbo].[Identification])) "
                    "and iPartner = " + aIPartner + " "
-                   "and DateStart < '" + QDateTime::currentDateTime().toString("yyyyMMdd hh:mm:ss.zzz") + "' "
+                   "and DateStart < GETDATE() "
                    "ORDER BY [CDate] desc");
         if (query.next()) {
             Price price;
@@ -661,7 +626,7 @@ bool DataBaseControl::setTransactionClosed(QString aId, int aClosed) {
         QSqlQuery query(db_);
         query.prepare("UPDATE [agzs].[dbo].[ADAST_TRKTransaction] "
                              "SET Closed = :closed "
-                      "WHERE VCode = (SELECT Link "
+                      "WHERE VCode in (SELECT Link "
                                      "FROM [agzs].[dbo].[PR_APITransaction] "
                                      "WHERE ApiId = :id)");
         query.bindValue(":closed", aClosed);
@@ -919,12 +884,25 @@ bool DataBaseControl::setYandexToken(QString aToken) {
                                 "FROM [agzs].[dbo].[Identification]) ");
     query.bindValue(":token", aToken);
     query.exec();
-    reestr_.setValue("Yandex Token", aToken);
     if (query.lastError().type() == QSqlError::NoError) {
         return true;
     } else {
         qWarning(logError) << "setYandexToken" << aToken;
         return false;
+    }
+}
+
+QString DataBaseControl::getCityMobileToken() {
+    QSqlQuery query(db_);
+    query.exec("SELECT TOP 1 [CityMobileToken] "
+            "FROM [agzs].[dbo].[PR_AGZSData] "
+            "WHERE AGZS = (SELECT TOP 1 AGZS "
+                          "FROM [agzs].[dbo].[Identification]) ");
+    if (query.next()) {
+        return query.value(0).toString();
+    } else {
+        qWarning(logError) << "getCityMobileToken";
+        return "";
     }
 }
 

@@ -1,0 +1,13 @@
+14:53:02 DB is open
+14:53:02 STARTED
+14:53:03 POST 200 CityMobile "https://terminal.api.test.fuelup.ru/api/price" "(a92=37.21&propane=20.15)"
+14:53:03 POST 200 Yandex     "http://cabinet.tst.tanker.yandex.ru/api/price" "(propane=21.5)"
+14:53:03 POST 200 CityMobile "https://terminal.api.test.fuelup.ru/api/station" "({\"Adress\":\"г. Уфа, ул. Чебоксарская, д. 12\",\"Columns\":{\"1\":{\"Fuels\":[\"propane\",\"diesel\"]},\"2\":{\"Fuels\":[\"propane\",\"a92\"]}},\"Enable\":true,\"FuelNames\":[{\"Fuel\":\"propane\",\"FuelName\":\"Пропан\"},{\"Fuel\":\"diesel\",\"FuelName\":\"Дизель\"},{\"Fuel\":\"a92\",\"FuelName\":\"А-92\"}],\"Location\":{\"Lat\":\"54.6878\",\"Lon\":\"55.8086\"},\"Name\":\"АГЗС №2\",\"StationExtendedId\":\"2\"})"
+14:53:04 POST 200 Yandex     "http://cabinet.tst.tanker.yandex.ru/api/station" "({\"Columns\":{\"1\":{\"Fuels\":[\"propane\",\"diesel\"]},\"2\":{\"Fuels\":[\"propane\",\"a92\"]}},\"StationExtendedId\":\"2\"})"
+14:53:07 GET  200 CityMobile "https://terminal.api.test.fuelup.ru/api/orders/items"
+14:53:07 GET  200 Yandex     "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+14:53:10 GET  200 CityMobile "https://terminal.api.test.fuelup.ru/api/orders/items"
+14:53:10 GET  200 Yandex     "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+14:53:14 GET  200 CityMobile "https://terminal.api.test.fuelup.ru/api/orders/items"
+14:53:14 GET  200 Yandex     "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+14:53:16 CLOSED from button

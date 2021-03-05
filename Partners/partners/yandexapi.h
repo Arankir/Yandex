@@ -34,8 +34,8 @@ signals:
     //void s_networkRequestInfo(QString api, QString type, QString request, QString post, int code);
 
 private slots:
-    QNetworkRequest createRequest(QString url, QString contentType = "application/x-www-form-urlencoded", bool auth = true);
-    RequestData *createRequest();
+    QNetworkRequest createNetworkRequest(QString url, QString contentType = "application/x-www-form-urlencoded", bool auth = true);
+    RequestData *createRequestData();
     void checkAuth(RequestData*);
     void saveToken(RequestData*);
 

@@ -1,3 +1,4 @@
+release/formchangeagzs.o
 release/formexitpassword.o
 release/main.o
 release/mainwindow.o
@@ -6,7 +7,9 @@ release/requestdata.o
 release/yandexapi.o
 release/databasecontrol.o
 release/formsettings.o
+release/structs.o
 release/qrc_res.o
+release/moc_formchangeagzs.o
 release/moc_formexitpassword.o
 release/moc_mainwindow.o
 release/moc_citymobileapi.o

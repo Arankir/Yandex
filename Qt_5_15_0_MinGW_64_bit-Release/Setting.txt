@@ -1,3 +1,2 @@
-deb_agzs
 test
 true

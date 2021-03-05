@@ -1,0 +1,3 @@
+11:02:42 STARTED
+11:02:46 DB is open
+11:03:03 CLOSED from button
