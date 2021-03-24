@@ -6,13 +6,33 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonArray>
+#include "partners/yandexapi.h"
+#include "partners/citymobileapi.h"
 
 const QString c_host = "api";
 
-enum class Partner {
-    yandex = 11,
-    citymobile = 10
+enum class Fuel {
+     diesel = 32,
+     diesel_premium = -10,
+     a80 = -11,
+     a92 = 3,
+     a92_premium = -12,
+     a95 = 8,
+     a95_premium = -13,
+     a98 = -14,
+     a98_premium = -15,
+     a100 = -16,
+     a100_premium = -17,
+     propane = 14,
+     metan = -18,
+     unknown = -1
 };
+
+Fuel apiToFuel(QString aFuel);
+
+QString fuelToApi(Fuel aFuel);
+
+QString fuelToName(Fuel aFuel);
 
 struct Order {
     QString id;
@@ -22,13 +42,23 @@ struct Order {
     int columnId;
     double litre;
     QString status;
-    QString fuelId;
+    Fuel fuel;
     double priceFuel;
     double sum;
     QString contractId;
+
+    struct MoneyData {
+        double requestTotalPriceDB = -1;
+        double requestVolumeDB = -1;
+        double requestUnitPriceDB = -1;
+        double moneyTakenDB = -1;
+        int fullTankDB = -1;
+    };
+    MoneyData moneyData;
+
+    static Order fromJson(int aiPayWay, QJsonValue aOrder);
 };
 
-Order JsonToOrder(Partner aPartner, QJsonValue aOrder);
 
 enum class OrderStatus {
     unknown,
@@ -77,6 +107,9 @@ struct Price {
     double a100_premium = 0.0;
     double propane = 0.0;
     double metan = 0.0;
+
+    bool operator!=(const Price &price);
+    QString toString();
 };
 
 struct Agzs {
@@ -109,6 +142,39 @@ struct AdastTrk {
     int fuel3 = 0;
     int fuel4 = 0;
     int fuel5 = 0;
+
+    int getNozzle(Fuel aFuelId) {
+        int fuelId = static_cast<int>(aFuelId);
+        if (fuelId == fuel1) {
+            return 1;
+        } else if (fuelId == fuel2) {
+            return 2;
+        } else if (fuelId == fuel3) {
+            return 3;
+        } else if (fuelId == fuel4) {
+            return 4;
+        } else if (fuelId == fuel5) {
+            return 5;
+        }
+        return -1;
+    }
+
+    int getFuelCode(Fuel aFuelId) {
+        int fuelId = static_cast<int>(aFuelId);
+        if (fuelId == fuel1) {
+            return fuelCode1;
+        } else if (fuelId == fuel2) {
+            return fuelCode2;
+        } else if (fuelId == fuel3) {
+            return fuelCode3;
+        } else if (fuelId == fuel4) {
+            return fuelCode4;
+        } else if (fuelId == fuel5) {
+            return fuelCode5;
+        }
+        return -1;
+    }
+
 };
 
 struct ApiTransaction {
@@ -192,6 +258,9 @@ struct Transaction {
     int agzs = 0;
     int fuelVCode = 0;
     int propan = 0;
+
+    static Transaction createTransaction(Agzs agzs, int transactionVCode, AdastTrk trk, FuelNames fuelName, int sideAdress,
+                                         Order order, QDateTime date, QString payWay, int iPayWay, int smena, int cashBoxIndex);
 };
 
 struct SideFuel {

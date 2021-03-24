@@ -3,17 +3,14 @@
 
 #include <QMainWindow>
 #include <QTimer>
-#include "partners/yandexapi.h"
-#include "partners/citymobileapi.h"
-#include "systems/databasecontrol.h"
-#include "systems/formsettings.h"
-#include "formexitpassword.h"
-#include "formchangeagzs.h"
 #include <QSystemTrayIcon>
 #include <QMenu>
 #include <QMessageBox>
-#include "systems/structs.h"
 #include <QInputDialog>
+#include "formexitpassword.h"
+#include "systems/databasecontrol.h"
+#include "systems/formsettings.h"
+#include "systems/structs.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -30,22 +27,16 @@ public:
     ~MainWindow();
 
 public slots:
-    int FuelApiToFuelId(QString aFuelIdApi);
-    QString getFuelName(int aFuelVCode);
-    QString FuelIdToFuelApi(int aFuelVCode);
-    void moneyData(Partner aPartner, Order aOrder, double &aRequestTotalPriceDB, double &aRequestVolumeDB, double &aRequestUnitPriceDB, double &aMoneyTakenDB, int &aFullTankDB);
-
-    void getNozzleFuelCode(AdastTrk aTrk, QString aFuelId, int &aNozzle, int &aFuelCode);
-    int createTransaction(Agzs currentAgzs, Order order, Partner aPartner, int sideAdress, QDateTime now);
-    void sendLiters(Partner aPartner, ApiTransaction aApiTransaction, QString aOrderId);
-    bool processAcceptOrder(Order aOrder, Partner aPartner);
-    bool processWaitingRefueling(Order aOrder, Partner aPartner);
-    bool processFueling(Order aOrder, Partner aPartner);
-    bool processExpire(Order aOrder, Partner aPartner);
-    bool processStationCanceled(Order aOrder, Partner aPartner);
-    bool processUserCanceled(Order aOrder, Partner aPartner);
-    bool processCompleted(Order aOrder, Partner aPartner);
-    bool processUnknown(Order aOrder, Partner aPartner);
+    int createTransaction(Agzs currentAgzs, Order order, PartnerAPI *aPartner, int sideAdress, QDateTime now);
+    double litersFromStart(ApiTransaction aApiTransaction);
+    bool processAcceptOrder(Order aOrder, PartnerAPI *aPartner);
+    bool processWaitingRefueling(Order aOrder, PartnerAPI *aPartner);
+    bool processFueling(Order aOrder, PartnerAPI *aPartner);
+    bool processExpire(Order aOrder, PartnerAPI *aPartner);
+    bool processStationCanceled(Order aOrder, PartnerAPI *aPartner);
+    bool processUserCanceled(Order aOrder, PartnerAPI *aPartner);
+    bool processCompleted(Order aOrder, PartnerAPI *aPartner);
+    bool processUnknown(Order aOrder, PartnerAPI *aPartner);
     bool processClose(ApiTransaction aApiTransaction);
 
     void exitPassword();
@@ -59,16 +50,11 @@ private slots:
     void on_ButtonCancelYandex_clicked();
     void on_ButtonSettings_clicked();
 
-    void updateDataYandex();
-    void getOrdersYandex();
-    void updateDataCityMobile();
-    void getOrdersCityMobile();
+    void updatePrice();
+    void updateConfiguration();
+    void processOrders(PartnerAPI *aPartner, QJsonDocument orders);
 
-    void updatePrice(Partner p);
-    void updateConfiguration(Partner p);
-    void processOrders(Partner aPartner, QJsonDocument orders);
-
-    void changeEvent(QEvent*);
+    void changeEvent(QEvent*) override;
     void trayIconActivated(QSystemTrayIcon::ActivationReason reason);
     void trayActionExecute();
     QMenu *createTrayIconMenu();
@@ -82,6 +68,8 @@ private slots:
 
     void on_ButtonAgzs_clicked();
 
+    QString formAgzs();
+
 private:
     Ui::MainWindow *ui;
 
@@ -93,20 +81,18 @@ private:
     YandexAPI *yandex_;
     CityMobileAPI *cityMobile_;
 
+    Price lastPriceYandex_;
+    Price lastPriceCityMobile_;
+    QJsonObject lastConfigurationYandex_;
+    QJsonObject lastConfigurationCityMobile_;
+
     int errorPassword_ = 0;
     bool isNeedAuth_ = false;
-
-    int yandexOrdersInterval_ = 5000;
-    int cityMobileOrdersInterval_ = 5000;
-    int yandexDataInterval_ = 60000;
-    int cityMobileDataInterval_ = 60000;
+    bool isYandexEnabled_ = false;
+    bool isCityMobileEnabled_ = false;
 
     QTimer timerGlobal_;
-    QTimer timerYandexAgzsData_;
-    QTimer timerYandexOrders_;
     QTimer timerYandexError_;
-    QTimer timerCityMobileAgzsData_;
-    QTimer timerCityMobileOrders_;
 
     QSystemTrayIcon *trayIcon_;
 };

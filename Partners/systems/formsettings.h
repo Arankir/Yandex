@@ -15,6 +15,10 @@ public:
     explicit FormSettings(QWidget *parent = nullptr);
     ~FormSettings();
 
+signals:
+    void s_yandexChange(bool);
+    void s_cityMobileChange(bool);
+
 private slots:
     void on_checkBoxYandex_stateChanged(int arg1);
 

@@ -35,9 +35,9 @@ public:
     void get(QUrl url, bool parallel = false);
     void get(QNetworkRequest request, bool parallel = false);
     void post(QNetworkRequest request, QString post, bool parallel = false);
-    QByteArray getAnswer() {return answer_;}
-    QByteArray getAuthorization() {return authorization_;}
-    int getCode() {return code_;}
+    QByteArray answer() {return answer_;}
+    QByteArray authorization() {return authorization_;}
+    int code() {return code_;}
 
 signals:
     void s_finished(RequestData *request);

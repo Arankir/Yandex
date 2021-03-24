@@ -106,7 +106,10 @@
          </font>
         </property>
         <property name="text">
-         <string>Логин</string>
+         <string>&lt;img height=25 style=&quot;vertical-align: top&quot; src=&quot;://images/login.png&quot;&gt; Логин&lt;/a&gt;</string>
+        </property>
+        <property name="textFormat">
+         <enum>Qt::RichText</enum>
         </property>
        </widget>
       </item>
@@ -143,7 +146,10 @@
          </font>
         </property>
         <property name="text">
-         <string>Пароль</string>
+         <string>&lt;img height=25 style=&quot;vertical-align: top&quot; src=&quot;://images/login password.png&quot;&gt; Пароль&lt;/a&gt;</string>
+        </property>
+        <property name="textFormat">
+         <enum>Qt::RichText</enum>
         </property>
        </widget>
       </item>

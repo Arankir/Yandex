@@ -14,9 +14,11 @@ FormSettings::~FormSettings() {
 void FormSettings::on_checkBoxYandex_stateChanged(int arg1) {
     reestr_.setValue("Yandex Enabled", arg1 == 2);
     reestr_.sync();
+    emit s_yandexChange(arg1 == 2);
 }
 
 void FormSettings::on_checkBoxCityMobile_stateChanged(int arg1) {
    reestr_.setValue("CityMobile Enabled", arg1 == 2);
    reestr_.sync();
+   emit s_cityMobileChange(arg1 == 2);
 }

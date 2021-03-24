@@ -36,7 +36,7 @@ public slots:
     ApiTransaction getApiTransaction(QString id);
     bool updateApiTransactionState(QString localState, QDateTime dateClose, int vCode);
     bool finalUpdateApiTransactionState(QString localState, double price, double volume, double amount, QDateTime dateOpen, QDateTime dateClose, int vCode);
-    bool getPayOperationLiters(int link, double &amount, double &volume, double &price);
+    bool getPayOperationData(int link, double &amount, double &volume, double &price, QDateTime &aDateStart, QDateTime &aDateEnd);
     bool setTransactionClosed(QString id, int closed);
     Transaction getTransaction(int aVCode);
     QList<ApiTransaction> getOpenedTransactions(int aPartner);

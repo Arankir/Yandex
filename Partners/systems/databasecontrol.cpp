@@ -502,8 +502,7 @@ bool DataBaseControl::createApiTransaction(QString aAgzsName, int aAgzs, QDateTi
         query.bindValue(":DateOpen", aDateOpen.toString("yyyyMMdd hh:mm:ss.zzz"));
         //q_APIRequests.bindValue(":DateClose", "DEFAULT");
         query.bindValue(":Link", aLink);
-        query.exec();
-        if (query.lastError().type() == QSqlError::NoError) {
+        if (query.exec()) {
             return true;
         } else  {
             openDB();
@@ -599,17 +598,22 @@ bool DataBaseControl::finalUpdateApiTransactionState(QString aLocalState, double
     return false;
 }
 
-bool DataBaseControl::getPayOperationLiters(int aLink, double &aAmount, double &aVolume, double &aPrice) {
+bool DataBaseControl::getPayOperationData(int aLink, double &aAmount, double &aVolume, double &aPrice, QDateTime &aDateStart, QDateTime &aDateEnd) {
     int cycles = 0;
     while (cycles < 2) {
         QSqlQuery query(db_);
-        query.exec("SELECT [AmountDB], [PriceDB], [VolumeDB] "
-                   "FROM [agzs].[dbo].[ARM_PayOperation] "
-                   "WHERE Link = " + QString::number(aLink));
+        query.exec( "SELECT [AmountDB], [PriceDB], [VolumeDB], [DateOpen], [DateClose] "
+                    "FROM [agzs].[dbo].[ARM_PayOperation] p "
+                        "INNER JOIN"
+                    "agzs.dbo.ADAST_TRKTransaction t"
+                        "on (p.Link = t.VCode)"
+                    "WHERE t.VCode = " + QString::number(aLink));
         if (query.next()) {
             aAmount = query.value(0).toDouble();
-            aVolume = query.value(2).toDouble();
             aPrice = query.value(1).toDouble();
+            aVolume = query.value(2).toDouble();
+            aDateStart = query.value(3).toDateTime();
+            aDateEnd = query.value(4).toDateTime();
             return true;
         } else {
             qWarning() << "getPayOperationLiters" << cycles;

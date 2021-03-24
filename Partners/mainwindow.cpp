@@ -10,21 +10,12 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWin
 
     checkSettings();
     agzs_ = reestr_.value("currentAgzs").toString();
-    if (agzs_ == QString()) {
-        agzs_ = QInputDialog::getText(this, tr("Поменять АГЗС"), tr("Введите АГЗС:"), QLineEdit::Normal, "agzs");
-//        FormChangeAgzs *changeAgzs = new FormChangeAgzs();
-//        changeAgzs->show();
-//        QEventLoop loop;
-//        connect(changeAgzs, &FormChangeAgzs::s_AgzsChanged, &loop, &QEventLoop::quit);
-//        connect(changeAgzs, &FormChangeAgzs::s_AgzsChanged, this, [=](QString agzs) {agzs_ = agzs;});
-//        loop.exec();
-//        changeAgzs->close();
+    while (agzs_ == QString()) {
+        agzs_ = formAgzs();
         reestr_.setValue("currentAgzs", agzs_);
     }
     qInfo() << "currentAGZS =" << agzs_;
     db_ = new DataBaseControl(agzs_);
-
-    reestr_.setValue("CityMobile Token", db_->getCityMobileToken());
 
     if (!reestr_.value("isTest").toBool()) {
         ui->ButtonCancelYandex->setVisible(false);
@@ -32,36 +23,28 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWin
         ui->lineEdit->setVisible(false);
     }
 
-    ui->label  ->setTextFormat(Qt::RichText);
-    ui->label_2->setTextFormat(Qt::RichText);
-    ui->label  ->setText("<img height=25 style=\"vertical-align: top\" src=\"://images/login.png\"> Логин</a>");
-    ui->label_2->setText("<img height=25 style=\"vertical-align: top\" src=\"://images/login password.png\"> Пароль</a>");
+    ui->LabelVersion->setText("v1.15");
     ui->ButtonSettings->setIcon(QIcon("://images/settings.png"));
     this->setWindowFlags(Qt::Window | Qt::WindowMinimizeButtonHint);
-    ui->LabelVersion->setText("v1.12");
 
     showTrayIcon();
+
+    reestr_.setValue("CityMobile Token", db_->getCityMobileToken());
+    isCityMobileEnabled_ = reestr_.value("CityMobile Enabled", QVariant(false)).toBool();
+    isYandexEnabled_ = reestr_.value("Yandex Enabled", QVariant(false)).toBool();
 
     yandex_ = new YandexAPI(this);
     cityMobile_ = new CityMobileAPI(this);
 
-    connect(&timerYandexAgzsData_,      &QTimer::timeout,                       this, &MainWindow::updateDataYandex);
-    connect(&timerYandexOrders_,        &QTimer::timeout,                       this, &MainWindow::getOrdersYandex);
-    connect(&timerCityMobileAgzsData_,  &QTimer::timeout,                       this, &MainWindow::updateDataCityMobile);
-    connect(&timerCityMobileOrders_,    &QTimer::timeout,                       this, &MainWindow::getOrdersCityMobile);
     connect(&timerYandexError_,         &QTimer::timeout,                       this, &MainWindow::yandexErrorNotification);
+    connect(&timerGlobal_,              &QTimer::timeout,                       this, &MainWindow::globalTimerCheck);
     connect(yandex_,                    &YandexAPI::s_needAuth,                 this, &MainWindow::needAuth);
     connect(yandex_,                    &YandexAPI::s_authComplete,             this, &MainWindow::authYandexResult);
-    connect(yandex_,                    &YandexAPI::s_updatePrice,              this, [=](                    ) {updatePrice(Partner::yandex);});
-    connect(yandex_,                    &YandexAPI::s_gotOrders,                this, [=](QJsonDocument orders) {processOrders(Partner::yandex, orders);});
-    connect(cityMobile_,                &CityMobileAPI::s_gotOrders,            this, [=](QJsonDocument orders) {processOrders(Partner::citymobile, orders);});
+    connect(yandex_,                    &YandexAPI::s_gotOrders,                this, [=](QJsonDocument orders) {processOrders(yandex_, orders);});
+    connect(cityMobile_,                &CityMobileAPI::s_gotOrders,            this, [=](QJsonDocument orders) {processOrders(cityMobile_, orders);});
 
-    timerGlobal_.start(300000);
-
-    timerYandexAgzsData_    .start(0);
-    timerCityMobileAgzsData_.start(0);
-    timerYandexOrders_      .start(yandexOrdersInterval_);
-    timerCityMobileOrders_  .start(cityMobileOrdersInterval_);
+    globalTimerCheck();
+    timerGlobal_            .start(300000);
 
 }
 
@@ -91,32 +74,30 @@ bool MainWindow::checkSettings() {
         return false;
     }
     qDebug() << setting;
-    reestr_.setValue("ordersLog",    setting.size() > 1 ? setting[1] == "true" : false);
     //_reestr.setValue("agzsPriceLog", setting.size() > 3 ? setting[3] == "true" : false);
     //_reestr.setValue("agzsDataLog",  setting.size() > 2 ? setting[2] == "true" : false);
+    reestr_.setValue("ordersLog",    setting.size() > 1 ? setting[1] == "true" : false);
     reestr_.setValue("isTest",       setting.size() > 0 ? setting[0] == "test" : false);
     return true;
 }
 
 void MainWindow::globalTimerCheck() {
-    if (reestr_.value("Yandex Enabled", QVariant(false)).toBool()) {
+    qInfo() << "check y =" << isYandexEnabled_ << " nAut =" << isNeedAuth_ << " c =" << isCityMobileEnabled_;
+    if (isYandexEnabled_) {
         if (isNeedAuth_) {
             yandexErrorNotification();
-        } else {
-            timerYandexOrders_  .start(yandexOrdersInterval_);
-            timerYandexAgzsData_.start(0);
         }
+        yandex_->start();
     } else {
-        timerYandexOrders_  .stop();
-        timerYandexAgzsData_.start(0);
+        yandex_->stop();
     }
-    if (reestr_.value("CityMobile Enabled", QVariant(false)).toBool()) {
-        timerCityMobileOrders_  .start(cityMobileOrdersInterval_);
-        timerCityMobileAgzsData_.start(0);
+    if (isCityMobileEnabled_) {
+        cityMobile_->start();
     } else {
-        timerCityMobileOrders_  .stop();
-        timerCityMobileAgzsData_.start(0);
+        cityMobile_->stop();
     }
+    updatePrice();
+    updateConfiguration();
 }
 
 #define tray {
@@ -184,6 +165,13 @@ void MainWindow::showTrayIcon() {
 }
 #define trayEnd }
 
+void MainWindow::yandexErrorNotification() {
+    this->show();
+    QMessageBox::warning(this, tr("Ошибка"), tr("Авторизуйтесь в Яндексе заново!"));
+    QApplication::alert(this);
+    //timerYandexError_.setInterval(300000);
+}
+
 void MainWindow::authYandexResult(QString aToken) {
     ui->labelAuthError->setVisible(true);
     if (aToken == "") {
@@ -198,7 +186,11 @@ void MainWindow::authYandexResult(QString aToken) {
         timerYandexError_.stop();
         isNeedAuth_ = false;
         ui->labelAuthError->setText(tr("Успешно авторизовано!"));
-        timerYandexOrders_.start(5000);
+        yandex_->updatePriceList(lastPriceYandex_.toString());
+        yandex_->updateConfigurationAGZS(lastConfigurationYandex_);
+        if (isYandexEnabled_) {
+            yandex_->start();
+        }
     }
 }
 
@@ -206,15 +198,8 @@ void MainWindow::needAuth() {
     isNeedAuth_ = true;
     ui->labelAuthError->setVisible(true);
     ui->labelAuthError->setText(tr("Пожалуйста, авторизуйтесь в Яндексе заново."));
-    timerYandexOrders_.stop();
+//    timerYandexOrders_.stop();
     //timerYandexError_.start(0);
-}
-
-void MainWindow::yandexErrorNotification() {
-    this->show();
-    QMessageBox::warning(this, tr("Ошибка"), tr("Авторизуйтесь в Яндексе заново!"));
-    QApplication::alert(this);
-    //timerYandexError_.setInterval(300000);
 }
 
 #define ButtonsStart {
@@ -238,209 +223,59 @@ void MainWindow::on_ButtonCancelCitymobile_clicked() {
 
 void MainWindow::on_ButtonSettings_clicked() {
     FormSettings *settings = new FormSettings();
+    connect(settings, &FormSettings::s_yandexChange, this, [=](bool enabled){
+        isYandexEnabled_ = enabled;
+        if (isYandexEnabled_) {
+            yandex_->start();
+        } else {
+            yandex_->stop();
+        }
+    });
+    connect(settings, &FormSettings::s_cityMobileChange, this, [=](bool enabled){
+        isCityMobileEnabled_ = enabled;
+        if (isCityMobileEnabled_) {
+            cityMobile_->start();
+        } else {
+            cityMobile_->stop();
+        }
+    });
     settings->show();
+}
+
+void MainWindow::on_ButtonAgzs_clicked() {
+    QString password = QInputDialog::getText(this, tr("Поменять АГЗС"), tr("Пароль:"), QLineEdit::Password, "");
+    if (password == "rjrjcs743") {
+        QString agzs = formAgzs();
+        if (agzs != "") {
+            agzs_ = agzs;
+            reestr_.setValue("currentAgzs", agzs_);
+            qInfo() << "currentAGZS =" << agzs_;
+            QMessageBox::warning(0, tr("Внимание!"), tr("АГЗС изменена, пожалуйста перезапустите приложение для применения изменений!"));
+        }
+    } else {
+        QMessageBox::warning(0, tr("Ошибка!"), tr("Неверный пароль!"));
+    }
+}
+
+QString MainWindow::formAgzs() {
+    return QInputDialog::getText(this, tr("Поменять АГЗС"), tr("Введите АГЗС:"), QLineEdit::Normal, "agzs");
 }
 #define ButtonsEnd }
 
-#define FuelStart {
-int MainWindow::FuelApiToFuelId(QString aFuelIdApi) {
-    if(aFuelIdApi == "diesel")
-        return 32;
-    if(aFuelIdApi == "diesel_premium")
-        return 0;
-    if(aFuelIdApi == "a80")
-        return 0;
-    if(aFuelIdApi == "a92")
-        return 3;
-    if(aFuelIdApi == "a92_premium")
-        return 0;
-    if(aFuelIdApi == "a95")
-        return 8;
-    if(aFuelIdApi == "a95_premium")
-        return 0;
-    if(aFuelIdApi == "a98")
-        return 0;
-    if(aFuelIdApi == "a98_premium")
-        return 0;
-    if(aFuelIdApi == "a100")
-        return 0;
-    if(aFuelIdApi == "a100_premium")
-        return 0;
-    if(aFuelIdApi == "propane")
-        return 14;
-    if(aFuelIdApi == "metan")
-        return 0;
-    return 0;
-}
-
-QString MainWindow::FuelIdToFuelApi(int aFuelVCode) {
-    switch(aFuelVCode) {
-    case 3: {
-        return "a92";
-    }
-    case 14: {
-        return "propane";
-    }
-    case 32: {
-        return "diesel";
-    }
-    default: {
-        return "";
-    }
-    }
-}
-
-QString MainWindow::getFuelName(int aFuelVCode) {
-    switch(aFuelVCode) {
-    case 3: {
-        return "А-92";
-    }
-    case 14: {
-        return "Пропан";
-    }
-    case 32: {
-        return "Дизель";
-    }
-    default: {
-        return "";
-    }
-    }
-}
-#define FuelEnd }
-
-void MainWindow::updateDataYandex() {
-    if (reestr_.value("Yandex Enabled", QVariant(false)).toBool()) {
-        updatePrice(Partner::yandex);
-        updateConfiguration(Partner::yandex);
-        //_yandex->checkOrders();
-    }
-    timerYandexAgzsData_.setInterval(yandexDataInterval_);
-}
-
-void MainWindow::getOrdersYandex() {
-    if (reestr_.value("Yandex Enabled", QVariant(false)).toBool() && !isNeedAuth_) {
-        yandex_->checkOrders();
-    }
-}
-
-void MainWindow::updateDataCityMobile() {
-    if (reestr_.value("CityMobile Enabled", QVariant(false)).toBool()) {
-        updatePrice(Partner::citymobile);
-        updateConfiguration(Partner::citymobile);
-        //_cityMobile->checkOrders();
-    }
-    timerCityMobileAgzsData_.setInterval(cityMobileDataInterval_);
-}
-
-void MainWindow::getOrdersCityMobile() {
-    if (reestr_.value("CityMobile Enabled", QVariant(false)).toBool()) {
-        cityMobile_->checkOrders();
-    }
-}
-
-void MainWindow::moneyData(Partner aPartner, Order aOrder, double &aRequestTotalPriceDB, double &aRequestVolumeDB, double &aRequestUnitPriceDB, double &aMoneyTakenDB, int &aFullTankDB) {
-    switch (aPartner) {
-    case Partner::yandex: {
-
-    }
-    case Partner::citymobile: {
-        if (aOrder.orderType == "Money") {
-            aRequestTotalPriceDB = aOrder.orderVolume;
-            aRequestUnitPriceDB = aOrder.priceFuel;
-            int temp = (aRequestTotalPriceDB / aRequestUnitPriceDB) * 100;
-            aRequestVolumeDB = temp / 100;
-            aMoneyTakenDB = aOrder.orderVolume;
-            aFullTankDB = 0;
-        } else if (aOrder.orderType == "Liters") {
-            aRequestVolumeDB = aOrder.orderVolume;
-            aRequestUnitPriceDB = aOrder.priceFuel;
-            aRequestTotalPriceDB = aRequestVolumeDB * aRequestUnitPriceDB;
-            aMoneyTakenDB = aOrder.orderVolume;
-            aFullTankDB = 0;
-        } else if (aOrder.orderType == "FullTank") {
-            aRequestTotalPriceDB = aOrder.orderVolume;
-            aRequestUnitPriceDB = aOrder.priceFuel;
-            int temp = (aRequestTotalPriceDB / aRequestUnitPriceDB) * 100;
-            aRequestVolumeDB = temp / 100;
-            aMoneyTakenDB = aOrder.orderVolume;
-            aFullTankDB = 1;
-        }
-        break;
-    }
-    }
-}
-
-void MainWindow::getNozzleFuelCode(AdastTrk aTrk, QString aFuelId, int &aNozzle, int &aFuelCode) {
-    int fuelId = FuelApiToFuelId(aFuelId);
-    if (fuelId == aTrk.fuel1) {
-        aNozzle = 1;
-        aFuelCode = aTrk.fuelCode1;
-    } else if (fuelId == aTrk.fuel2) {
-        aNozzle = 2;
-        aFuelCode = aTrk.fuelCode2;
-    } else if (fuelId == aTrk.fuel3) {
-        aNozzle = 3;
-        aFuelCode = aTrk.fuelCode3;
-    } else if (fuelId == aTrk.fuel4) {
-        aNozzle = 4;
-        aFuelCode = aTrk.fuelCode4;
-    } else if (fuelId == aTrk.fuel5) {
-        aNozzle = 5;
-        aFuelCode = aTrk.fuelCode5;
-    }
-}
-
-int MainWindow::createTransaction(Agzs currentAgzs, Order order, Partner aPartner, int sideAdress, QDateTime now) {
+int MainWindow::createTransaction(Agzs currentAgzs, Order order, PartnerAPI *aPartner, int sideAdress, QDateTime now) {
     int transactionVCode = (db_->getLastVCode("ADAST_TRKTransaction", true) + 1) * 100 + currentAgzs.agzs;
-    double requestTotalPriceDB = -1, requestVolumeDB = -1, requestUnitPriceDB = -1, moneyTakenDB = -1;
-    int fullTankDB = -1;
-    moneyData(aPartner, order, requestTotalPriceDB, requestVolumeDB, requestUnitPriceDB, moneyTakenDB, fullTankDB);
     AdastTrk currentTrk = db_->getAgzsAdastTrk(sideAdress);
-    int nozzle = 0;
-    int trkFuelCode = 0;
-    getNozzleFuelCode(currentTrk, order.fuelId, nozzle, trkFuelCode);
-    FuelNames fuelName = db_->getFuelNames(FuelApiToFuelId(order.fuelId));
+    FuelNames fuelName = db_->getFuelNames(static_cast<int>(order.fuel));
 
-    if ((requestTotalPriceDB > -1) && (requestVolumeDB > -1) && (requestUnitPriceDB > -1) && (moneyTakenDB > -1) && (fullTankDB > -1)) {
-        Transaction transaction;
-        transaction.agzsName = currentAgzs.agzsName;
-        transaction.localVCode = transactionVCode;
-        transaction.deviceName = currentTrk.deviceName;
-        transaction.serial = currentTrk.serial;
-        transaction.fuelName = fuelName.fullName;
-        transaction.fuelShortName = fuelName.shortName;
-        transaction.side = currentTrk.side;
-        transaction.sideAdress = sideAdress;
-        transaction.nozzle = nozzle;
-        transaction.trkFuelCode = trkFuelCode;
-        transaction.requestTotalPrice = requestTotalPriceDB;
-        transaction.requestVolume = requestVolumeDB;
-        transaction.requestUnitPrice = requestUnitPriceDB;
-        transaction.dateOpen = now;
-        transaction.dateClose = now;
-        switch (aPartner) {
-        case Partner::yandex: {
-            transaction.payWay = "ЯНДЕКС";
-            break;
-        }
-        case Partner::citymobile: {
-            transaction.payWay = "СИТИМОБИЛ";
-            break;
-        }
-        }
-        transaction.cDate = now;
-        transaction.wDate = now;
-        transaction.vCode = transactionVCode;
-        transaction.smena = db_->getSmena();
-        transaction.trkVcode = currentTrk.trkVCode;
-        transaction.capacityVcode = db_->getCashBoxIndex(QString::number(static_cast<int>(aPartner)));
-        transaction.pumpPlace = currentTrk.pumpPlace;
-        transaction.moneyTaken = moneyTakenDB;
-        transaction.iPayWay = static_cast<int>(aPartner);
-        transaction.fullTank = fullTankDB;
-        transaction.agzs = currentAgzs.agzs;
-        transaction.fuelVCode = FuelApiToFuelId(order.fuelId);
-        transaction.propan = 0;
+    if ((order.moneyData.requestTotalPriceDB > -1) &&
+        (order.moneyData.requestVolumeDB > -1) &&
+        (order.moneyData.requestUnitPriceDB > -1) &&
+        (order.moneyData.moneyTakenDB > -1) &&
+        (order.moneyData.fullTankDB > -1)) {
+        Transaction transaction = Transaction::createTransaction(currentAgzs, transactionVCode, currentTrk,
+                                                                 fuelName, sideAdress, order, now, aPartner->payWay(),
+                                                                 aPartner->iPayWay(), db_->getSmena(),
+                                                                 db_->getCashBoxIndex(QString::number(aPartner->iPayWay())));;
 
         if (db_->createTrkTransaction(transaction)) {
             return transactionVCode;
@@ -451,223 +286,200 @@ int MainWindow::createTransaction(Agzs currentAgzs, Order order, Partner aPartne
     return -1;
 }
 
-void MainWindow::sendLiters(Partner aPartner, ApiTransaction aApiTransaction, QString aOrderId) {
+double MainWindow::litersFromStart(ApiTransaction aApiTransaction) {
     Transaction transaction = db_->getTransaction(aApiTransaction.headVCode);
     QDateTime now = QDateTime::currentDateTime();
     QDateTime diffTime = QDateTime::fromMSecsSinceEpoch(now.toMSecsSinceEpoch() - transaction.dateOpen.toMSecsSinceEpoch()).addSecs(-20);
     double litersNow = diffTime.toSecsSinceEpoch() * (c_litersForMin / 60);
-    if ((litersNow > 0) && (litersNow < aApiTransaction.apiLitre)) {
-        switch (aPartner) {
-        case Partner::yandex: {
-            yandex_->setFuelNow(aOrderId, litersNow);
-            break;
-        }
-        case Partner::citymobile: {
-            cityMobile_->setStatusFuelNow(aOrderId, litersNow);
-            break;
-        }
-        }
+    if (litersNow < 0) {
+        litersNow = 0;
     }
+    if (litersNow > aApiTransaction.apiLitre) {
+        litersNow = aApiTransaction.apiLitre;
+    }
+    return litersNow;
 }
 
 #define FunctionsStart {
-void MainWindow::updatePrice(Partner aPartner) {
-    //    key1=value1&key2=value2&...
-    QStringList prices;
-    Price price = db_->getPrices(QString::number(static_cast<int>(aPartner)));
-    if(price.diesel > 0.1) {
-        prices.append("diesel="         + QString::number(price.diesel));
+void MainWindow::updatePrice() {
+    Price priceYandex = db_->getPrices(QString::number(yandex_->iPayWay()));
+    Price priceCityMobile = db_->getPrices(QString::number(cityMobile_->iPayWay()));
+    if (priceYandex != lastPriceYandex_) {
+        lastPriceYandex_ = priceYandex;
+        yandex_->priceNeedUpdate();
     }
-    if(price.diesel_premium > 0.1) {
-        prices.append("diesel_premium=" + QString::number(price.diesel_premium));
+    if (priceCityMobile != lastPriceCityMobile_) {
+        lastPriceCityMobile_ = priceCityMobile;
+        cityMobile_->priceNeedUpdate();
     }
-    if(price.a80 > 0.1) {
-        prices.append("a80="            + QString::number(price.a80));
+
+    if (!yandex_->isLastPriceUpdated()) {
+        yandex_->updatePriceList(lastPriceYandex_.toString());
     }
-    if(price.a92 > 0.1) {
-        prices.append("a92="            + QString::number(price.a92));
-    }
-    if(price.a92_premium > 0.1) {
-        prices.append("a92_premium="    + QString::number(price.a92_premium));
-    }
-    if(price.a95 > 0.1) {
-        prices.append("a95="            + QString::number(price.a95));
-    }
-    if(price.a95_premium > 0.1) {
-        prices.append("a95_premium="    + QString::number(price.a95_premium));
-    }
-    if(price.a98 > 0.1) {
-        prices.append("a98="            + QString::number(price.a98));
-    }
-    if(price.a98_premium > 0.1) {
-        prices.append("a98_premium="    + QString::number(price.a98_premium));
-    }
-    if(price.a100 > 0.1) {
-        prices.append("a100="           + QString::number(price.a100));
-    }
-    if(price.a100_premium > 0.1) {
-        prices.append("a100_premium="   + QString::number(price.a100_premium));
-    }
-    if(price.propane > 0.1) {
-        prices.append("propane="        + QString::number(price.propane));
-    }
-    if(price.metan > 0.1) {
-        prices.append("metan="          + QString::number(price.metan));
-    }
-    switch (aPartner) {
-    case Partner::yandex: {
-        yandex_    ->updatePriceList(prices.join("&").replace(",","."));
-        break;
-    }
-    case Partner::citymobile: {
-        cityMobile_->updatePriceList(prices.join("&").replace(",","."));
-        break;
-    }
+    if (!cityMobile_->isLastPriceUpdated()) {
+        cityMobile_->updatePriceList(lastPriceCityMobile_.toString());
     }
 }
 
-void MainWindow::updateConfiguration(Partner aPartner) {
+#define getData {
+QJsonObject yandexData (Agzs agzs, QVector<SideFuel> fuels) {
+    QJsonObject AgzsYandex;
+    /*  {
+        "StationExtendedId": "00001",
+        "Columns": {
+            1: {
+                "Fuels": [
+                    "a92",
+                    "a95",
+                    "diesel_premium"
+                ]
+            },
+            2: {
+                "Fuels": [
+                    "a92",
+                    "a95_premium",
+                    "a98_premium",
+                    "diesel_premium"
+                ]
+            }
+        }
+    }*/
+
+    AgzsYandex["StationExtendedId"] = QString::number(agzs.agzs);
+    //Columns
+    QJsonObject columns;
+
+    for (auto &side: fuels) {
+        if ((side.partnerSideAdress <= 0) || (side.sideAdress <= 0)) {//без 0 колонки
+            continue;
+        }
+        QJsonObject sideJ;
+        QJsonArray fuelsJ;
+        for (auto &fuel: side.fuels) {
+            if (fuel > 0) {
+                fuelsJ.push_back(fuelToApi(static_cast<Fuel>(fuel)));
+            }
+        }
+        sideJ["Fuels"] = fuelsJ;
+        columns[QString::number(side.partnerSideAdress)] = sideJ;
+    }
+    AgzsYandex["Columns"] = columns;
+    return AgzsYandex;
+}
+
+QJsonObject cityMobileData (Agzs agzs, QVector<SideFuel> fuels) {
+    QJsonObject AgzsCityMobile;
+    /*  {
+        "StationExtendedId": "1234",
+        "Columns": {
+            "1": {
+                "Fuels": ["a92", "a95", "a95_premium", "diesel_premium"]
+            },
+            "2": {
+                "Fuels": ["a92", "a95", "a95_premium", "a100_premium"]
+            }
+        },
+        "Enable": true,
+        "Name": "АЗС \"На Мандариновой\" №10",
+        "Address": "г. Энск, ул. Мандариновая, 4",
+        "Location": { "Lon": 43.5432, "Lat": 34.1234 },
+        "FuelNames": [
+        {
+            "Fuel": "a92",
+            "FuelName": "АИ-92"
+        },
+        {
+            "Fuel": "a95",
+            "FuelName": "АИ-95"
+        },
+        {
+            "Fuel": "a95_premium",
+            "FuelName": "G-95"
+        },
+        {
+            "Fuel": "a100_premium",
+            "FuelName": "G-100"
+        },
+        {
+            "Fuel": "diesel_premium",
+            "FuelName": "ДТ Опти"
+        }
+        ]
+    }*/
+
+    AgzsCityMobile["StationExtendedId"] = QString::number(agzs.agzs);
+    AgzsCityMobile["Enable"] = true;
+    AgzsCityMobile["Name"] = agzs.agzsName;
+    AgzsCityMobile["Adress"] = agzs.adress;
+
+    QJsonObject Location;
+    Location["Lon"] = QString::number(agzs.loc_y).replace(",",".");
+    Location["Lat"] = QString::number(agzs.loc_x).replace(",",".");
+    AgzsCityMobile["Location"] = Location;
+    //Columns
+    QJsonObject columns;
+    QJsonArray fuelNames;
+
+    for (auto &side: fuels) {
+        if ((side.partnerSideAdress <= 0) || (side.sideAdress <= 0)) {
+            continue;
+        }
+        QJsonObject sideJ;
+        QJsonArray fuelsJ;
+        for (auto &fuelCode: side.fuels) {
+            if (fuelCode <= 0) {
+                continue;
+            }
+            QString fuelApi = fuelToApi(static_cast<Fuel>(fuelCode));
+            fuelsJ.push_back(fuelApi);
+            bool isExist = std::any_of(fuelNames.cbegin(), fuelNames.cend(),
+                                             [=](const QJsonValue fuel) {return fuel.toObject().value("Fuel").toString() == fuelApi;});
+            if (!isExist) {
+                QJsonObject fuel;
+                fuel["Fuel"] = fuelApi;
+                fuel["FuelName"] = fuelToName(static_cast<Fuel>(fuelCode));
+                fuelNames.append(fuel);
+            }
+        }
+        sideJ["Fuels"] = fuelsJ;
+        columns[QString::number(side.partnerSideAdress)] = sideJ;
+    }
+    AgzsCityMobile["Columns"] = columns;
+    AgzsCityMobile["FuelNames"] = fuelNames;
+    return AgzsCityMobile;
+}
+#define getDataEnd }
+
+void MainWindow::updateConfiguration() {
     Agzs currentAgzs = db_->getAgzsData();
+    QVector<SideFuel> fuels = db_->getFuels();
+    QJsonObject agzsYandex = yandexData(currentAgzs, fuels);
+    QJsonObject agzsCityMobile = cityMobileData(currentAgzs, fuels);
 
-    switch (aPartner) {
-    case Partner::yandex: {
-        //        {
-        //            "StationExtendedId": "00001",
-        //            "Columns": {
-        //                1: {
-        //                    "Fuels": [
-        //                        "a92",
-        //                        "a95",
-        //                        "diesel_premium"
-        //                    ]
-        //                },
-        //                2: {
-        //                    "Fuels": [
-        //                        "a92",
-        //                        "a95_premium",
-        //                        "a98_premium",
-        //                        "diesel_premium"
-        //                    ]
-        //                }
-        //            }
-        //        }
-
-        QJsonObject AGZS;
-        AGZS["StationExtendedId"] = QString::number(currentAgzs.agzs);
-        //Columns
-        QJsonObject columns;
-
-        QVector<SideFuel> fuels = db_->getFuels();
-        for (auto &side: fuels) {
-            if ((side.partnerSideAdress <= 0) || (side.sideAdress <= 0)) {//без 0 колонки
-                continue;
-            }
-            QJsonObject sideJ;
-            QJsonArray fuelsJ;
-            for (auto &fuel: side.fuels) {
-                if (fuel > 0) {
-                    fuelsJ.push_back(FuelIdToFuelApi(fuel));
-                }
-            }
-            sideJ["Fuels"] = fuelsJ;
-            columns[QString::number(side.partnerSideAdress)] = sideJ;
-        }
-        AGZS["Columns"] = columns;
-
-        yandex_->updateConfigurationAGZS(AGZS);
-        break;
+    if (agzsYandex != lastConfigurationYandex_) {
+        lastConfigurationYandex_ = agzsYandex;
+        yandex_->configurationNeedUpdate();
     }
-    case Partner::citymobile: {
-        //    {
-        //        "StationExtendedId": "1234",
-        //        "Columns": {
-        //            "1": {
-        //                "Fuels": ["a92", "a95", "a95_premium", "diesel_premium"]
-        //            },
-        //            "2": {
-        //                "Fuels": ["a92", "a95", "a95_premium", "a100_premium"]
-        //            }
-        //        },
-        //        "Enable": true,
-        //        "Name": "АЗС \"На Мандариновой\" №10",
-        //        "Address": "г. Энск, ул. Мандариновая, 4",
-        //        "Location": { "Lon": 43.5432, "Lat": 34.1234 },
-        //        "FuelNames": [
-        //        {
-        //            "Fuel": "a92",
-        //            "FuelName": "АИ-92"
-        //        },
-        //        {
-        //            "Fuel": "a95",
-        //            "FuelName": "АИ-95"
-        //        },
-        //        {
-        //            "Fuel": "a95_premium",
-        //            "FuelName": "G-95"
-        //        },
-        //        {
-        //            "Fuel": "a100_premium",
-        //            "FuelName": "G-100"
-        //        },
-        //        {
-        //            "Fuel": "diesel_premium",
-        //            "FuelName": "ДТ Опти"
-        //        }
-        //        ]
-        //    }
 
-        QJsonObject AGZS;
-        AGZS["StationExtendedId"] = QString::number(currentAgzs.agzs);
-        AGZS["Enable"] = true;
-        AGZS["Name"] = currentAgzs.agzsName;
-        AGZS["Adress"] = currentAgzs.adress;
-
-        QJsonObject Location;
-        Location["Lon"] = QString::number(currentAgzs.loc_y).replace(",",".");
-        Location["Lat"] = QString::number(currentAgzs.loc_x).replace(",",".");
-        AGZS["Location"] = Location;
-        //Columns
-        QJsonObject columns;
-        QJsonArray fuelNames;
-
-        QVector<SideFuel> fuels = db_->getFuels();
-        for (auto &side: fuels) {
-            if ((side.partnerSideAdress <= 0) || (side.sideAdress <= 0)) {
-                continue;
-            }
-            QJsonObject sideJ;
-            QJsonArray fuelsJ;
-            for (auto &fuelCode: side.fuels) {
-                if (fuelCode <= 0) {
-                    continue;
-                }
-                fuelsJ.push_back(FuelIdToFuelApi(fuelCode));
-                bool isExist = std::any_of(fuelNames.cbegin(), fuelNames.cend(),
-                                                 [=](const QJsonValue fuel) {return fuel.toObject().value("Fuel").toString() == FuelIdToFuelApi(fuelCode);});
-                if (!isExist) {
-                    QJsonObject fuel;
-                    fuel["Fuel"] = FuelIdToFuelApi(fuelCode);
-                    fuel["FuelName"] = getFuelName(fuelCode);
-                    fuelNames.append(fuel);
-                }
-            }
-            sideJ["Fuels"] = fuelsJ;
-            columns[QString::number(side.partnerSideAdress)] = sideJ;
-        }
-        AGZS["Columns"] = columns;
-        AGZS["FuelNames"] = fuelNames;
-        QJsonDocument doc;
-        doc.setObject(AGZS);
-        cityMobile_->updateConfigurationAGZS(doc);
-        break;
+    if (agzsCityMobile != lastConfigurationCityMobile_) {
+        lastConfigurationCityMobile_ = agzsCityMobile;
+        cityMobile_->configurationNeedUpdate();
     }
+
+    if (!yandex_->isLastConfigurationUpdated()) {
+        yandex_->updateConfigurationAGZS(lastConfigurationYandex_);
+    }
+
+    if (!cityMobile_->isLastConfigurationUpdated()) {
+        cityMobile_->updateConfigurationAGZS(lastConfigurationCityMobile_);
     }
 }
 
-void MainWindow::processOrders(Partner aPartner, QJsonDocument aOrders) {
-    auto openedTransactions = db_->getOpenedTransactions(static_cast<int>(aPartner));
+void MainWindow::processOrders(PartnerAPI *aPartner, QJsonDocument aOrders) {
+    auto openedTransactions = db_->getOpenedTransactions(aPartner->iPayWay());
     for(auto order: aOrders.object().value("orders").toArray()) {
-        Order currentOrder = JsonToOrder(aPartner, order);
+        Order currentOrder = Order::fromJson(aPartner->iPayWay(), order);
+        qInfo() << "itemOrder" << currentOrder.status << currentOrder.id;
         //Найти и исключить из листа эту транзакцию
         auto iterator = std::find_if(openedTransactions.begin(),
                                      openedTransactions.end(),
@@ -717,33 +529,11 @@ void MainWindow::processOrders(Partner aPartner, QJsonDocument aOrders) {
     for(auto &openedTransaction: openedTransactions) {
         processClose(openedTransaction);
     }
-    int interval = 3000;
-    if (aOrders.object().value("nextRetryMs").isDouble()) {
-        interval = aOrders.object().value("nextRetryMs").toInt();
-    }
-    if (interval <= 0) {
-        interval = 3000;
-    }
-    if (interval > 60000) {
-        interval = 60000;
-    }
-    switch (aPartner) {
-    case Partner::yandex: {
-        yandexOrdersInterval_ = interval;
-        timerYandexOrders_.setInterval(yandexOrdersInterval_);
-        break;
-    }
-    case Partner::citymobile: {
-        cityMobileOrdersInterval_ = interval;
-        timerCityMobileOrders_.setInterval(cityMobileOrdersInterval_);
-        break;
-    }
-    }
 }
 
 #define ProcessOrders {
 
-bool MainWindow::processAcceptOrder(Order aOrder, Partner aPartner) {
+bool MainWindow::processAcceptOrder(Order aOrder, PartnerAPI *aPartner) {
     if (db_->isTransactionExist(aOrder.id)) {
         return false;
     }
@@ -753,93 +543,54 @@ bool MainWindow::processAcceptOrder(Order aOrder, Partner aPartner) {
     Agzs currentAgzs        = db_->getAgzsData();
     int sideAdress          = db_->getRealSideAddress(currentAgzs.agzs, aOrder.columnId);
     ErrorsOrder error       = db_->checkError(QString::number(sideAdress),
-                                aOrder.fuelId,
-                                FuelApiToFuelId(aOrder.fuelId),
+                                fuelToApi(aOrder.fuel),
+                                static_cast<int>(aOrder.fuel),
                                 QString::number(aOrder.priceFuel),
-                                static_cast<int>(aPartner));
+                                aPartner->iPayWay());
     int transactionVCode    = -1;
 
     if (error == ErrorsOrder::noError) {
         transactionVCode = createTransaction(currentAgzs, aOrder, aPartner, sideAdress, now);
     }
-    switch (aPartner) {
-    case Partner::yandex: {
-        db_->createApiTransaction(currentAgzs.agzsName, currentAgzs.agzs, aOrder.dateCreate,
-                             lastAPIVCode, aOrder.id, "", aOrder.columnId, aOrder.fuelId,
-                             FuelApiToFuelId(aOrder.fuelId), aOrder.priceFuel, aOrder.litre,
-                             aOrder.sum, aOrder.status, aOrder.contractId, "Yandex",
-                             errorToString(error), 0, 0, 0, now, transactionVCode);
-        switch (error) {
-        case ErrorsOrder::noError: {
-            yandex_->setStatusAccept(aOrder.id, lastAPIVCode);
-            return true;
-            break;
-        }
-        case ErrorsOrder::trkError: {
-            qWarning(logError) << "Указанная колонка не найдена" << aOrder.id;
-            //_db.logAppend("Error Указанная колонка не найдена " + aOrder.id);
-            yandex_->setStatusCanceled(aOrder.id, "Указанная колонка не найдена.", QString::number(lastAPIVCode), now);
-            return false;
-            break;
-        }
-        case ErrorsOrder::fuelError: {
-            qWarning(logError) << "Не обнаружено указанное топливо" << aOrder.id;
-            //_db.logAppend("Error Не обнаружено указанное топливо " + aOrder.id);
-            yandex_->setStatusCanceled(aOrder.id, "Не обнаружено указанное топливо.", QString::number(lastAPIVCode), now);
-            return false;
-            break;
-        }
-        case ErrorsOrder::priceError: {
-            qWarning(logError) << "Цена на выбранный вид топлива отличается от фактической цены" << aOrder.id;
-            //_db.logAppend("Error Цена на выбранный вид топлива отличается от фактической цены " + aOrder.id);
-            yandex_->setStatusCanceled(aOrder.id, "Цена на выбранный вид топлива отличается от фактической цены.", QString::number(lastAPIVCode), now);
-            return false;
-            break;
-        }
-        }
+    while (!db_->createApiTransaction(currentAgzs.agzsName, currentAgzs.agzs, aOrder.dateCreate.addSecs(7200),
+                         lastAPIVCode, aOrder.id, "", aOrder.columnId, fuelToApi(aOrder.fuel),
+                         static_cast<int>(aOrder.fuel), aOrder.priceFuel, aOrder.litre,
+                         aOrder.sum, aOrder.status, aOrder.contractId, aPartner->agent(),
+                         errorToString(error), 0, 0, 0, now, transactionVCode));
+    switch (error) {
+    case ErrorsOrder::noError: {
+        aPartner->setStatusAccept(aOrder.id, lastAPIVCode);
+        return true;
         break;
     }
-    case Partner::citymobile: {
-        db_->createApiTransaction(currentAgzs.agzsName, currentAgzs.agzs, aOrder.dateCreate,
-                             lastAPIVCode, aOrder.id, "", aOrder.columnId, aOrder.fuelId,
-                             FuelApiToFuelId(aOrder.fuelId), aOrder.priceFuel, aOrder.litre,
-                             aOrder.sum, aOrder.status, aOrder.contractId, "CityMobile",
-                             errorToString(error), 0, 0, 0, now, transactionVCode);
-        switch (error) {
-        case ErrorsOrder::noError: {
-            cityMobile_->setStatusAccept(aOrder.id, lastAPIVCode);
-            return true;
-            break;
-        }
-        case ErrorsOrder::trkError: {
-            qWarning(logError) << "Указанная колонка не найдена" << aOrder.id;
-            //_db.logAppend("Error Указанная колонка не найдена " + aOrder.id);
-            cityMobile_->setStatusCanceled(aOrder.id, "Указанная колонка не найдена.", QString::number(lastAPIVCode), now);
-            return false;
-            break;
-        }
-        case ErrorsOrder::fuelError: {
-            qWarning(logError) << "Не обнаружено указанное топливо" << aOrder.id;
-            //_db.logAppend("Error Не обнаружено указанное топливо " + aOrder.id);
-            cityMobile_->setStatusCanceled(aOrder.id, "Не обнаружено указанное топливо.", QString::number(lastAPIVCode), now);
-            return false;
-            break;
-        }
-        case ErrorsOrder::priceError: {
-            qWarning(logError) << "Цена на выбранный вид топлива отличается от фактической цены" << aOrder.id;
-            //_db.logAppend("Error Цена на выбранный вид топлива отличается от фактической цены " + aOrder.id);
-            cityMobile_->setStatusCanceled(aOrder.id, "Цена на выбранный вид топлива отличается от фактической цены.", QString::number(lastAPIVCode), now);
-            return false;
-            break;
-        }
-        }
+    case ErrorsOrder::trkError: {
+        qWarning(logError) << "Указанная колонка не найдена" << aOrder.id;
+        aPartner->setStatusCanceled(aOrder.id, "Указанная колонка не найдена.", QString::number(lastAPIVCode), now);
+        return false;
+        break;
+    }
+    case ErrorsOrder::fuelError: {
+        qWarning(logError) << "Не обнаружено указанное топливо" << aOrder.id;
+        aPartner->setStatusCanceled(aOrder.id, "Не обнаружено указанное топливо.", QString::number(lastAPIVCode), now);
+        return false;
+        break;
+    }
+    case ErrorsOrder::priceError: {
+        qWarning(logError) << "Цена на выбранный вид топлива отличается от фактической цены" << aOrder.id;
+        aPartner->setStatusCanceled(aOrder.id, "Цена на выбранный вид топлива отличается от фактической цены.", QString::number(lastAPIVCode), now);
+        updatePrice();
+        return false;
         break;
     }
     }
     return false;
 }
 
-bool MainWindow::processWaitingRefueling(Order aOrder, Partner aPartner) {
+bool MainWindow::processWaitingRefueling(Order aOrder, PartnerAPI *aPartner) {
+    if (!db_->isTransactionExist(aOrder.id)) {
+        qWarning() << "APITransaction not created";
+        processAcceptOrder(aOrder, aPartner);
+    }
     ApiTransaction apiTransaction = db_->getApiTransaction(aOrder.id);
     if (apiTransaction.id == "") {
         return false;
@@ -848,88 +599,54 @@ bool MainWindow::processWaitingRefueling(Order aOrder, Partner aPartner) {
     if (apiTransaction.iState > 0) {
         db_->updateApiTransactionState(apiTransaction.localState, apiTransaction.dateClose, apiTransaction.apiVCode);
     }
-    switch (aPartner) {
-    case Partner::yandex: {
-        yandex_->setStatusFueling(aOrder.id, apiTransaction.apiVCode);
-        return true;
-        break;
-    }
-    case Partner::citymobile: {
-        cityMobile_->setStatusFueling(aOrder.id, apiTransaction.apiVCode);
-        return true;
-        break;
-    }
-    }
-    return false;
+    aPartner->setStatusFueling(aOrder.id, apiTransaction.apiVCode);
+    return true;
 }
 
-bool MainWindow::processFueling(Order aOrder, Partner aPartner) {
-    ApiTransaction apiTransaction = db_->getApiTransaction(aOrder.id);
-    sendLiters(aPartner, apiTransaction, aOrder.id);
+bool MainWindow::processFueling(Order aOrder, PartnerAPI *aPartner) {
     qInfo() << aOrder.id << "Fueling";
+    ApiTransaction apiTransaction = db_->getApiTransaction(aOrder.id);
+    aPartner->setStatusFuelNow(aOrder.id, litersFromStart(apiTransaction));
 
     double amount = 0.0, volume = 0.0, price = 0.0;
-    db_->getPayOperationLiters(apiTransaction.headVCode, amount, volume, price);
+    QDateTime dateOpen, dateClose;
+    db_->getPayOperationData(apiTransaction.headVCode, amount, volume, price, dateOpen, dateClose);
 
     if((amount > 0.1) && (volume > 0.1) && (price > 0.1) && (apiTransaction.localState.toInt() < 5)) {
-        db_->finalUpdateApiTransactionState("5", price, volume, amount, apiTransaction.dateOpen, apiTransaction.dateClose, apiTransaction.apiVCode);
-
-        switch (aPartner) {
-        case Partner::yandex: {
-            yandex_->setStatusCompleted(aOrder.id, volume, QString::number(apiTransaction.apiVCode), apiTransaction.dateClose);
-            return true;
-            break;
-        }
-        case Partner::citymobile: {
-            cityMobile_->setStatusCompleted(aOrder.id, volume, QString::number(apiTransaction.apiVCode), apiTransaction.dateClose);
-            return true;
-            break;
-        }
-        }
+        db_->finalUpdateApiTransactionState("5", price, volume, amount, dateOpen, dateClose, apiTransaction.apiVCode);
+        aPartner->setStatusCompleted(aOrder.id, volume, QString::number(apiTransaction.apiVCode), dateClose);
     }
     return false;
 }
 
-bool MainWindow::processExpire(Order aOrder, Partner aPartner) {
+bool MainWindow::processExpire(Order aOrder, PartnerAPI *aPartner) {
+    qInfo() << aOrder.id << "Expire";
     ApiTransaction apiTransaction = db_->getApiTransaction(aOrder.id);
     db_->updateApiTransactionState("Ошибка: 30 минут", apiTransaction.dateClose, apiTransaction.apiVCode);
     db_->setTransactionClosed(aOrder.id, 1);
-    qInfo() << aOrder.id << "Expire";
-
-    switch (aPartner) {
-    case Partner::yandex: {
-        yandex_->setStatusCanceled(aOrder.id, "Истекло время ожидания", QString::number(apiTransaction.apiVCode), apiTransaction.dateOpen);
-        return true;
-        break;
-    }
-    case Partner::citymobile: {
-        cityMobile_->setStatusCanceled(aOrder.id, "Истекло время ожидания", QString::number(apiTransaction.apiVCode), apiTransaction.dateOpen);
-        return true;
-        break;
-    }
-    }
-    return false;
+    aPartner->setStatusCanceled(aOrder.id, "Истекло время ожидания", QString::number(apiTransaction.apiVCode), apiTransaction.dateOpen);
+    return true;
 }
 
-bool MainWindow::processStationCanceled(Order aOrder, Partner aPartner) {
+bool MainWindow::processStationCanceled(Order aOrder, PartnerAPI *aPartner) {
     Q_UNUSED(aOrder);
     Q_UNUSED(aPartner);
     return false;
 }
 
-bool MainWindow::processUserCanceled(Order aOrder, Partner aPartner) {
+bool MainWindow::processUserCanceled(Order aOrder, PartnerAPI *aPartner) {
     Q_UNUSED(aOrder);
     Q_UNUSED(aPartner);
     return false;
 }
 
-bool MainWindow::processCompleted(Order aOrder, Partner aPartner) {
+bool MainWindow::processCompleted(Order aOrder, PartnerAPI *aPartner) {
     Q_UNUSED(aOrder);
     Q_UNUSED(aPartner);
     return false;
 }
 
-bool MainWindow::processUnknown(Order aOrder, Partner aPartner) {
+bool MainWindow::processUnknown(Order aOrder, PartnerAPI *aPartner) {
     Q_UNUSED(aOrder);
     Q_UNUSED(aPartner);
     return false;
@@ -944,25 +661,3 @@ bool MainWindow::processClose(ApiTransaction aApiTransaction) {
 #define ProcessOrdersEnd }
 
 #define FunctionsEnd }
-
-void MainWindow::on_ButtonAgzs_clicked() {
-    QString password = QInputDialog::getText(this, tr("Поменять АГЗС"), tr("Пароль:"), QLineEdit::Password, "");
-    if (password == "rjrjcs743") {
-        QString agzs = QInputDialog::getText(this, tr("Поменять АГЗС"), tr("Введите АГЗС:"), QLineEdit::Normal, "agzs");
-        if (agzs != "") {
-            agzs_ = agzs;
-            reestr_.setValue("currentAgzs", agzs_);
-            qInfo() << "currentAGZS =" << agzs_;
-            QMessageBox::warning(0, tr("Внимание!"), tr("АГЗС изменена, пожалуйста перезапустите приложение для применения изменений!"));
-        }
-//        FormChangeAgzs *changeAgzs = new FormChangeAgzs();
-//        changeAgzs->show();
-//        connect(changeAgzs, &FormChangeAgzs::s_AgzsChanged, this, [=](QString agzs) {
-//            QString agzs = QInputDialog::getText(this, tr("Поменять АГЗС"), tr("Введите АГЗС:"), QLineEdit::Normal, "agzs2");
-//            reestr_.setValue("currentAgzs", agzs);
-//            QMessageBox::warning(0, tr("Внимание!"), tr("АГЗС изменена, пожалуйста перезапустите приложение для применения изменений!"));
-//        });
-    } else {
-        QMessageBox::warning(0, tr("Ошибка!"), tr("Неверный пароль!"));
-    }
-}
