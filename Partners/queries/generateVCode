@@ -1,0 +1,3 @@
+declare @val int
+exec @val = [agzs].[dbo].[Lx_sp_GenCode] '%1'
+select @val

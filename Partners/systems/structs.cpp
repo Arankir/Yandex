@@ -123,7 +123,7 @@ Order Order::fromJson(int aiPayWay, QJsonValue aOrder) {
 QString errorToString(ErrorsOrder aError) {
     switch (aError) {
     case ErrorsOrder::noError: {
-        return "0";
+        return "AcceptOrder";
     }
     case ErrorsOrder::trkError: {
         return "Error: trk is not found";

@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QSettings>
+#include <QDebug>
 
 namespace Ui {
 class FormSettings;

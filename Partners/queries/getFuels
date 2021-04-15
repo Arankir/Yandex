@@ -1,0 +1,15 @@
+SELECT
+    columnn.SideAdress,
+    columnn.[Partner_TrkNum],
+    columnn.Nozzle1Fuel,
+    columnn.Nozzle2Fuel,
+    columnn.Nozzle3Fuel,
+    columnn.Nozzle4Fuel,
+    columnn.Nozzle5Fuel
+FROM [agzs].[dbo].[PR_Columns] columnn
+INNER JOIN [agzs].[dbo].[ADAST_AdastTRK] trk
+    ON ((columnn.SideAdress = trk.[SideA_Address]) OR (columnn.SideAdress = trk.[SideB_Address]))
+WHERE columnn.agzs = (SELECT TOP 1 AGZS
+                      FROM [agzs].[dbo].[Identification])
+    AND trk.agzs = columnn.agzs
+    AND columnn.visible = 1

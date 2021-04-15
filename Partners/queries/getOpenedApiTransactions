@@ -1,0 +1,21 @@
+SELECT
+    [APIID],
+    [localState],
+    [APILitre],
+    a.[VCode],
+    t.VCode,
+    a.[DateOpen],
+    a.[DateClose]
+FROM [agzs].[dbo].[PR_APITransaction] a
+INNER JOIN [agzs].[dbo].[ADAST_TRKTransaction] t
+    ON (a.Link = t.vcode)
+WHERE ((SELECT count(*)
+        FROM agzs.dbo.ARM_PayOperation p
+        WHERE p.Link = t.VCode) = 0)
+    and t.iPayWay = %1
+    and localState <> 'Ошибка: 30 минут'
+    and localState <> 'Отменена'
+    and t.agzs = (  SELECT TOP 1
+                        AGZS
+                    FROM [agzs].[dbo].[Identification])
+ORDER BY DateOpen desc

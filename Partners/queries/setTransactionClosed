@@ -1,0 +1,6 @@
+UPDATE [agzs].[dbo].[ADAST_TRKTransaction]
+    SET Closed = %2
+WHERE VCode in (SELECT
+                    Link
+                FROM [agzs].[dbo].[PR_APITransaction]
+                WHERE ApiId = '%1')

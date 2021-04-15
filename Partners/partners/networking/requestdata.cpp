@@ -14,6 +14,11 @@ authorization_("") {
     connect(manager_, &QNetworkAccessManager::finished, this, &RequestData::onResult);
 }
 
+RequestData::~RequestData() {
+    disconnect(manager_, &QNetworkAccessManager::finished, this, &RequestData::onResult);
+    delete manager_;
+}
+
 void RequestData::get(QString aUrl, bool aParallel) {
     get(QNetworkRequest(QUrl(aUrl)), aParallel);
 }
@@ -62,10 +67,6 @@ void RequestData::onResult(QNetworkReply *aReply) {
     if (aReply->rawHeaderList().indexOf("Authorization") > -1) {
         authorization_ = aReply->rawHeader("Authorization");
     }
+    aReply->deleteLater();
     emit s_finished(this);
-}
-
-RequestData::~RequestData() {
-    disconnect(manager_);
-    delete manager_;
 }

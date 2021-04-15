@@ -1,0 +1,5 @@
+UPDATE [grimnir].[agzs].[dbo].[PR_AGZSData]
+    SET [YandexToken] = '%1'
+WHERE AGZS = (  SELECT TOP 1
+                    AGZS
+                FROM [agzs].[dbo].[Identification])

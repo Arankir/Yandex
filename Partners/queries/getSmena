@@ -1,0 +1,4 @@
+SELECT TOP 1
+    VCode
+FROM [agzs].[dbo].[ARM_Smena]
+ORDER BY CDate DESC

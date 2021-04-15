@@ -1,7 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-const QString c_settingPath = "Setting.txt";
 const double c_litersForMin = 25;
 
 MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWindow), reestr_("RegionPostavka", "Partners") {
@@ -23,12 +22,12 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWin
         ui->lineEdit->setVisible(false);
     }
 
-    ui->LabelVersion->setText("v1.15");
+    ui->LabelVersion->setText(c_version);
     ui->ButtonSettings->setIcon(QIcon("://images/settings.png"));
     this->setWindowFlags(Qt::Window | Qt::WindowMinimizeButtonHint);
 
     showTrayIcon();
-
+//Terminal CfDJ8LvvKxbYatxLk67gs3QWA7ChqwKODnEodSfmXVC_kQCQ-Ycwvqx5hX6C6ISMtp7B9SYzjOejB--fCZOsezb7wOyHpn_2MXGwTYd0-PwDlVXspOW-Ug18WeMVlcqPb7yySKhNLRKLSvNFvz3J9_R2NyYBISjAEg71Vh34_ZXbEDcS
     reestr_.setValue("CityMobile Token", db_->getCityMobileToken());
     isCityMobileEnabled_ = reestr_.value("CityMobile Enabled", QVariant(false)).toBool();
     isYandexEnabled_ = reestr_.value("Yandex Enabled", QVariant(false)).toBool();
@@ -53,7 +52,15 @@ void MainWindow::closeEvent(QCloseEvent *) {
 }
 
 MainWindow::~MainWindow() {
+    disconnect(&timerYandexError_);
+    disconnect(&timerGlobal_);
     delete ui;
+    delete db_;
+    disconnect(yandex_);
+    delete yandex_;
+    disconnect(cityMobile_);
+    delete cityMobile_;
+    delete trayIcon_;
 }
 
 bool MainWindow::checkSettings() {
@@ -181,7 +188,7 @@ void MainWindow::authYandexResult(QString aToken) {
                                     tr("Превышено количество ошибок.\nЗапросите пароль Яндекса заново.")
                                     );
     } else {
-        db_->setYandexToken(aToken);
+        db_->updateYandexToken(aToken);
         reestr_.setValue("Yandex Token", aToken);
         timerYandexError_.stop();
         isNeedAuth_ = false;
@@ -263,7 +270,7 @@ QString MainWindow::formAgzs() {
 #define ButtonsEnd }
 
 int MainWindow::createTransaction(Agzs currentAgzs, Order order, PartnerAPI *aPartner, int sideAdress, QDateTime now) {
-    int transactionVCode = (db_->getLastVCode("ADAST_TRKTransaction", true) + 1) * 100 + currentAgzs.agzs;
+    int transactionVCode = db_->generateVCode("ADAST_TRKTransaction");
     AdastTrk currentTrk = db_->getAgzsAdastTrk(sideAdress);
     FuelNames fuelName = db_->getFuelNames(static_cast<int>(order.fuel));
 
@@ -476,8 +483,8 @@ void MainWindow::updateConfiguration() {
 }
 
 void MainWindow::processOrders(PartnerAPI *aPartner, QJsonDocument aOrders) {
-    auto openedTransactions = db_->getOpenedTransactions(aPartner->iPayWay());
-    for(auto order: aOrders.object().value("orders").toArray()) {
+    auto openedTransactions = db_->getOpenedApiTransactions(aPartner->iPayWay());
+    for(auto &&order: aOrders.object().value("orders").toArray()) {
         Order currentOrder = Order::fromJson(aPartner->iPayWay(), order);
         qInfo() << "itemOrder" << currentOrder.status << currentOrder.id;
         //Найти и исключить из листа эту транзакцию
@@ -534,32 +541,59 @@ void MainWindow::processOrders(PartnerAPI *aPartner, QJsonDocument aOrders) {
 #define ProcessOrders {
 
 bool MainWindow::processAcceptOrder(Order aOrder, PartnerAPI *aPartner) {
-    if (db_->isTransactionExist(aOrder.id)) {
-        return false;
-    }
     qInfo() << aOrder.id << "AcceptOrder";
-    QDateTime now           = QDateTime::currentDateTime();
-    int lastAPIVCode        = (db_->getLastVCode("PR_APITransaction", true) + 1) * 100 + db_->getCurrentAgzs();
-    Agzs currentAgzs        = db_->getAgzsData();
-    int sideAdress          = db_->getRealSideAddress(currentAgzs.agzs, aOrder.columnId);
-    ErrorsOrder error       = db_->checkError(QString::number(sideAdress),
+    Agzs currentAgzs    = db_->getAgzsData();
+    QDateTime now       = QDateTime::currentDateTime();
+    int sideAdress      = db_->getRealSideAddress(currentAgzs.agzs, aOrder.columnId);
+    ErrorsOrder error   = db_->checkError(QString::number(sideAdress),
                                 fuelToApi(aOrder.fuel),
                                 static_cast<int>(aOrder.fuel),
                                 QString::number(aOrder.priceFuel),
                                 aPartner->iPayWay());
-    int transactionVCode    = -1;
+    int countToBreak    = 10;
+    int lastAPIVCode    = -1;
 
-    if (error == ErrorsOrder::noError) {
-        transactionVCode = createTransaction(currentAgzs, aOrder, aPartner, sideAdress, now);
+    if (!db_->isApiTransactionExist(aOrder.id)) {
+        lastAPIVCode = db_->generateVCode("PR_APITransaction");
+
+        while ((!db_->createApiTransaction(currentAgzs.agzsName, currentAgzs.agzs, aOrder.dateCreate.addSecs(7200),
+                             lastAPIVCode, aOrder.id, "", aOrder.columnId, fuelToApi(aOrder.fuel),
+                             static_cast<int>(aOrder.fuel), aOrder.priceFuel, aOrder.litre,
+                             aOrder.sum, aOrder.status, aOrder.contractId, aPartner->agent(),
+                             errorToString(error), 0, 0, 0, now, -1)) && (countToBreak > 0)) {
+            --countToBreak;
+        }
+        if (countToBreak <= 0) {
+            qWarning(logError) << aOrder.id << "AcceptOrder apiTransaction is not created";
+            return false;
+        }
     }
-    while (!db_->createApiTransaction(currentAgzs.agzsName, currentAgzs.agzs, aOrder.dateCreate.addSecs(7200),
-                         lastAPIVCode, aOrder.id, "", aOrder.columnId, fuelToApi(aOrder.fuel),
-                         static_cast<int>(aOrder.fuel), aOrder.priceFuel, aOrder.litre,
-                         aOrder.sum, aOrder.status, aOrder.contractId, aPartner->agent(),
-                         errorToString(error), 0, 0, 0, now, transactionVCode));
+
+    ApiTransaction apiTransaction = db_->getApiTransaction(aOrder.id);
+    if (apiTransaction.headVCode > 0) {
+        aPartner->setStatusAccept(aOrder.id, lastAPIVCode);
+        qWarning(logError) << aOrder.id << "AcceptOrder transaction is already exist";
+        return false;
+    }
+
     switch (error) {
     case ErrorsOrder::noError: {
-        aPartner->setStatusAccept(aOrder.id, lastAPIVCode);
+        countToBreak = 10;
+        int transactionVCode    = -1;
+
+        while (transactionVCode < 0 && countToBreak > 0) {
+            transactionVCode = createTransaction(currentAgzs, aOrder, aPartner, sideAdress, now);
+            --countToBreak;
+        }
+        if (countToBreak <= 0) {
+            qWarning(logError) << aOrder.id << "AcceptOrder transaction is not created";
+            return false;
+        }
+        if (db_->updateApiTransactionLink(aOrder.id, transactionVCode)) {
+            aPartner->setStatusAccept(aOrder.id, lastAPIVCode);
+        } else {
+            qWarning(logError) << aOrder.id << "AcceptOrder not update link" << QString::number(transactionVCode);
+        }
         return true;
         break;
     }
@@ -587,33 +621,39 @@ bool MainWindow::processAcceptOrder(Order aOrder, PartnerAPI *aPartner) {
 }
 
 bool MainWindow::processWaitingRefueling(Order aOrder, PartnerAPI *aPartner) {
-    if (!db_->isTransactionExist(aOrder.id)) {
-        qWarning() << "APITransaction not created";
-        processAcceptOrder(aOrder, aPartner);
-    }
+//    if (!db_->isApiTransactionExist(aOrder.id)) {
+//        qWarning() << "APITransaction not created";
+//        processAcceptOrder(aOrder, aPartner);
+//    }
     ApiTransaction apiTransaction = db_->getApiTransaction(aOrder.id);
     if (apiTransaction.id == "") {
+        qWarning(logError) << aOrder.id << "WaitingRefueling apiTransaction is not created";
         return false;
     }
     qInfo() << aOrder.id << "WaitingRefueling";
     if (apiTransaction.iState > 0) {
-        db_->updateApiTransactionState(apiTransaction.localState, apiTransaction.dateClose, apiTransaction.apiVCode);
+        db_->updateApiTransactionState("Fueling", apiTransaction.dateClose, apiTransaction.apiVCode);
+        aPartner->setStatusFueling(aOrder.id, apiTransaction.apiVCode);
+        return true;
     }
-    aPartner->setStatusFueling(aOrder.id, apiTransaction.apiVCode);
-    return true;
+    return false;
 }
 
 bool MainWindow::processFueling(Order aOrder, PartnerAPI *aPartner) {
     qInfo() << aOrder.id << "Fueling";
     ApiTransaction apiTransaction = db_->getApiTransaction(aOrder.id);
+    if (apiTransaction.iState <= 0) {
+        qInfo() << aOrder.id << "no start fueling";
+        return false;
+    }
     aPartner->setStatusFuelNow(aOrder.id, litersFromStart(apiTransaction));
 
     double amount = 0.0, volume = 0.0, price = 0.0;
     QDateTime dateOpen, dateClose;
     db_->getPayOperationData(apiTransaction.headVCode, amount, volume, price, dateOpen, dateClose);
 
-    if((amount > 0.1) && (volume > 0.1) && (price > 0.1) && (apiTransaction.localState.toInt() < 5)) {
-        db_->finalUpdateApiTransactionState("5", price, volume, amount, dateOpen, dateClose, apiTransaction.apiVCode);
+    if((amount >= 0.01) && (volume >= 0.01) && (price >= 0.01) && (apiTransaction.localState == "Fueling")) {
+        db_->finalUpdateApiTransactionState("Completed", price, volume, amount, dateOpen, dateClose, apiTransaction.apiVCode);
         aPartner->setStatusCompleted(aOrder.id, volume, QString::number(apiTransaction.apiVCode), dateClose);
     }
     return false;
@@ -622,10 +662,27 @@ bool MainWindow::processFueling(Order aOrder, PartnerAPI *aPartner) {
 bool MainWindow::processExpire(Order aOrder, PartnerAPI *aPartner) {
     qInfo() << aOrder.id << "Expire";
     ApiTransaction apiTransaction = db_->getApiTransaction(aOrder.id);
-    db_->updateApiTransactionState("Ошибка: 30 минут", apiTransaction.dateClose, apiTransaction.apiVCode);
-    db_->setTransactionClosed(aOrder.id, 1);
-    aPartner->setStatusCanceled(aOrder.id, "Истекло время ожидания", QString::number(apiTransaction.apiVCode), apiTransaction.dateOpen);
-    return true;
+    if (apiTransaction.iState <= 0) {
+        qInfo() << aOrder.id << "no start fueling";
+        db_->updateApiTransactionState("Ошибка: 30 минут", apiTransaction.dateClose, apiTransaction.apiVCode);
+        db_->setTransactionClosed(aOrder.id, 1);
+        aPartner->setStatusCanceled(aOrder.id, "Истекло время ожидания", QString::number(apiTransaction.apiVCode), QDateTime::currentDateTime());
+        return true;
+    }
+
+    double amount = 0.0, volume = 0.0, price = 0.0;
+    QDateTime dateOpen, dateClose;
+    db_->getPayOperationData(apiTransaction.headVCode, amount, volume, price, dateOpen, dateClose);
+
+    if((amount >= 0.01) && (volume >= 0.01) && (price >= 0.01) && (apiTransaction.localState != "Completed")) {
+        db_->finalUpdateApiTransactionState("Отправка после 30 минут", price, volume, amount, dateOpen, dateClose, apiTransaction.apiVCode);
+        aPartner->setStatusCompleted(aOrder.id, volume, QString::number(apiTransaction.apiVCode), dateClose);
+        return true;
+    } else {
+        qInfo() << aOrder.id << "Expire but fueling progress";
+        qWarning() << aOrder.id << "Expire but fueling progress";
+    }
+    return false;
 }
 
 bool MainWindow::processStationCanceled(Order aOrder, PartnerAPI *aPartner) {

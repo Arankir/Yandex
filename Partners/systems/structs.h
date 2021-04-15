@@ -9,8 +9,6 @@
 #include "partners/yandexapi.h"
 #include "partners/citymobileapi.h"
 
-const QString c_host = "api";
-
 enum class Fuel {
      diesel = 32,
      diesel_premium = -10,
@@ -198,6 +196,8 @@ struct ApiTransaction {
                (this->dateClose == api.dateClose);
     }
 };
+
+const QString c_host = QStringLiteral("api");
 
 struct Transaction {
     QString agzsName;

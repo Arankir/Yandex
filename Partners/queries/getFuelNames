@@ -1,0 +1,5 @@
+SELECT TOP 1
+    [FuelName],
+    [FuelShortName]
+FROM [agzs].[dbo].[Interface_FuelParams]
+WHERE [Fuel] = %1

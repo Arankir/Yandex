@@ -1,0 +1,1673 @@
+09:31:49 STARTED
+09:31:49 currentAGZS = "deb"
+09:31:54 DB is open
+09:31:54 check y = true  nAut = false  c = true
+09:31:54 POST 200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/price" "(a92=40&propane=50)"
+09:31:55 POST 200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/price" "(a92=37.21&propane=30)"
+09:31:55 POST 200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/station" "({\"Columns\":{\"1\":{\"Fuels\":[\"propane\",\"diesel\"]},\"2\":{\"Fuels\":[\"propane\",\"a92\"]}},\"StationExtendedId\":\"2\"})"
+09:31:55 POST 200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/station" "({\"Adress\":\"г. Уфа, ул. Чебоксарская, д. 12\",\"Columns\":{\"1\":{\"Fuels\":[\"propane\",\"diesel\"]},\"2\":{\"Fuels\":[\"propane\",\"a92\"]}},\"Enable\":true,\"FuelNames\":[{\"Fuel\":\"propane\",\"FuelName\":\"Пропан\"},{\"Fuel\":\"diesel\",\"FuelName\":\"Дизель\"},{\"Fuel\":\"a92\",\"FuelName\":\"А-92\"}],\"Location\":{\"Lat\":\"54.6878\",\"Lon\":\"55.8086\"},\"Name\":\"АГЗС №2\",\"StationExtendedId\":\"2\"})"
+09:31:59 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:31:59 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:32:02 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:32:02 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:32:05 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:32:06 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:32:09 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:32:09 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:32:12 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:32:12 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:34:13 STARTED
+09:34:13 currentAGZS = "deb"
+09:34:17 DB is open
+09:34:17 check y = true  nAut = false  c = true
+09:34:17 POST 200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/price" "(a92=40&propane=50)"
+09:34:19 POST 200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/price" "(a92=37.21&propane=30)"
+09:34:19 POST 200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/station" "({\"Columns\":{\"1\":{\"Fuels\":[\"propane\",\"diesel\"]},\"2\":{\"Fuels\":[\"propane\",\"a92\"]}},\"StationExtendedId\":\"2\"})"
+09:34:19 POST 200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/station" "({\"Adress\":\"г. Уфа, ул. Чебоксарская, д. 12\",\"Columns\":{\"1\":{\"Fuels\":[\"propane\",\"diesel\"]},\"2\":{\"Fuels\":[\"propane\",\"a92\"]}},\"Enable\":true,\"FuelNames\":[{\"Fuel\":\"propane\",\"FuelName\":\"Пропан\"},{\"Fuel\":\"diesel\",\"FuelName\":\"Дизель\"},{\"Fuel\":\"a92\",\"FuelName\":\"А-92\"}],\"Location\":{\"Lat\":\"54.6878\",\"Lon\":\"55.8086\"},\"Name\":\"АГЗС №2\",\"StationExtendedId\":\"2\"})"
+10:29:28 STARTED
+10:29:28 currentAGZS = "deb"
+10:29:33 DB is open
+10:29:33 check y = true  nAut = false  c = true
+10:29:33 POST 200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/price" "(a92=40&propane=50)"
+10:29:33 POST 200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/price" "(a92=37.21&propane=30)"
+10:29:34 POST 200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/station" "({\"Columns\":{\"1\":{\"Fuels\":[\"propane\",\"diesel\"]},\"2\":{\"Fuels\":[\"propane\",\"a92\"]}},\"StationExtendedId\":\"2\"})"
+10:29:34 POST 200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/station" "({\"Adress\":\"г. Уфа, ул. Чебоксарская, д. 12\",\"Columns\":{\"1\":{\"Fuels\":[\"propane\",\"diesel\"]},\"2\":{\"Fuels\":[\"propane\",\"a92\"]}},\"Enable\":true,\"FuelNames\":[{\"Fuel\":\"propane\",\"FuelName\":\"Пропан\"},{\"Fuel\":\"diesel\",\"FuelName\":\"Дизель\"},{\"Fuel\":\"a92\",\"FuelName\":\"А-92\"}],\"Location\":{\"Lat\":\"54.6878\",\"Lon\":\"55.8086\"},\"Name\":\"АГЗС №2\",\"StationExtendedId\":\"2\"})"
+10:29:38 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+10:29:38 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+10:29:41 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+10:29:41 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+10:29:44 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+10:29:44 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+10:29:47 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+10:29:47 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+10:29:50 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+10:29:50 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+10:29:53 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+10:29:53 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+10:29:56 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+10:29:57 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+10:30:00 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+10:30:00 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+10:30:03 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+10:30:03 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+10:30:06 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+10:30:06 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+10:30:09 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+10:30:09 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+10:30:12 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+10:30:12 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+10:30:15 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+10:30:15 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+10:30:18 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+10:30:18 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+10:30:21 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+10:30:22 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+10:30:24 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+10:30:25 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+10:30:27 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+10:30:28 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+10:30:30 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+10:30:31 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+10:30:33 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+10:30:35 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+10:30:37 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+10:30:38 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+10:30:40 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+10:30:41 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+10:30:43 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+10:30:45 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+10:30:46 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+10:30:48 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+10:30:50 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+10:30:51 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+10:30:53 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+10:30:55 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+10:30:56 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+10:30:58 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+10:30:59 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+10:31:01 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+10:31:03 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+10:31:04 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+10:31:06 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+10:31:07 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+10:31:09 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+10:31:11 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+10:31:12 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+10:31:14 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+10:31:15 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+10:31:17 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+10:31:18 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+10:31:20 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+10:31:21 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+10:31:23 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+10:31:24 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+10:31:26 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+10:31:27 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+10:31:29 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+10:31:30 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+10:31:33 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+10:31:33 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+10:31:36 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+10:31:36 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+10:39:49 STARTED
+10:39:49 currentAGZS = "deb"
+10:39:54 DB is open
+10:39:54 check y = true  nAut = false  c = true
+10:39:54 POST 200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/price" "(a92=40&propane=50)"
+10:39:54 POST 200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/price" "(a92=37.21&propane=30)"
+10:39:55 POST 200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/station" "({\"Columns\":{\"1\":{\"Fuels\":[\"propane\",\"diesel\"]},\"2\":{\"Fuels\":[\"propane\",\"a92\"]}},\"StationExtendedId\":\"2\"})"
+10:39:55 POST 200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/station" "({\"Adress\":\"г. Уфа, ул. Чебоксарская, д. 12\",\"Columns\":{\"1\":{\"Fuels\":[\"propane\",\"diesel\"]},\"2\":{\"Fuels\":[\"propane\",\"a92\"]}},\"Enable\":true,\"FuelNames\":[{\"Fuel\":\"propane\",\"FuelName\":\"Пропан\"},{\"Fuel\":\"diesel\",\"FuelName\":\"Дизель\"},{\"Fuel\":\"a92\",\"FuelName\":\"А-92\"}],\"Location\":{\"Lat\":\"54.6878\",\"Lon\":\"55.8086\"},\"Name\":\"АГЗС №2\",\"StationExtendedId\":\"2\"})"
+10:41:01 STARTED
+10:41:01 currentAGZS = "deb"
+10:41:06 DB is open
+10:41:06 check y = true  nAut = false  c = true
+10:41:06 POST 200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/price" "(a92=40&propane=50)"
+10:41:06 POST 200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/price" "(a92=37.21&propane=30)"
+10:41:06 POST 200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/station" "({\"Columns\":{\"1\":{\"Fuels\":[\"propane\",\"diesel\"]},\"2\":{\"Fuels\":[\"propane\",\"a92\"]}},\"StationExtendedId\":\"2\"})"
+10:41:07 POST 200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/station" "({\"Adress\":\"г. Уфа, ул. Чебоксарская, д. 12\",\"Columns\":{\"1\":{\"Fuels\":[\"propane\",\"diesel\"]},\"2\":{\"Fuels\":[\"propane\",\"a92\"]}},\"Enable\":true,\"FuelNames\":[{\"Fuel\":\"propane\",\"FuelName\":\"Пропан\"},{\"Fuel\":\"diesel\",\"FuelName\":\"Дизель\"},{\"Fuel\":\"a92\",\"FuelName\":\"А-92\"}],\"Location\":{\"Lat\":\"54.6878\",\"Lon\":\"55.8086\"},\"Name\":\"АГЗС №2\",\"StationExtendedId\":\"2\"})"
+10:42:00 STARTED
+10:42:00 currentAGZS = "deb"
+10:42:05 DB is open
+10:42:05 check y = true  nAut = false  c = true
+10:42:05 POST 200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/price" "(a92=40&propane=50)"
+10:42:05 POST 200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/price" "(a92=37.21&propane=30)"
+10:42:05 POST 200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/station" "({\"Columns\":{\"1\":{\"Fuels\":[\"propane\",\"diesel\"]},\"2\":{\"Fuels\":[\"propane\",\"a92\"]}},\"StationExtendedId\":\"2\"})"
+10:42:06 POST 200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/station" "({\"Adress\":\"г. Уфа, ул. Чебоксарская, д. 12\",\"Columns\":{\"1\":{\"Fuels\":[\"propane\",\"diesel\"]},\"2\":{\"Fuels\":[\"propane\",\"a92\"]}},\"Enable\":true,\"FuelNames\":[{\"Fuel\":\"propane\",\"FuelName\":\"Пропан\"},{\"Fuel\":\"diesel\",\"FuelName\":\"Дизель\"},{\"Fuel\":\"a92\",\"FuelName\":\"А-92\"}],\"Location\":{\"Lat\":\"54.6878\",\"Lon\":\"55.8086\"},\"Name\":\"АГЗС №2\",\"StationExtendedId\":\"2\"})"
+10:42:30 STARTED
+10:42:30 currentAGZS = "deb"
+10:42:35 DB is open
+10:42:35 check y = true  nAut = false  c = true
+10:42:35 POST 200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/price" "(a92=40&propane=50)"
+10:42:35 POST 200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/price" "(a92=37.21&propane=30)"
+10:42:35 POST 200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/station" "({\"Columns\":{\"1\":{\"Fuels\":[\"propane\",\"diesel\"]},\"2\":{\"Fuels\":[\"propane\",\"a92\"]}},\"StationExtendedId\":\"2\"})"
+10:42:36 POST 200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/station" "({\"Adress\":\"г. Уфа, ул. Чебоксарская, д. 12\",\"Columns\":{\"1\":{\"Fuels\":[\"propane\",\"diesel\"]},\"2\":{\"Fuels\":[\"propane\",\"a92\"]}},\"Enable\":true,\"FuelNames\":[{\"Fuel\":\"propane\",\"FuelName\":\"Пропан\"},{\"Fuel\":\"diesel\",\"FuelName\":\"Дизель\"},{\"Fuel\":\"a92\",\"FuelName\":\"А-92\"}],\"Location\":{\"Lat\":\"54.6878\",\"Lon\":\"55.8086\"},\"Name\":\"АГЗС №2\",\"StationExtendedId\":\"2\"})"
+10:43:02 STARTED
+10:43:02 currentAGZS = "deb"
+10:43:06 DB is open
+10:43:06 WRNG QString::arg: Argument missing: test qwe2 text qwe1 text2 qwe3 qwe4 qwe5 qwe6 qwe7 qwe9 qwe8 qwe10 qwe11, qwe12
+10:43:06 WRNG QString::arg: Argument missing: test qwe2 text qwe1 text2 qwe3 qwe4 qwe5 qwe6 qwe7 qwe9 qwe8 qwe10 qwe11, qwe13
+10:43:06 check y = true  nAut = false  c = true
+10:43:07 POST 200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/price" "(a92=40&propane=50)"
+10:43:07 POST 200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/price" "(a92=37.21&propane=30)"
+10:43:07 POST 200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/station" "({\"Columns\":{\"1\":{\"Fuels\":[\"propane\",\"diesel\"]},\"2\":{\"Fuels\":[\"propane\",\"a92\"]}},\"StationExtendedId\":\"2\"})"
+10:43:07 POST 200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/station" "({\"Adress\":\"г. Уфа, ул. Чебоксарская, д. 12\",\"Columns\":{\"1\":{\"Fuels\":[\"propane\",\"diesel\"]},\"2\":{\"Fuels\":[\"propane\",\"a92\"]}},\"Enable\":true,\"FuelNames\":[{\"Fuel\":\"propane\",\"FuelName\":\"Пропан\"},{\"Fuel\":\"diesel\",\"FuelName\":\"Дизель\"},{\"Fuel\":\"a92\",\"FuelName\":\"А-92\"}],\"Location\":{\"Lat\":\"54.6878\",\"Lon\":\"55.8086\"},\"Name\":\"АГЗС №2\",\"StationExtendedId\":\"2\"})"
+10:43:22 STARTED
+10:43:22 currentAGZS = "deb"
+10:43:26 DB is open
+10:43:26 WRNG QString::arg: Argument missing: test qwe2 text qwe1 text2 qwe3 qwe4 qwe5 qwe6 qwe7 qwe9 qwe8 qwe10 qwe11 qwe125, qwe13
+10:43:26 check y = true  nAut = false  c = true
+10:43:26 POST 200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/price" "(a92=40&propane=50)"
+10:43:26 POST 200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/price" "(a92=37.21&propane=30)"
+10:43:27 POST 200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/station" "({\"Columns\":{\"1\":{\"Fuels\":[\"propane\",\"diesel\"]},\"2\":{\"Fuels\":[\"propane\",\"a92\"]}},\"StationExtendedId\":\"2\"})"
+10:43:27 POST 200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/station" "({\"Adress\":\"г. Уфа, ул. Чебоксарская, д. 12\",\"Columns\":{\"1\":{\"Fuels\":[\"propane\",\"diesel\"]},\"2\":{\"Fuels\":[\"propane\",\"a92\"]}},\"Enable\":true,\"FuelNames\":[{\"Fuel\":\"propane\",\"FuelName\":\"Пропан\"},{\"Fuel\":\"diesel\",\"FuelName\":\"Дизель\"},{\"Fuel\":\"a92\",\"FuelName\":\"А-92\"}],\"Location\":{\"Lat\":\"54.6878\",\"Lon\":\"55.8086\"},\"Name\":\"АГЗС №2\",\"StationExtendedId\":\"2\"})"
+10:44:05 STARTED
+10:44:05 currentAGZS = "deb"
+10:44:09 DB is open
+10:44:09 check y = true  nAut = false  c = true
+10:44:09 POST 200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/price" "(a92=40&propane=50)"
+10:44:10 POST 200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/price" "(a92=37.21&propane=30)"
+10:44:10 POST 200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/station" "({\"Columns\":{\"1\":{\"Fuels\":[\"propane\",\"diesel\"]},\"2\":{\"Fuels\":[\"propane\",\"a92\"]}},\"StationExtendedId\":\"2\"})"
+10:44:10 POST 200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/station" "({\"Adress\":\"г. Уфа, ул. Чебоксарская, д. 12\",\"Columns\":{\"1\":{\"Fuels\":[\"propane\",\"diesel\"]},\"2\":{\"Fuels\":[\"propane\",\"a92\"]}},\"Enable\":true,\"FuelNames\":[{\"Fuel\":\"propane\",\"FuelName\":\"Пропан\"},{\"Fuel\":\"diesel\",\"FuelName\":\"Дизель\"},{\"Fuel\":\"a92\",\"FuelName\":\"А-92\"}],\"Location\":{\"Lat\":\"54.6878\",\"Lon\":\"55.8086\"},\"Name\":\"АГЗС №2\",\"StationExtendedId\":\"2\"})"
+10:44:14 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+10:44:14 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+10:44:17 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+10:44:17 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+10:44:20 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+10:44:20 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+10:44:24 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+10:44:24 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+10:48:19 STARTED
+10:48:19 currentAGZS = "deb"
+10:48:24 DB is open
+10:48:24 WRNG QString::arg: Argument missing: SELECT 
+	columnn.SideAdress, 
+	columnn.[Partner_TrkNum], 
+	columnn.Nozzle1Fuel, 
+	columnn.Nozzle2Fuel, 
+	columnn.Nozzle3Fuel, 
+	columnn.Nozzle4Fuel, 
+	columnn.Nozzle5Fuel 
+FROM [agzs].[dbo].[PR_Columns] columnn 
+	INNER JOIN [agzs].[dbo].[ADAST_AdastTRK] trk 
+	ON ((columnn.SideAdress = trk.[SideA_Address]) OR (columnn.SideAdress = trk.[SideB_Address])) 
+WHERE columnn.agzs = (	SELECT TOP 1 AGZS 
+                  		FROM [agzs].[dbo].[Identification]) 
+	AND trk.agzs = columnn.agzs 
+	AND columnn.visible = 1 , qwe1
+10:48:24 WRNG QString::arg: Argument missing: SELECT 
+	columnn.SideAdress, 
+	columnn.[Partner_TrkNum], 
+	columnn.Nozzle1Fuel, 
+	columnn.Nozzle2Fuel, 
+	columnn.Nozzle3Fuel, 
+	columnn.Nozzle4Fuel, 
+	columnn.Nozzle5Fuel 
+FROM [agzs].[dbo].[PR_Columns] columnn 
+	INNER JOIN [agzs].[dbo].[ADAST_AdastTRK] trk 
+	ON ((columnn.SideAdress = trk.[SideA_Address]) OR (columnn.SideAdress = trk.[SideB_Address])) 
+WHERE columnn.agzs = (	SELECT TOP 1 AGZS 
+                  		FROM [agzs].[dbo].[Identification]) 
+	AND trk.agzs = columnn.agzs 
+	AND columnn.visible = 1 , qwe2
+10:48:24 WRNG QString::arg: Argument missing: SELECT 
+	columnn.SideAdress, 
+	columnn.[Partner_TrkNum], 
+	columnn.Nozzle1Fuel, 
+	columnn.Nozzle2Fuel, 
+	columnn.Nozzle3Fuel, 
+	columnn.Nozzle4Fuel, 
+	columnn.Nozzle5Fuel 
+FROM [agzs].[dbo].[PR_Columns] columnn 
+	INNER JOIN [agzs].[dbo].[ADAST_AdastTRK] trk 
+	ON ((columnn.SideAdress = trk.[SideA_Address]) OR (columnn.SideAdress = trk.[SideB_Address])) 
+WHERE columnn.agzs = (	SELECT TOP 1 AGZS 
+                  		FROM [agzs].[dbo].[Identification]) 
+	AND trk.agzs = columnn.agzs 
+	AND columnn.visible = 1 , qwe3
+10:48:24 WRNG QString::arg: Argument missing: SELECT 
+	columnn.SideAdress, 
+	columnn.[Partner_TrkNum], 
+	columnn.Nozzle1Fuel, 
+	columnn.Nozzle2Fuel, 
+	columnn.Nozzle3Fuel, 
+	columnn.Nozzle4Fuel, 
+	columnn.Nozzle5Fuel 
+FROM [agzs].[dbo].[PR_Columns] columnn 
+	INNER JOIN [agzs].[dbo].[ADAST_AdastTRK] trk 
+	ON ((columnn.SideAdress = trk.[SideA_Address]) OR (columnn.SideAdress = trk.[SideB_Address])) 
+WHERE columnn.agzs = (	SELECT TOP 1 AGZS 
+                  		FROM [agzs].[dbo].[Identification]) 
+	AND trk.agzs = columnn.agzs 
+	AND columnn.visible = 1 , qwe4
+10:48:24 WRNG QString::arg: Argument missing: SELECT 
+	columnn.SideAdress, 
+	columnn.[Partner_TrkNum], 
+	columnn.Nozzle1Fuel, 
+	columnn.Nozzle2Fuel, 
+	columnn.Nozzle3Fuel, 
+	columnn.Nozzle4Fuel, 
+	columnn.Nozzle5Fuel 
+FROM [agzs].[dbo].[PR_Columns] columnn 
+	INNER JOIN [agzs].[dbo].[ADAST_AdastTRK] trk 
+	ON ((columnn.SideAdress = trk.[SideA_Address]) OR (columnn.SideAdress = trk.[SideB_Address])) 
+WHERE columnn.agzs = (	SELECT TOP 1 AGZS 
+                  		FROM [agzs].[dbo].[Identification]) 
+	AND trk.agzs = columnn.agzs 
+	AND columnn.visible = 1 , qwe5
+10:48:24 WRNG QString::arg: Argument missing: SELECT 
+	columnn.SideAdress, 
+	columnn.[Partner_TrkNum], 
+	columnn.Nozzle1Fuel, 
+	columnn.Nozzle2Fuel, 
+	columnn.Nozzle3Fuel, 
+	columnn.Nozzle4Fuel, 
+	columnn.Nozzle5Fuel 
+FROM [agzs].[dbo].[PR_Columns] columnn 
+	INNER JOIN [agzs].[dbo].[ADAST_AdastTRK] trk 
+	ON ((columnn.SideAdress = trk.[SideA_Address]) OR (columnn.SideAdress = trk.[SideB_Address])) 
+WHERE columnn.agzs = (	SELECT TOP 1 AGZS 
+                  		FROM [agzs].[dbo].[Identification]) 
+	AND trk.agzs = columnn.agzs 
+	AND columnn.visible = 1 , qwe6
+10:48:24 WRNG QString::arg: Argument missing: SELECT 
+	columnn.SideAdress, 
+	columnn.[Partner_TrkNum], 
+	columnn.Nozzle1Fuel, 
+	columnn.Nozzle2Fuel, 
+	columnn.Nozzle3Fuel, 
+	columnn.Nozzle4Fuel, 
+	columnn.Nozzle5Fuel 
+FROM [agzs].[dbo].[PR_Columns] columnn 
+	INNER JOIN [agzs].[dbo].[ADAST_AdastTRK] trk 
+	ON ((columnn.SideAdress = trk.[SideA_Address]) OR (columnn.SideAdress = trk.[SideB_Address])) 
+WHERE columnn.agzs = (	SELECT TOP 1 AGZS 
+                  		FROM [agzs].[dbo].[Identification]) 
+	AND trk.agzs = columnn.agzs 
+	AND columnn.visible = 1 , qwe7
+10:48:24 WRNG QString::arg: Argument missing: SELECT 
+	columnn.SideAdress, 
+	columnn.[Partner_TrkNum], 
+	columnn.Nozzle1Fuel, 
+	columnn.Nozzle2Fuel, 
+	columnn.Nozzle3Fuel, 
+	columnn.Nozzle4Fuel, 
+	columnn.Nozzle5Fuel 
+FROM [agzs].[dbo].[PR_Columns] columnn 
+	INNER JOIN [agzs].[dbo].[ADAST_AdastTRK] trk 
+	ON ((columnn.SideAdress = trk.[SideA_Address]) OR (columnn.SideAdress = trk.[SideB_Address])) 
+WHERE columnn.agzs = (	SELECT TOP 1 AGZS 
+                  		FROM [agzs].[dbo].[Identification]) 
+	AND trk.agzs = columnn.agzs 
+	AND columnn.visible = 1 , qwe8
+10:48:24 WRNG QString::arg: Argument missing: SELECT 
+	columnn.SideAdress, 
+	columnn.[Partner_TrkNum], 
+	columnn.Nozzle1Fuel, 
+	columnn.Nozzle2Fuel, 
+	columnn.Nozzle3Fuel, 
+	columnn.Nozzle4Fuel, 
+	columnn.Nozzle5Fuel 
+FROM [agzs].[dbo].[PR_Columns] columnn 
+	INNER JOIN [agzs].[dbo].[ADAST_AdastTRK] trk 
+	ON ((columnn.SideAdress = trk.[SideA_Address]) OR (columnn.SideAdress = trk.[SideB_Address])) 
+WHERE columnn.agzs = (	SELECT TOP 1 AGZS 
+                  		FROM [agzs].[dbo].[Identification]) 
+	AND trk.agzs = columnn.agzs 
+	AND columnn.visible = 1 , qwe9
+10:48:24 WRNG QString::arg: Argument missing: SELECT 
+	columnn.SideAdress, 
+	columnn.[Partner_TrkNum], 
+	columnn.Nozzle1Fuel, 
+	columnn.Nozzle2Fuel, 
+	columnn.Nozzle3Fuel, 
+	columnn.Nozzle4Fuel, 
+	columnn.Nozzle5Fuel 
+FROM [agzs].[dbo].[PR_Columns] columnn 
+	INNER JOIN [agzs].[dbo].[ADAST_AdastTRK] trk 
+	ON ((columnn.SideAdress = trk.[SideA_Address]) OR (columnn.SideAdress = trk.[SideB_Address])) 
+WHERE columnn.agzs = (	SELECT TOP 1 AGZS 
+                  		FROM [agzs].[dbo].[Identification]) 
+	AND trk.agzs = columnn.agzs 
+	AND columnn.visible = 1 , qwe10
+10:48:24 WRNG QString::arg: Argument missing: SELECT 
+	columnn.SideAdress, 
+	columnn.[Partner_TrkNum], 
+	columnn.Nozzle1Fuel, 
+	columnn.Nozzle2Fuel, 
+	columnn.Nozzle3Fuel, 
+	columnn.Nozzle4Fuel, 
+	columnn.Nozzle5Fuel 
+FROM [agzs].[dbo].[PR_Columns] columnn 
+	INNER JOIN [agzs].[dbo].[ADAST_AdastTRK] trk 
+	ON ((columnn.SideAdress = trk.[SideA_Address]) OR (columnn.SideAdress = trk.[SideB_Address])) 
+WHERE columnn.agzs = (	SELECT TOP 1 AGZS 
+                  		FROM [agzs].[dbo].[Identification]) 
+	AND trk.agzs = columnn.agzs 
+	AND columnn.visible = 1 , qwe11
+10:48:24 WRNG QString::arg: Argument missing: SELECT 
+	columnn.SideAdress, 
+	columnn.[Partner_TrkNum], 
+	columnn.Nozzle1Fuel, 
+	columnn.Nozzle2Fuel, 
+	columnn.Nozzle3Fuel, 
+	columnn.Nozzle4Fuel, 
+	columnn.Nozzle5Fuel 
+FROM [agzs].[dbo].[PR_Columns] columnn 
+	INNER JOIN [agzs].[dbo].[ADAST_AdastTRK] trk 
+	ON ((columnn.SideAdress = trk.[SideA_Address]) OR (columnn.SideAdress = trk.[SideB_Address])) 
+WHERE columnn.agzs = (	SELECT TOP 1 AGZS 
+                  		FROM [agzs].[dbo].[Identification]) 
+	AND trk.agzs = columnn.agzs 
+	AND columnn.visible = 1 , qwe12
+10:48:24 WRNG QString::arg: Argument missing: SELECT 
+	columnn.SideAdress, 
+	columnn.[Partner_TrkNum], 
+	columnn.Nozzle1Fuel, 
+	columnn.Nozzle2Fuel, 
+	columnn.Nozzle3Fuel, 
+	columnn.Nozzle4Fuel, 
+	columnn.Nozzle5Fuel 
+FROM [agzs].[dbo].[PR_Columns] columnn 
+	INNER JOIN [agzs].[dbo].[ADAST_AdastTRK] trk 
+	ON ((columnn.SideAdress = trk.[SideA_Address]) OR (columnn.SideAdress = trk.[SideB_Address])) 
+WHERE columnn.agzs = (	SELECT TOP 1 AGZS 
+                  		FROM [agzs].[dbo].[Identification]) 
+	AND trk.agzs = columnn.agzs 
+	AND columnn.visible = 1 , qwe13
+10:48:24 check y = true  nAut = false  c = true
+10:48:24 POST 200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/price" "(a92=40&propane=50)"
+10:48:24 POST 200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/price" "(a92=37.21&propane=30)"
+10:48:24 POST 200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/station" "({\"Columns\":{\"1\":{\"Fuels\":[\"propane\",\"diesel\"]},\"2\":{\"Fuels\":[\"propane\",\"a92\"]}},\"StationExtendedId\":\"2\"})"
+10:48:25 POST 200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/station" "({\"Adress\":\"г. Уфа, ул. Чебоксарская, д. 12\",\"Columns\":{\"1\":{\"Fuels\":[\"propane\",\"diesel\"]},\"2\":{\"Fuels\":[\"propane\",\"a92\"]}},\"Enable\":true,\"FuelNames\":[{\"Fuel\":\"propane\",\"FuelName\":\"Пропан\"},{\"Fuel\":\"diesel\",\"FuelName\":\"Дизель\"},{\"Fuel\":\"a92\",\"FuelName\":\"А-92\"}],\"Location\":{\"Lat\":\"54.6878\",\"Lon\":\"55.8086\"},\"Name\":\"АГЗС №2\",\"StationExtendedId\":\"2\"})"
+10:48:29 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+10:48:29 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+10:48:32 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+10:48:32 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+10:48:35 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+10:48:35 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+11:24:29 STARTED
+11:24:29 currentAGZS = "deb"
+11:24:34 DB is open
+11:24:34 WRNG QString::arg: Argument missing: SELECT TOP 1 
+CashBoxIndex, 
+PayIndex, 
+PayWay, 
+AutoCheck 
+FROM [agzs].[dbo].[ARM_CashBoxesSemaphor] 
+WHERE PayIndex = qwe1 and AutoCheck = 0 
+ORDER BY CDate DESC, qwe2
+11:24:34 WRNG QString::arg: Argument missing: SELECT TOP 1 
+CashBoxIndex, 
+PayIndex, 
+PayWay, 
+AutoCheck 
+FROM [agzs].[dbo].[ARM_CashBoxesSemaphor] 
+WHERE PayIndex = qwe1 and AutoCheck = 0 
+ORDER BY CDate DESC, qwe3
+11:24:34 WRNG QString::arg: Argument missing: SELECT TOP 1 
+CashBoxIndex, 
+PayIndex, 
+PayWay, 
+AutoCheck 
+FROM [agzs].[dbo].[ARM_CashBoxesSemaphor] 
+WHERE PayIndex = qwe1 and AutoCheck = 0 
+ORDER BY CDate DESC, qwe4
+11:24:34 WRNG QString::arg: Argument missing: SELECT TOP 1 
+CashBoxIndex, 
+PayIndex, 
+PayWay, 
+AutoCheck 
+FROM [agzs].[dbo].[ARM_CashBoxesSemaphor] 
+WHERE PayIndex = qwe1 and AutoCheck = 0 
+ORDER BY CDate DESC, qwe5
+11:24:34 WRNG QString::arg: Argument missing: SELECT TOP 1 
+CashBoxIndex, 
+PayIndex, 
+PayWay, 
+AutoCheck 
+FROM [agzs].[dbo].[ARM_CashBoxesSemaphor] 
+WHERE PayIndex = qwe1 and AutoCheck = 0 
+ORDER BY CDate DESC, qwe6
+11:24:34 WRNG QString::arg: Argument missing: SELECT TOP 1 
+CashBoxIndex, 
+PayIndex, 
+PayWay, 
+AutoCheck 
+FROM [agzs].[dbo].[ARM_CashBoxesSemaphor] 
+WHERE PayIndex = qwe1 and AutoCheck = 0 
+ORDER BY CDate DESC, qwe7
+11:24:34 WRNG QString::arg: Argument missing: SELECT TOP 1 
+CashBoxIndex, 
+PayIndex, 
+PayWay, 
+AutoCheck 
+FROM [agzs].[dbo].[ARM_CashBoxesSemaphor] 
+WHERE PayIndex = qwe1 and AutoCheck = 0 
+ORDER BY CDate DESC, qwe8
+11:24:34 WRNG QString::arg: Argument missing: SELECT TOP 1 
+CashBoxIndex, 
+PayIndex, 
+PayWay, 
+AutoCheck 
+FROM [agzs].[dbo].[ARM_CashBoxesSemaphor] 
+WHERE PayIndex = qwe1 and AutoCheck = 0 
+ORDER BY CDate DESC, qwe9
+11:24:34 WRNG QString::arg: Argument missing: SELECT TOP 1 
+CashBoxIndex, 
+PayIndex, 
+PayWay, 
+AutoCheck 
+FROM [agzs].[dbo].[ARM_CashBoxesSemaphor] 
+WHERE PayIndex = qwe1 and AutoCheck = 0 
+ORDER BY CDate DESC, qwe10
+11:24:34 WRNG QString::arg: Argument missing: SELECT TOP 1 
+CashBoxIndex, 
+PayIndex, 
+PayWay, 
+AutoCheck 
+FROM [agzs].[dbo].[ARM_CashBoxesSemaphor] 
+WHERE PayIndex = qwe1 and AutoCheck = 0 
+ORDER BY CDate DESC, qwe11
+11:24:34 WRNG QString::arg: Argument missing: SELECT TOP 1 
+CashBoxIndex, 
+PayIndex, 
+PayWay, 
+AutoCheck 
+FROM [agzs].[dbo].[ARM_CashBoxesSemaphor] 
+WHERE PayIndex = qwe1 and AutoCheck = 0 
+ORDER BY CDate DESC, qwe12
+11:24:34 WRNG QString::arg: Argument missing: SELECT TOP 1 
+CashBoxIndex, 
+PayIndex, 
+PayWay, 
+AutoCheck 
+FROM [agzs].[dbo].[ARM_CashBoxesSemaphor] 
+WHERE PayIndex = qwe1 and AutoCheck = 0 
+ORDER BY CDate DESC, qwe13
+11:24:34 check y = true  nAut = false  c = true
+11:24:34 POST 200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/price" "(a92=40&propane=50)"
+11:24:34 POST 200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/price" "(a92=37.21&propane=30)"
+11:24:34 POST 200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/station" "({\"Columns\":{\"1\":{\"Fuels\":[\"propane\",\"diesel\"]},\"2\":{\"Fuels\":[\"propane\",\"a92\"]}},\"StationExtendedId\":\"2\"})"
+11:24:35 POST 200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/station" "({\"Adress\":\"г. Уфа, ул. Чебоксарская, д. 12\",\"Columns\":{\"1\":{\"Fuels\":[\"propane\",\"diesel\"]},\"2\":{\"Fuels\":[\"propane\",\"a92\"]}},\"Enable\":true,\"FuelNames\":[{\"Fuel\":\"propane\",\"FuelName\":\"Пропан\"},{\"Fuel\":\"diesel\",\"FuelName\":\"Дизель\"},{\"Fuel\":\"a92\",\"FuelName\":\"А-92\"}],\"Location\":{\"Lat\":\"54.6878\",\"Lon\":\"55.8086\"},\"Name\":\"АГЗС №2\",\"StationExtendedId\":\"2\"})"
+11:24:39 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+11:24:39 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+11:25:06 STARTED
+11:25:06 currentAGZS = "deb"
+11:25:10 DB is open
+11:25:10 WRNG QString::arg: Argument missing: SELECT TOP 1 
+CashBoxIndex, 
+PayIndex, 
+PayWay, 
+AutoCheck 
+FROM [agzs].[dbo].[ARM_CashBoxesSemaphor] 
+WHERE PayIndex = qwe1 and AutoCheck = 0 
+ORDER BY CDate DESC, qwe2
+11:25:10 WRNG QString::arg: Argument missing: SELECT TOP 1 
+CashBoxIndex, 
+PayIndex, 
+PayWay, 
+AutoCheck 
+FROM [agzs].[dbo].[ARM_CashBoxesSemaphor] 
+WHERE PayIndex = qwe1 and AutoCheck = 0 
+ORDER BY CDate DESC, qwe3
+11:25:10 WRNG QString::arg: Argument missing: SELECT TOP 1 
+CashBoxIndex, 
+PayIndex, 
+PayWay, 
+AutoCheck 
+FROM [agzs].[dbo].[ARM_CashBoxesSemaphor] 
+WHERE PayIndex = qwe1 and AutoCheck = 0 
+ORDER BY CDate DESC, qwe4
+11:25:10 WRNG QString::arg: Argument missing: SELECT TOP 1 
+CashBoxIndex, 
+PayIndex, 
+PayWay, 
+AutoCheck 
+FROM [agzs].[dbo].[ARM_CashBoxesSemaphor] 
+WHERE PayIndex = qwe1 and AutoCheck = 0 
+ORDER BY CDate DESC, qwe5
+11:25:10 WRNG QString::arg: Argument missing: SELECT TOP 1 
+CashBoxIndex, 
+PayIndex, 
+PayWay, 
+AutoCheck 
+FROM [agzs].[dbo].[ARM_CashBoxesSemaphor] 
+WHERE PayIndex = qwe1 and AutoCheck = 0 
+ORDER BY CDate DESC, qwe6
+11:25:10 WRNG QString::arg: Argument missing: SELECT TOP 1 
+CashBoxIndex, 
+PayIndex, 
+PayWay, 
+AutoCheck 
+FROM [agzs].[dbo].[ARM_CashBoxesSemaphor] 
+WHERE PayIndex = qwe1 and AutoCheck = 0 
+ORDER BY CDate DESC, qwe7
+11:25:10 WRNG QString::arg: Argument missing: SELECT TOP 1 
+CashBoxIndex, 
+PayIndex, 
+PayWay, 
+AutoCheck 
+FROM [agzs].[dbo].[ARM_CashBoxesSemaphor] 
+WHERE PayIndex = qwe1 and AutoCheck = 0 
+ORDER BY CDate DESC, qwe8
+11:25:10 WRNG QString::arg: Argument missing: SELECT TOP 1 
+CashBoxIndex, 
+PayIndex, 
+PayWay, 
+AutoCheck 
+FROM [agzs].[dbo].[ARM_CashBoxesSemaphor] 
+WHERE PayIndex = qwe1 and AutoCheck = 0 
+ORDER BY CDate DESC, qwe9
+11:25:10 WRNG QString::arg: Argument missing: SELECT TOP 1 
+CashBoxIndex, 
+PayIndex, 
+PayWay, 
+AutoCheck 
+FROM [agzs].[dbo].[ARM_CashBoxesSemaphor] 
+WHERE PayIndex = qwe1 and AutoCheck = 0 
+ORDER BY CDate DESC, qwe10
+11:25:10 WRNG QString::arg: Argument missing: SELECT TOP 1 
+CashBoxIndex, 
+PayIndex, 
+PayWay, 
+AutoCheck 
+FROM [agzs].[dbo].[ARM_CashBoxesSemaphor] 
+WHERE PayIndex = qwe1 and AutoCheck = 0 
+ORDER BY CDate DESC, qwe11
+11:25:10 WRNG QString::arg: Argument missing: SELECT TOP 1 
+CashBoxIndex, 
+PayIndex, 
+PayWay, 
+AutoCheck 
+FROM [agzs].[dbo].[ARM_CashBoxesSemaphor] 
+WHERE PayIndex = qwe1 and AutoCheck = 0 
+ORDER BY CDate DESC, qwe12
+11:25:10 WRNG QString::arg: Argument missing: SELECT TOP 1 
+CashBoxIndex, 
+PayIndex, 
+PayWay, 
+AutoCheck 
+FROM [agzs].[dbo].[ARM_CashBoxesSemaphor] 
+WHERE PayIndex = qwe1 and AutoCheck = 0 
+ORDER BY CDate DESC, qwe13
+11:25:10 check y = true  nAut = false  c = true
+11:25:10 WRNG QODBCResult::data: column 4 out of range
+11:25:10 WRNG QODBCResult::data: column 5 out of range
+11:25:10 WRNG QODBCResult::data: column 6 out of range
+11:25:10 WRNG QODBCResult::data: column 7 out of range
+11:25:10 WRNG QODBCResult::data: column 8 out of range
+11:25:10 WRNG QODBCResult::data: column 9 out of range
+11:25:10 WRNG QODBCResult::data: column 10 out of range
+11:25:10 WRNG QODBCResult::data: column 11 out of range
+11:25:10 WRNG QODBCResult::data: column 12 out of range
+11:25:10 WRNG QODBCResult::data: column 13 out of range
+11:25:10 WRNG QODBCResult::data: column 14 out of range
+11:25:10 WRNG QODBCResult::data: column 15 out of range
+11:25:10 WRNG QODBCResult::data: column 16 out of range
+11:25:10 WRNG QODBCResult::data: column 17 out of range
+11:25:10 WRNG QODBCResult::data: column 18 out of range
+11:25:10 WRNG QODBCResult::data: column 4 out of range
+11:25:10 WRNG QODBCResult::data: column 5 out of range
+11:25:10 WRNG QODBCResult::data: column 6 out of range
+11:25:10 WRNG QODBCResult::data: column 7 out of range
+11:25:10 WRNG QODBCResult::data: column 8 out of range
+11:25:10 WRNG QODBCResult::data: column 9 out of range
+11:25:10 WRNG QODBCResult::data: column 10 out of range
+11:25:10 WRNG QODBCResult::data: column 11 out of range
+11:25:10 WRNG QODBCResult::data: column 12 out of range
+11:25:10 WRNG QODBCResult::data: column 13 out of range
+11:25:10 WRNG QODBCResult::data: column 14 out of range
+11:25:10 WRNG QODBCResult::data: column 15 out of range
+11:25:10 WRNG QODBCResult::data: column 16 out of range
+11:25:10 WRNG QODBCResult::data: column 17 out of range
+11:25:10 WRNG QODBCResult::data: column 18 out of range
+11:25:10 POST 200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/price" "()"
+11:25:10 POST 200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/price" "()"
+11:25:10 POST 200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/station" "({\"Columns\":{\"1\":{\"Fuels\":[\"propane\",\"diesel\"]},\"2\":{\"Fuels\":[\"propane\",\"a92\"]}},\"StationExtendedId\":\"2\"})"
+11:25:11 POST 200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/station" "({\"Adress\":\"г. Уфа, ул. Чебоксарская, д. 12\",\"Columns\":{\"1\":{\"Fuels\":[\"propane\",\"diesel\"]},\"2\":{\"Fuels\":[\"propane\",\"a92\"]}},\"Enable\":true,\"FuelNames\":[{\"Fuel\":\"propane\",\"FuelName\":\"Пропан\"},{\"Fuel\":\"diesel\",\"FuelName\":\"Дизель\"},{\"Fuel\":\"a92\",\"FuelName\":\"А-92\"}],\"Location\":{\"Lat\":\"54.6878\",\"Lon\":\"55.8086\"},\"Name\":\"АГЗС №2\",\"StationExtendedId\":\"2\"})"
+11:25:15 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+11:25:15 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+11:25:18 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+11:25:18 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+11:25:21 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+11:25:21 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+11:25:24 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+11:25:24 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+11:25:27 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+11:25:28 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+11:27:07 STARTED
+11:27:07 currentAGZS = "deb"
+11:27:11 DB is open
+11:27:11 WRNG QString::arg: Argument missing: SELECT TOP 1 
+[AGZSName], 
+[AGZS], 
+[VCode], 
+[Link], 
+[CDate], 
+[Partner], 
+[diesel], 
+[diesel_premium], 
+[a80], 
+[a92], 
+[a92_premium], 
+[a95], 
+[a95_premium],
+[a98],
+[a98_premium], 
+[a100], 
+[a100_premium], 
+[propane], 
+[metan]
+FROM [agzs].[dbo].PR_AGZSPrice
+WHERE Link = (SELECT VCode
+             FROM [agzs].[dbo].PR_AGZSData
+             WHERE AGZS = (SELECT TOP 1 AGZS
+                           FROM [agzs].[dbo].[Identification]))
+and iPartner = qwe1
+and DateStart < GETDATE()
+ORDER BY [CDate] desc, qwe2
+11:27:11 WRNG QString::arg: Argument missing: SELECT TOP 1 
+[AGZSName], 
+[AGZS], 
+[VCode], 
+[Link], 
+[CDate], 
+[Partner], 
+[diesel], 
+[diesel_premium], 
+[a80], 
+[a92], 
+[a92_premium], 
+[a95], 
+[a95_premium],
+[a98],
+[a98_premium], 
+[a100], 
+[a100_premium], 
+[propane], 
+[metan]
+FROM [agzs].[dbo].PR_AGZSPrice
+WHERE Link = (SELECT VCode
+             FROM [agzs].[dbo].PR_AGZSData
+             WHERE AGZS = (SELECT TOP 1 AGZS
+                           FROM [agzs].[dbo].[Identification]))
+and iPartner = qwe1
+and DateStart < GETDATE()
+ORDER BY [CDate] desc, qwe3
+11:27:11 WRNG QString::arg: Argument missing: SELECT TOP 1 
+[AGZSName], 
+[AGZS], 
+[VCode], 
+[Link], 
+[CDate], 
+[Partner], 
+[diesel], 
+[diesel_premium], 
+[a80], 
+[a92], 
+[a92_premium], 
+[a95], 
+[a95_premium],
+[a98],
+[a98_premium], 
+[a100], 
+[a100_premium], 
+[propane], 
+[metan]
+FROM [agzs].[dbo].PR_AGZSPrice
+WHERE Link = (SELECT VCode
+             FROM [agzs].[dbo].PR_AGZSData
+             WHERE AGZS = (SELECT TOP 1 AGZS
+                           FROM [agzs].[dbo].[Identification]))
+and iPartner = qwe1
+and DateStart < GETDATE()
+ORDER BY [CDate] desc, qwe4
+11:27:11 WRNG QString::arg: Argument missing: SELECT TOP 1 
+[AGZSName], 
+[AGZS], 
+[VCode], 
+[Link], 
+[CDate], 
+[Partner], 
+[diesel], 
+[diesel_premium], 
+[a80], 
+[a92], 
+[a92_premium], 
+[a95], 
+[a95_premium],
+[a98],
+[a98_premium], 
+[a100], 
+[a100_premium], 
+[propane], 
+[metan]
+FROM [agzs].[dbo].PR_AGZSPrice
+WHERE Link = (SELECT VCode
+             FROM [agzs].[dbo].PR_AGZSData
+             WHERE AGZS = (SELECT TOP 1 AGZS
+                           FROM [agzs].[dbo].[Identification]))
+and iPartner = qwe1
+and DateStart < GETDATE()
+ORDER BY [CDate] desc, qwe5
+11:27:11 WRNG QString::arg: Argument missing: SELECT TOP 1 
+[AGZSName], 
+[AGZS], 
+[VCode], 
+[Link], 
+[CDate], 
+[Partner], 
+[diesel], 
+[diesel_premium], 
+[a80], 
+[a92], 
+[a92_premium], 
+[a95], 
+[a95_premium],
+[a98],
+[a98_premium], 
+[a100], 
+[a100_premium], 
+[propane], 
+[metan]
+FROM [agzs].[dbo].PR_AGZSPrice
+WHERE Link = (SELECT VCode
+             FROM [agzs].[dbo].PR_AGZSData
+             WHERE AGZS = (SELECT TOP 1 AGZS
+                           FROM [agzs].[dbo].[Identification]))
+and iPartner = qwe1
+and DateStart < GETDATE()
+ORDER BY [CDate] desc, qwe6
+11:27:11 WRNG QString::arg: Argument missing: SELECT TOP 1 
+[AGZSName], 
+[AGZS], 
+[VCode], 
+[Link], 
+[CDate], 
+[Partner], 
+[diesel], 
+[diesel_premium], 
+[a80], 
+[a92], 
+[a92_premium], 
+[a95], 
+[a95_premium],
+[a98],
+[a98_premium], 
+[a100], 
+[a100_premium], 
+[propane], 
+[metan]
+FROM [agzs].[dbo].PR_AGZSPrice
+WHERE Link = (SELECT VCode
+             FROM [agzs].[dbo].PR_AGZSData
+             WHERE AGZS = (SELECT TOP 1 AGZS
+                           FROM [agzs].[dbo].[Identification]))
+and iPartner = qwe1
+and DateStart < GETDATE()
+ORDER BY [CDate] desc, qwe7
+11:27:11 WRNG QString::arg: Argument missing: SELECT TOP 1 
+[AGZSName], 
+[AGZS], 
+[VCode], 
+[Link], 
+[CDate], 
+[Partner], 
+[diesel], 
+[diesel_premium], 
+[a80], 
+[a92], 
+[a92_premium], 
+[a95], 
+[a95_premium],
+[a98],
+[a98_premium], 
+[a100], 
+[a100_premium], 
+[propane], 
+[metan]
+FROM [agzs].[dbo].PR_AGZSPrice
+WHERE Link = (SELECT VCode
+             FROM [agzs].[dbo].PR_AGZSData
+             WHERE AGZS = (SELECT TOP 1 AGZS
+                           FROM [agzs].[dbo].[Identification]))
+and iPartner = qwe1
+and DateStart < GETDATE()
+ORDER BY [CDate] desc, qwe8
+11:27:11 WRNG QString::arg: Argument missing: SELECT TOP 1 
+[AGZSName], 
+[AGZS], 
+[VCode], 
+[Link], 
+[CDate], 
+[Partner], 
+[diesel], 
+[diesel_premium], 
+[a80], 
+[a92], 
+[a92_premium], 
+[a95], 
+[a95_premium],
+[a98],
+[a98_premium], 
+[a100], 
+[a100_premium], 
+[propane], 
+[metan]
+FROM [agzs].[dbo].PR_AGZSPrice
+WHERE Link = (SELECT VCode
+             FROM [agzs].[dbo].PR_AGZSData
+             WHERE AGZS = (SELECT TOP 1 AGZS
+                           FROM [agzs].[dbo].[Identification]))
+and iPartner = qwe1
+and DateStart < GETDATE()
+ORDER BY [CDate] desc, qwe9
+11:27:11 WRNG QString::arg: Argument missing: SELECT TOP 1 
+[AGZSName], 
+[AGZS], 
+[VCode], 
+[Link], 
+[CDate], 
+[Partner], 
+[diesel], 
+[diesel_premium], 
+[a80], 
+[a92], 
+[a92_premium], 
+[a95], 
+[a95_premium],
+[a98],
+[a98_premium], 
+[a100], 
+[a100_premium], 
+[propane], 
+[metan]
+FROM [agzs].[dbo].PR_AGZSPrice
+WHERE Link = (SELECT VCode
+             FROM [agzs].[dbo].PR_AGZSData
+             WHERE AGZS = (SELECT TOP 1 AGZS
+                           FROM [agzs].[dbo].[Identification]))
+and iPartner = qwe1
+and DateStart < GETDATE()
+ORDER BY [CDate] desc, qwe10
+11:27:11 WRNG QString::arg: Argument missing: SELECT TOP 1 
+[AGZSName], 
+[AGZS], 
+[VCode], 
+[Link], 
+[CDate], 
+[Partner], 
+[diesel], 
+[diesel_premium], 
+[a80], 
+[a92], 
+[a92_premium], 
+[a95], 
+[a95_premium],
+[a98],
+[a98_premium], 
+[a100], 
+[a100_premium], 
+[propane], 
+[metan]
+FROM [agzs].[dbo].PR_AGZSPrice
+WHERE Link = (SELECT VCode
+             FROM [agzs].[dbo].PR_AGZSData
+             WHERE AGZS = (SELECT TOP 1 AGZS
+                           FROM [agzs].[dbo].[Identification]))
+and iPartner = qwe1
+and DateStart < GETDATE()
+ORDER BY [CDate] desc, qwe11
+11:27:11 WRNG QString::arg: Argument missing: SELECT TOP 1 
+[AGZSName], 
+[AGZS], 
+[VCode], 
+[Link], 
+[CDate], 
+[Partner], 
+[diesel], 
+[diesel_premium], 
+[a80], 
+[a92], 
+[a92_premium], 
+[a95], 
+[a95_premium],
+[a98],
+[a98_premium], 
+[a100], 
+[a100_premium], 
+[propane], 
+[metan]
+FROM [agzs].[dbo].PR_AGZSPrice
+WHERE Link = (SELECT VCode
+             FROM [agzs].[dbo].PR_AGZSData
+             WHERE AGZS = (SELECT TOP 1 AGZS
+                           FROM [agzs].[dbo].[Identification]))
+and iPartner = qwe1
+and DateStart < GETDATE()
+ORDER BY [CDate] desc, qwe12
+11:27:11 WRNG QString::arg: Argument missing: SELECT TOP 1 
+[AGZSName], 
+[AGZS], 
+[VCode], 
+[Link], 
+[CDate], 
+[Partner], 
+[diesel], 
+[diesel_premium], 
+[a80], 
+[a92], 
+[a92_premium], 
+[a95], 
+[a95_premium],
+[a98],
+[a98_premium], 
+[a100], 
+[a100_premium], 
+[propane], 
+[metan]
+FROM [agzs].[dbo].PR_AGZSPrice
+WHERE Link = (SELECT VCode
+             FROM [agzs].[dbo].PR_AGZSData
+             WHERE AGZS = (SELECT TOP 1 AGZS
+                           FROM [agzs].[dbo].[Identification]))
+and iPartner = qwe1
+and DateStart < GETDATE()
+ORDER BY [CDate] desc, qwe13
+11:27:11 check y = true  nAut = false  c = true
+11:27:11 POST 200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/price" "(a92=40&propane=50)"
+11:27:11 POST 200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/price" "(a92=37.21&propane=30)"
+11:27:12 POST 200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/station" "({\"Columns\":{\"1\":{\"Fuels\":[\"propane\",\"diesel\"]},\"2\":{\"Fuels\":[\"propane\",\"a92\"]}},\"StationExtendedId\":\"2\"})"
+11:27:12 POST 200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/station" "({\"Adress\":\"г. Уфа, ул. Чебоксарская, д. 12\",\"Columns\":{\"1\":{\"Fuels\":[\"propane\",\"diesel\"]},\"2\":{\"Fuels\":[\"propane\",\"a92\"]}},\"Enable\":true,\"FuelNames\":[{\"Fuel\":\"propane\",\"FuelName\":\"Пропан\"},{\"Fuel\":\"diesel\",\"FuelName\":\"Дизель\"},{\"Fuel\":\"a92\",\"FuelName\":\"А-92\"}],\"Location\":{\"Lat\":\"54.6878\",\"Lon\":\"55.8086\"},\"Name\":\"АГЗС №2\",\"StationExtendedId\":\"2\"})"
+12:40:54 STARTED
+12:40:54 currentAGZS = "deb"
+12:40:58 DB is open
+12:40:58 WRNG QString::arg: Argument missing: SELECT TOP 1 
+[AGZSName], 
+[AGZS], 
+[VCode], 
+[Link], 
+[CDate], 
+[Partner], 
+[diesel], 
+[diesel_premium], 
+[a80], 
+[a92], 
+[a92_premium], 
+[a95], 
+[a95_premium],
+[a98],
+[a98_premium], 
+[a100], 
+[a100_premium], 
+[propane], 
+[metan]
+FROM [agzs].[dbo].PR_AGZSPrice
+WHERE Link = (SELECT VCode
+             FROM [agzs].[dbo].PR_AGZSData
+             WHERE AGZS = (SELECT TOP 1 AGZS
+                           FROM [agzs].[dbo].[Identification]))
+and iPartner = qwe1
+and DateStart < GETDATE()
+ORDER BY [CDate] desc, qwe2
+12:40:58 WRNG QString::arg: Argument missing: SELECT TOP 1 
+[AGZSName], 
+[AGZS], 
+[VCode], 
+[Link], 
+[CDate], 
+[Partner], 
+[diesel], 
+[diesel_premium], 
+[a80], 
+[a92], 
+[a92_premium], 
+[a95], 
+[a95_premium],
+[a98],
+[a98_premium], 
+[a100], 
+[a100_premium], 
+[propane], 
+[metan]
+FROM [agzs].[dbo].PR_AGZSPrice
+WHERE Link = (SELECT VCode
+             FROM [agzs].[dbo].PR_AGZSData
+             WHERE AGZS = (SELECT TOP 1 AGZS
+                           FROM [agzs].[dbo].[Identification]))
+and iPartner = qwe1
+and DateStart < GETDATE()
+ORDER BY [CDate] desc, qwe3
+12:40:58 WRNG QString::arg: Argument missing: SELECT TOP 1 
+[AGZSName], 
+[AGZS], 
+[VCode], 
+[Link], 
+[CDate], 
+[Partner], 
+[diesel], 
+[diesel_premium], 
+[a80], 
+[a92], 
+[a92_premium], 
+[a95], 
+[a95_premium],
+[a98],
+[a98_premium], 
+[a100], 
+[a100_premium], 
+[propane], 
+[metan]
+FROM [agzs].[dbo].PR_AGZSPrice
+WHERE Link = (SELECT VCode
+             FROM [agzs].[dbo].PR_AGZSData
+             WHERE AGZS = (SELECT TOP 1 AGZS
+                           FROM [agzs].[dbo].[Identification]))
+and iPartner = qwe1
+and DateStart < GETDATE()
+ORDER BY [CDate] desc, qwe4
+12:40:58 WRNG QString::arg: Argument missing: SELECT TOP 1 
+[AGZSName], 
+[AGZS], 
+[VCode], 
+[Link], 
+[CDate], 
+[Partner], 
+[diesel], 
+[diesel_premium], 
+[a80], 
+[a92], 
+[a92_premium], 
+[a95], 
+[a95_premium],
+[a98],
+[a98_premium], 
+[a100], 
+[a100_premium], 
+[propane], 
+[metan]
+FROM [agzs].[dbo].PR_AGZSPrice
+WHERE Link = (SELECT VCode
+             FROM [agzs].[dbo].PR_AGZSData
+             WHERE AGZS = (SELECT TOP 1 AGZS
+                           FROM [agzs].[dbo].[Identification]))
+and iPartner = qwe1
+and DateStart < GETDATE()
+ORDER BY [CDate] desc, qwe5
+12:40:58 WRNG QString::arg: Argument missing: SELECT TOP 1 
+[AGZSName], 
+[AGZS], 
+[VCode], 
+[Link], 
+[CDate], 
+[Partner], 
+[diesel], 
+[diesel_premium], 
+[a80], 
+[a92], 
+[a92_premium], 
+[a95], 
+[a95_premium],
+[a98],
+[a98_premium], 
+[a100], 
+[a100_premium], 
+[propane], 
+[metan]
+FROM [agzs].[dbo].PR_AGZSPrice
+WHERE Link = (SELECT VCode
+             FROM [agzs].[dbo].PR_AGZSData
+             WHERE AGZS = (SELECT TOP 1 AGZS
+                           FROM [agzs].[dbo].[Identification]))
+and iPartner = qwe1
+and DateStart < GETDATE()
+ORDER BY [CDate] desc, qwe6
+12:40:58 WRNG QString::arg: Argument missing: SELECT TOP 1 
+[AGZSName], 
+[AGZS], 
+[VCode], 
+[Link], 
+[CDate], 
+[Partner], 
+[diesel], 
+[diesel_premium], 
+[a80], 
+[a92], 
+[a92_premium], 
+[a95], 
+[a95_premium],
+[a98],
+[a98_premium], 
+[a100], 
+[a100_premium], 
+[propane], 
+[metan]
+FROM [agzs].[dbo].PR_AGZSPrice
+WHERE Link = (SELECT VCode
+             FROM [agzs].[dbo].PR_AGZSData
+             WHERE AGZS = (SELECT TOP 1 AGZS
+                           FROM [agzs].[dbo].[Identification]))
+and iPartner = qwe1
+and DateStart < GETDATE()
+ORDER BY [CDate] desc, qwe7
+12:40:58 WRNG QString::arg: Argument missing: SELECT TOP 1 
+[AGZSName], 
+[AGZS], 
+[VCode], 
+[Link], 
+[CDate], 
+[Partner], 
+[diesel], 
+[diesel_premium], 
+[a80], 
+[a92], 
+[a92_premium], 
+[a95], 
+[a95_premium],
+[a98],
+[a98_premium], 
+[a100], 
+[a100_premium], 
+[propane], 
+[metan]
+FROM [agzs].[dbo].PR_AGZSPrice
+WHERE Link = (SELECT VCode
+             FROM [agzs].[dbo].PR_AGZSData
+             WHERE AGZS = (SELECT TOP 1 AGZS
+                           FROM [agzs].[dbo].[Identification]))
+and iPartner = qwe1
+and DateStart < GETDATE()
+ORDER BY [CDate] desc, qwe8
+12:40:58 WRNG QString::arg: Argument missing: SELECT TOP 1 
+[AGZSName], 
+[AGZS], 
+[VCode], 
+[Link], 
+[CDate], 
+[Partner], 
+[diesel], 
+[diesel_premium], 
+[a80], 
+[a92], 
+[a92_premium], 
+[a95], 
+[a95_premium],
+[a98],
+[a98_premium], 
+[a100], 
+[a100_premium], 
+[propane], 
+[metan]
+FROM [agzs].[dbo].PR_AGZSPrice
+WHERE Link = (SELECT VCode
+             FROM [agzs].[dbo].PR_AGZSData
+             WHERE AGZS = (SELECT TOP 1 AGZS
+                           FROM [agzs].[dbo].[Identification]))
+and iPartner = qwe1
+and DateStart < GETDATE()
+ORDER BY [CDate] desc, qwe9
+12:40:58 WRNG QString::arg: Argument missing: SELECT TOP 1 
+[AGZSName], 
+[AGZS], 
+[VCode], 
+[Link], 
+[CDate], 
+[Partner], 
+[diesel], 
+[diesel_premium], 
+[a80], 
+[a92], 
+[a92_premium], 
+[a95], 
+[a95_premium],
+[a98],
+[a98_premium], 
+[a100], 
+[a100_premium], 
+[propane], 
+[metan]
+FROM [agzs].[dbo].PR_AGZSPrice
+WHERE Link = (SELECT VCode
+             FROM [agzs].[dbo].PR_AGZSData
+             WHERE AGZS = (SELECT TOP 1 AGZS
+                           FROM [agzs].[dbo].[Identification]))
+and iPartner = qwe1
+and DateStart < GETDATE()
+ORDER BY [CDate] desc, qwe10
+12:40:58 WRNG QString::arg: Argument missing: SELECT TOP 1 
+[AGZSName], 
+[AGZS], 
+[VCode], 
+[Link], 
+[CDate], 
+[Partner], 
+[diesel], 
+[diesel_premium], 
+[a80], 
+[a92], 
+[a92_premium], 
+[a95], 
+[a95_premium],
+[a98],
+[a98_premium], 
+[a100], 
+[a100_premium], 
+[propane], 
+[metan]
+FROM [agzs].[dbo].PR_AGZSPrice
+WHERE Link = (SELECT VCode
+             FROM [agzs].[dbo].PR_AGZSData
+             WHERE AGZS = (SELECT TOP 1 AGZS
+                           FROM [agzs].[dbo].[Identification]))
+and iPartner = qwe1
+and DateStart < GETDATE()
+ORDER BY [CDate] desc, qwe11
+12:40:58 WRNG QString::arg: Argument missing: SELECT TOP 1 
+[AGZSName], 
+[AGZS], 
+[VCode], 
+[Link], 
+[CDate], 
+[Partner], 
+[diesel], 
+[diesel_premium], 
+[a80], 
+[a92], 
+[a92_premium], 
+[a95], 
+[a95_premium],
+[a98],
+[a98_premium], 
+[a100], 
+[a100_premium], 
+[propane], 
+[metan]
+FROM [agzs].[dbo].PR_AGZSPrice
+WHERE Link = (SELECT VCode
+             FROM [agzs].[dbo].PR_AGZSData
+             WHERE AGZS = (SELECT TOP 1 AGZS
+                           FROM [agzs].[dbo].[Identification]))
+and iPartner = qwe1
+and DateStart < GETDATE()
+ORDER BY [CDate] desc, qwe12
+12:40:58 WRNG QString::arg: Argument missing: SELECT TOP 1 
+[AGZSName], 
+[AGZS], 
+[VCode], 
+[Link], 
+[CDate], 
+[Partner], 
+[diesel], 
+[diesel_premium], 
+[a80], 
+[a92], 
+[a92_premium], 
+[a95], 
+[a95_premium],
+[a98],
+[a98_premium], 
+[a100], 
+[a100_premium], 
+[propane], 
+[metan]
+FROM [agzs].[dbo].PR_AGZSPrice
+WHERE Link = (SELECT VCode
+             FROM [agzs].[dbo].PR_AGZSData
+             WHERE AGZS = (SELECT TOP 1 AGZS
+                           FROM [agzs].[dbo].[Identification]))
+and iPartner = qwe1
+and DateStart < GETDATE()
+ORDER BY [CDate] desc, qwe13
+12:40:58 check y = true  nAut = false  c = true
+12:40:59 POST 200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/price" "(a92=40&propane=50)"
+12:40:59 POST 200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/price" "(a92=37.21&propane=30)"
+12:40:59 POST 200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/station" "({\"Columns\":{\"1\":{\"Fuels\":[\"propane\",\"diesel\"]},\"2\":{\"Fuels\":[\"propane\",\"a92\"]}},\"StationExtendedId\":\"2\"})"
+12:41:00 POST 200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/station" "({\"Adress\":\"г. Уфа, ул. Чебоксарская, д. 12\",\"Columns\":{\"1\":{\"Fuels\":[\"propane\",\"diesel\"]},\"2\":{\"Fuels\":[\"propane\",\"a92\"]}},\"Enable\":true,\"FuelNames\":[{\"Fuel\":\"propane\",\"FuelName\":\"Пропан\"},{\"Fuel\":\"diesel\",\"FuelName\":\"Дизель\"},{\"Fuel\":\"a92\",\"FuelName\":\"А-92\"}],\"Location\":{\"Lat\":\"54.6878\",\"Lon\":\"55.8086\"},\"Name\":\"АГЗС №2\",\"StationExtendedId\":\"2\"})"
+12:41:04 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+12:41:04 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+12:41:07 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+12:41:07 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+12:43:52 STARTED
+12:43:52 currentAGZS = "deb"
+12:43:57 DB is open
+12:43:57 WRNG QString::arg: Argument missing: SELECT TOP 1 
+[AGZSName], 
+[AGZS], 
+[VCode], 
+[Link], 
+[CDate], 
+[Partner], 
+[diesel], 
+[diesel_premium], 
+[a80], 
+[a92], 
+[a92_premium], 
+[a95], 
+[a95_premium],
+[a98],
+[a98_premium], 
+[a100], 
+[a100_premium], 
+[propane], 
+[metan]
+FROM [agzs].[dbo].PR_AGZSPrice
+WHERE Link = (SELECT VCode
+             FROM [agzs].[dbo].PR_AGZSData
+             WHERE AGZS = (SELECT TOP 1 AGZS
+                           FROM [agzs].[dbo].[Identification]))
+and iPartner = qwe1
+and DateStart < GETDATE()
+ORDER BY [CDate] desc, qwe2
+12:43:57 WRNG QString::arg: Argument missing: SELECT TOP 1 
+[AGZSName], 
+[AGZS], 
+[VCode], 
+[Link], 
+[CDate], 
+[Partner], 
+[diesel], 
+[diesel_premium], 
+[a80], 
+[a92], 
+[a92_premium], 
+[a95], 
+[a95_premium],
+[a98],
+[a98_premium], 
+[a100], 
+[a100_premium], 
+[propane], 
+[metan]
+FROM [agzs].[dbo].PR_AGZSPrice
+WHERE Link = (SELECT VCode
+             FROM [agzs].[dbo].PR_AGZSData
+             WHERE AGZS = (SELECT TOP 1 AGZS
+                           FROM [agzs].[dbo].[Identification]))
+and iPartner = qwe1
+and DateStart < GETDATE()
+ORDER BY [CDate] desc, qwe3
+12:43:57 WRNG QString::arg: Argument missing: SELECT TOP 1 
+[AGZSName], 
+[AGZS], 
+[VCode], 
+[Link], 
+[CDate], 
+[Partner], 
+[diesel], 
+[diesel_premium], 
+[a80], 
+[a92], 
+[a92_premium], 
+[a95], 
+[a95_premium],
+[a98],
+[a98_premium], 
+[a100], 
+[a100_premium], 
+[propane], 
+[metan]
+FROM [agzs].[dbo].PR_AGZSPrice
+WHERE Link = (SELECT VCode
+             FROM [agzs].[dbo].PR_AGZSData
+             WHERE AGZS = (SELECT TOP 1 AGZS
+                           FROM [agzs].[dbo].[Identification]))
+and iPartner = qwe1
+and DateStart < GETDATE()
+ORDER BY [CDate] desc, qwe4
+12:43:57 WRNG QString::arg: Argument missing: SELECT TOP 1 
+[AGZSName], 
+[AGZS], 
+[VCode], 
+[Link], 
+[CDate], 
+[Partner], 
+[diesel], 
+[diesel_premium], 
+[a80], 
+[a92], 
+[a92_premium], 
+[a95], 
+[a95_premium],
+[a98],
+[a98_premium], 
+[a100], 
+[a100_premium], 
+[propane], 
+[metan]
+FROM [agzs].[dbo].PR_AGZSPrice
+WHERE Link = (SELECT VCode
+             FROM [agzs].[dbo].PR_AGZSData
+             WHERE AGZS = (SELECT TOP 1 AGZS
+                           FROM [agzs].[dbo].[Identification]))
+and iPartner = qwe1
+and DateStart < GETDATE()
+ORDER BY [CDate] desc, qwe5
+12:43:57 WRNG QString::arg: Argument missing: SELECT TOP 1 
+[AGZSName], 
+[AGZS], 
+[VCode], 
+[Link], 
+[CDate], 
+[Partner], 
+[diesel], 
+[diesel_premium], 
+[a80], 
+[a92], 
+[a92_premium], 
+[a95], 
+[a95_premium],
+[a98],
+[a98_premium], 
+[a100], 
+[a100_premium], 
+[propane], 
+[metan]
+FROM [agzs].[dbo].PR_AGZSPrice
+WHERE Link = (SELECT VCode
+             FROM [agzs].[dbo].PR_AGZSData
+             WHERE AGZS = (SELECT TOP 1 AGZS
+                           FROM [agzs].[dbo].[Identification]))
+and iPartner = qwe1
+and DateStart < GETDATE()
+ORDER BY [CDate] desc, qwe6
+12:43:57 WRNG QString::arg: Argument missing: SELECT TOP 1 
+[AGZSName], 
+[AGZS], 
+[VCode], 
+[Link], 
+[CDate], 
+[Partner], 
+[diesel], 
+[diesel_premium], 
+[a80], 
+[a92], 
+[a92_premium], 
+[a95], 
+[a95_premium],
+[a98],
+[a98_premium], 
+[a100], 
+[a100_premium], 
+[propane], 
+[metan]
+FROM [agzs].[dbo].PR_AGZSPrice
+WHERE Link = (SELECT VCode
+             FROM [agzs].[dbo].PR_AGZSData
+             WHERE AGZS = (SELECT TOP 1 AGZS
+                           FROM [agzs].[dbo].[Identification]))
+and iPartner = qwe1
+and DateStart < GETDATE()
+ORDER BY [CDate] desc, qwe7
+12:43:57 WRNG QString::arg: Argument missing: SELECT TOP 1 
+[AGZSName], 
+[AGZS], 
+[VCode], 
+[Link], 
+[CDate], 
+[Partner], 
+[diesel], 
+[diesel_premium], 
+[a80], 
+[a92], 
+[a92_premium], 
+[a95], 
+[a95_premium],
+[a98],
+[a98_premium], 
+[a100], 
+[a100_premium], 
+[propane], 
+[metan]
+FROM [agzs].[dbo].PR_AGZSPrice
+WHERE Link = (SELECT VCode
+             FROM [agzs].[dbo].PR_AGZSData
+             WHERE AGZS = (SELECT TOP 1 AGZS
+                           FROM [agzs].[dbo].[Identification]))
+and iPartner = qwe1
+and DateStart < GETDATE()
+ORDER BY [CDate] desc, qwe8
+12:43:57 WRNG QString::arg: Argument missing: SELECT TOP 1 
+[AGZSName], 
+[AGZS], 
+[VCode], 
+[Link], 
+[CDate], 
+[Partner], 
+[diesel], 
+[diesel_premium], 
+[a80], 
+[a92], 
+[a92_premium], 
+[a95], 
+[a95_premium],
+[a98],
+[a98_premium], 
+[a100], 
+[a100_premium], 
+[propane], 
+[metan]
+FROM [agzs].[dbo].PR_AGZSPrice
+WHERE Link = (SELECT VCode
+             FROM [agzs].[dbo].PR_AGZSData
+             WHERE AGZS = (SELECT TOP 1 AGZS
+                           FROM [agzs].[dbo].[Identification]))
+and iPartner = qwe1
+and DateStart < GETDATE()
+ORDER BY [CDate] desc, qwe9
+12:43:57 WRNG QString::arg: Argument missing: SELECT TOP 1 
+[AGZSName], 
+[AGZS], 
+[VCode], 
+[Link], 
+[CDate], 
+[Partner], 
+[diesel], 
+[diesel_premium], 
+[a80], 
+[a92], 
+[a92_premium], 
+[a95], 
+[a95_premium],
+[a98],
+[a98_premium], 
+[a100], 
+[a100_premium], 
+[propane], 
+[metan]
+FROM [agzs].[dbo].PR_AGZSPrice
+WHERE Link = (SELECT VCode
+             FROM [agzs].[dbo].PR_AGZSData
+             WHERE AGZS = (SELECT TOP 1 AGZS
+                           FROM [agzs].[dbo].[Identification]))
+and iPartner = qwe1
+and DateStart < GETDATE()
+ORDER BY [CDate] desc, qwe10
+12:43:57 WRNG QString::arg: Argument missing: SELECT TOP 1 
+[AGZSName], 
+[AGZS], 
+[VCode], 
+[Link], 
+[CDate], 
+[Partner], 
+[diesel], 
+[diesel_premium], 
+[a80], 
+[a92], 
+[a92_premium], 
+[a95], 
+[a95_premium],
+[a98],
+[a98_premium], 
+[a100], 
+[a100_premium], 
+[propane], 
+[metan]
+FROM [agzs].[dbo].PR_AGZSPrice
+WHERE Link = (SELECT VCode
+             FROM [agzs].[dbo].PR_AGZSData
+             WHERE AGZS = (SELECT TOP 1 AGZS
+                           FROM [agzs].[dbo].[Identification]))
+and iPartner = qwe1
+and DateStart < GETDATE()
+ORDER BY [CDate] desc, qwe11
+12:43:57 WRNG QString::arg: Argument missing: SELECT TOP 1 
+[AGZSName], 
+[AGZS], 
+[VCode], 
+[Link], 
+[CDate], 
+[Partner], 
+[diesel], 
+[diesel_premium], 
+[a80], 
+[a92], 
+[a92_premium], 
+[a95], 
+[a95_premium],
+[a98],
+[a98_premium], 
+[a100], 
+[a100_premium], 
+[propane], 
+[metan]
+FROM [agzs].[dbo].PR_AGZSPrice
+WHERE Link = (SELECT VCode
+             FROM [agzs].[dbo].PR_AGZSData
+             WHERE AGZS = (SELECT TOP 1 AGZS
+                           FROM [agzs].[dbo].[Identification]))
+and iPartner = qwe1
+and DateStart < GETDATE()
+ORDER BY [CDate] desc, qwe12
+12:43:57 WRNG QString::arg: Argument missing: SELECT TOP 1 
+[AGZSName], 
+[AGZS], 
+[VCode], 
+[Link], 
+[CDate], 
+[Partner], 
+[diesel], 
+[diesel_premium], 
+[a80], 
+[a92], 
+[a92_premium], 
+[a95], 
+[a95_premium],
+[a98],
+[a98_premium], 
+[a100], 
+[a100_premium], 
+[propane], 
+[metan]
+FROM [agzs].[dbo].PR_AGZSPrice
+WHERE Link = (SELECT VCode
+             FROM [agzs].[dbo].PR_AGZSData
+             WHERE AGZS = (SELECT TOP 1 AGZS
+                           FROM [agzs].[dbo].[Identification]))
+and iPartner = qwe1
+and DateStart < GETDATE()
+ORDER BY [CDate] desc, qwe13
+12:43:57 check y = true  nAut = false  c = true
+12:43:57 POST 200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/price" "(a92=40&propane=50)"
+12:43:57 POST 200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/price" "(a92=37.21&propane=30)"
+12:43:57 POST 200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/station" "({\"Columns\":{\"1\":{\"Fuels\":[\"propane\",\"diesel\"]},\"2\":{\"Fuels\":[\"propane\",\"a92\"]}},\"StationExtendedId\":\"2\"})"
+12:43:58 POST 200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/station" "({\"Adress\":\"г. Уфа, ул. Чебоксарская, д. 12\",\"Columns\":{\"1\":{\"Fuels\":[\"propane\",\"diesel\"]},\"2\":{\"Fuels\":[\"propane\",\"a92\"]}},\"Enable\":true,\"FuelNames\":[{\"Fuel\":\"propane\",\"FuelName\":\"Пропан\"},{\"Fuel\":\"diesel\",\"FuelName\":\"Дизель\"},{\"Fuel\":\"a92\",\"FuelName\":\"А-92\"}],\"Location\":{\"Lat\":\"54.6878\",\"Lon\":\"55.8086\"},\"Name\":\"АГЗС №2\",\"StationExtendedId\":\"2\"})"

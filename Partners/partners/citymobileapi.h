@@ -32,8 +32,6 @@ public:
 
 signals:
     void s_finished(RequestData *request);
-    void s_gotOrders(QJsonDocument orders);
-    void s_error(QString status, QString order, int code);
 
 private slots:
     QNetworkRequest createNetworkRequest(QUrl url, QString contentType = "application/x-www-form-urlencoded", bool auth = true);

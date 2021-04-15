@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.15.0
+** Created by: Qt User Interface Compiler version 5.15.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -33,6 +33,7 @@ public:
     QHBoxLayout *horizontalLayout;
     QLabel *LabelVersion;
     QSpacerItem *horizontalSpacer_5;
+    QPushButton *ButtonAgzs;
     QPushButton *ButtonSettings;
     QLabel *labelAuthError;
     QVBoxLayout *verticalLayout;
@@ -75,6 +76,17 @@ public:
 
         horizontalLayout->addItem(horizontalSpacer_5);
 
+        ButtonAgzs = new QPushButton(centralwidget);
+        ButtonAgzs->setObjectName(QString::fromUtf8("ButtonAgzs"));
+        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(ButtonAgzs->sizePolicy().hasHeightForWidth());
+        ButtonAgzs->setSizePolicy(sizePolicy);
+        ButtonAgzs->setMaximumSize(QSize(40, 16777215));
+
+        horizontalLayout->addWidget(ButtonAgzs);
+
         ButtonSettings = new QPushButton(centralwidget);
         ButtonSettings->setObjectName(QString::fromUtf8("ButtonSettings"));
 
@@ -98,6 +110,7 @@ public:
         label = new QLabel(centralwidget);
         label->setObjectName(QString::fromUtf8("label"));
         label->setFont(font);
+        label->setTextFormat(Qt::RichText);
 
         verticalLayout->addWidget(label);
 
@@ -121,6 +134,7 @@ public:
         label_2 = new QLabel(centralwidget);
         label_2->setObjectName(QString::fromUtf8("label_2"));
         label_2->setFont(font);
+        label_2->setTextFormat(Qt::RichText);
 
         verticalLayout_2->addWidget(label_2);
 
@@ -181,11 +195,12 @@ public:
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "\320\237\320\260\321\200\321\202\320\275\321\221\321\200\321\213", nullptr));
         LabelVersion->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
+        ButtonAgzs->setText(QCoreApplication::translate("MainWindow", "\320\220\320\223\320\227\320\241", nullptr));
         ButtonSettings->setText(QString());
         labelAuthError->setText(QCoreApplication::translate("MainWindow", "\320\243\321\201\320\277\320\265\321\210\320\275\320\276 \320\260\320\262\321\202\320\276\321\200\320\270\320\267\320\276\320\262\320\260\320\275\320\276!", nullptr));
-        label->setText(QCoreApplication::translate("MainWindow", "\320\233\320\276\320\263\320\270\320\275", nullptr));
+        label->setText(QCoreApplication::translate("MainWindow", "<img height=25 style=\"vertical-align: top\" src=\"://images/login.png\"> \320\233\320\276\320\263\320\270\320\275</a>", nullptr));
         ButtonGetPassword->setText(QCoreApplication::translate("MainWindow", "\320\237\320\276\320\273\321\203\321\207\320\270\321\202\321\214 \320\277\320\260\321\200\320\276\320\273\321\214", nullptr));
-        label_2->setText(QCoreApplication::translate("MainWindow", "\320\237\320\260\321\200\320\276\320\273\321\214", nullptr));
+        label_2->setText(QCoreApplication::translate("MainWindow", "<img height=25 style=\"vertical-align: top\" src=\"://images/login password.png\"> \320\237\320\260\321\200\320\276\320\273\321\214</a>", nullptr));
         ButtonEnter->setText(QCoreApplication::translate("MainWindow", "\320\222\320\276\320\271\321\202\320\270", nullptr));
         ButtonCancelYandex->setText(QCoreApplication::translate("MainWindow", "\320\236\321\202\320\274\320\265\320\275\320\260 \320\257\320\275\320\264\320\265\320\272\321\201", nullptr));
         ButtonCancelCitymobile->setText(QCoreApplication::translate("MainWindow", "\320\236\321\202\320\274\320\265\320\275\320\260 \320\241\320\270\321\202\320\270\320\274\320\276\320\261\320\270\320\273", nullptr));

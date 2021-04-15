@@ -1,0 +1,4 @@
+SELECT TOP 1
+    [APIID]
+FROM [agzs].[dbo].[PR_APITransaction]
+WHERE APIID = '%1'

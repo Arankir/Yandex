@@ -1,0 +1,14 @@
+SELECT TOP 1
+  api.localState,
+  api.APILitre,
+  api.VCode,
+  h.VCode,
+  isnull(b.iState, -1) as iState,
+  b.DateOpen,
+  b.DateClose
+FROM [agzs].[dbo].[PR_APITransaction] api
+INNER JOIN [agzs].[dbo].[ADAST_TRKTransaction] h
+  ON api.Link = h.VCode
+LEFT JOIN [agzs].[dbo].[ADAST_TRKTransaction] b
+  ON h.AditionalTransVCode = b.VCode
+WHERE api.APIID = '%1'

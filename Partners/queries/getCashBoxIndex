@@ -1,0 +1,9 @@
+SELECT TOP 1
+    CashBoxIndex,
+    PayIndex,
+    PayWay,
+    AutoCheck
+FROM [agzs].[dbo].[ARM_CashBoxesSemaphor]
+WHERE PayIndex = %1
+    and AutoCheck = 0
+ORDER BY CDate DESC

@@ -1,0 +1,8 @@
+UPDATE [agzs].[dbo].[PR_APITransaction]
+SET localState = '%1',
+    [Price] = %2,
+    [Litre] = %3,
+    [Sum] = %4,
+    [DateOpen] = '%5',
+    DateClose = '%6'
+WHERE VCode = %7

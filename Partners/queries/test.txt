@@ -1,0 +1,28 @@
+SELECT TOP 1 
+[AGZSName], 
+[AGZS], 
+[VCode], 
+[Link], 
+[CDate], 
+[Partner], 
+[diesel], 
+[diesel_premium], 
+[a80], 
+[a92], 
+[a92_premium], 
+[a95], 
+[a95_premium],
+[a98],
+[a98_premium], 
+[a100], 
+[a100_premium], 
+[propane], 
+[metan]
+FROM [agzs].[dbo].PR_AGZSPrice
+WHERE Link = (SELECT VCode
+             FROM [agzs].[dbo].PR_AGZSData
+             WHERE AGZS = (SELECT TOP 1 AGZS
+                           FROM [agzs].[dbo].[Identification]))
+and iPartner = %1
+and DateStart < GETDATE()
+ORDER BY [CDate] desc

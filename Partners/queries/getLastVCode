@@ -1,0 +1,4 @@
+SELECT TOP 1
+    Value
+FROM [agzs].[dbo].[LxKeysOfCodes]
+WHERE [Key] = '%1'

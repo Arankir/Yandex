@@ -1,0 +1,10 @@
+10:57:28 STARTED
+10:57:28 currentAGZS = "deb"
+14:09:15 STARTED
+14:09:15 currentAGZS = "deb"
+14:09:19 DB is open
+14:09:19 check y = true  nAut = false  c = true
+14:56:52 STARTED
+14:56:52 currentAGZS = "deb"
+14:56:57 DB is open
+14:56:57 check y = true  nAut = false  c = true

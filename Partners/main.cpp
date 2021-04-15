@@ -9,6 +9,8 @@
 #include <Windows.h>
 
 QScopedPointer<QFile> logFile_;
+QScopedPointer<QFile> infoFile_;
+QScopedPointer<QFile> errorFile_;
 QSettings reestr_("RegionPostavka", "Partners");
 
 bool createDir(const QString &aPath) {
@@ -51,11 +53,34 @@ void log(QtMsgType aType, const QMessageLogContext &aContext, const QString &aMe
     out << QDateTime::currentDateTime().toString("hh:mm:ss "); //yyyy-MM-dd hh:mm:ss
 
     switch (aType) {
-    //case QtInfoMsg:     break; //out << "INFO "; break;
-    case QtDebugMsg:    return;
-    case QtWarningMsg:  out << "WRNG "; break;
-    case QtCriticalMsg: out << "CRCL "; break;
-    case QtFatalMsg:    out << "FATL "; break;
+    case QtInfoMsg: {
+        QTextStream outI(infoFile_.data());
+        outI << QDateTime::currentDateTime().toString("hh:mm:ss "); //yyyy-MM-dd hh:mm:ss
+        outI << aMessage << Qt::endl;
+        outI.flush();
+
+        break; //out << "INFO "; break;
+    }
+    case QtDebugMsg: {
+        return;
+    }
+    case QtWarningMsg: {
+        QTextStream outW(errorFile_.data());
+        outW << QDateTime::currentDateTime().toString("hh:mm:ss "); //yyyy-MM-dd hh:mm:ss
+        outW << aMessage << Qt::endl;
+        outW.flush();
+
+        out << "WRNG ";
+        break;
+    }
+    case QtCriticalMsg: {
+        out << "CRCL ";
+        break;
+    }
+    case QtFatalMsg: {
+        out << "FATL ";
+        break;
+    }
     default: ;
     }
 
@@ -77,17 +102,25 @@ void initLog() {
     dirLogs.setSorting(QDir::Name);
     QFileInfoList list = dirLogs.entryInfoList();
     for(auto &file: list) {
-        if (file.fileName().indexOf("log_") == 0) {
+        if ((file.fileName().indexOf("log_") == 0) ||
+            (file.fileName().indexOf("info_") == 0) ||
+            (file.fileName().indexOf("wrng_") == 0)) {
             QDateTime date;
-            date.fromString(file.fileName().remove("log_"), "yyyy.MM.dd");
+            date = QDateTime::fromString(file.fileName().remove("log_").remove("info_").remove("wrng_").remove(".txt"), "yyyy.MM.dd");
             if (date < QDateTime::currentDateTime().addMonths(-2)) {
-                QFile::remove(file.filePath() + "/" + file.fileName());
+                QFile::remove(file.filePath());
             }
         }
     }
 
     logFile_.reset(new QFile("logs/" + QDateTime::currentDateTime().toString("log_yyyy.MM.dd") + ".txt"));
     logFile_.data()->open(QFile::Append | QFile::Text);
+
+    infoFile_.reset(new QFile("logs/" + QDateTime::currentDateTime().toString("info_yyyy.MM.dd") + ".txt"));
+    infoFile_.data()->open(QFile::Append | QFile::Text);
+
+    errorFile_.reset(new QFile("logs/" + QDateTime::currentDateTime().toString("wrng_yyyy.MM.dd") + ".txt"));
+    errorFile_.data()->open(QFile::Append | QFile::Text);
     qInstallMessageHandler(log);
 }
 

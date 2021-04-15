@@ -1,0 +1,3 @@
+UPDATE [agzs].[dbo].[PR_APITransaction]
+    SET localState = '%1', DateClose = '%2'
+WHERE VCode = %3

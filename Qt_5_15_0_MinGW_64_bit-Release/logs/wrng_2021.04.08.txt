@@ -1,0 +1,1607 @@
+10:40:32 0 "isApiTransactionExistId" no data
+10:40:32 QSqlQuery::value: not positioned on a valid record
+10:40:32 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:40:32 "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:40:36 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:40:36 "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 1
+10:40:41 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:40:41 "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:40:45 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:40:45 "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 1
+10:40:49 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:40:49 "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:40:53 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:40:53 "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 1
+10:40:57 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:40:57 "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:41:01 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:41:01 "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 1
+10:41:05 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:41:05 "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:41:09 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:41:09 "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 1
+10:41:13 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:41:13 "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:41:18 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:41:18 "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 1
+10:41:22 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:41:22 "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:41:26 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:41:26 "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 1
+10:41:30 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:41:30 "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:41:34 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:41:34 "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 1
+10:41:38 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:41:38 "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:41:42 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:41:42 "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 1
+10:41:46 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:41:46 "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:41:50 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:41:50 "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 1
+10:41:54 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:41:54 "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:41:59 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:41:59 "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 1
+10:42:03 "bf608a1c098a40c2bb5ab5a533d765d5" AcceptOrder apiTransaction is not created
+10:42:06 0 "isApiTransactionExistId" no data
+10:42:06 QSqlQuery::value: not positioned on a valid record
+10:42:06 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:42:06 "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:42:10 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:42:10 "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 1
+10:42:14 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:42:14 "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:42:18 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:42:18 "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 1
+10:42:22 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:42:22 "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:42:26 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:42:26 "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 1
+10:42:30 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:42:30 "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:42:35 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:42:35 "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 1
+10:42:39 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:42:39 "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:42:43 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:42:43 "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 1
+10:42:47 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:42:47 "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:42:51 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:42:51 "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 1
+10:42:55 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:42:55 "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:42:59 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:42:59 "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 1
+10:43:03 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:43:03 "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:43:07 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:43:07 "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 1
+10:43:12 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:43:12 "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:43:16 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:43:16 "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 1
+10:43:20 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:43:20 "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:43:38 "SELECT TOP 1\r\n    [APIID]\r\nFROM [agzs].[dbo].[PR_APITransaction]\r\nWHERE APIID = 'bf608a1c098a40c2bb5ab5a533d765d5'\r\n" 0 "isApiTransactionExistId" no data
+10:43:38 QSqlQuery::value: not positioned on a valid record
+10:43:38 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:43:38 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:40:28.067', 0, 'bf608a1c098a40c2bb5ab5a533d765d5', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', AcceptOrder, 0, 0, 0, '20210408 10:43:38.765', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:43:42 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:43:42 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:40:28.067', 0, 'bf608a1c098a40c2bb5ab5a533d765d5', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', AcceptOrder, 0, 0, 0, '20210408 10:43:38.765', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 1
+10:43:47 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:43:47 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:40:28.067', 0, 'bf608a1c098a40c2bb5ab5a533d765d5', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', AcceptOrder, 0, 0, 0, '20210408 10:43:38.765', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:43:51 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:43:51 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:40:28.067', 0, 'bf608a1c098a40c2bb5ab5a533d765d5', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', AcceptOrder, 0, 0, 0, '20210408 10:43:38.765', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 1
+10:43:55 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:43:55 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:40:28.067', 0, 'bf608a1c098a40c2bb5ab5a533d765d5', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', AcceptOrder, 0, 0, 0, '20210408 10:43:38.765', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:43:59 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:43:59 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:40:28.067', 0, 'bf608a1c098a40c2bb5ab5a533d765d5', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', AcceptOrder, 0, 0, 0, '20210408 10:43:38.765', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 1
+10:44:03 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:44:03 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:40:28.067', 0, 'bf608a1c098a40c2bb5ab5a533d765d5', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', AcceptOrder, 0, 0, 0, '20210408 10:43:38.765', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:44:07 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:44:07 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:40:28.067', 0, 'bf608a1c098a40c2bb5ab5a533d765d5', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', AcceptOrder, 0, 0, 0, '20210408 10:43:38.765', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 1
+10:44:11 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:44:11 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:40:28.067', 0, 'bf608a1c098a40c2bb5ab5a533d765d5', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', AcceptOrder, 0, 0, 0, '20210408 10:43:38.765', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:44:15 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:44:15 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:40:28.067', 0, 'bf608a1c098a40c2bb5ab5a533d765d5', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', AcceptOrder, 0, 0, 0, '20210408 10:43:38.765', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 1
+10:44:19 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:44:19 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:40:28.067', 0, 'bf608a1c098a40c2bb5ab5a533d765d5', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', AcceptOrder, 0, 0, 0, '20210408 10:43:38.765', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:44:24 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:44:24 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:40:28.067', 0, 'bf608a1c098a40c2bb5ab5a533d765d5', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', AcceptOrder, 0, 0, 0, '20210408 10:43:38.765', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 1
+10:44:28 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:44:28 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:40:28.067', 0, 'bf608a1c098a40c2bb5ab5a533d765d5', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', AcceptOrder, 0, 0, 0, '20210408 10:43:38.765', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:44:32 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:44:32 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:40:28.067', 0, 'bf608a1c098a40c2bb5ab5a533d765d5', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', AcceptOrder, 0, 0, 0, '20210408 10:43:38.765', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 1
+10:44:36 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:44:36 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:40:28.067', 0, 'bf608a1c098a40c2bb5ab5a533d765d5', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', AcceptOrder, 0, 0, 0, '20210408 10:43:38.765', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:44:40 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:44:40 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:40:28.067', 0, 'bf608a1c098a40c2bb5ab5a533d765d5', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', AcceptOrder, 0, 0, 0, '20210408 10:43:38.765', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 1
+10:44:44 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:44:44 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:40:28.067', 0, 'bf608a1c098a40c2bb5ab5a533d765d5', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', AcceptOrder, 0, 0, 0, '20210408 10:43:38.765', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:44:48 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:44:48 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:40:28.067', 0, 'bf608a1c098a40c2bb5ab5a533d765d5', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', AcceptOrder, 0, 0, 0, '20210408 10:43:38.765', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 1
+10:44:52 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:44:52 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:40:28.067', 0, 'bf608a1c098a40c2bb5ab5a533d765d5', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', AcceptOrder, 0, 0, 0, '20210408 10:43:38.765', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:44:56 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:44:56 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:40:28.067', 0, 'bf608a1c098a40c2bb5ab5a533d765d5', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', AcceptOrder, 0, 0, 0, '20210408 10:43:38.765', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 1
+10:45:00 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:45:00 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:40:28.067', 0, 'bf608a1c098a40c2bb5ab5a533d765d5', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', AcceptOrder, 0, 0, 0, '20210408 10:43:38.765', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:45:05 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:45:05 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:40:28.067', 0, 'bf608a1c098a40c2bb5ab5a533d765d5', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', AcceptOrder, 0, 0, 0, '20210408 10:43:38.765', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 1
+10:45:09 "bf608a1c098a40c2bb5ab5a533d765d5" AcceptOrder apiTransaction is not created
+10:45:12 "SELECT TOP 1\r\n    [APIID]\r\nFROM [agzs].[dbo].[PR_APITransaction]\r\nWHERE APIID = 'bf608a1c098a40c2bb5ab5a533d765d5'\r\n" 0 "isApiTransactionExistId" no data
+10:45:12 QSqlQuery::value: not positioned on a valid record
+10:45:12 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:45:12 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:40:28.067', 0, 'bf608a1c098a40c2bb5ab5a533d765d5', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', AcceptOrder, 0, 0, 0, '20210408 10:45:12.316', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:45:16 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:45:16 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:40:28.067', 0, 'bf608a1c098a40c2bb5ab5a533d765d5', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', AcceptOrder, 0, 0, 0, '20210408 10:45:12.316', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 1
+10:45:20 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:45:20 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:40:28.067', 0, 'bf608a1c098a40c2bb5ab5a533d765d5', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', AcceptOrder, 0, 0, 0, '20210408 10:45:12.316', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Недопустимое имя столбца \"AcceptOrder\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:45:32 "SELECT TOP 1\r\n    [APIID]\r\nFROM [agzs].[dbo].[PR_APITransaction]\r\nWHERE APIID = 'bf608a1c098a40c2bb5ab5a533d765d5'\r\n" 0 "isApiTransactionExistId" no data
+10:45:32 QSqlQuery::value: not positioned on a valid record
+10:45:32 QSqlQuery::value: not positioned on a valid record
+10:45:36 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Неправильный синтаксис около конструкции \"c1968f8ff202c97802\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:45:36 "UPDATE [agzs].[dbo].[ADAST_TRKTransaction]\r\n    SET Closed = 1\r\nWHERE VCode in (SELECT\r\n                    Link\r\n                FROM [agzs].[dbo].[PR_APITransaction]\r\n                WHERE ApiId = 50157889192643c1968f8ff202c97802)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Неправильный синтаксис около конструкции \"c1968f8ff202c97802\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "setTransactionClosed" no update 0
+10:45:40 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Неправильный синтаксис около конструкции \"c1968f8ff202c97802\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:45:40 "UPDATE [agzs].[dbo].[ADAST_TRKTransaction]\r\n    SET Closed = 1\r\nWHERE VCode in (SELECT\r\n                    Link\r\n                FROM [agzs].[dbo].[PR_APITransaction]\r\n                WHERE ApiId = 50157889192643c1968f8ff202c97802)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Неправильный синтаксис около конструкции \"c1968f8ff202c97802\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "setTransactionClosed" no update 1
+10:45:44 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Неправильный синтаксис около конструкции \"d9b0b05\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:45:44 "UPDATE [agzs].[dbo].[ADAST_TRKTransaction]\r\n    SET Closed = 1\r\nWHERE VCode in (SELECT\r\n                    Link\r\n                FROM [agzs].[dbo].[PR_APITransaction]\r\n                WHERE ApiId = 6d9b0b05-e918-4b5c-b12c-330ed2c9b696)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Неправильный синтаксис около конструкции \"d9b0b05\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "setTransactionClosed" no update 0
+10:45:48 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Неправильный синтаксис около конструкции \"d9b0b05\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:45:48 "UPDATE [agzs].[dbo].[ADAST_TRKTransaction]\r\n    SET Closed = 1\r\nWHERE VCode in (SELECT\r\n                    Link\r\n                FROM [agzs].[dbo].[PR_APITransaction]\r\n                WHERE ApiId = 6d9b0b05-e918-4b5c-b12c-330ed2c9b696)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Неправильный синтаксис около конструкции \"d9b0b05\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "setTransactionClosed" no update 1
+10:45:53 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Неправильный синтаксис около конструкции \"c08\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:45:53 "UPDATE [agzs].[dbo].[ADAST_TRKTransaction]\r\n    SET Closed = 1\r\nWHERE VCode in (SELECT\r\n                    Link\r\n                FROM [agzs].[dbo].[PR_APITransaction]\r\n                WHERE ApiId = 96953c08-3d81-441f-b655-be0547fba4e9)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Неправильный синтаксис около конструкции \"c08\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "setTransactionClosed" no update 0
+10:45:57 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Неправильный синтаксис около конструкции \"c08\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:45:57 "UPDATE [agzs].[dbo].[ADAST_TRKTransaction]\r\n    SET Closed = 1\r\nWHERE VCode in (SELECT\r\n                    Link\r\n                FROM [agzs].[dbo].[PR_APITransaction]\r\n                WHERE ApiId = 96953c08-3d81-441f-b655-be0547fba4e9)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Неправильный синтаксис около конструкции \"c08\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "setTransactionClosed" no update 1
+10:46:01 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Неправильный синтаксис около конструкции \"f309c7a\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:46:01 "UPDATE [agzs].[dbo].[ADAST_TRKTransaction]\r\n    SET Closed = 1\r\nWHERE VCode in (SELECT\r\n                    Link\r\n                FROM [agzs].[dbo].[PR_APITransaction]\r\n                WHERE ApiId = 6f309c7a-b0d6-4a90-ac48-6ea9b0bab13e)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Неправильный синтаксис около конструкции \"f309c7a\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "setTransactionClosed" no update 0
+10:46:05 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Неправильный синтаксис около конструкции \"f309c7a\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:46:05 "UPDATE [agzs].[dbo].[ADAST_TRKTransaction]\r\n    SET Closed = 1\r\nWHERE VCode in (SELECT\r\n                    Link\r\n                FROM [agzs].[dbo].[PR_APITransaction]\r\n                WHERE ApiId = 6f309c7a-b0d6-4a90-ac48-6ea9b0bab13e)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Неправильный синтаксис около конструкции \"f309c7a\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "setTransactionClosed" no update 1
+10:46:09 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Неправильный синтаксис около конструкции \"f54\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций."
+10:46:09 "UPDATE [agzs].[dbo].[ADAST_TRKTransaction]\r\n    SET Closed = 1\r\nWHERE VCode in (SELECT\r\n                    Link\r\n                FROM [agzs].[dbo].[PR_APITransaction]\r\n                WHERE ApiId = fe17e4b4-5f54-4e77-b564-a75e0648ee17)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Неправильный синтаксис около конструкции \"f54\". [Microsoft][ODBC SQL Server Driver][SQL Server]Не удалось выполнить подготовку инструкций. QODBC3: Unable to execute statement" 2 "setTransactionClosed" no update 0
+10:46:24 "SELECT TOP 1\r\n    [AmountDB],\r\n    [PriceDB],\r\n    [VolumeDB],\r\n    [DateOpen],\r\n    [DateClose]\r\nFROM [agzs].[dbo].[ARM_PayOperation] p\r\nINNER JOIN agzs.dbo.ADAST_TRKTransaction t\r\n    on (p.Link = t.VCode)\r\nWHERE t.VCode = 0\r\n" 0 "getPayOperationData" no data
+10:46:27 "SELECT TOP 1\r\n    [AmountDB],\r\n    [PriceDB],\r\n    [VolumeDB],\r\n    [DateOpen],\r\n    [DateClose]\r\nFROM [agzs].[dbo].[ARM_PayOperation] p\r\nINNER JOIN agzs.dbo.ADAST_TRKTransaction t\r\n    on (p.Link = t.VCode)\r\nWHERE t.VCode = 0\r\n" 0 "getPayOperationData" no data
+10:46:30 "SELECT TOP 1\r\n    [AmountDB],\r\n    [PriceDB],\r\n    [VolumeDB],\r\n    [DateOpen],\r\n    [DateClose]\r\nFROM [agzs].[dbo].[ARM_PayOperation] p\r\nINNER JOIN agzs.dbo.ADAST_TRKTransaction t\r\n    on (p.Link = t.VCode)\r\nWHERE t.VCode = 0\r\n" 0 "getPayOperationData" no data
+10:46:33 "SELECT TOP 1\r\n    [AmountDB],\r\n    [PriceDB],\r\n    [VolumeDB],\r\n    [DateOpen],\r\n    [DateClose]\r\nFROM [agzs].[dbo].[ARM_PayOperation] p\r\nINNER JOIN agzs.dbo.ADAST_TRKTransaction t\r\n    on (p.Link = t.VCode)\r\nWHERE t.VCode = 0\r\n" 0 "getPayOperationData" no data
+10:46:37 "SELECT TOP 1\r\n    [AmountDB],\r\n    [PriceDB],\r\n    [VolumeDB],\r\n    [DateOpen],\r\n    [DateClose]\r\nFROM [agzs].[dbo].[ARM_PayOperation] p\r\nINNER JOIN agzs.dbo.ADAST_TRKTransaction t\r\n    on (p.Link = t.VCode)\r\nWHERE t.VCode = 0\r\n" 0 "getPayOperationData" no data
+10:46:40 "SELECT TOP 1\r\n    [AmountDB],\r\n    [PriceDB],\r\n    [VolumeDB],\r\n    [DateOpen],\r\n    [DateClose]\r\nFROM [agzs].[dbo].[ARM_PayOperation] p\r\nINNER JOIN agzs.dbo.ADAST_TRKTransaction t\r\n    on (p.Link = t.VCode)\r\nWHERE t.VCode = 0\r\n" 0 "getPayOperationData" no data
+10:46:43 "SELECT TOP 1\r\n    [AmountDB],\r\n    [PriceDB],\r\n    [VolumeDB],\r\n    [DateOpen],\r\n    [DateClose]\r\nFROM [agzs].[dbo].[ARM_PayOperation] p\r\nINNER JOIN agzs.dbo.ADAST_TRKTransaction t\r\n    on (p.Link = t.VCode)\r\nWHERE t.VCode = 0\r\n" 0 "getPayOperationData" no data
+10:46:46 "SELECT TOP 1\r\n    [AmountDB],\r\n    [PriceDB],\r\n    [VolumeDB],\r\n    [DateOpen],\r\n    [DateClose]\r\nFROM [agzs].[dbo].[ARM_PayOperation] p\r\nINNER JOIN agzs.dbo.ADAST_TRKTransaction t\r\n    on (p.Link = t.VCode)\r\nWHERE t.VCode = 0\r\n" 0 "getPayOperationData" no data
+10:46:50 "SELECT TOP 1\r\n    [AmountDB],\r\n    [PriceDB],\r\n    [VolumeDB],\r\n    [DateOpen],\r\n    [DateClose]\r\nFROM [agzs].[dbo].[ARM_PayOperation] p\r\nINNER JOIN agzs.dbo.ADAST_TRKTransaction t\r\n    on (p.Link = t.VCode)\r\nWHERE t.VCode = 0\r\n" 0 "getPayOperationData" no data
+10:46:53 "SELECT TOP 1\r\n    [AmountDB],\r\n    [PriceDB],\r\n    [VolumeDB],\r\n    [DateOpen],\r\n    [DateClose]\r\nFROM [agzs].[dbo].[ARM_PayOperation] p\r\nINNER JOIN agzs.dbo.ADAST_TRKTransaction t\r\n    on (p.Link = t.VCode)\r\nWHERE t.VCode = 0\r\n" 0 "getPayOperationData" no data
+10:46:56 "SELECT TOP 1\r\n    [AmountDB],\r\n    [PriceDB],\r\n    [VolumeDB],\r\n    [DateOpen],\r\n    [DateClose]\r\nFROM [agzs].[dbo].[ARM_PayOperation] p\r\nINNER JOIN agzs.dbo.ADAST_TRKTransaction t\r\n    on (p.Link = t.VCode)\r\nWHERE t.VCode = 0\r\n" 0 "getPayOperationData" no data
+10:46:59 "SELECT TOP 1\r\n    [AmountDB],\r\n    [PriceDB],\r\n    [VolumeDB],\r\n    [DateOpen],\r\n    [DateClose]\r\nFROM [agzs].[dbo].[ARM_PayOperation] p\r\nINNER JOIN agzs.dbo.ADAST_TRKTransaction t\r\n    on (p.Link = t.VCode)\r\nWHERE t.VCode = 0\r\n" 0 "getPayOperationData" no data
+10:47:03 "SELECT TOP 1\r\n    [AmountDB],\r\n    [PriceDB],\r\n    [VolumeDB],\r\n    [DateOpen],\r\n    [DateClose]\r\nFROM [agzs].[dbo].[ARM_PayOperation] p\r\nINNER JOIN agzs.dbo.ADAST_TRKTransaction t\r\n    on (p.Link = t.VCode)\r\nWHERE t.VCode = 0\r\n" 0 "getPayOperationData" no data
+10:47:06 "SELECT TOP 1\r\n    [AmountDB],\r\n    [PriceDB],\r\n    [VolumeDB],\r\n    [DateOpen],\r\n    [DateClose]\r\nFROM [agzs].[dbo].[ARM_PayOperation] p\r\nINNER JOIN agzs.dbo.ADAST_TRKTransaction t\r\n    on (p.Link = t.VCode)\r\nWHERE t.VCode = 0\r\n" 0 "getPayOperationData" no data
+10:47:09 "SELECT TOP 1\r\n    [AmountDB],\r\n    [PriceDB],\r\n    [VolumeDB],\r\n    [DateOpen],\r\n    [DateClose]\r\nFROM [agzs].[dbo].[ARM_PayOperation] p\r\nINNER JOIN agzs.dbo.ADAST_TRKTransaction t\r\n    on (p.Link = t.VCode)\r\nWHERE t.VCode = 0\r\n" 0 "getPayOperationData" no data
+10:47:12 "SELECT TOP 1\r\n    [AmountDB],\r\n    [PriceDB],\r\n    [VolumeDB],\r\n    [DateOpen],\r\n    [DateClose]\r\nFROM [agzs].[dbo].[ARM_PayOperation] p\r\nINNER JOIN agzs.dbo.ADAST_TRKTransaction t\r\n    on (p.Link = t.VCode)\r\nWHERE t.VCode = 0\r\n" 0 "getPayOperationData" no data
+10:47:15 "SELECT TOP 1\r\n    [AmountDB],\r\n    [PriceDB],\r\n    [VolumeDB],\r\n    [DateOpen],\r\n    [DateClose]\r\nFROM [agzs].[dbo].[ARM_PayOperation] p\r\nINNER JOIN agzs.dbo.ADAST_TRKTransaction t\r\n    on (p.Link = t.VCode)\r\nWHERE t.VCode = 0\r\n" 0 "getPayOperationData" no data
+10:47:19 "SELECT TOP 1\r\n    [AmountDB],\r\n    [PriceDB],\r\n    [VolumeDB],\r\n    [DateOpen],\r\n    [DateClose]\r\nFROM [agzs].[dbo].[ARM_PayOperation] p\r\nINNER JOIN agzs.dbo.ADAST_TRKTransaction t\r\n    on (p.Link = t.VCode)\r\nWHERE t.VCode = 0\r\n" 0 "getPayOperationData" no data
+10:47:22 "SELECT TOP 1\r\n    [AmountDB],\r\n    [PriceDB],\r\n    [VolumeDB],\r\n    [DateOpen],\r\n    [DateClose]\r\nFROM [agzs].[dbo].[ARM_PayOperation] p\r\nINNER JOIN agzs.dbo.ADAST_TRKTransaction t\r\n    on (p.Link = t.VCode)\r\nWHERE t.VCode = 0\r\n" 0 "getPayOperationData" no data
+10:47:25 "SELECT TOP 1\r\n    [AmountDB],\r\n    [PriceDB],\r\n    [VolumeDB],\r\n    [DateOpen],\r\n    [DateClose]\r\nFROM [agzs].[dbo].[ARM_PayOperation] p\r\nINNER JOIN agzs.dbo.ADAST_TRKTransaction t\r\n    on (p.Link = t.VCode)\r\nWHERE t.VCode = 0\r\n" 0 "getPayOperationData" no data
+10:47:28 "SELECT TOP 1\r\n    [AmountDB],\r\n    [PriceDB],\r\n    [VolumeDB],\r\n    [DateOpen],\r\n    [DateClose]\r\nFROM [agzs].[dbo].[ARM_PayOperation] p\r\nINNER JOIN agzs.dbo.ADAST_TRKTransaction t\r\n    on (p.Link = t.VCode)\r\nWHERE t.VCode = 0\r\n" 0 "getPayOperationData" no data
+10:47:32 "SELECT TOP 1\r\n    [AmountDB],\r\n    [PriceDB],\r\n    [VolumeDB],\r\n    [DateOpen],\r\n    [DateClose]\r\nFROM [agzs].[dbo].[ARM_PayOperation] p\r\nINNER JOIN agzs.dbo.ADAST_TRKTransaction t\r\n    on (p.Link = t.VCode)\r\nWHERE t.VCode = 0\r\n" 0 "getPayOperationData" no data
+10:47:35 "SELECT TOP 1\r\n    [AmountDB],\r\n    [PriceDB],\r\n    [VolumeDB],\r\n    [DateOpen],\r\n    [DateClose]\r\nFROM [agzs].[dbo].[ARM_PayOperation] p\r\nINNER JOIN agzs.dbo.ADAST_TRKTransaction t\r\n    on (p.Link = t.VCode)\r\nWHERE t.VCode = 0\r\n" 0 "getPayOperationData" no data
+10:47:38 "SELECT TOP 1\r\n    [AmountDB],\r\n    [PriceDB],\r\n    [VolumeDB],\r\n    [DateOpen],\r\n    [DateClose]\r\nFROM [agzs].[dbo].[ARM_PayOperation] p\r\nINNER JOIN agzs.dbo.ADAST_TRKTransaction t\r\n    on (p.Link = t.VCode)\r\nWHERE t.VCode = 0\r\n" 0 "getPayOperationData" no data
+10:47:41 "SELECT TOP 1\r\n    [AmountDB],\r\n    [PriceDB],\r\n    [VolumeDB],\r\n    [DateOpen],\r\n    [DateClose]\r\nFROM [agzs].[dbo].[ARM_PayOperation] p\r\nINNER JOIN agzs.dbo.ADAST_TRKTransaction t\r\n    on (p.Link = t.VCode)\r\nWHERE t.VCode = 0\r\n" 0 "getPayOperationData" no data
+10:47:45 "SELECT TOP 1\r\n    [AmountDB],\r\n    [PriceDB],\r\n    [VolumeDB],\r\n    [DateOpen],\r\n    [DateClose]\r\nFROM [agzs].[dbo].[ARM_PayOperation] p\r\nINNER JOIN agzs.dbo.ADAST_TRKTransaction t\r\n    on (p.Link = t.VCode)\r\nWHERE t.VCode = 0\r\n" 0 "getPayOperationData" no data
+10:48:07 "SELECT TOP 1\r\n    [APIID]\r\nFROM [agzs].[dbo].[PR_APITransaction]\r\nWHERE APIID = '4f650ad2e22649c18daab65b2537304a'\r\n" 0 "isApiTransactionExistId" no data
+10:48:07 QSqlQuery::value: not positioned on a valid record
+10:48:07 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано."
+10:48:07 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:48:03.070', 0, '4f650ad2e22649c18daab65b2537304a', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', 'AcceptOrder', 0, 0, 0, '20210408 10:48:06.998', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:48:11 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано."
+10:48:11 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:48:03.070', 0, '4f650ad2e22649c18daab65b2537304a', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', 'AcceptOrder', 0, 0, 0, '20210408 10:48:06.998', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 1
+10:48:15 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано."
+10:48:15 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:48:03.070', 0, '4f650ad2e22649c18daab65b2537304a', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', 'AcceptOrder', 0, 0, 0, '20210408 10:48:06.998', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:48:19 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано."
+10:48:19 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:48:03.070', 0, '4f650ad2e22649c18daab65b2537304a', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', 'AcceptOrder', 0, 0, 0, '20210408 10:48:06.998', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 1
+10:48:23 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано."
+10:48:23 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:48:03.070', 0, '4f650ad2e22649c18daab65b2537304a', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', 'AcceptOrder', 0, 0, 0, '20210408 10:48:06.998', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:48:27 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано."
+10:48:27 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:48:03.070', 0, '4f650ad2e22649c18daab65b2537304a', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', 'AcceptOrder', 0, 0, 0, '20210408 10:48:06.998', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 1
+10:48:31 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано."
+10:48:31 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:48:03.070', 0, '4f650ad2e22649c18daab65b2537304a', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', 'AcceptOrder', 0, 0, 0, '20210408 10:48:06.998', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:48:35 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано."
+10:48:35 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:48:03.070', 0, '4f650ad2e22649c18daab65b2537304a', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', 'AcceptOrder', 0, 0, 0, '20210408 10:48:06.998', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 1
+10:48:39 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано."
+10:48:39 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:48:03.070', 0, '4f650ad2e22649c18daab65b2537304a', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', 'AcceptOrder', 0, 0, 0, '20210408 10:48:06.998', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:48:43 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано."
+10:48:43 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:48:03.070', 0, '4f650ad2e22649c18daab65b2537304a', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', 'AcceptOrder', 0, 0, 0, '20210408 10:48:06.998', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 1
+10:48:47 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано."
+10:48:47 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:48:03.070', 0, '4f650ad2e22649c18daab65b2537304a', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', 'AcceptOrder', 0, 0, 0, '20210408 10:48:06.998', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:48:52 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано."
+10:48:52 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:48:03.070', 0, '4f650ad2e22649c18daab65b2537304a', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', 'AcceptOrder', 0, 0, 0, '20210408 10:48:06.998', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 1
+10:48:56 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано."
+10:48:56 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:48:03.070', 0, '4f650ad2e22649c18daab65b2537304a', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', 'AcceptOrder', 0, 0, 0, '20210408 10:48:06.998', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:49:00 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано."
+10:49:00 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:48:03.070', 0, '4f650ad2e22649c18daab65b2537304a', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', 'AcceptOrder', 0, 0, 0, '20210408 10:48:06.998', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 1
+10:49:04 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано."
+10:49:04 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:48:03.070', 0, '4f650ad2e22649c18daab65b2537304a', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', 'AcceptOrder', 0, 0, 0, '20210408 10:48:06.998', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:49:08 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано."
+10:49:08 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:48:03.070', 0, '4f650ad2e22649c18daab65b2537304a', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', 'AcceptOrder', 0, 0, 0, '20210408 10:48:06.998', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 1
+10:49:12 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано."
+10:49:12 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:48:03.070', 0, '4f650ad2e22649c18daab65b2537304a', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', 'AcceptOrder', 0, 0, 0, '20210408 10:48:06.998', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:49:16 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано."
+10:49:16 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:48:03.070', 0, '4f650ad2e22649c18daab65b2537304a', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', 'AcceptOrder', 0, 0, 0, '20210408 10:48:06.998', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 1
+10:49:20 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано."
+10:49:20 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:48:03.070', 0, '4f650ad2e22649c18daab65b2537304a', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', 'AcceptOrder', 0, 0, 0, '20210408 10:48:06.998', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:49:24 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано."
+10:49:24 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:48:03.070', 0, '4f650ad2e22649c18daab65b2537304a', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', 'AcceptOrder', 0, 0, 0, '20210408 10:48:06.998', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 1
+10:49:38 "SELECT TOP 1\r\n    [APIID]\r\nFROM [agzs].[dbo].[PR_APITransaction]\r\nWHERE APIID = '4f650ad2e22649c18daab65b2537304a'\r\n" 0 "isApiTransactionExistId" no data
+10:49:38 QSqlQuery::value: not positioned on a valid record
+10:49:38 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано."
+10:49:38 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:48:03.070', 0, '4f650ad2e22649c18daab65b2537304a', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', 'AcceptOrder', 0, 0, 0, '20210408 10:49:38.221', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:49:42 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано."
+10:49:42 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:48:03.070', 0, '4f650ad2e22649c18daab65b2537304a', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', 'AcceptOrder', 0, 0, 0, '20210408 10:49:38.221', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 1
+10:49:46 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано."
+10:49:46 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:48:03.070', 0, '4f650ad2e22649c18daab65b2537304a', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', 'AcceptOrder', 0, 0, 0, '20210408 10:49:38.221', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:49:50 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано."
+10:49:50 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:48:03.070', 0, '4f650ad2e22649c18daab65b2537304a', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', 'AcceptOrder', 0, 0, 0, '20210408 10:49:38.221', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 1
+10:49:54 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано."
+10:49:54 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:48:03.070', 0, '4f650ad2e22649c18daab65b2537304a', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', 'AcceptOrder', 0, 0, 0, '20210408 10:49:38.221', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:49:58 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано."
+10:49:58 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:48:03.070', 0, '4f650ad2e22649c18daab65b2537304a', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', 'AcceptOrder', 0, 0, 0, '20210408 10:49:38.221', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 1
+10:50:02 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано."
+10:50:02 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:48:03.070', 0, '4f650ad2e22649c18daab65b2537304a', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', 'AcceptOrder', 0, 0, 0, '20210408 10:49:38.221', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:50:07 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано."
+10:50:07 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:48:03.070', 0, '4f650ad2e22649c18daab65b2537304a', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', 'AcceptOrder', 0, 0, 0, '20210408 10:49:38.221', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 1
+10:50:11 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано."
+10:50:11 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:48:03.070', 0, '4f650ad2e22649c18daab65b2537304a', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', 'AcceptOrder', 0, 0, 0, '20210408 10:49:38.221', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:50:15 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано."
+10:50:15 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:48:03.070', 0, '4f650ad2e22649c18daab65b2537304a', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', 'AcceptOrder', 0, 0, 0, '20210408 10:49:38.221', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 1
+10:50:19 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано."
+10:50:19 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:48:03.070', 0, '4f650ad2e22649c18daab65b2537304a', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', 'AcceptOrder', 0, 0, 0, '20210408 10:49:38.221', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:50:23 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано."
+10:50:23 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:48:03.070', 0, '4f650ad2e22649c18daab65b2537304a', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', 'AcceptOrder', 0, 0, 0, '20210408 10:49:38.221', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 1
+10:50:27 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано."
+10:50:27 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:48:03.070', 0, '4f650ad2e22649c18daab65b2537304a', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', 'AcceptOrder', 0, 0, 0, '20210408 10:49:38.221', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:50:31 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано."
+10:50:31 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:48:03.070', 0, '4f650ad2e22649c18daab65b2537304a', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', 'AcceptOrder', 0, 0, 0, '20210408 10:49:38.221', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 1
+10:50:35 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано."
+10:50:35 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:48:03.070', 0, '4f650ad2e22649c18daab65b2537304a', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', 'AcceptOrder', 0, 0, 0, '20210408 10:49:38.221', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:50:39 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано."
+10:50:39 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:48:03.070', 0, '4f650ad2e22649c18daab65b2537304a', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', 'AcceptOrder', 0, 0, 0, '20210408 10:49:38.221', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 1
+10:50:43 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано."
+10:50:43 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:48:03.070', 0, '4f650ad2e22649c18daab65b2537304a', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', 'AcceptOrder', 0, 0, 0, '20210408 10:49:38.221', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:50:48 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано."
+10:50:48 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:48:03.070', 0, '4f650ad2e22649c18daab65b2537304a', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', 'AcceptOrder', 0, 0, 0, '20210408 10:49:38.221', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 1
+10:50:52 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано."
+10:50:52 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:48:03.070', 0, '4f650ad2e22649c18daab65b2537304a', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', 'AcceptOrder', 0, 0, 0, '20210408 10:49:38.221', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:50:56 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано."
+10:50:56 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:48:03.070', 0, '4f650ad2e22649c18daab65b2537304a', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', 'AcceptOrder', 0, 0, 0, '20210408 10:49:38.221', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 1
+10:51:00 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано."
+10:51:00 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:48:03.070', 0, '4f650ad2e22649c18daab65b2537304a', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', 'AcceptOrder', 0, 0, 0, '20210408 10:49:38.221', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:51:04 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано."
+10:51:04 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:48:03.070', 0, '4f650ad2e22649c18daab65b2537304a', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', 'AcceptOrder', 0, 0, 0, '20210408 10:49:38.221', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 1
+10:51:08 "4f650ad2e22649c18daab65b2537304a" AcceptOrder apiTransaction is not created
+10:51:11 "SELECT TOP 1\r\n    [APIID]\r\nFROM [agzs].[dbo].[PR_APITransaction]\r\nWHERE APIID = '4f650ad2e22649c18daab65b2537304a'\r\n" 0 "isApiTransactionExistId" no data
+10:51:11 QSqlQuery::value: not positioned on a valid record
+10:51:11 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано."
+10:51:11 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:48:03.070', 0, '4f650ad2e22649c18daab65b2537304a', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', 'AcceptOrder', 0, 0, 0, '20210408 10:51:11.777', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:51:15 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано."
+10:51:15 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:48:03.070', 0, '4f650ad2e22649c18daab65b2537304a', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', 'AcceptOrder', 0, 0, 0, '20210408 10:51:11.777', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 1
+10:51:19 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано."
+10:51:19 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:48:03.070', 0, '4f650ad2e22649c18daab65b2537304a', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', 'AcceptOrder', 0, 0, 0, '20210408 10:51:11.777', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 0
+10:51:24 QODBCResult::exec: Unable to execute statement: "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано."
+10:51:24 "INSERT INTO [agzs].[dbo].[PR_APITransaction]\r\n    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],\r\n    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])\r\nVALUES ('АГЗС №2', 2, '20210408 07:48:03.070', 0, '4f650ad2e22649c18daab65b2537304a', '', 1, 'propane', 14, 21, 4, '99', 'AcceptOrder', 'Individual', 'Yandex', 'AcceptOrder', 0, 0, 0, '20210408 10:51:11.777', DEFAULT, -1)\r\n" "[Microsoft][ODBC SQL Server Driver][SQL Server]Нарушение \"PK_PR_APITransaction\" ограничения PRIMARY KEY. Не удается вставить повторяющийся ключ в объект \"dbo.PR_APITransaction\". Повторяющееся значение ключа: (0). [Microsoft][ODBC SQL Server Driver][SQL Server]Выполнение данной инструкции было прервано. QODBC3: Unable to execute statement" 2 "createApiTransaction" no insert 1
+10:51:48 "SELECT TOP 1\r\n    [APIID]\r\nFROM [agzs].[dbo].[PR_APITransaction]\r\nWHERE APIID = '4f650ad2e22649c18daab65b2537304a'\r\n" 0 "isApiTransactionExistId" no data
+10:51:55 "SELECT TOP 1\r\n    [AmountDB],\r\n    [PriceDB],\r\n    [VolumeDB],\r\n    [DateOpen],\r\n    [DateClose]\r\nFROM [agzs].[dbo].[ARM_PayOperation] p\r\nINNER JOIN agzs.dbo.ADAST_TRKTransaction t\r\n    on (p.Link = t.VCode)\r\nWHERE t.VCode = 62102\r\n" 0 "getPayOperationData" no data
+10:51:58 "SELECT TOP 1\r\n    [AmountDB],\r\n    [PriceDB],\r\n    [VolumeDB],\r\n    [DateOpen],\r\n    [DateClose]\r\nFROM [agzs].[dbo].[ARM_PayOperation] p\r\nINNER JOIN agzs.dbo.ADAST_TRKTransaction t\r\n    on (p.Link = t.VCode)\r\nWHERE t.VCode = 62102\r\n" 0 "getPayOperationData" no data
+10:52:01 "SELECT TOP 1\r\n    [AmountDB],\r\n    [PriceDB],\r\n    [VolumeDB],\r\n    [DateOpen],\r\n    [DateClose]\r\nFROM [agzs].[dbo].[ARM_PayOperation] p\r\nINNER JOIN agzs.dbo.ADAST_TRKTransaction t\r\n    on (p.Link = t.VCode)\r\nWHERE t.VCode = 62102\r\n" 0 "getPayOperationData" no data
+10:52:04 "SELECT TOP 1\r\n    [AmountDB],\r\n    [PriceDB],\r\n    [VolumeDB],\r\n    [DateOpen],\r\n    [DateClose]\r\nFROM [agzs].[dbo].[ARM_PayOperation] p\r\nINNER JOIN agzs.dbo.ADAST_TRKTransaction t\r\n    on (p.Link = t.VCode)\r\nWHERE t.VCode = 62102\r\n" 0 "getPayOperationData" no data
+10:52:08 "SELECT TOP 1\r\n    [AmountDB],\r\n    [PriceDB],\r\n    [VolumeDB],\r\n    [DateOpen],\r\n    [DateClose]\r\nFROM [agzs].[dbo].[ARM_PayOperation] p\r\nINNER JOIN agzs.dbo.ADAST_TRKTransaction t\r\n    on (p.Link = t.VCode)\r\nWHERE t.VCode = 62102\r\n" 0 "getPayOperationData" no data
+10:52:11 "SELECT TOP 1\r\n    [AmountDB],\r\n    [PriceDB],\r\n    [VolumeDB],\r\n    [DateOpen],\r\n    [DateClose]\r\nFROM [agzs].[dbo].[ARM_PayOperation] p\r\nINNER JOIN agzs.dbo.ADAST_TRKTransaction t\r\n    on (p.Link = t.VCode)\r\nWHERE t.VCode = 62102\r\n" 0 "getPayOperationData" no data
+10:52:14 "SELECT TOP 1\r\n    [AmountDB],\r\n    [PriceDB],\r\n    [VolumeDB],\r\n    [DateOpen],\r\n    [DateClose]\r\nFROM [agzs].[dbo].[ARM_PayOperation] p\r\nINNER JOIN agzs.dbo.ADAST_TRKTransaction t\r\n    on (p.Link = t.VCode)\r\nWHERE t.VCode = 62102\r\n" 0 "getPayOperationData" no data
+10:52:18 "SELECT TOP 1\r\n    [AmountDB],\r\n    [PriceDB],\r\n    [VolumeDB],\r\n    [DateOpen],\r\n    [DateClose]\r\nFROM [agzs].[dbo].[ARM_PayOperation] p\r\nINNER JOIN agzs.dbo.ADAST_TRKTransaction t\r\n    on (p.Link = t.VCode)\r\nWHERE t.VCode = 62102\r\n" 0 "getPayOperationData" no data
+10:52:21 "SELECT TOP 1\r\n    [AmountDB],\r\n    [PriceDB],\r\n    [VolumeDB],\r\n    [DateOpen],\r\n    [DateClose]\r\nFROM [agzs].[dbo].[ARM_PayOperation] p\r\nINNER JOIN agzs.dbo.ADAST_TRKTransaction t\r\n    on (p.Link = t.VCode)\r\nWHERE t.VCode = 62102\r\n" 0 "getPayOperationData" no data
+10:52:24 "SELECT TOP 1\r\n    [AmountDB],\r\n    [PriceDB],\r\n    [VolumeDB],\r\n    [DateOpen],\r\n    [DateClose]\r\nFROM [agzs].[dbo].[ARM_PayOperation] p\r\nINNER JOIN agzs.dbo.ADAST_TRKTransaction t\r\n    on (p.Link = t.VCode)\r\nWHERE t.VCode = 62102\r\n" 0 "getPayOperationData" no data
+10:52:27 "SELECT TOP 1\r\n    [AmountDB],\r\n    [PriceDB],\r\n    [VolumeDB],\r\n    [DateOpen],\r\n    [DateClose]\r\nFROM [agzs].[dbo].[ARM_PayOperation] p\r\nINNER JOIN agzs.dbo.ADAST_TRKTransaction t\r\n    on (p.Link = t.VCode)\r\nWHERE t.VCode = 62102\r\n" 0 "getPayOperationData" no data
+10:52:31 "SELECT TOP 1\r\n    [AmountDB],\r\n    [PriceDB],\r\n    [VolumeDB],\r\n    [DateOpen],\r\n    [DateClose]\r\nFROM [agzs].[dbo].[ARM_PayOperation] p\r\nINNER JOIN agzs.dbo.ADAST_TRKTransaction t\r\n    on (p.Link = t.VCode)\r\nWHERE t.VCode = 62102\r\n" 0 "getPayOperationData" no data
+10:52:34 "SELECT TOP 1\r\n    [AmountDB],\r\n    [PriceDB],\r\n    [VolumeDB],\r\n    [DateOpen],\r\n    [DateClose]\r\nFROM [agzs].[dbo].[ARM_PayOperation] p\r\nINNER JOIN agzs.dbo.ADAST_TRKTransaction t\r\n    on (p.Link = t.VCode)\r\nWHERE t.VCode = 62102\r\n" 0 "getPayOperationData" no data
+10:52:37 "SELECT TOP 1\r\n    [AmountDB],\r\n    [PriceDB],\r\n    [VolumeDB],\r\n    [DateOpen],\r\n    [DateClose]\r\nFROM [agzs].[dbo].[ARM_PayOperation] p\r\nINNER JOIN agzs.dbo.ADAST_TRKTransaction t\r\n    on (p.Link = t.VCode)\r\nWHERE t.VCode = 62102\r\n" 0 "getPayOperationData" no data
+10:52:40 "SELECT TOP 1\r\n    [AmountDB],\r\n    [PriceDB],\r\n    [VolumeDB],\r\n    [DateOpen],\r\n    [DateClose]\r\nFROM [agzs].[dbo].[ARM_PayOperation] p\r\nINNER JOIN agzs.dbo.ADAST_TRKTransaction t\r\n    on (p.Link = t.VCode)\r\nWHERE t.VCode = 62102\r\n" 0 "getPayOperationData" no data
+10:52:44 "SELECT TOP 1\r\n    [AmountDB],\r\n    [PriceDB],\r\n    [VolumeDB],\r\n    [DateOpen],\r\n    [DateClose]\r\nFROM [agzs].[dbo].[ARM_PayOperation] p\r\nINNER JOIN agzs.dbo.ADAST_TRKTransaction t\r\n    on (p.Link = t.VCode)\r\nWHERE t.VCode = 62102\r\n" 0 "getPayOperationData" no data
+10:52:47 "SELECT TOP 1\r\n    [AmountDB],\r\n    [PriceDB],\r\n    [VolumeDB],\r\n    [DateOpen],\r\n    [DateClose]\r\nFROM [agzs].[dbo].[ARM_PayOperation] p\r\nINNER JOIN agzs.dbo.ADAST_TRKTransaction t\r\n    on (p.Link = t.VCode)\r\nWHERE t.VCode = 62102\r\n" 0 "getPayOperationData" no data
+10:52:50 "SELECT TOP 1\r\n    [AmountDB],\r\n    [PriceDB],\r\n    [VolumeDB],\r\n    [DateOpen],\r\n    [DateClose]\r\nFROM [agzs].[dbo].[ARM_PayOperation] p\r\nINNER JOIN agzs.dbo.ADAST_TRKTransaction t\r\n    on (p.Link = t.VCode)\r\nWHERE t.VCode = 62102\r\n" 0 "getPayOperationData" no data
+10:52:54 "SELECT TOP 1\r\n    [AmountDB],\r\n    [PriceDB],\r\n    [VolumeDB],\r\n    [DateOpen],\r\n    [DateClose]\r\nFROM [agzs].[dbo].[ARM_PayOperation] p\r\nINNER JOIN agzs.dbo.ADAST_TRKTransaction t\r\n    on (p.Link = t.VCode)\r\nWHERE t.VCode = 62102\r\n" 0 "getPayOperationData" no data
+10:52:57 "SELECT TOP 1\r\n    [AmountDB],\r\n    [PriceDB],\r\n    [VolumeDB],\r\n    [DateOpen],\r\n    [DateClose]\r\nFROM [agzs].[dbo].[ARM_PayOperation] p\r\nINNER JOIN agzs.dbo.ADAST_TRKTransaction t\r\n    on (p.Link = t.VCode)\r\nWHERE t.VCode = 62102\r\n" 0 "getPayOperationData" no data
+10:53:00 "SELECT TOP 1\r\n    [AmountDB],\r\n    [PriceDB],\r\n    [VolumeDB],\r\n    [DateOpen],\r\n    [DateClose]\r\nFROM [agzs].[dbo].[ARM_PayOperation] p\r\nINNER JOIN agzs.dbo.ADAST_TRKTransaction t\r\n    on (p.Link = t.VCode)\r\nWHERE t.VCode = 62102\r\n" 0 "getPayOperationData" no data
+10:53:03 "SELECT TOP 1\r\n    [AmountDB],\r\n    [PriceDB],\r\n    [VolumeDB],\r\n    [DateOpen],\r\n    [DateClose]\r\nFROM [agzs].[dbo].[ARM_PayOperation] p\r\nINNER JOIN agzs.dbo.ADAST_TRKTransaction t\r\n    on (p.Link = t.VCode)\r\nWHERE t.VCode = 62102\r\n" 0 "getPayOperationData" no data
+10:53:07 "SELECT TOP 1\r\n    [AmountDB],\r\n    [PriceDB],\r\n    [VolumeDB],\r\n    [DateOpen],\r\n    [DateClose]\r\nFROM [agzs].[dbo].[ARM_PayOperation] p\r\nINNER JOIN agzs.dbo.ADAST_TRKTransaction t\r\n    on (p.Link = t.VCode)\r\nWHERE t.VCode = 62102\r\n" 0 "getPayOperationData" no data
+10:53:10 "SELECT TOP 1\r\n    [AmountDB],\r\n    [PriceDB],\r\n    [VolumeDB],\r\n    [DateOpen],\r\n    [DateClose]\r\nFROM [agzs].[dbo].[ARM_PayOperation] p\r\nINNER JOIN agzs.dbo.ADAST_TRKTransaction t\r\n    on (p.Link = t.VCode)\r\nWHERE t.VCode = 62102\r\n" 0 "getPayOperationData" no data
+10:53:13 "SELECT TOP 1\r\n    [AmountDB],\r\n    [PriceDB],\r\n    [VolumeDB],\r\n    [DateOpen],\r\n    [DateClose]\r\nFROM [agzs].[dbo].[ARM_PayOperation] p\r\nINNER JOIN agzs.dbo.ADAST_TRKTransaction t\r\n    on (p.Link = t.VCode)\r\nWHERE t.VCode = 62102\r\n" 0 "getPayOperationData" no data
+16:16:49 "isApiTransactionExistId" "" no data
+16:16:56 "getPayOperationData" "" no data
+16:16:59 "getPayOperationData" "" no data
+16:17:03 "getPayOperationData" "" no data
+16:17:06 "getPayOperationData" "" no data
+16:17:09 "getPayOperationData" "" no data
+16:17:13 "getPayOperationData" "" no data
+16:17:16 "getPayOperationData" "" no data
+16:17:19 "getPayOperationData" "" no data
+16:17:23 "getPayOperationData" "" no data
+16:17:26 "getPayOperationData" "" no data
+16:17:29 "getPayOperationData" "" no data
+16:17:33 "getPayOperationData" "" no data
+16:17:36 "getPayOperationData" "" no data
+16:17:39 "getPayOperationData" "" no data
+16:17:43 "getPayOperationData" "" no data
+16:17:46 "getPayOperationData" "" no data
+16:17:49 "getPayOperationData" "" no data
+16:17:53 "getPayOperationData" "" no data
+16:17:56 "getPayOperationData" "" no data
+16:17:59 "getPayOperationData" "" no data
+16:18:02 "getPayOperationData" "" no data
+16:18:06 "getPayOperationData" "" no data
+16:18:09 "getPayOperationData" "" no data
+16:18:12 "getPayOperationData" "" no data
+16:18:16 "getPayOperationData" "" no data
+16:18:19 "getPayOperationData" "" no data
+16:18:22 "getPayOperationData" "" no data
+16:18:26 "getPayOperationData" "" no data
+16:18:29 "getPayOperationData" "" no data
+16:24:38 "isApiTransactionExistId" "" no data
+16:24:45 "getPayOperationData" "" no data
+16:24:48 "getPayOperationData" "" no data
+16:24:51 "getPayOperationData" "" no data
+16:24:54 "getPayOperationData" "" no data
+16:24:57 "getPayOperationData" "" no data
+16:25:01 "getPayOperationData" "" no data
+16:25:04 "getPayOperationData" "" no data
+16:25:07 "getPayOperationData" "" no data
+16:25:10 "getPayOperationData" "" no data
+16:25:14 "getPayOperationData" "" no data
+16:25:17 "getPayOperationData" "" no data
+16:25:20 "getPayOperationData" "" no data
+16:25:23 "getPayOperationData" "" no data
+16:25:26 "getPayOperationData" "" no data
+16:25:30 "getPayOperationData" "" no data
+16:25:33 "getPayOperationData" "" no data
+16:25:36 "getPayOperationData" "" no data
+16:25:39 "getPayOperationData" "" no data
+16:25:43 "getPayOperationData" "" no data
+16:25:46 "getPayOperationData" "" no data
+16:25:49 "getPayOperationData" "" no data
+16:25:52 "getPayOperationData" "" no data
+16:25:56 "getPayOperationData" "" no data
+16:25:59 "getPayOperationData" "" no data
+16:26:02 "getPayOperationData" "" no data
+16:26:05 "getPayOperationData" "" no data
+16:26:08 "getPayOperationData" "" no data
+16:26:12 "getPayOperationData" "" no data
+16:26:15 "getPayOperationData" "" no data
+16:26:36 "getPayOperationData" no data
+16:26:39 "getPayOperationData" no data
+16:26:42 "getPayOperationData" no data
+16:26:46 "getPayOperationData" no data
+16:26:49 "getPayOperationData" no data
+16:26:52 "getPayOperationData" no data
+16:26:56 "getPayOperationData" no data
+16:26:59 "getPayOperationData" no data
+16:27:02 "getPayOperationData" no data
+16:27:05 "getPayOperationData" no data
+16:27:09 "getPayOperationData" no data
+16:27:12 "getPayOperationData" no data
+16:27:15 "getPayOperationData" no data
+16:27:18 "getPayOperationData" no data
+16:27:22 "getPayOperationData" no data
+16:27:25 "getPayOperationData" no data
+16:27:28 "getPayOperationData" no data
+16:27:31 "getPayOperationData" no data
+16:27:34 "getPayOperationData" no data
+16:27:38 "getPayOperationData" no data
+16:27:41 "getPayOperationData" no data
+16:27:44 "getPayOperationData" no data
+16:27:47 "getPayOperationData" no data
+16:27:51 "getPayOperationData" no data
+16:27:54 "getPayOperationData" no data
+16:27:57 "getPayOperationData" no data
+16:28:00 "getPayOperationData" no data
+16:28:04 "getPayOperationData" no data
+16:28:07 "getPayOperationData" no data
+16:28:10 "getPayOperationData" no data
+16:28:13 "getPayOperationData" no data
+16:28:17 "getPayOperationData" no data
+16:28:20 "getPayOperationData" no data
+16:28:23 "getPayOperationData" no data
+16:28:26 "getPayOperationData" no data
+16:28:29 "getPayOperationData" no data
+16:28:33 "getPayOperationData" no data
+16:28:36 "getPayOperationData" no data
+16:28:39 "getPayOperationData" no data
+16:28:42 "getPayOperationData" no data
+16:28:46 "getPayOperationData" no data
+16:28:49 "getPayOperationData" no data
+16:28:52 "getPayOperationData" no data
+16:28:55 "getPayOperationData" no data
+16:28:59 "getPayOperationData" no data
+16:29:02 "getPayOperationData" no data
+16:29:05 "getPayOperationData" no data
+16:29:08 "getPayOperationData" no data
+16:29:12 "getPayOperationData" no data
+16:29:15 "getPayOperationData" no data
+16:29:18 "getPayOperationData" no data
+16:29:21 "getPayOperationData" no data
+16:29:25 "getPayOperationData" no data
+16:29:28 "getPayOperationData" no data
+16:29:31 "getPayOperationData" no data
+16:29:34 "getPayOperationData" no data
+16:29:38 "getPayOperationData" no data
+16:29:41 "getPayOperationData" no data
+16:29:44 "getPayOperationData" no data
+16:29:47 "getPayOperationData" no data
+16:29:50 "getPayOperationData" no data
+16:29:54 "getPayOperationData" no data
+16:29:57 "getPayOperationData" no data
+16:30:00 "getPayOperationData" no data
+16:30:04 "getPayOperationData" no data
+16:30:07 "getPayOperationData" no data
+16:30:10 "getPayOperationData" no data
+16:30:13 "getPayOperationData" no data
+16:30:17 "getPayOperationData" no data
+16:30:20 "getPayOperationData" no data
+16:30:23 "getPayOperationData" no data
+16:30:26 "getPayOperationData" no data
+16:30:29 "getPayOperationData" no data
+16:30:33 "getPayOperationData" no data
+16:30:36 "getPayOperationData" no data
+16:30:39 "getPayOperationData" no data
+16:30:42 "getPayOperationData" no data
+16:30:46 "getPayOperationData" no data
+16:30:49 "getPayOperationData" no data
+16:30:52 "getPayOperationData" no data
+16:30:55 "getPayOperationData" no data
+16:30:59 "getPayOperationData" no data
+16:31:02 "getPayOperationData" no data
+16:31:05 "getApiTransaction" no data
+16:31:05 "getTransaction" no data
+16:31:05 "getPayOperationData" no data
+16:31:08 "getApiTransaction" no data
+16:31:08 "getTransaction" no data
+16:31:08 "getPayOperationData" no data
+16:31:11 "getApiTransaction" no data
+16:31:11 "getTransaction" no data
+16:31:12 "getPayOperationData" no data
+16:31:15 "getApiTransaction" no data
+16:31:15 "getTransaction" no data
+16:31:15 "getPayOperationData" no data
+16:31:18 "getApiTransaction" no data
+16:31:18 "getTransaction" no data
+16:31:18 "getPayOperationData" no data
+16:31:21 "getApiTransaction" no data
+16:31:21 "getTransaction" no data
+16:31:21 "getPayOperationData" no data
+16:31:24 "getApiTransaction" no data
+16:31:24 "getTransaction" no data
+16:31:25 "getPayOperationData" no data
+16:31:28 "getApiTransaction" no data
+16:31:28 "getTransaction" no data
+16:31:28 "getPayOperationData" no data
+16:31:31 "getApiTransaction" no data
+16:31:31 "getTransaction" no data
+16:31:31 "getPayOperationData" no data
+16:31:36 "getApiTransaction" no data
+16:31:36 "getTransaction" no data
+16:31:37 "getPayOperationData" no data
+16:31:40 "getApiTransaction" no data
+16:31:40 "getTransaction" no data
+16:31:40 "getPayOperationData" no data
+16:31:43 "getApiTransaction" no data
+16:31:43 "getTransaction" no data
+16:31:43 "getPayOperationData" no data
+16:31:46 "getApiTransaction" no data
+16:31:46 "getTransaction" no data
+16:31:46 "getPayOperationData" no data
+16:31:49 "getApiTransaction" no data
+16:31:49 "getTransaction" no data
+16:31:49 "getPayOperationData" no data
+16:31:53 "getApiTransaction" no data
+16:31:53 "getTransaction" no data
+16:31:53 "getPayOperationData" no data
+16:31:56 "getApiTransaction" no data
+16:31:56 "getTransaction" no data
+16:31:56 "getPayOperationData" no data
+16:31:59 "getApiTransaction" no data
+16:31:59 "getTransaction" no data
+16:31:59 "getPayOperationData" no data
+16:32:02 "getApiTransaction" no data
+16:32:02 "getTransaction" no data
+16:32:02 "getPayOperationData" no data
+16:32:05 "getApiTransaction" no data
+16:32:05 "getTransaction" no data
+16:32:06 "getPayOperationData" no data
+16:32:09 "getApiTransaction" no data
+16:32:09 "getTransaction" no data
+16:32:09 "getPayOperationData" no data
+16:32:12 "getApiTransaction" no data
+16:32:12 "getTransaction" no data
+16:32:12 "getPayOperationData" no data
+16:32:15 "getApiTransaction" no data
+16:32:15 "getTransaction" no data
+16:32:15 "getPayOperationData" no data
+16:32:18 "getApiTransaction" no data
+16:32:18 "getTransaction" no data
+16:32:19 "getPayOperationData" no data
+16:32:22 "getApiTransaction" no data
+16:32:22 "getTransaction" no data
+16:32:22 "getPayOperationData" no data
+16:32:25 "getApiTransaction" no data
+16:32:25 "getTransaction" no data
+16:32:25 "getPayOperationData" no data
+16:32:28 "getApiTransaction" no data
+16:32:28 "getTransaction" no data
+16:32:28 "getPayOperationData" no data
+16:32:31 "getApiTransaction" no data
+16:32:31 "getTransaction" no data
+16:32:32 "getPayOperationData" no data
+16:32:35 "getApiTransaction" no data
+16:32:35 "getTransaction" no data
+16:32:35 "getPayOperationData" no data
+16:32:38 "getApiTransaction" no data
+16:32:38 "getTransaction" no data
+16:32:38 "getPayOperationData" no data
+16:32:41 "getApiTransaction" no data
+16:32:41 "getTransaction" no data
+16:32:41 "getPayOperationData" no data
+16:32:44 "getApiTransaction" no data
+16:32:44 "getTransaction" no data
+16:32:44 "getPayOperationData" no data
+16:32:48 "getApiTransaction" no data
+16:32:48 "getTransaction" no data
+16:32:48 "getPayOperationData" no data
+16:32:51 "getApiTransaction" no data
+16:32:51 "getTransaction" no data
+16:32:51 "getPayOperationData" no data
+16:32:54 "getApiTransaction" no data
+16:32:54 "getTransaction" no data
+16:32:54 "getPayOperationData" no data
+16:32:57 "getApiTransaction" no data
+16:32:57 "getTransaction" no data
+16:32:57 "getPayOperationData" no data
+16:33:01 "getApiTransaction" no data
+16:33:01 "getTransaction" no data
+16:33:01 "getPayOperationData" no data
+16:33:04 "getApiTransaction" no data
+16:33:04 "getTransaction" no data
+16:33:04 "getPayOperationData" no data
+16:33:07 "getApiTransaction" no data
+16:33:07 "getTransaction" no data
+16:33:07 "getPayOperationData" no data
+16:33:10 "getApiTransaction" no data
+16:33:10 "getTransaction" no data
+16:33:10 "getPayOperationData" no data
+16:33:13 "getApiTransaction" no data
+16:33:13 "getTransaction" no data
+16:33:14 "getPayOperationData" no data
+16:33:17 "getApiTransaction" no data
+16:33:17 "getTransaction" no data
+16:33:17 "getPayOperationData" no data
+16:33:20 "getApiTransaction" no data
+16:33:20 "getTransaction" no data
+16:33:20 "getPayOperationData" no data
+16:33:23 "getApiTransaction" no data
+16:33:23 "getTransaction" no data
+16:33:23 "getPayOperationData" no data
+16:33:26 "getApiTransaction" no data
+16:33:26 "getTransaction" no data
+16:33:27 "getPayOperationData" no data
+16:33:30 "getApiTransaction" no data
+16:33:30 "getTransaction" no data
+16:33:30 "getPayOperationData" no data
+16:33:33 "getApiTransaction" no data
+16:33:33 "getTransaction" no data
+16:33:33 "getPayOperationData" no data
+16:33:36 "getApiTransaction" no data
+16:33:36 "getTransaction" no data
+16:33:36 "getPayOperationData" no data
+16:33:39 "getApiTransaction" no data
+16:33:39 "getTransaction" no data
+16:33:39 "getPayOperationData" no data
+16:33:43 "getApiTransaction" no data
+16:33:43 "getTransaction" no data
+16:33:43 "getPayOperationData" no data
+16:33:46 "getApiTransaction" no data
+16:33:46 "getTransaction" no data
+16:33:46 "getPayOperationData" no data
+16:33:49 "getApiTransaction" no data
+16:33:49 "getTransaction" no data
+16:33:49 "getPayOperationData" no data
+16:33:52 "getApiTransaction" no data
+16:33:52 "getTransaction" no data
+16:33:52 "getPayOperationData" no data
+16:33:56 "getApiTransaction" no data
+16:33:56 "getTransaction" no data
+16:33:56 "getPayOperationData" no data
+16:33:59 "getApiTransaction" no data
+16:33:59 "getTransaction" no data
+16:33:59 "getPayOperationData" no data
+16:34:02 "getApiTransaction" no data
+16:34:02 "getTransaction" no data
+16:34:02 "getPayOperationData" no data
+16:34:05 "getApiTransaction" no data
+16:34:05 "getTransaction" no data
+16:34:05 "getPayOperationData" no data
+16:34:08 "getApiTransaction" no data
+16:34:08 "getTransaction" no data
+16:34:09 "getPayOperationData" no data
+16:34:12 "getApiTransaction" no data
+16:34:12 "getTransaction" no data
+16:34:12 "getPayOperationData" no data
+16:34:15 "getApiTransaction" no data
+16:34:15 "getTransaction" no data
+16:34:15 "getPayOperationData" no data
+16:34:18 "getApiTransaction" no data
+16:34:18 "getTransaction" no data
+16:34:18 "getPayOperationData" no data
+16:34:21 "getApiTransaction" no data
+16:34:21 "getTransaction" no data
+16:34:22 "getPayOperationData" no data
+16:34:25 "getApiTransaction" no data
+16:34:25 "getTransaction" no data
+16:34:25 "getPayOperationData" no data
+16:34:28 "getApiTransaction" no data
+16:34:28 "getTransaction" no data
+16:34:28 "getPayOperationData" no data
+16:34:31 "getApiTransaction" no data
+16:34:31 "getTransaction" no data
+16:34:31 "getPayOperationData" no data
+16:34:34 "getApiTransaction" no data
+16:34:34 "getTransaction" no data
+16:34:34 "getPayOperationData" no data
+16:34:38 "getApiTransaction" no data
+16:34:38 "getTransaction" no data
+16:34:38 "getPayOperationData" no data
+16:34:41 "getApiTransaction" no data
+16:34:41 "getTransaction" no data
+16:34:41 "getPayOperationData" no data
+16:34:44 "getApiTransaction" no data
+16:34:44 "getTransaction" no data
+16:34:44 "getPayOperationData" no data
+16:34:47 "getApiTransaction" no data
+16:34:47 "getTransaction" no data
+16:34:47 "getPayOperationData" no data
+16:34:51 "getApiTransaction" no data
+16:34:51 "getTransaction" no data
+16:34:51 "getPayOperationData" no data
+16:34:54 "getApiTransaction" no data
+16:34:54 "getTransaction" no data
+16:34:54 "getPayOperationData" no data
+16:34:57 "getApiTransaction" no data
+16:34:57 "getTransaction" no data
+16:34:57 "getPayOperationData" no data
+16:35:00 "getApiTransaction" no data
+16:35:00 "getTransaction" no data
+16:35:00 "getPayOperationData" no data
+16:35:03 "getApiTransaction" no data
+16:35:03 "getTransaction" no data
+16:35:04 "getPayOperationData" no data
+16:35:07 "getApiTransaction" no data
+16:35:07 "getTransaction" no data
+16:35:07 "getPayOperationData" no data
+16:35:10 "getApiTransaction" no data
+16:35:10 "getTransaction" no data
+16:35:10 "getPayOperationData" no data
+16:35:13 "getApiTransaction" no data
+16:35:13 "getTransaction" no data
+16:35:13 "getPayOperationData" no data
+16:35:16 "getApiTransaction" no data
+16:35:16 "getTransaction" no data
+16:35:17 "getPayOperationData" no data
+16:35:20 "getApiTransaction" no data
+16:35:20 "getTransaction" no data
+16:35:20 "getPayOperationData" no data
+16:35:23 "getApiTransaction" no data
+16:35:23 "getTransaction" no data
+16:35:23 "getPayOperationData" no data
+16:35:26 "getApiTransaction" no data
+16:35:26 "getTransaction" no data
+16:35:26 "getPayOperationData" no data
+16:35:29 "getApiTransaction" no data
+16:35:29 "getTransaction" no data
+16:35:29 "getPayOperationData" no data
+16:35:33 "getApiTransaction" no data
+16:35:33 "getTransaction" no data
+16:35:33 "getPayOperationData" no data
+16:35:36 "getApiTransaction" no data
+16:35:36 "getTransaction" no data
+16:35:36 "getPayOperationData" no data
+16:35:39 "getApiTransaction" no data
+16:35:39 "getTransaction" no data
+16:35:39 "getPayOperationData" no data
+16:35:42 "getApiTransaction" no data
+16:35:42 "getTransaction" no data
+16:35:42 "getPayOperationData" no data
+16:35:46 "getApiTransaction" no data
+16:35:46 "getTransaction" no data
+16:35:46 "getPayOperationData" no data
+16:35:49 "getApiTransaction" no data
+16:35:49 "getTransaction" no data
+16:35:49 "getPayOperationData" no data
+16:35:52 "getApiTransaction" no data
+16:35:52 "getTransaction" no data
+16:35:52 "getPayOperationData" no data
+16:35:55 "getApiTransaction" no data
+16:35:55 "getTransaction" no data
+16:35:55 "getPayOperationData" no data
+16:35:59 "getApiTransaction" no data
+16:35:59 "getTransaction" no data
+16:35:59 "getPayOperationData" no data
+16:36:02 "getApiTransaction" no data
+16:36:02 "getTransaction" no data
+16:36:02 "getPayOperationData" no data
+16:36:05 "getApiTransaction" no data
+16:36:05 "getTransaction" no data
+16:36:05 "getPayOperationData" no data
+16:36:08 "getApiTransaction" no data
+16:36:08 "getTransaction" no data
+16:36:08 "getPayOperationData" no data
+16:36:11 "getApiTransaction" no data
+16:36:11 "getTransaction" no data
+16:36:12 "getPayOperationData" no data
+16:36:15 "getApiTransaction" no data
+16:36:15 "getTransaction" no data
+16:36:15 "getPayOperationData" no data
+16:36:18 "getApiTransaction" no data
+16:36:18 "getTransaction" no data
+16:36:18 "getPayOperationData" no data
+16:36:21 "getApiTransaction" no data
+16:36:21 "getTransaction" no data
+16:36:21 "getPayOperationData" no data
+16:36:24 "getApiTransaction" no data
+16:36:24 "getTransaction" no data
+16:36:25 "getPayOperationData" no data
+16:36:28 "getApiTransaction" no data
+16:36:28 "getTransaction" no data
+16:36:28 "getPayOperationData" no data
+16:36:31 "getApiTransaction" no data
+16:36:31 "getTransaction" no data
+16:36:31 "getPayOperationData" no data
+16:36:36 "getApiTransaction" no data
+16:36:36 "getTransaction" no data
+16:36:36 "getPayOperationData" no data
+16:36:40 "getApiTransaction" no data
+16:36:40 "getTransaction" no data
+16:36:40 "getPayOperationData" no data
+16:36:43 "getApiTransaction" no data
+16:36:43 "getTransaction" no data
+16:36:43 "getPayOperationData" no data
+16:36:46 "getApiTransaction" no data
+16:36:46 "getTransaction" no data
+16:36:46 "getPayOperationData" no data
+16:36:49 "getApiTransaction" no data
+16:36:49 "getTransaction" no data
+16:36:49 "getPayOperationData" no data
+16:36:53 "getApiTransaction" no data
+16:36:53 "getTransaction" no data
+16:36:53 "getPayOperationData" no data
+16:36:56 "getApiTransaction" no data
+16:36:56 "getTransaction" no data
+16:36:56 "getPayOperationData" no data
+16:36:59 "getApiTransaction" no data
+16:36:59 "getTransaction" no data
+16:36:59 "getPayOperationData" no data
+16:37:02 "getApiTransaction" no data
+16:37:02 "getTransaction" no data
+16:37:02 "getPayOperationData" no data
+16:37:06 "getApiTransaction" no data
+16:37:06 "getTransaction" no data
+16:37:06 "getPayOperationData" no data
+16:37:09 "getApiTransaction" no data
+16:37:09 "getTransaction" no data
+16:37:09 "getPayOperationData" no data
+16:37:12 "getApiTransaction" no data
+16:37:12 "getTransaction" no data
+16:37:12 "getPayOperationData" no data
+16:37:15 "getApiTransaction" no data
+16:37:15 "getTransaction" no data
+16:37:15 "getPayOperationData" no data
+16:37:19 "getApiTransaction" no data
+16:37:19 "getTransaction" no data
+16:37:19 "getPayOperationData" no data
+16:37:22 "getApiTransaction" no data
+16:37:22 "getTransaction" no data
+16:37:22 "getPayOperationData" no data
+16:37:25 "getApiTransaction" no data
+16:37:25 "getTransaction" no data
+16:37:25 "getPayOperationData" no data
+16:37:28 "getApiTransaction" no data
+16:37:28 "getTransaction" no data
+16:37:28 "getPayOperationData" no data
+16:37:31 "getApiTransaction" no data
+16:37:31 "getTransaction" no data
+16:37:32 "getPayOperationData" no data
+16:37:35 "getApiTransaction" no data
+16:37:35 "getTransaction" no data
+16:37:35 "getPayOperationData" no data
+16:37:38 "getApiTransaction" no data
+16:37:38 "getTransaction" no data
+16:37:38 "getPayOperationData" no data
+16:37:41 "getApiTransaction" no data
+16:37:41 "getTransaction" no data
+16:37:41 "getPayOperationData" no data
+16:37:44 "getApiTransaction" no data
+16:37:44 "getTransaction" no data
+16:37:45 "getPayOperationData" no data
+16:37:48 "getApiTransaction" no data
+16:37:48 "getTransaction" no data
+16:37:48 "getPayOperationData" no data
+16:37:51 "getApiTransaction" no data
+16:37:51 "getTransaction" no data
+16:37:51 "getPayOperationData" no data
+16:37:54 "getApiTransaction" no data
+16:37:54 "getTransaction" no data
+16:37:54 "getPayOperationData" no data
+16:37:57 "getApiTransaction" no data
+16:37:57 "getTransaction" no data
+16:37:57 "getPayOperationData" no data
+16:38:01 "getApiTransaction" no data
+16:38:01 "getTransaction" no data
+16:38:01 "getPayOperationData" no data
+16:38:04 "getApiTransaction" no data
+16:38:04 "getTransaction" no data
+16:38:04 "getPayOperationData" no data
+16:38:07 "getApiTransaction" no data
+16:38:07 "getTransaction" no data
+16:38:07 "getPayOperationData" no data
+16:38:10 "getApiTransaction" no data
+16:38:10 "getTransaction" no data
+16:38:10 "getPayOperationData" no data
+16:38:14 "getApiTransaction" no data
+16:38:14 "getTransaction" no data
+16:38:14 "getPayOperationData" no data
+16:38:17 "getApiTransaction" no data
+16:38:17 "getTransaction" no data
+16:38:17 "getPayOperationData" no data
+16:38:20 "getApiTransaction" no data
+16:38:20 "getTransaction" no data
+16:38:20 "getPayOperationData" no data
+16:38:23 "getApiTransaction" no data
+16:38:23 "getTransaction" no data
+16:38:23 "getPayOperationData" no data
+16:38:26 "getApiTransaction" no data
+16:38:26 "getTransaction" no data
+16:38:27 "getPayOperationData" no data
+16:38:30 "getApiTransaction" no data
+16:38:30 "getTransaction" no data
+16:38:30 "getPayOperationData" no data
+16:38:33 "getApiTransaction" no data
+16:38:33 "getTransaction" no data
+16:38:33 "getPayOperationData" no data
+16:38:36 "getApiTransaction" no data
+16:38:36 "getTransaction" no data
+16:38:36 "getPayOperationData" no data
+16:38:39 "getApiTransaction" no data
+16:38:39 "getTransaction" no data
+16:38:40 "getPayOperationData" no data
+16:38:43 "getApiTransaction" no data
+16:38:43 "getTransaction" no data
+16:38:43 "getPayOperationData" no data
+16:38:46 "getApiTransaction" no data
+16:38:46 "getTransaction" no data
+16:38:46 "getPayOperationData" no data
+16:38:49 "getApiTransaction" no data
+16:38:49 "getTransaction" no data
+16:38:49 "getPayOperationData" no data
+16:38:52 "getApiTransaction" no data
+16:38:52 "getTransaction" no data
+16:38:52 "getPayOperationData" no data
+16:38:56 "getApiTransaction" no data
+16:38:56 "getTransaction" no data
+16:38:56 "getPayOperationData" no data
+16:38:59 "getApiTransaction" no data
+16:38:59 "getTransaction" no data
+16:38:59 "getPayOperationData" no data
+16:39:02 "getApiTransaction" no data
+16:39:02 "getTransaction" no data
+16:39:02 "getPayOperationData" no data
+16:39:05 "getApiTransaction" no data
+16:39:05 "getTransaction" no data
+16:39:05 "getPayOperationData" no data
+16:39:09 "getApiTransaction" no data
+16:39:09 "getTransaction" no data
+16:39:09 "getPayOperationData" no data
+16:39:12 "getApiTransaction" no data
+16:39:12 "getTransaction" no data
+16:39:12 "getPayOperationData" no data
+16:39:15 "getApiTransaction" no data
+16:39:15 "getTransaction" no data
+16:39:15 "getPayOperationData" no data
+16:39:18 "getApiTransaction" no data
+16:39:18 "getTransaction" no data
+16:39:18 "getPayOperationData" no data
+16:39:22 "getApiTransaction" no data
+16:39:22 "getTransaction" no data
+16:39:22 "getPayOperationData" no data
+16:39:25 "getApiTransaction" no data
+16:39:25 "getTransaction" no data
+16:39:25 "getPayOperationData" no data
+16:39:28 "getApiTransaction" no data
+16:39:28 "getTransaction" no data
+16:39:28 "getPayOperationData" no data
+16:39:31 "getApiTransaction" no data
+16:39:31 "getTransaction" no data
+16:39:31 "getPayOperationData" no data
+16:39:35 "getApiTransaction" no data
+16:39:35 "getTransaction" no data
+16:39:35 "getPayOperationData" no data
+16:39:38 "getApiTransaction" no data
+16:39:38 "getTransaction" no data
+16:39:38 "getPayOperationData" no data
+16:39:41 "getApiTransaction" no data
+16:39:41 "getPayOperationData" no data
+16:39:44 "getApiTransaction" no data
+16:39:44 "getPayOperationData" no data
+16:39:47 "getApiTransaction" no data
+16:39:47 "getPayOperationData" no data
+16:39:50 "getApiTransaction" no data
+16:39:50 "getPayOperationData" no data
+16:39:54 "getApiTransaction" no data
+16:39:54 "getPayOperationData" no data
+16:39:57 "getApiTransaction" no data
+16:39:57 "getPayOperationData" no data
+16:40:00 "getApiTransaction" no data
+16:40:00 "getPayOperationData" no data
+16:40:03 "getApiTransaction" no data
+16:40:03 "getPayOperationData" no data
+16:40:06 "getApiTransaction" no data
+16:40:06 "getPayOperationData" no data
+16:40:09 "getApiTransaction" no data
+16:40:09 "getPayOperationData" no data
+16:40:12 "getApiTransaction" no data
+16:40:12 "getPayOperationData" no data
+16:40:15 "getApiTransaction" no data
+16:40:15 "getPayOperationData" no data
+16:40:19 "getApiTransaction" no data
+16:40:19 "getPayOperationData" no data
+16:40:22 "getApiTransaction" no data
+16:40:22 "getPayOperationData" no data
+16:40:25 "getApiTransaction" no data
+16:40:25 "getPayOperationData" no data
+16:40:28 "getApiTransaction" no data
+16:40:28 "getPayOperationData" no data
+16:40:31 "getApiTransaction" no data
+16:40:31 "getPayOperationData" no data
+16:40:34 "getApiTransaction" no data
+16:40:34 "getPayOperationData" no data
+16:40:37 "getApiTransaction" no data
+16:40:37 "getPayOperationData" no data
+16:40:40 "getApiTransaction" no data
+16:40:40 "getPayOperationData" no data
+16:40:44 "getApiTransaction" no data
+16:40:44 "getPayOperationData" no data
+16:40:47 "getApiTransaction" no data
+16:40:47 "getPayOperationData" no data
+16:40:50 "getApiTransaction" no data
+16:40:50 "getPayOperationData" no data
+16:40:53 "getPayOperationData" no data
+16:40:56 "getPayOperationData" no data
+16:40:59 "getPayOperationData" no data
+16:41:02 "getPayOperationData" no data
+16:47:54 "isApiTransactionExistId" no data
+16:47:57 "getApiTransaction" no data
+16:47:57 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:48:01 "getApiTransaction" no data
+16:48:01 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:48:04 "getApiTransaction" no data
+16:48:04 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:48:07 "getApiTransaction" no data
+16:48:07 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:48:10 "getApiTransaction" no data
+16:48:10 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:48:13 "getApiTransaction" no data
+16:48:13 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:48:16 "getApiTransaction" no data
+16:48:16 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:48:19 "getApiTransaction" no data
+16:48:19 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:48:22 "getApiTransaction" no data
+16:48:22 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:48:26 "getApiTransaction" no data
+16:48:26 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:48:29 "getApiTransaction" no data
+16:48:29 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:48:32 "getApiTransaction" no data
+16:48:32 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:48:35 "getApiTransaction" no data
+16:48:35 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:48:38 "getApiTransaction" no data
+16:48:38 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:48:41 "getApiTransaction" no data
+16:48:41 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:48:44 "getApiTransaction" no data
+16:48:44 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:48:47 "getApiTransaction" no data
+16:48:47 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:48:51 "getApiTransaction" no data
+16:48:51 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:48:54 "getApiTransaction" no data
+16:48:54 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:48:57 "getApiTransaction" no data
+16:48:57 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:49:00 "getApiTransaction" no data
+16:49:00 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:49:03 "getApiTransaction" no data
+16:49:03 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:49:06 "getApiTransaction" no data
+16:49:06 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:49:09 "getApiTransaction" no data
+16:49:09 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:49:13 "getApiTransaction" no data
+16:49:13 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:49:16 "getApiTransaction" no data
+16:49:16 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:49:19 "getApiTransaction" no data
+16:49:19 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:49:22 "getApiTransaction" no data
+16:49:22 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:49:25 "getApiTransaction" no data
+16:49:25 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:49:28 "getApiTransaction" no data
+16:49:28 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:49:31 "getApiTransaction" no data
+16:49:31 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:49:34 "getApiTransaction" no data
+16:49:34 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:49:38 "getApiTransaction" no data
+16:49:38 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:49:41 "getApiTransaction" no data
+16:49:41 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:49:44 "getApiTransaction" no data
+16:49:44 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:49:47 "getApiTransaction" no data
+16:49:47 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:49:50 "getApiTransaction" no data
+16:49:50 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:49:53 "getApiTransaction" no data
+16:49:53 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:49:56 "getApiTransaction" no data
+16:49:56 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:50:00 "getApiTransaction" no data
+16:50:00 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:50:03 "getApiTransaction" no data
+16:50:03 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:50:06 "getApiTransaction" no data
+16:50:06 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:50:09 "getApiTransaction" no data
+16:50:09 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:50:12 "getApiTransaction" no data
+16:50:12 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:50:15 "getApiTransaction" no data
+16:50:15 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:50:18 "getApiTransaction" no data
+16:50:18 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:50:21 "getApiTransaction" no data
+16:50:21 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:50:25 "getApiTransaction" no data
+16:50:25 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:50:28 "getApiTransaction" no data
+16:50:28 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:50:31 "getApiTransaction" no data
+16:50:31 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:50:34 "getApiTransaction" no data
+16:50:34 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:50:37 "getApiTransaction" no data
+16:50:37 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:50:40 "getApiTransaction" no data
+16:50:40 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:50:43 "getApiTransaction" no data
+16:50:43 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:50:46 "getApiTransaction" no data
+16:50:46 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:50:50 "getApiTransaction" no data
+16:50:50 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:50:53 "getApiTransaction" no data
+16:50:53 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:50:56 "getApiTransaction" no data
+16:50:56 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:50:59 "getApiTransaction" no data
+16:50:59 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:51:02 "getApiTransaction" no data
+16:51:02 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:51:05 "getApiTransaction" no data
+16:51:05 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:51:08 "getApiTransaction" no data
+16:51:08 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:51:12 "getApiTransaction" no data
+16:51:12 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:51:15 "getApiTransaction" no data
+16:51:15 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:51:18 "getApiTransaction" no data
+16:51:18 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:51:21 "getApiTransaction" no data
+16:51:21 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:51:24 "getApiTransaction" no data
+16:51:24 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:51:27 "getApiTransaction" no data
+16:51:27 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:51:30 "getApiTransaction" no data
+16:51:30 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:51:36 "getApiTransaction" no data
+16:51:36 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:51:40 "getApiTransaction" no data
+16:51:40 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:51:43 "getApiTransaction" no data
+16:51:43 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:51:46 "getApiTransaction" no data
+16:51:46 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:51:49 "getApiTransaction" no data
+16:51:49 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:51:52 "getApiTransaction" no data
+16:51:52 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:51:55 "getApiTransaction" no data
+16:51:55 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:51:58 "getApiTransaction" no data
+16:51:58 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:52:01 "getApiTransaction" no data
+16:52:01 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:52:05 "getApiTransaction" no data
+16:52:05 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:52:08 "getApiTransaction" no data
+16:52:08 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:52:11 "getApiTransaction" no data
+16:52:11 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:52:14 "getApiTransaction" no data
+16:52:14 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:52:17 "getApiTransaction" no data
+16:52:17 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:52:20 "getApiTransaction" no data
+16:52:20 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:52:23 "getApiTransaction" no data
+16:52:23 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:52:26 "getApiTransaction" no data
+16:52:26 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:52:30 "getApiTransaction" no data
+16:52:30 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:52:33 "getApiTransaction" no data
+16:52:33 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:52:36 "getApiTransaction" no data
+16:52:36 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:52:39 "getApiTransaction" no data
+16:52:39 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:52:42 "getApiTransaction" no data
+16:52:42 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:52:45 "getApiTransaction" no data
+16:52:45 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:52:48 "getApiTransaction" no data
+16:52:48 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:52:52 "getApiTransaction" no data
+16:52:52 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:52:55 "getApiTransaction" no data
+16:52:55 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:52:58 "getApiTransaction" no data
+16:52:58 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:53:01 "getApiTransaction" no data
+16:53:01 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:53:04 "getApiTransaction" no data
+16:53:04 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:53:07 "getApiTransaction" no data
+16:53:07 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:53:10 "getApiTransaction" no data
+16:53:10 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:53:13 "getApiTransaction" no data
+16:53:13 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:53:17 "getApiTransaction" no data
+16:53:17 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:53:20 "getApiTransaction" no data
+16:53:20 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:53:23 "getApiTransaction" no data
+16:53:23 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:53:26 "getApiTransaction" no data
+16:53:26 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:53:29 "getApiTransaction" no data
+16:53:29 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:53:32 "getApiTransaction" no data
+16:53:32 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:53:35 "getApiTransaction" no data
+16:53:35 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:53:39 "getApiTransaction" no data
+16:53:39 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:53:42 "getApiTransaction" no data
+16:53:42 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:53:45 "getApiTransaction" no data
+16:53:45 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:53:48 "getApiTransaction" no data
+16:53:48 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:53:51 "getApiTransaction" no data
+16:53:51 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:53:54 "getApiTransaction" no data
+16:53:54 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:53:57 "getApiTransaction" no data
+16:53:57 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:54:00 "getApiTransaction" no data
+16:54:00 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:54:04 "getApiTransaction" no data
+16:54:04 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:54:07 "getApiTransaction" no data
+16:54:07 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:54:10 "getApiTransaction" no data
+16:54:10 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:54:13 "getApiTransaction" no data
+16:54:13 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:54:16 "getApiTransaction" no data
+16:54:16 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:54:19 "getApiTransaction" no data
+16:54:19 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:54:22 "getApiTransaction" no data
+16:54:22 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:54:26 "getApiTransaction" no data
+16:54:26 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:54:29 "getApiTransaction" no data
+16:54:29 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:54:32 "getApiTransaction" no data
+16:54:32 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:54:35 "getApiTransaction" no data
+16:54:35 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:54:38 "getApiTransaction" no data
+16:54:38 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:54:41 "getApiTransaction" no data
+16:54:41 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:54:44 "getApiTransaction" no data
+16:54:44 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:54:47 "getApiTransaction" no data
+16:54:47 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:54:51 "getApiTransaction" no data
+16:54:51 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:54:54 "getApiTransaction" no data
+16:54:54 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:54:57 "getApiTransaction" no data
+16:54:57 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:55:00 "getApiTransaction" no data
+16:55:00 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:55:03 "getApiTransaction" no data
+16:55:03 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:55:06 "getApiTransaction" no data
+16:55:06 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:55:09 "getApiTransaction" no data
+16:55:09 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:55:12 "getApiTransaction" no data
+16:55:12 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:55:16 "getApiTransaction" no data
+16:55:16 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:55:19 "getApiTransaction" no data
+16:55:19 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:55:22 "getApiTransaction" no data
+16:55:22 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:55:25 "getApiTransaction" no data
+16:55:25 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:55:28 "getApiTransaction" no data
+16:55:28 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:55:31 "getApiTransaction" no data
+16:55:31 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:55:34 "getApiTransaction" no data
+16:55:34 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:55:37 "getApiTransaction" no data
+16:55:37 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:55:41 "getApiTransaction" no data
+16:55:41 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:55:44 "getApiTransaction" no data
+16:55:44 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:55:47 "getApiTransaction" no data
+16:55:47 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:55:50 "getApiTransaction" no data
+16:55:50 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:55:53 "getApiTransaction" no data
+16:55:53 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:55:56 "getApiTransaction" no data
+16:55:56 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:55:59 "getApiTransaction" no data
+16:55:59 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:56:02 "getApiTransaction" no data
+16:56:02 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:56:06 "getApiTransaction" no data
+16:56:06 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:56:09 "getApiTransaction" no data
+16:56:09 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:56:12 "getApiTransaction" no data
+16:56:12 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:56:15 "getApiTransaction" no data
+16:56:15 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:56:18 "getApiTransaction" no data
+16:56:18 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:56:21 "getApiTransaction" no data
+16:56:21 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:56:24 "getApiTransaction" no data
+16:56:24 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:56:28 "getApiTransaction" no data
+16:56:28 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:56:31 "getApiTransaction" no data
+16:56:31 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:56:36 "getApiTransaction" no data
+16:56:36 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:56:40 "getApiTransaction" no data
+16:56:40 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:56:43 "getApiTransaction" no data
+16:56:43 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:56:46 "getApiTransaction" no data
+16:56:46 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:56:49 "getApiTransaction" no data
+16:56:49 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:56:52 "getApiTransaction" no data
+16:56:52 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:56:55 "getApiTransaction" no data
+16:56:55 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:56:58 "getApiTransaction" no data
+16:56:58 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:57:01 "getApiTransaction" no data
+16:57:01 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:57:05 "getApiTransaction" no data
+16:57:05 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:57:08 "getApiTransaction" no data
+16:57:08 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:57:11 "getApiTransaction" no data
+16:57:11 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:57:14 "getApiTransaction" no data
+16:57:14 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:57:17 "getApiTransaction" no data
+16:57:17 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:57:20 "getApiTransaction" no data
+16:57:20 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:57:23 "getApiTransaction" no data
+16:57:23 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:57:26 "getApiTransaction" no data
+16:57:26 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:57:30 "getApiTransaction" no data
+16:57:30 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:57:33 "getApiTransaction" no data
+16:57:33 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:57:36 "getApiTransaction" no data
+16:57:36 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:57:39 "getApiTransaction" no data
+16:57:39 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:57:42 "getApiTransaction" no data
+16:57:42 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:57:45 "getApiTransaction" no data
+16:57:45 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:57:48 "getApiTransaction" no data
+16:57:48 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:57:51 "getApiTransaction" no data
+16:57:51 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:57:55 "getApiTransaction" no data
+16:57:55 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:57:58 "getApiTransaction" no data
+16:57:58 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:58:01 "getApiTransaction" no data
+16:58:01 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:58:04 "getApiTransaction" no data
+16:58:04 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:58:07 "getApiTransaction" no data
+16:58:07 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:58:10 "getApiTransaction" no data
+16:58:10 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:58:13 "getApiTransaction" no data
+16:58:13 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:58:16 "getApiTransaction" no data
+16:58:16 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:58:20 "getApiTransaction" no data
+16:58:20 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:58:23 "getApiTransaction" no data
+16:58:23 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:58:26 "getApiTransaction" no data
+16:58:26 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:58:29 "getApiTransaction" no data
+16:58:29 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:58:32 "getApiTransaction" no data
+16:58:32 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:58:35 "getApiTransaction" no data
+16:58:35 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:58:38 "getApiTransaction" no data
+16:58:38 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:58:41 "getApiTransaction" no data
+16:58:41 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:58:45 "getApiTransaction" no data
+16:58:45 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:58:48 "getApiTransaction" no data
+16:58:48 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:58:51 "getApiTransaction" no data
+16:58:51 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:58:54 "getApiTransaction" no data
+16:58:54 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:58:57 "getApiTransaction" no data
+16:58:57 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:59:00 "getApiTransaction" no data
+16:59:00 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:59:03 "getApiTransaction" no data
+16:59:03 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:59:06 "getApiTransaction" no data
+16:59:06 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:59:10 "getApiTransaction" no data
+16:59:10 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:59:13 "getApiTransaction" no data
+16:59:13 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:59:16 "getApiTransaction" no data
+16:59:16 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:59:19 "getApiTransaction" no data
+16:59:19 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:59:22 "getApiTransaction" no data
+16:59:22 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:59:25 "getApiTransaction" no data
+16:59:25 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:59:28 "getApiTransaction" no data
+16:59:28 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:59:32 "getApiTransaction" no data
+16:59:32 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:59:35 "getApiTransaction" no data
+16:59:35 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:59:38 "getApiTransaction" no data
+16:59:38 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:59:41 "getApiTransaction" no data
+16:59:41 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:59:44 "getApiTransaction" no data
+16:59:44 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:59:47 "getApiTransaction" no data
+16:59:47 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:59:50 "getApiTransaction" no data
+16:59:50 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:59:53 "getApiTransaction" no data
+16:59:53 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+16:59:57 "getApiTransaction" no data
+16:59:57 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:00:00 "getApiTransaction" no data
+17:00:00 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:00:03 "getApiTransaction" no data
+17:00:03 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:00:06 "getApiTransaction" no data
+17:00:06 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:00:09 "getApiTransaction" no data
+17:00:09 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:00:12 "getApiTransaction" no data
+17:00:12 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:00:15 "getApiTransaction" no data
+17:00:15 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:00:18 "getApiTransaction" no data
+17:00:18 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:00:22 "getApiTransaction" no data
+17:00:22 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:00:25 "getApiTransaction" no data
+17:00:25 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:00:28 "getApiTransaction" no data
+17:00:28 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:00:31 "getApiTransaction" no data
+17:00:31 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:00:34 "getApiTransaction" no data
+17:00:34 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:00:37 "getApiTransaction" no data
+17:00:37 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:00:40 "getApiTransaction" no data
+17:00:40 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:00:44 "getApiTransaction" no data
+17:00:44 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:00:47 "getApiTransaction" no data
+17:00:47 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:00:50 "getApiTransaction" no data
+17:00:50 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:00:53 "getApiTransaction" no data
+17:00:53 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:00:56 "getApiTransaction" no data
+17:00:56 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:00:59 "getApiTransaction" no data
+17:00:59 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:01:02 "getApiTransaction" no data
+17:01:02 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:01:05 "getApiTransaction" no data
+17:01:05 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:01:09 "getApiTransaction" no data
+17:01:09 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:01:12 "getApiTransaction" no data
+17:01:12 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:01:15 "getApiTransaction" no data
+17:01:15 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:01:18 "getApiTransaction" no data
+17:01:18 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:01:21 "getApiTransaction" no data
+17:01:21 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:01:24 "getApiTransaction" no data
+17:01:24 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:01:27 "getApiTransaction" no data
+17:01:27 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:01:30 "getApiTransaction" no data
+17:01:30 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:01:36 "getApiTransaction" no data
+17:01:36 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:01:40 "getApiTransaction" no data
+17:01:40 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:01:43 "getApiTransaction" no data
+17:01:43 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:01:46 "getApiTransaction" no data
+17:01:46 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:01:49 "getApiTransaction" no data
+17:01:49 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:01:52 "getApiTransaction" no data
+17:01:52 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:01:55 "getApiTransaction" no data
+17:01:55 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:01:58 "getApiTransaction" no data
+17:01:58 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:02:01 "getApiTransaction" no data
+17:02:01 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:02:05 "getApiTransaction" no data
+17:02:05 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:02:08 "getApiTransaction" no data
+17:02:08 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:02:11 "getApiTransaction" no data
+17:02:11 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:02:14 "getApiTransaction" no data
+17:02:14 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:02:17 "getApiTransaction" no data
+17:02:17 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:02:20 "getApiTransaction" no data
+17:02:20 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:02:23 "getApiTransaction" no data
+17:02:23 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:02:26 "getApiTransaction" no data
+17:02:26 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:02:30 "getApiTransaction" no data
+17:02:30 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:02:33 "getApiTransaction" no data
+17:02:33 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:02:36 "getApiTransaction" no data
+17:02:36 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:02:39 "getApiTransaction" no data
+17:02:39 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:02:42 "getApiTransaction" no data
+17:02:42 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:02:45 "getApiTransaction" no data
+17:02:45 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:02:48 "getApiTransaction" no data
+17:02:48 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:02:51 "getApiTransaction" no data
+17:02:51 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:02:55 "getApiTransaction" no data
+17:02:55 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:02:58 "getApiTransaction" no data
+17:02:58 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:03:01 "getApiTransaction" no data
+17:03:01 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:03:04 "getApiTransaction" no data
+17:03:04 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:03:07 "getApiTransaction" no data
+17:03:07 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:03:10 "getApiTransaction" no data
+17:03:10 "c318e7786a7140a080c94fb287c4423b" WaitingRefueling apiTransaction is not created
+17:03:13 "getApiTransaction" no data
+17:03:13 "getPayOperationData" no data
+17:03:17 "getApiTransaction" no data
+17:03:17 "getPayOperationData" no data
+17:03:20 "getApiTransaction" no data
+17:03:20 "getPayOperationData" no data
+17:03:23 "getApiTransaction" no data
+17:03:23 "getPayOperationData" no data
+17:03:26 "getApiTransaction" no data
+17:03:26 "getPayOperationData" no data
+17:03:29 "getApiTransaction" no data
+17:03:29 "getPayOperationData" no data
+17:03:32 "getApiTransaction" no data
+17:03:32 "getPayOperationData" no data
+17:03:35 "getApiTransaction" no data
+17:03:35 "getPayOperationData" no data
+17:03:38 "getApiTransaction" no data
+17:03:38 "getPayOperationData" no data
+17:03:42 "getApiTransaction" no data
+17:03:42 "getPayOperationData" no data
+17:03:45 "getApiTransaction" no data
+17:03:45 "getPayOperationData" no data
+17:03:48 "getApiTransaction" no data
+17:03:48 "getPayOperationData" no data
+17:03:51 "getApiTransaction" no data
+17:03:51 "getPayOperationData" no data
+17:03:54 "getApiTransaction" no data
+17:03:54 "getPayOperationData" no data
+17:03:57 "getApiTransaction" no data
+17:03:57 "getPayOperationData" no data
+17:04:00 "getApiTransaction" no data
+17:04:00 "getPayOperationData" no data
+17:04:03 "getApiTransaction" no data
+17:04:03 "getPayOperationData" no data
+17:04:07 "getApiTransaction" no data
+17:04:07 "getPayOperationData" no data
+17:04:10 "getApiTransaction" no data
+17:04:10 "getPayOperationData" no data
+17:04:13 "getApiTransaction" no data
+17:04:13 "getPayOperationData" no data
+17:04:16 "getPayOperationData" no data
+17:04:19 "getPayOperationData" no data
+17:04:22 "getPayOperationData" no data
+17:04:25 "getPayOperationData" no data
+17:04:28 "getPayOperationData" no data

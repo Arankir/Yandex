@@ -1,0 +1,4 @@
+INSERT INTO [agzs].[dbo].[PR_APITransaction]
+    ([AGZSName],[AGZS],[CDate],[VCode],[APIID],[APIStationExtendedId],[APIColumnId],[APIFuelId],[FuelId],
+    [APIPriceFuel],[APILitre],[APISum],[APIStatus],[APIContractId],[agent],[localState],[Price],[Litre],[Sum],[DateOpen],[DateClose],[Link])
+VALUES ('%1', %2, '%3', %4, '%5', '%6', %7, '%8', %9, %10, %11, '%12', '%13', '%14', '%15', '%16', %17, %18, %19, '%20', DEFAULT, %21)

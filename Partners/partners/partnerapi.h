@@ -10,6 +10,7 @@ class PartnerAPI : public QObject {
     Q_OBJECT
 public:
     explicit PartnerAPI(QObject *parent = nullptr);
+    ~PartnerAPI();
 
     virtual int iPayWay() = 0;
     virtual QString payWay() = 0;
@@ -49,7 +50,7 @@ protected slots:
 
 protected:
     QSettings reestr_;
-    RequestData *request_;
+    RequestData *request_ = nullptr;
     QTimer timerOrders_;
     int timerInterval_ = 5000;
     bool isLastPriceUpdated_ = false;

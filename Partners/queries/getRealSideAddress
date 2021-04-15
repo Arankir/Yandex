@@ -1,0 +1,6 @@
+SELECT TOP 1
+    [SideAdress]
+FROM [agzs].[dbo].[PR_Columns]
+WHERE agzs = %1
+    AND [Partner_TrkNum] = %2
+ORDER BY CDate DESC

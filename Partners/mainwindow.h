@@ -73,6 +73,9 @@ private slots:
 private:
     Ui::MainWindow *ui;
 
+    const QString c_settingPath = QStringLiteral("Setting.txt");
+    const QString c_version = QStringLiteral("v1.16e");
+
     QString agzs_;
 
     QSettings reestr_;

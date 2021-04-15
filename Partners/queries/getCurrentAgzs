@@ -1,0 +1,3 @@
+SELECT TOP 1
+    AGZS
+FROM [agzs].[dbo].[Identification]

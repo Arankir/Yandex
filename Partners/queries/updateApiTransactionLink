@@ -1,0 +1,3 @@
+UPDATE [agzs].[dbo].[PR_APITransaction]
+    SET Link = %1
+WHERE ApiId = '%2'

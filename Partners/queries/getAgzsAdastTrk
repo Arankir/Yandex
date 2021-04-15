@@ -1,0 +1,43 @@
+SELECT TOP 1
+    [DeviceName],
+    [Serial],
+    [Description],
+    [VCode],
+    side = 'A',
+    [SideA_Nozzle1FuelCode],
+    [SideA_Nozzle2FuelCode],
+    [SideA_Nozzle3FuelCode],
+    [SideA_Nozzle4FuelCode],
+    [SideA_Nozzle5FuelCode],
+    [SideA_PumpPlace],
+    [SideA_Nozzle1Fuel],
+    [SideA_Nozzle2Fuel],
+    [SideA_Nozzle3Fuel],
+    [SideA_Nozzle4Fuel],
+    [SideA_Nozzle5Fuel]
+FROM [agzs].[dbo].[ADAST_AdastTRK]
+WHERE (SideA_Address = %1)
+    AND (AGZS = (SELECT TOP 1 AGZS
+                FROM [agzs].[dbo].[Identification]))
+UNION
+SELECT TOP 1
+    [DeviceName],
+    [Serial],
+    [Description],
+    [VCode],
+    side = 'B',
+    [SideB_Nozzle1FuelCode],
+    [SideB_Nozzle2FuelCode],
+    [SideB_Nozzle3FuelCode],
+    [SideB_Nozzle4FuelCode],
+    [SideB_Nozzle5FuelCode],
+    [SideB_PumpPlace],
+    [SideB_Nozzle1Fuel],
+    [SideB_Nozzle2Fuel],
+    [SideB_Nozzle3Fuel],
+    [SideB_Nozzle4Fuel],
+    [SideB_Nozzle5Fuel]
+FROM [agzs].[dbo].[ADAST_AdastTRK]
+WHERE (SideB_Address = %1)
+    AND (AGZS = (SELECT TOP 1 AGZS
+                FROM [agzs].[dbo].[Identification]))

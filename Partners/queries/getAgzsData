@@ -1,0 +1,13 @@
+SELECT TOP 1
+    [AGZSName],
+    [AGZS],
+    [CDate],
+    [VCode],
+    [Id],
+    [Adress],
+    [latitude],
+    [longitude],
+    [ColumnsCount]
+FROM [agzs].[dbo].[PR_AGZSData]
+WHERE AGZS = (SELECT TOP 1 AGZS
+              FROM [agzs].[dbo].[Identification])

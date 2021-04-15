@@ -5,9 +5,12 @@ FormSettings::FormSettings(QWidget *parent): QWidget(parent), ui(new Ui::FormSet
     ui->setupUi(this);
     ui->checkBoxYandex->setChecked(reestr_.value("Yandex Enabled", QVariant(false)).toBool());
     ui->checkBoxCityMobile->setChecked(reestr_.value("CityMobile Enabled", QVariant(false)).toBool());
+    this->setAttribute(Qt::WA_DeleteOnClose);
 }
 
 FormSettings::~FormSettings() {
+    qDebug() << "Settings deleted";
+    disconnect(this);
     delete ui;
 }
 

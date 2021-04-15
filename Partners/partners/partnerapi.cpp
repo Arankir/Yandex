@@ -4,6 +4,14 @@ PartnerAPI::PartnerAPI(QObject *parent) : QObject(parent), reestr_("RegionPostav
     connect(&timerOrders_, &QTimer::timeout, this, &PartnerAPI::checkOrders);
 }
 
+PartnerAPI::~PartnerAPI() {
+    disconnect(&timerOrders_, &QTimer::timeout, this, &PartnerAPI::checkOrders);
+    if (request_ != nullptr) {
+        disconnect(request_);
+        delete request_;
+    }
+}
+
 int &PartnerAPI::fixInterval(int &interval) {
     if (interval <= 0) {
         interval = 3000;

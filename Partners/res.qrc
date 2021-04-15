@@ -4,5 +4,31 @@
         <file>images/login password.png</file>
         <file>images/login.png</file>
         <file>images/tray.png</file>
+        <file>queries/test.txt</file>
+        <file>queries/getPrices</file>
+        <file>queries/getAgzsData</file>
+        <file>queries/createApiTransaction</file>
+        <file>queries/getFuelNames</file>
+        <file>queries/getFuels</file>
+        <file>queries/getRealSideAddress</file>
+        <file>queries/getSmena</file>
+        <file>queries/getCashBoxIndex</file>
+        <file>queries/getAgzsAdastTrk</file>
+        <file>queries/createTrkTransaction</file>
+        <file>queries/getApiTransaction</file>
+        <file>queries/updateApiTransactionState</file>
+        <file>queries/finalUpdateApiTransactionState</file>
+        <file>queries/getPayOperationData</file>
+        <file>queries/setTransactionClosed</file>
+        <file>queries/getTransaction</file>
+        <file>queries/getOpenedApiTransactions</file>
+        <file>queries/getCurrentAgzs</file>
+        <file>queries/getLastVCode</file>
+        <file>queries/generateVCode</file>
+        <file>queries/updateYandexToken</file>
+        <file>queries/getCityMobileToken</file>
+        <file>queries/isApiTransactionExistId</file>
+        <file>queries/isApiTransactionExistVCode</file>
+        <file>queries/updateApiTransactionLink</file>
     </qresource>
 </RCC>
