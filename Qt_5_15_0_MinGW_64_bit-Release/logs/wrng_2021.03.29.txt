@@ -1,8 +1,0 @@
-10:02:35 0 "getOpenedApiTransactions" no data
-10:02:35 0 "getOpenedApiTransactions" no data
-10:02:38 0 "getOpenedApiTransactions" no data
-10:02:38 0 "getOpenedApiTransactions" no data
-10:02:41 0 "getOpenedApiTransactions" no data
-10:02:41 0 "getOpenedApiTransactions" no data
-10:02:45 0 "getOpenedApiTransactions" no data
-10:02:45 0 "getOpenedApiTransactions" no data

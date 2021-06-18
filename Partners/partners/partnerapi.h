@@ -18,7 +18,7 @@ public:
     virtual QString baseUrl() = 0;
 
     void start(int interval = 5000);
-    void stop() {timerOrders_.stop();}
+    void stop();
     bool isStart() {return timerOrders_.isActive();}
 
     bool isLastPriceUpdated() {return isLastPriceUpdated_;}
@@ -40,7 +40,7 @@ public slots:
 
 signals:
     void s_gotOrders(QJsonDocument orders);
-    void s_error(QString status, QString order, int code);
+    void s_error(const QString &status, const QString &order, int code);
 
 protected slots:
     virtual QNetworkRequest createNetworkRequest(QUrl url, QString contentType = "application/x-www-form-urlencoded", QString auth = "");

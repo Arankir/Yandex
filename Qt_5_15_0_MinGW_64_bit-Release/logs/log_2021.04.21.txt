@@ -1,0 +1,8 @@
+12:13:30 STARTED
+12:13:30 currentAGZS = "deb"
+12:13:38 DB is open
+12:13:38 check y = true  nAut = false  c = true
+12:13:38 POST 200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/price" "({\"Columns\":{\"1\":{\"Fuels\":[\"propane\",\"diesel\"]},\"2\":{\"Fuels\":[\"propane\",\"a92\"]}},\"StationExtendedId\":\"2\"})"
+12:13:38 POST 200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/station" "({\"Columns\":{\"1\":{\"Fuels\":[\"propane\",\"diesel\"]},\"2\":{\"Fuels\":[\"propane\",\"a92\"]}},\"StationExtendedId\":\"2\"})"
+12:13:38 POST 200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/price" "({\"Adress\":\"г. Уфа, ул. Чебоксарская, д. 12\",\"Columns\":{\"1\":{\"Fuels\":[\"propane\",\"diesel\"]},\"2\":{\"Fuels\":[\"propane\",\"a92\"]}},\"Enable\":true,\"FuelNames\":[{\"Fuel\":\"propane\",\"FuelName\":\"Пропан\"},{\"Fuel\":\"diesel\",\"FuelName\":\"Дизель\"},{\"Fuel\":\"a92\",\"FuelName\":\"А-92\"}],\"Location\":{\"Lat\":\"54.6878\",\"Lon\":\"55.8086\"},\"Name\":\"АГЗС №2\",\"StationExtendedId\":\"2\"})"
+12:13:39 POST 200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/station" "({\"Adress\":\"г. Уфа, ул. Чебоксарская, д. 12\",\"Columns\":{\"1\":{\"Fuels\":[\"propane\",\"diesel\"]},\"2\":{\"Fuels\":[\"propane\",\"a92\"]}},\"Enable\":true,\"FuelNames\":[{\"Fuel\":\"propane\",\"FuelName\":\"Пропан\"},{\"Fuel\":\"diesel\",\"FuelName\":\"Дизель\"},{\"Fuel\":\"a92\",\"FuelName\":\"А-92\"}],\"Location\":{\"Lat\":\"54.6878\",\"Lon\":\"55.8086\"},\"Name\":\"АГЗС №2\",\"StationExtendedId\":\"2\"})"

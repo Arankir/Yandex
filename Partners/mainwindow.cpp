@@ -1,5 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QtMultimedia/QMediaPlayer>
+#include <QAudioOutput>
 
 const double c_litersForMin = 25;
 
@@ -10,7 +12,7 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWin
     checkSettings();
     agzs_ = reestr_.value("currentAgzs").toString();
     while (agzs_ == QString()) {
-        agzs_ = formAgzs();
+        agzs_ = QInputDialog::getText(this, tr("Поменять АГЗС"), tr("Введите АГЗС:"), QLineEdit::Normal, "agzs");
         reestr_.setValue("currentAgzs", agzs_);
     }
     qInfo() << "currentAGZS =" << agzs_;
@@ -21,29 +23,37 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWin
         ui->ButtonCancelCitymobile->setVisible(false);
         ui->lineEdit->setVisible(false);
     }
+//Terminal CfDJ8LvvKxbYatxLk67gs3QWA7ChqwKODnEodSfmXVC_kQCQ-Ycwvqx5hX6C6ISMtp7B9SYzjOejB--fCZOsezb7wOyHpn_2MXGwTYd0-PwDlVXspOW-Ug18WeMVlcqPb7yySKhNLRKLSvNFvz3J9_R2NyYBISjAEg71Vh34_ZXbEDcS
 
+    reestr_.setValue("CityMobile Token", db_->getCityMobileToken());
     ui->LabelVersion->setText(c_version);
     ui->ButtonSettings->setIcon(QIcon("://images/settings.png"));
     this->setWindowFlags(Qt::Window | Qt::WindowMinimizeButtonHint);
 
     showTrayIcon();
-//Terminal CfDJ8LvvKxbYatxLk67gs3QWA7ChqwKODnEodSfmXVC_kQCQ-Ycwvqx5hX6C6ISMtp7B9SYzjOejB--fCZOsezb7wOyHpn_2MXGwTYd0-PwDlVXspOW-Ug18WeMVlcqPb7yySKhNLRKLSvNFvz3J9_R2NyYBISjAEg71Vh34_ZXbEDcS
-    reestr_.setValue("CityMobile Token", db_->getCityMobileToken());
     isCityMobileEnabled_ = reestr_.value("CityMobile Enabled", QVariant(false)).toBool();
     isYandexEnabled_ = reestr_.value("Yandex Enabled", QVariant(false)).toBool();
 
     yandex_ = new YandexAPI(this);
     cityMobile_ = new CityMobileAPI(this);
 
-    connect(&timerYandexError_,         &QTimer::timeout,                       this, &MainWindow::yandexErrorNotification);
-    connect(&timerGlobal_,              &QTimer::timeout,                       this, &MainWindow::globalTimerCheck);
-    connect(yandex_,                    &YandexAPI::s_needAuth,                 this, &MainWindow::needAuth);
-    connect(yandex_,                    &YandexAPI::s_authComplete,             this, &MainWindow::authYandexResult);
-    connect(yandex_,                    &YandexAPI::s_gotOrders,                this, [=](QJsonDocument orders) {processOrders(yandex_, orders);});
-    connect(cityMobile_,                &CityMobileAPI::s_gotOrders,            this, [=](QJsonDocument orders) {processOrders(cityMobile_, orders);});
+    connect(&timerYandexError_, &QTimer::timeout,               this, &MainWindow::yandexErrorNotification);
+    connect(&timerGlobal_,      &QTimer::timeout,               this, &MainWindow::globalTimerCheck);
+    connect(yandex_,            &YandexAPI::s_needAuth,         this, &MainWindow::needAuth);
+    connect(yandex_,            &YandexAPI::s_authComplete,     this, &MainWindow::authYandexResult);
+    connect(yandex_,            &YandexAPI::s_error,            this, [=](const QString &status, const QString &order, int code) {
+        Q_UNUSED(status);
+        Q_UNUSED(order);
+        if (code == 0) {
+            isNetworkError_ = true;
+        }
+    });
+
+    connect(yandex_,            &YandexAPI::s_gotOrders,        this, [=](QJsonDocument orders) {processOrders(yandex_, orders);});
+    connect(cityMobile_,        &CityMobileAPI::s_gotOrders,    this, [=](QJsonDocument orders) {processOrders(cityMobile_, orders);});
 
     globalTimerCheck();
-    timerGlobal_            .start(300000);
+    timerGlobal_.start(300000);
 
 }
 
@@ -89,19 +99,25 @@ bool MainWindow::checkSettings() {
 }
 
 void MainWindow::globalTimerCheck() {
-    qInfo() << "check y =" << isYandexEnabled_ << " nAut =" << isNeedAuth_ << " c =" << isCityMobileEnabled_;
+    qInfo() << "check y =" << isYandexEnabled_ << " nAut =" << isNeedAuth_ << " c =" << isCityMobileEnabled_ << " netErr =" << isNetworkError_;
     if (isYandexEnabled_) {
         if (isNeedAuth_) {
-            yandexErrorNotification();
+            soundNotification(tr("Ошибка!"), tr("Авторизуйтесь в Яндексе заново!"), "uvedomlenie.mp3", 100);
         }
+        yandex_->stop();
         yandex_->start();
     } else {
         yandex_->stop();
     }
     if (isCityMobileEnabled_) {
+        cityMobile_->stop();
         cityMobile_->start();
     } else {
         cityMobile_->stop();
+    }
+    if (isNetworkError_) {
+        soundNotification(tr("Ошибка!"), tr("Сеть недоступна!"), "uvedomlenie.mp3", 100);
+        isNetworkError_ = false;
     }
     updatePrice();
     updateConfiguration();
@@ -179,6 +195,20 @@ void MainWindow::yandexErrorNotification() {
     //timerYandexError_.setInterval(300000);
 }
 
+void MainWindow::soundNotification(const QString &aTitle, const QString &aMessage, const QString &aPath, const int &aVolume) {
+    QMediaPlayer *player = new QMediaPlayer;
+    player->setMedia(QUrl::fromLocalFile(aPath));
+    player->setVolume(aVolume);
+    player->play();
+    connect(player, &QMediaPlayer::stateChanged, player, [=](QMediaPlayer::State state){
+        if (state == QMediaPlayer::State::StoppedState) {
+            player->deleteLater();
+        }
+    });
+
+    trayIcon_->showMessage(aTitle, aMessage);
+}
+
 void MainWindow::authYandexResult(QString aToken) {
     ui->labelAuthError->setVisible(true);
     if (aToken == "") {
@@ -230,7 +260,7 @@ void MainWindow::on_ButtonCancelCitymobile_clicked() {
 
 void MainWindow::on_ButtonSettings_clicked() {
     FormSettings *settings = new FormSettings();
-    connect(settings, &FormSettings::s_yandexChange, this, [=](bool enabled){
+    connect(settings, &FormSettings::s_yandexChange, this, [=](bool enabled) {
         isYandexEnabled_ = enabled;
         if (isYandexEnabled_) {
             yandex_->start();
@@ -238,7 +268,7 @@ void MainWindow::on_ButtonSettings_clicked() {
             yandex_->stop();
         }
     });
-    connect(settings, &FormSettings::s_cityMobileChange, this, [=](bool enabled){
+    connect(settings, &FormSettings::s_cityMobileChange, this, [=](bool enabled) {
         isCityMobileEnabled_ = enabled;
         if (isCityMobileEnabled_) {
             cityMobile_->start();
@@ -246,26 +276,13 @@ void MainWindow::on_ButtonSettings_clicked() {
             cityMobile_->stop();
         }
     });
+    connect(settings, &FormSettings::s_agzsChanged, this, [=](const QString &agzs) {
+        agzs_ = agzs;
+        reestr_.setValue("currentAgzs", agzs_);
+        qInfo() << "currentAGZS =" << agzs_;
+        QMessageBox::warning(0, tr("Внимание!"), tr("АГЗС изменена, пожалуйста перезапустите приложение для применения изменений!"));
+    });
     settings->show();
-}
-
-void MainWindow::on_ButtonAgzs_clicked() {
-    QString password = QInputDialog::getText(this, tr("Поменять АГЗС"), tr("Пароль:"), QLineEdit::Password, "");
-    if (password == "rjrjcs743") {
-        QString agzs = formAgzs();
-        if (agzs != "") {
-            agzs_ = agzs;
-            reestr_.setValue("currentAgzs", agzs_);
-            qInfo() << "currentAGZS =" << agzs_;
-            QMessageBox::warning(0, tr("Внимание!"), tr("АГЗС изменена, пожалуйста перезапустите приложение для применения изменений!"));
-        }
-    } else {
-        QMessageBox::warning(0, tr("Ошибка!"), tr("Неверный пароль!"));
-    }
-}
-
-QString MainWindow::formAgzs() {
-    return QInputDialog::getText(this, tr("Поменять АГЗС"), tr("Введите АГЗС:"), QLineEdit::Normal, "agzs");
 }
 #define ButtonsEnd }
 
@@ -545,11 +562,9 @@ bool MainWindow::processAcceptOrder(Order aOrder, PartnerAPI *aPartner) {
     Agzs currentAgzs    = db_->getAgzsData();
     QDateTime now       = QDateTime::currentDateTime();
     int sideAdress      = db_->getRealSideAddress(currentAgzs.agzs, aOrder.columnId);
-    ErrorsOrder error   = db_->checkError(QString::number(sideAdress),
-                                fuelToApi(aOrder.fuel),
-                                static_cast<int>(aOrder.fuel),
-                                QString::number(aOrder.priceFuel),
-                                aPartner->iPayWay());
+    ErrorsOrder error   = db_->checkError(QString::number(sideAdress), fuelToApi(aOrder.fuel),
+                                        static_cast<int>(aOrder.fuel), QString::number(aOrder.priceFuel),
+                                        aPartner->iPayWay());
     int countToBreak    = 10;
     int lastAPIVCode    = -1;
 
@@ -557,10 +572,10 @@ bool MainWindow::processAcceptOrder(Order aOrder, PartnerAPI *aPartner) {
         lastAPIVCode = db_->generateVCode("PR_APITransaction");
 
         while ((!db_->createApiTransaction(currentAgzs.agzsName, currentAgzs.agzs, aOrder.dateCreate.addSecs(7200),
-                             lastAPIVCode, aOrder.id, "", aOrder.columnId, fuelToApi(aOrder.fuel),
-                             static_cast<int>(aOrder.fuel), aOrder.priceFuel, aOrder.litre,
-                             aOrder.sum, aOrder.status, aOrder.contractId, aPartner->agent(),
-                             errorToString(error), 0, 0, 0, now, -1)) && (countToBreak > 0)) {
+                                             lastAPIVCode, aOrder.id, "", aOrder.columnId, fuelToApi(aOrder.fuel),
+                                             static_cast<int>(aOrder.fuel), aOrder.priceFuel, aOrder.litre,
+                                             aOrder.sum, aOrder.status, aOrder.contractId, aPartner->agent(),
+                                             errorToString(error), 0, 0, 0, now, -1)) && (countToBreak > 0)) {
             --countToBreak;
         }
         if (countToBreak <= 0) {
@@ -579,7 +594,7 @@ bool MainWindow::processAcceptOrder(Order aOrder, PartnerAPI *aPartner) {
     switch (error) {
     case ErrorsOrder::noError: {
         countToBreak = 10;
-        int transactionVCode    = -1;
+        int transactionVCode = -1;
 
         while (transactionVCode < 0 && countToBreak > 0) {
             transactionVCode = createTransaction(currentAgzs, aOrder, aPartner, sideAdress, now);
@@ -594,6 +609,8 @@ bool MainWindow::processAcceptOrder(Order aOrder, PartnerAPI *aPartner) {
         } else {
             qWarning(logError) << aOrder.id << "AcceptOrder not update link" << QString::number(transactionVCode);
         }
+
+        soundNotification(tr("Внимание!"), tr("Новая заявка через мобильное приложение на %1л.").arg(QString::number(aOrder.moneyData.requestVolumeDB)), "uvedomlenie.mp3", 100);
         return true;
         break;
     }
@@ -612,6 +629,7 @@ bool MainWindow::processAcceptOrder(Order aOrder, PartnerAPI *aPartner) {
     case ErrorsOrder::priceError: {
         qWarning(logError) << "Цена на выбранный вид топлива отличается от фактической цены" << aOrder.id;
         aPartner->setStatusCanceled(aOrder.id, "Цена на выбранный вид топлива отличается от фактической цены.", QString::number(lastAPIVCode), now);
+        aPartner->updatePriceList(db_->getPrices(QString::number(aPartner->iPayWay())).toString());
         updatePrice();
         return false;
         break;
@@ -655,6 +673,17 @@ bool MainWindow::processFueling(Order aOrder, PartnerAPI *aPartner) {
     if((amount >= 0.01) && (volume >= 0.01) && (price >= 0.01) && (apiTransaction.localState == "Fueling")) {
         db_->finalUpdateApiTransactionState("Completed", price, volume, amount, dateOpen, dateClose, apiTransaction.apiVCode);
         aPartner->setStatusCompleted(aOrder.id, volume, QString::number(apiTransaction.apiVCode), dateClose);
+        return true;
+    }
+    if (apiTransaction.iState > 0
+    && apiTransaction.activeDB <= 0
+    && dateClose < QDateTime::currentDateTime().addSecs(60)
+    && apiTransaction.transLitre < 0.01) {
+        qInfo() << aOrder.id << "transaction was canceled";
+        db_->updateApiTransactionState("Ошибка: Кассир отменил", apiTransaction.dateClose, apiTransaction.apiVCode);
+        db_->setTransactionClosed(aOrder.id, 1);
+        aPartner->setStatusCanceled(aOrder.id, "Заказ отменен", QString::number(apiTransaction.apiVCode), QDateTime::currentDateTime());
+        return false;
     }
     return false;
 }
@@ -673,6 +702,17 @@ bool MainWindow::processExpire(Order aOrder, PartnerAPI *aPartner) {
     double amount = 0.0, volume = 0.0, price = 0.0;
     QDateTime dateOpen, dateClose;
     db_->getPayOperationData(apiTransaction.headVCode, amount, volume, price, dateOpen, dateClose);
+
+    if (apiTransaction.iState > 0
+    && apiTransaction.activeDB <= 0
+    && dateClose < QDateTime::currentDateTime().addSecs(60)
+    && apiTransaction.transLitre < 0.01) {
+        qInfo() << aOrder.id << "transaction was canceled";
+        db_->updateApiTransactionState("Ошибка: 30 минут, кассир отменил", apiTransaction.dateClose, apiTransaction.apiVCode);
+        db_->setTransactionClosed(aOrder.id, 1);
+        aPartner->setStatusCanceled(aOrder.id, "Заказ отменен", QString::number(apiTransaction.apiVCode), QDateTime::currentDateTime());
+        return false;
+    }
 
     if((amount >= 0.01) && (volume >= 0.01) && (price >= 0.01) && (apiTransaction.localState != "Completed")) {
         db_->finalUpdateApiTransactionState("Отправка после 30 минут", price, volume, amount, dateOpen, dateClose, apiTransaction.apiVCode);

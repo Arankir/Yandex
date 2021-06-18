@@ -33,7 +33,6 @@ public:
     QHBoxLayout *horizontalLayout;
     QLabel *LabelVersion;
     QSpacerItem *horizontalSpacer_5;
-    QPushButton *ButtonAgzs;
     QPushButton *ButtonSettings;
     QLabel *labelAuthError;
     QVBoxLayout *verticalLayout;
@@ -56,7 +55,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(237, 391);
+        MainWindow->resize(237, 395);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         verticalLayout_3 = new QVBoxLayout(centralwidget);
@@ -75,17 +74,6 @@ public:
         horizontalSpacer_5 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout->addItem(horizontalSpacer_5);
-
-        ButtonAgzs = new QPushButton(centralwidget);
-        ButtonAgzs->setObjectName(QString::fromUtf8("ButtonAgzs"));
-        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(ButtonAgzs->sizePolicy().hasHeightForWidth());
-        ButtonAgzs->setSizePolicy(sizePolicy);
-        ButtonAgzs->setMaximumSize(QSize(40, 16777215));
-
-        horizontalLayout->addWidget(ButtonAgzs);
 
         ButtonSettings = new QPushButton(centralwidget);
         ButtonSettings->setObjectName(QString::fromUtf8("ButtonSettings"));
@@ -195,7 +183,6 @@ public:
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "\320\237\320\260\321\200\321\202\320\275\321\221\321\200\321\213", nullptr));
         LabelVersion->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
-        ButtonAgzs->setText(QCoreApplication::translate("MainWindow", "\320\220\320\223\320\227\320\241", nullptr));
         ButtonSettings->setText(QString());
         labelAuthError->setText(QCoreApplication::translate("MainWindow", "\320\243\321\201\320\277\320\265\321\210\320\275\320\276 \320\260\320\262\321\202\320\276\321\200\320\270\320\267\320\276\320\262\320\260\320\275\320\276!", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "<img height=25 style=\"vertical-align: top\" src=\"://images/login.png\"> \320\233\320\276\320\263\320\270\320\275</a>", nullptr));

@@ -1,0 +1,32 @@
+09:05:05 "getPayOperationData" no data
+09:05:05 "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:05:08 "getPayOperationData" no data
+09:05:08 "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:05:11 "getPayOperationData" no data
+09:05:11 "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:05:59 "getPayOperationData" no data
+09:05:59 "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:06:02 "getPayOperationData" no data
+09:06:02 "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:08:56 "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:08:59 "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:09:02 "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:09:05 "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:09:09 "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:09:12 "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:09:15 "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:09:18 "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:09:21 "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:09:25 "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:09:28 "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:09:55 "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:09:58 "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:10:01 "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:10:04 "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:10:08 "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:11:15 "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:11:18 "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:11:22 "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:11:25 "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:11:28 "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:11:31 "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress

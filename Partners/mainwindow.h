@@ -63,18 +63,15 @@ private slots:
     void authYandexResult(QString aToken);
     void needAuth();
     void yandexErrorNotification();
+    void soundNotification(const QString &aTitle, const QString &aMessage, const QString &aPath, const int &aVolume);
 
     void globalTimerCheck();
-
-    void on_ButtonAgzs_clicked();
-
-    QString formAgzs();
 
 private:
     Ui::MainWindow *ui;
 
     const QString c_settingPath = QStringLiteral("Setting.txt");
-    const QString c_version = QStringLiteral("v1.16e");
+    const QString c_version = QStringLiteral("v1.19");
 
     QString agzs_;
 
@@ -91,6 +88,7 @@ private:
 
     int errorPassword_ = 0;
     bool isNeedAuth_ = false;
+    bool isNetworkError_ = false;
     bool isYandexEnabled_ = false;
     bool isCityMobileEnabled_ = false;
 

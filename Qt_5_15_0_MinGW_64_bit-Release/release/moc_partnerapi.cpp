@@ -115,7 +115,7 @@ void PartnerAPI::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->s_gotOrders((*reinterpret_cast< QJsonDocument(*)>(_a[1]))); break;
-        case 1: _t->s_error((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3]))); break;
+        case 1: _t->s_error((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3]))); break;
         case 2: { int _r = _t->checkOrders();
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
         case 3: { QNetworkRequest _r = _t->createNetworkRequest((*reinterpret_cast< QUrl(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3])));
@@ -151,7 +151,7 @@ void PartnerAPI::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
             }
         }
         {
-            using _t = void (PartnerAPI::*)(QString , QString , int );
+            using _t = void (PartnerAPI::*)(const QString & , const QString & , int );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&PartnerAPI::s_error)) {
                 *result = 1;
                 return;
@@ -208,7 +208,7 @@ void PartnerAPI::s_gotOrders(QJsonDocument _t1)
 }
 
 // SIGNAL 1
-void PartnerAPI::s_error(QString _t1, QString _t2, int _t3)
+void PartnerAPI::s_error(const QString & _t1, const QString & _t2, int _t3)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t3))) };
     QMetaObject::activate(this, &staticMetaObject, 1, _a);

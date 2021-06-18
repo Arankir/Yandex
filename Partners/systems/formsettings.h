@@ -19,11 +19,18 @@ public:
 signals:
     void s_yandexChange(bool);
     void s_cityMobileChange(bool);
+    void s_agzsChanged(const QString &agzs);
 
 private slots:
     void on_checkBoxYandex_stateChanged(int arg1);
 
     void on_checkBoxCityMobile_stateChanged(int arg1);
+
+    void on_pushButton_clicked();
+
+    void on_CheckBoxAutorun_stateChanged(int arg1);
+
+    void on_ButtonAGZS_clicked();
 
 private:
     Ui::FormSettings *ui;

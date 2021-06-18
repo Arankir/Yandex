@@ -1,0 +1,328 @@
+09:04:56 STARTED
+09:04:56 currentAGZS = "deb"
+09:05:00 DB is open
+09:05:00 check y = true  nAut = false  c = true
+09:05:00 POST 200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/price" "(a92=40&propane=21)"
+09:05:01 POST 200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/price" "(a92=37.21&propane=30)"
+09:05:01 POST 200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/station" "({\"Columns\":{\"1\":{\"Fuels\":[\"propane\",\"diesel\"]},\"2\":{\"Fuels\":[\"propane\",\"a92\"]}},\"StationExtendedId\":\"2\"})"
+09:05:01 POST 200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/station" "({\"Adress\":\"г. Уфа, ул. Чебоксарская, д. 12\",\"Columns\":{\"1\":{\"Fuels\":[\"propane\",\"diesel\"]},\"2\":{\"Fuels\":[\"propane\",\"a92\"]}},\"Enable\":true,\"FuelNames\":[{\"Fuel\":\"propane\",\"FuelName\":\"Пропан\"},{\"Fuel\":\"diesel\",\"FuelName\":\"Дизель\"},{\"Fuel\":\"a92\",\"FuelName\":\"А-92\"}],\"Location\":{\"Lat\":\"54.6878\",\"Lon\":\"55.8086\"},\"Name\":\"АГЗС №2\",\"StationExtendedId\":\"2\"})"
+09:05:05 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:05:05 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:05:05 itemOrder "Expire" "6c684ebdca8e487aae1ac4e29cd104ac"
+09:05:05 "6c684ebdca8e487aae1ac4e29cd104ac" Expire
+09:05:05 WRNG ERROR "getPayOperationData" no data
+09:05:05 "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:05:05 WRNG "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:05:08 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:05:08 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:05:08 itemOrder "Expire" "6c684ebdca8e487aae1ac4e29cd104ac"
+09:05:08 "6c684ebdca8e487aae1ac4e29cd104ac" Expire
+09:05:08 WRNG ERROR "getPayOperationData" no data
+09:05:08 "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:05:08 WRNG "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:05:11 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:05:11 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:05:11 itemOrder "Expire" "6c684ebdca8e487aae1ac4e29cd104ac"
+09:05:11 "6c684ebdca8e487aae1ac4e29cd104ac" Expire
+09:05:11 WRNG ERROR "getPayOperationData" no data
+09:05:11 "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:05:11 WRNG "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:05:50 STARTED
+09:05:50 currentAGZS = "deb"
+09:05:54 DB is open
+09:05:54 check y = true  nAut = false  c = true
+09:05:54 POST 200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/price" "(a92=40&propane=21)"
+09:05:55 POST 200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/price" "(a92=37.21&propane=30)"
+09:05:55 POST 200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/station" "({\"Columns\":{\"1\":{\"Fuels\":[\"propane\",\"diesel\"]},\"2\":{\"Fuels\":[\"propane\",\"a92\"]}},\"StationExtendedId\":\"2\"})"
+09:05:55 POST 200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/station" "({\"Adress\":\"г. Уфа, ул. Чебоксарская, д. 12\",\"Columns\":{\"1\":{\"Fuels\":[\"propane\",\"diesel\"]},\"2\":{\"Fuels\":[\"propane\",\"a92\"]}},\"Enable\":true,\"FuelNames\":[{\"Fuel\":\"propane\",\"FuelName\":\"Пропан\"},{\"Fuel\":\"diesel\",\"FuelName\":\"Дизель\"},{\"Fuel\":\"a92\",\"FuelName\":\"А-92\"}],\"Location\":{\"Lat\":\"54.6878\",\"Lon\":\"55.8086\"},\"Name\":\"АГЗС №2\",\"StationExtendedId\":\"2\"})"
+09:05:59 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:05:59 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:05:59 itemOrder "Expire" "6c684ebdca8e487aae1ac4e29cd104ac"
+09:05:59 "6c684ebdca8e487aae1ac4e29cd104ac" Expire
+09:05:59 WRNG ERROR "getPayOperationData" no data
+09:05:59 "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:05:59 WRNG "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:06:02 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:06:02 itemOrder "Expire" "6c684ebdca8e487aae1ac4e29cd104ac"
+09:06:02 "6c684ebdca8e487aae1ac4e29cd104ac" Expire
+09:06:02 WRNG ERROR "getPayOperationData" no data
+09:06:02 "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:06:02 WRNG "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:08:46 STARTED
+09:08:46 currentAGZS = "deb"
+09:08:50 DB is open
+09:08:51 check y = true  nAut = false  c = true
+09:08:51 POST 200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/price" "(a92=40&propane=21)"
+09:08:51 POST 200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/price" "(a92=37.21&propane=30)"
+09:08:51 POST 200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/station" "({\"Columns\":{\"1\":{\"Fuels\":[\"propane\",\"diesel\"]},\"2\":{\"Fuels\":[\"propane\",\"a92\"]}},\"StationExtendedId\":\"2\"})"
+09:08:52 POST 200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/station" "({\"Adress\":\"г. Уфа, ул. Чебоксарская, д. 12\",\"Columns\":{\"1\":{\"Fuels\":[\"propane\",\"diesel\"]},\"2\":{\"Fuels\":[\"propane\",\"a92\"]}},\"Enable\":true,\"FuelNames\":[{\"Fuel\":\"propane\",\"FuelName\":\"Пропан\"},{\"Fuel\":\"diesel\",\"FuelName\":\"Дизель\"},{\"Fuel\":\"a92\",\"FuelName\":\"А-92\"}],\"Location\":{\"Lat\":\"54.6878\",\"Lon\":\"55.8086\"},\"Name\":\"АГЗС №2\",\"StationExtendedId\":\"2\"})"
+09:08:56 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:08:56 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:08:56 itemOrder "Expire" "6c684ebdca8e487aae1ac4e29cd104ac"
+09:08:56 "6c684ebdca8e487aae1ac4e29cd104ac" Expire
+09:08:56 "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:08:56 WRNG "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:08:59 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:08:59 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:08:59 itemOrder "Expire" "6c684ebdca8e487aae1ac4e29cd104ac"
+09:08:59 "6c684ebdca8e487aae1ac4e29cd104ac" Expire
+09:08:59 "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:08:59 WRNG "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:09:02 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:09:02 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:09:02 itemOrder "Expire" "6c684ebdca8e487aae1ac4e29cd104ac"
+09:09:02 "6c684ebdca8e487aae1ac4e29cd104ac" Expire
+09:09:02 "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:09:02 WRNG "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:09:05 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:09:05 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:09:05 itemOrder "Expire" "6c684ebdca8e487aae1ac4e29cd104ac"
+09:09:05 "6c684ebdca8e487aae1ac4e29cd104ac" Expire
+09:09:05 "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:09:05 WRNG "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:09:08 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:09:09 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:09:09 itemOrder "Expire" "6c684ebdca8e487aae1ac4e29cd104ac"
+09:09:09 "6c684ebdca8e487aae1ac4e29cd104ac" Expire
+09:09:09 "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:09:09 WRNG "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:09:11 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:09:12 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:09:12 itemOrder "Expire" "6c684ebdca8e487aae1ac4e29cd104ac"
+09:09:12 "6c684ebdca8e487aae1ac4e29cd104ac" Expire
+09:09:12 "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:09:12 WRNG "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:09:14 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:09:15 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:09:15 itemOrder "Expire" "6c684ebdca8e487aae1ac4e29cd104ac"
+09:09:15 "6c684ebdca8e487aae1ac4e29cd104ac" Expire
+09:09:15 "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:09:15 WRNG "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:09:17 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:09:18 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:09:18 itemOrder "Expire" "6c684ebdca8e487aae1ac4e29cd104ac"
+09:09:18 "6c684ebdca8e487aae1ac4e29cd104ac" Expire
+09:09:18 "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:09:18 WRNG "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:09:20 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:09:21 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:09:21 itemOrder "Expire" "6c684ebdca8e487aae1ac4e29cd104ac"
+09:09:21 "6c684ebdca8e487aae1ac4e29cd104ac" Expire
+09:09:21 "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:09:21 WRNG "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:09:23 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:09:25 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:09:25 itemOrder "Expire" "6c684ebdca8e487aae1ac4e29cd104ac"
+09:09:25 "6c684ebdca8e487aae1ac4e29cd104ac" Expire
+09:09:25 "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:09:25 WRNG "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:09:26 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:09:28 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:09:28 itemOrder "Expire" "6c684ebdca8e487aae1ac4e29cd104ac"
+09:09:28 "6c684ebdca8e487aae1ac4e29cd104ac" Expire
+09:09:28 "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:09:28 WRNG "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:09:29 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:09:45 STARTED
+09:09:45 currentAGZS = "deb"
+09:09:50 DB is open
+09:09:50 check y = true  nAut = false  c = true
+09:09:50 POST 200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/price" "(a92=40&propane=21)"
+09:09:50 POST 200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/price" "(a92=37.21&propane=30)"
+09:09:50 POST 200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/station" "({\"Columns\":{\"1\":{\"Fuels\":[\"propane\",\"diesel\"]},\"2\":{\"Fuels\":[\"propane\",\"a92\"]}},\"StationExtendedId\":\"2\"})"
+09:09:51 POST 200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/station" "({\"Adress\":\"г. Уфа, ул. Чебоксарская, д. 12\",\"Columns\":{\"1\":{\"Fuels\":[\"propane\",\"diesel\"]},\"2\":{\"Fuels\":[\"propane\",\"a92\"]}},\"Enable\":true,\"FuelNames\":[{\"Fuel\":\"propane\",\"FuelName\":\"Пропан\"},{\"Fuel\":\"diesel\",\"FuelName\":\"Дизель\"},{\"Fuel\":\"a92\",\"FuelName\":\"А-92\"}],\"Location\":{\"Lat\":\"54.6878\",\"Lon\":\"55.8086\"},\"Name\":\"АГЗС №2\",\"StationExtendedId\":\"2\"})"
+09:09:55 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:09:55 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:09:55 itemOrder "Expire" "6c684ebdca8e487aae1ac4e29cd104ac"
+09:09:55 "6c684ebdca8e487aae1ac4e29cd104ac" Expire
+09:09:55 "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:09:55 WRNG "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:09:58 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:09:58 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:09:58 itemOrder "Expire" "6c684ebdca8e487aae1ac4e29cd104ac"
+09:09:58 "6c684ebdca8e487aae1ac4e29cd104ac" Expire
+09:09:58 "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:09:58 WRNG "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:10:01 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:10:01 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:10:01 itemOrder "Expire" "6c684ebdca8e487aae1ac4e29cd104ac"
+09:10:01 "6c684ebdca8e487aae1ac4e29cd104ac" Expire
+09:10:01 "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:10:01 WRNG "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:10:04 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:10:04 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:10:04 itemOrder "Expire" "6c684ebdca8e487aae1ac4e29cd104ac"
+09:10:04 "6c684ebdca8e487aae1ac4e29cd104ac" Expire
+09:10:04 "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:10:04 WRNG "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:10:07 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:10:08 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:10:08 itemOrder "Expire" "6c684ebdca8e487aae1ac4e29cd104ac"
+09:10:08 "6c684ebdca8e487aae1ac4e29cd104ac" Expire
+09:10:08 "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:10:08 WRNG "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:11:05 STARTED
+09:11:05 currentAGZS = "deb"
+09:11:10 DB is open
+09:11:10 check y = true  nAut = false  c = true
+09:11:10 POST 200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/price" "(a92=40&propane=21)"
+09:11:11 POST 200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/price" "(a92=37.21&propane=30)"
+09:11:11 POST 200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/station" "({\"Columns\":{\"1\":{\"Fuels\":[\"propane\",\"diesel\"]},\"2\":{\"Fuels\":[\"propane\",\"a92\"]}},\"StationExtendedId\":\"2\"})"
+09:11:11 POST 200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/station" "({\"Adress\":\"г. Уфа, ул. Чебоксарская, д. 12\",\"Columns\":{\"1\":{\"Fuels\":[\"propane\",\"diesel\"]},\"2\":{\"Fuels\":[\"propane\",\"a92\"]}},\"Enable\":true,\"FuelNames\":[{\"Fuel\":\"propane\",\"FuelName\":\"Пропан\"},{\"Fuel\":\"diesel\",\"FuelName\":\"Дизель\"},{\"Fuel\":\"a92\",\"FuelName\":\"А-92\"}],\"Location\":{\"Lat\":\"54.6878\",\"Lon\":\"55.8086\"},\"Name\":\"АГЗС №2\",\"StationExtendedId\":\"2\"})"
+09:11:15 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:11:15 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:11:15 itemOrder "Expire" "6c684ebdca8e487aae1ac4e29cd104ac"
+09:11:15 "6c684ebdca8e487aae1ac4e29cd104ac" Expire
+09:11:15 "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:11:15 WRNG "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:11:18 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:11:18 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:11:18 itemOrder "Expire" "6c684ebdca8e487aae1ac4e29cd104ac"
+09:11:18 "6c684ebdca8e487aae1ac4e29cd104ac" Expire
+09:11:18 "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:11:18 WRNG "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:11:21 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:11:22 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:11:22 itemOrder "Expire" "6c684ebdca8e487aae1ac4e29cd104ac"
+09:11:22 "6c684ebdca8e487aae1ac4e29cd104ac" Expire
+09:11:22 "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:11:22 WRNG "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:11:24 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:11:25 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:11:25 itemOrder "Expire" "6c684ebdca8e487aae1ac4e29cd104ac"
+09:11:25 "6c684ebdca8e487aae1ac4e29cd104ac" Expire
+09:11:25 "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:11:25 WRNG "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:11:27 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:11:28 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:11:28 itemOrder "Expire" "6c684ebdca8e487aae1ac4e29cd104ac"
+09:11:28 "6c684ebdca8e487aae1ac4e29cd104ac" Expire
+09:11:28 "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:11:28 WRNG "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:11:30 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:11:31 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:11:31 itemOrder "Expire" "6c684ebdca8e487aae1ac4e29cd104ac"
+09:11:31 "6c684ebdca8e487aae1ac4e29cd104ac" Expire
+09:11:31 "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:11:31 WRNG "6c684ebdca8e487aae1ac4e29cd104ac" Expire but fueling progress
+09:11:48 STARTED
+09:11:48 currentAGZS = "deb"
+09:11:53 DB is open
+09:11:53 check y = true  nAut = false  c = true
+09:11:53 POST 200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/price" "(a92=40&propane=21)"
+09:11:53 POST 200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/price" "(a92=37.21&propane=30)"
+09:11:53 POST 200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/station" "({\"Columns\":{\"1\":{\"Fuels\":[\"propane\",\"diesel\"]},\"2\":{\"Fuels\":[\"propane\",\"a92\"]}},\"StationExtendedId\":\"2\"})"
+09:11:54 POST 200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/station" "({\"Adress\":\"г. Уфа, ул. Чебоксарская, д. 12\",\"Columns\":{\"1\":{\"Fuels\":[\"propane\",\"diesel\"]},\"2\":{\"Fuels\":[\"propane\",\"a92\"]}},\"Enable\":true,\"FuelNames\":[{\"Fuel\":\"propane\",\"FuelName\":\"Пропан\"},{\"Fuel\":\"diesel\",\"FuelName\":\"Дизель\"},{\"Fuel\":\"a92\",\"FuelName\":\"А-92\"}],\"Location\":{\"Lat\":\"54.6878\",\"Lon\":\"55.8086\"},\"Name\":\"АГЗС №2\",\"StationExtendedId\":\"2\"})"
+09:11:58 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:11:58 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:11:58 itemOrder "Expire" "6c684ebdca8e487aae1ac4e29cd104ac"
+09:11:58 "6c684ebdca8e487aae1ac4e29cd104ac" Expire
+09:11:58 "6c684ebdca8e487aae1ac4e29cd104ac" transaction was canceled
+09:11:58 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/canceled?orderId=6c684ebdca8e487aae1ac4e29cd104ac&reason=Заказ отменен&extendedOrderId=4120702&extendedDate=27.04.2021 09:11:58"
+09:12:01 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:12:01 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:12:04 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:12:05 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:12:08 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:12:08 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:12:11 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:12:11 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:12:14 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:12:14 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:12:17 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:12:17 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:12:20 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:12:20 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:12:23 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:12:23 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:12:26 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:12:27 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:12:29 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:12:30 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:12:32 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:12:33 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:12:35 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:12:36 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:12:38 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:12:39 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:12:41 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:12:42 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:12:44 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:12:46 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:12:48 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:12:49 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:12:51 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:12:52 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:12:54 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:12:55 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:12:57 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:12:58 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:13:00 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:13:01 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:13:03 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:13:05 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:13:06 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:13:08 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:13:09 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:13:11 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:13:12 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:13:14 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:13:15 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:13:17 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:13:18 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:13:20 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:13:21 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:13:24 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:13:24 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:13:27 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:13:27 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:13:30 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:13:30 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:13:33 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:13:33 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:13:36 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:13:36 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:13:39 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:13:39 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:13:42 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:13:42 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:13:46 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:13:46 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:13:49 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:13:49 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:13:52 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:13:52 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:13:55 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:13:55 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:13:58 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:13:59 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:14:02 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:14:02 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:14:05 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:14:05 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:14:18 STARTED
+09:14:18 currentAGZS = "deb"
+09:14:23 DB is open
+09:14:23 check y = true  nAut = false  c = true
+09:14:24 POST 200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/price" "(a92=40&propane=21)"
+09:14:24 POST 200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/price" "(a92=37.21&propane=30)"
+09:14:24 POST 200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/station" "({\"Columns\":{\"1\":{\"Fuels\":[\"propane\",\"diesel\"]},\"2\":{\"Fuels\":[\"propane\",\"a92\"]}},\"StationExtendedId\":\"2\"})"
+09:14:24 POST 200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/station" "({\"Adress\":\"г. Уфа, ул. Чебоксарская, д. 12\",\"Columns\":{\"1\":{\"Fuels\":[\"propane\",\"diesel\"]},\"2\":{\"Fuels\":[\"propane\",\"a92\"]}},\"Enable\":true,\"FuelNames\":[{\"Fuel\":\"propane\",\"FuelName\":\"Пропан\"},{\"Fuel\":\"diesel\",\"FuelName\":\"Дизель\"},{\"Fuel\":\"a92\",\"FuelName\":\"А-92\"}],\"Location\":{\"Lat\":\"54.6878\",\"Lon\":\"55.8086\"},\"Name\":\"АГЗС №2\",\"StationExtendedId\":\"2\"})"
+09:14:28 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:14:28 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:14:31 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:14:32 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:14:35 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:14:35 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:14:38 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:14:38 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"
+09:15:09 STARTED
+09:15:09 currentAGZS = "deb"
+09:15:13 DB is open
+09:15:13 check y = true  nAut = false  c = true
+09:15:14 POST 200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/price" "(a92=40&propane=21)"
+09:15:14 POST 200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/price" "(a92=37.21&propane=30)"
+09:15:14 POST 200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/station" "({\"Columns\":{\"1\":{\"Fuels\":[\"propane\",\"diesel\"]},\"2\":{\"Fuels\":[\"propane\",\"a92\"]}},\"StationExtendedId\":\"2\"})"
+09:15:14 POST 200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/station" "({\"Adress\":\"г. Уфа, ул. Чебоксарская, д. 12\",\"Columns\":{\"1\":{\"Fuels\":[\"propane\",\"diesel\"]},\"2\":{\"Fuels\":[\"propane\",\"a92\"]}},\"Enable\":true,\"FuelNames\":[{\"Fuel\":\"propane\",\"FuelName\":\"Пропан\"},{\"Fuel\":\"diesel\",\"FuelName\":\"Дизель\"},{\"Fuel\":\"a92\",\"FuelName\":\"А-92\"}],\"Location\":{\"Lat\":\"54.6878\",\"Lon\":\"55.8086\"},\"Name\":\"АГЗС №2\",\"StationExtendedId\":\"2\"})"
+09:15:18 GET  200 "CityMobile" "https://terminal.api.test.fuelup.ru/api/orders/items"
+09:15:18 GET  200 "Yandex    " "http://cabinet.tst.tanker.yandex.ru/api/orders/items"

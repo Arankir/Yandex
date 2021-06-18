@@ -179,11 +179,13 @@ struct ApiTransaction {
     QString id;
     QString localState;
     double apiLitre = 0.0;
+    double transLitre = 0.0;
     int apiVCode = 0;
     int headVCode = 0;
     int iState = 0;
     QDateTime dateOpen;
     QDateTime dateClose;
+    int activeDB = 0;
 
     bool operator==(const ApiTransaction &api) {
         return (this->id == api.id) &&
@@ -191,6 +193,7 @@ struct ApiTransaction {
                (this->apiLitre == api.apiLitre) &&
                (this->apiVCode == api.apiVCode) &&
                (this->headVCode == api.headVCode) &&
+               (this->transLitre == api.transLitre) &&
                (this->iState == api.iState) &&
                (this->dateOpen == api.dateOpen) &&
                (this->dateClose == api.dateClose);

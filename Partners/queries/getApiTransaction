@@ -1,11 +1,13 @@
 SELECT TOP 1
   api.localState,
   api.APILitre,
-  api.VCode,
-  h.VCode,
+  b.[TrkTotalPriceDB] as 'transLitre',
+  api.VCode as 'apiVCode',
+  h.VCode as 'headVCode',
   isnull(b.iState, -1) as iState,
   b.DateOpen,
-  b.DateClose
+  b.DateClose,
+  isnull(b.ActiveDB, -1) as ActiveDB
 FROM [agzs].[dbo].[PR_APITransaction] api
 INNER JOIN [agzs].[dbo].[ADAST_TRKTransaction] h
   ON api.Link = h.VCode

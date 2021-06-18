@@ -27,6 +27,10 @@ void PartnerAPI::start(int interval) {
     timerOrders_.start(timerInterval_);
 }
 
+void PartnerAPI::stop() {
+    timerOrders_.stop();
+}
+
 QNetworkRequest PartnerAPI::createNetworkRequest(QUrl aUrl, QString aContentType, QString aAuth) {
     QNetworkRequest request(aUrl);
     request.setHeader(QNetworkRequest::ContentTypeHeader, aContentType.toUtf8());
@@ -56,5 +60,8 @@ void PartnerAPI::logNetwork(QNetworkAccessManager::Operation operation, QString 
     default: {
 
     }
+    }
+    if (code != 200) {
+        emit s_error("error", "", code);
     }
 }

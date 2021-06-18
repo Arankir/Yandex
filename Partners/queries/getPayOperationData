@@ -5,6 +5,6 @@ SELECT TOP 1
     [DateOpen],
     [DateClose]
 FROM [agzs].[dbo].[ARM_PayOperation] p
-INNER JOIN agzs.dbo.ADAST_TRKTransaction t
+RIGHT JOIN agzs.dbo.ADAST_TRKTransaction t
     on (p.Link = t.VCode)
 WHERE t.VCode = %1

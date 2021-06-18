@@ -2,8 +2,8 @@ SELECT
     [APIID],
     [localState],
     [APILitre],
-    a.[VCode],
-    t.VCode,
+    a.[VCode] as 'apiVCode',
+    t.VCode as 'transVCode',
     a.[DateOpen],
     a.[DateClose]
 FROM [agzs].[dbo].[PR_APITransaction] a
@@ -15,6 +15,9 @@ WHERE ((SELECT count(*)
     and t.iPayWay = %1
     and localState <> 'Ошибка: 30 минут'
     and localState <> 'Отменена'
+    and localState <> 'Ошибка: Кассир отменил'
+    and localState <> 'Ошибка: 30 минут, кассир отменил'
+
     and t.agzs = (  SELECT TOP 1
                         AGZS
                     FROM [agzs].[dbo].[Identification])

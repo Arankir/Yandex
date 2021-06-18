@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[51];
-    char stringdata0[772];
+    QByteArrayData data[54];
+    char stringdata0[804];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -80,9 +80,12 @@ QT_MOC_LITERAL(44, 667, 16), // "authYandexResult"
 QT_MOC_LITERAL(45, 684, 6), // "aToken"
 QT_MOC_LITERAL(46, 691, 8), // "needAuth"
 QT_MOC_LITERAL(47, 700, 23), // "yandexErrorNotification"
-QT_MOC_LITERAL(48, 724, 16), // "globalTimerCheck"
-QT_MOC_LITERAL(49, 741, 21), // "on_ButtonAgzs_clicked"
-QT_MOC_LITERAL(50, 763, 8) // "formAgzs"
+QT_MOC_LITERAL(48, 724, 17), // "soundNotification"
+QT_MOC_LITERAL(49, 742, 5), // "aPath"
+QT_MOC_LITERAL(50, 748, 7), // "aVolume"
+QT_MOC_LITERAL(51, 756, 16), // "globalTimerCheck"
+QT_MOC_LITERAL(52, 773, 21), // "on_ButtonAgzs_clicked"
+QT_MOC_LITERAL(53, 795, 8) // "formAgzs"
 
     },
     "MainWindow\0createTransaction\0\0Agzs\0"
@@ -105,6 +108,7 @@ QT_MOC_LITERAL(50, 763, 8) // "formAgzs"
     "reason\0trayActionExecute\0createTrayIconMenu\0"
     "QMenu*\0showTrayIcon\0authYandexResult\0"
     "aToken\0needAuth\0yandexErrorNotification\0"
+    "soundNotification\0aPath\0aVolume\0"
     "globalTimerCheck\0on_ButtonAgzs_clicked\0"
     "formAgzs"
 };
@@ -116,7 +120,7 @@ static const uint qt_meta_data_MainWindow[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      32,   14, // methods
+      33,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -124,38 +128,39 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    5,  174,    2, 0x0a /* Public */,
-      11,    1,  185,    2, 0x0a /* Public */,
-      14,    2,  188,    2, 0x0a /* Public */,
-      16,    2,  193,    2, 0x0a /* Public */,
-      17,    2,  198,    2, 0x0a /* Public */,
-      18,    2,  203,    2, 0x0a /* Public */,
-      19,    2,  208,    2, 0x0a /* Public */,
-      20,    2,  213,    2, 0x0a /* Public */,
-      21,    2,  218,    2, 0x0a /* Public */,
-      22,    2,  223,    2, 0x0a /* Public */,
-      23,    1,  228,    2, 0x0a /* Public */,
-      24,    0,  231,    2, 0x0a /* Public */,
-      25,    0,  232,    2, 0x08 /* Private */,
-      26,    0,  233,    2, 0x08 /* Private */,
-      27,    0,  234,    2, 0x08 /* Private */,
-      28,    0,  235,    2, 0x08 /* Private */,
-      29,    0,  236,    2, 0x08 /* Private */,
-      30,    0,  237,    2, 0x08 /* Private */,
-      31,    0,  238,    2, 0x08 /* Private */,
-      32,    0,  239,    2, 0x08 /* Private */,
-      33,    2,  240,    2, 0x08 /* Private */,
-      35,    1,  245,    2, 0x08 /* Private */,
-      37,    1,  248,    2, 0x08 /* Private */,
-      40,    0,  251,    2, 0x08 /* Private */,
-      41,    0,  252,    2, 0x08 /* Private */,
-      43,    0,  253,    2, 0x08 /* Private */,
-      44,    1,  254,    2, 0x08 /* Private */,
-      46,    0,  257,    2, 0x08 /* Private */,
-      47,    0,  258,    2, 0x08 /* Private */,
-      48,    0,  259,    2, 0x08 /* Private */,
-      49,    0,  260,    2, 0x08 /* Private */,
-      50,    0,  261,    2, 0x08 /* Private */,
+       1,    5,  179,    2, 0x0a /* Public */,
+      11,    1,  190,    2, 0x0a /* Public */,
+      14,    2,  193,    2, 0x0a /* Public */,
+      16,    2,  198,    2, 0x0a /* Public */,
+      17,    2,  203,    2, 0x0a /* Public */,
+      18,    2,  208,    2, 0x0a /* Public */,
+      19,    2,  213,    2, 0x0a /* Public */,
+      20,    2,  218,    2, 0x0a /* Public */,
+      21,    2,  223,    2, 0x0a /* Public */,
+      22,    2,  228,    2, 0x0a /* Public */,
+      23,    1,  233,    2, 0x0a /* Public */,
+      24,    0,  236,    2, 0x0a /* Public */,
+      25,    0,  237,    2, 0x08 /* Private */,
+      26,    0,  238,    2, 0x08 /* Private */,
+      27,    0,  239,    2, 0x08 /* Private */,
+      28,    0,  240,    2, 0x08 /* Private */,
+      29,    0,  241,    2, 0x08 /* Private */,
+      30,    0,  242,    2, 0x08 /* Private */,
+      31,    0,  243,    2, 0x08 /* Private */,
+      32,    0,  244,    2, 0x08 /* Private */,
+      33,    2,  245,    2, 0x08 /* Private */,
+      35,    1,  250,    2, 0x08 /* Private */,
+      37,    1,  253,    2, 0x08 /* Private */,
+      40,    0,  256,    2, 0x08 /* Private */,
+      41,    0,  257,    2, 0x08 /* Private */,
+      43,    0,  258,    2, 0x08 /* Private */,
+      44,    1,  259,    2, 0x08 /* Private */,
+      46,    0,  262,    2, 0x08 /* Private */,
+      47,    0,  263,    2, 0x08 /* Private */,
+      48,    2,  264,    2, 0x08 /* Private */,
+      51,    0,  269,    2, 0x08 /* Private */,
+      52,    0,  270,    2, 0x08 /* Private */,
+      53,    0,  271,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Int, 0x80000000 | 3, 0x80000000 | 5, 0x80000000 | 7, QMetaType::Int, QMetaType::QDateTime,    4,    6,    8,    9,   10,
@@ -187,6 +192,7 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void, QMetaType::QString,   45,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::QString, QMetaType::Int,   49,   50,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::QString,
@@ -242,9 +248,10 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 26: _t->authYandexResult((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 27: _t->needAuth(); break;
         case 28: _t->yandexErrorNotification(); break;
-        case 29: _t->globalTimerCheck(); break;
-        case 30: _t->on_ButtonAgzs_clicked(); break;
-        case 31: { QString _r = _t->formAgzs();
+        case 29: _t->soundNotification((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< const int(*)>(_a[2]))); break;
+        case 30: _t->globalTimerCheck(); break;
+        case 31: _t->on_ButtonAgzs_clicked(); break;
+        case 32: { QString _r = _t->formAgzs();
             if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
         default: ;
         }
@@ -354,13 +361,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 32)
+        if (_id < 33)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 32;
+        _id -= 33;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 32)
+        if (_id < 33)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 32;
+        _id -= 33;
     }
     return _id;
 }

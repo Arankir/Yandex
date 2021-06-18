@@ -1,10 +1,24 @@
 #include "formsettings.h"
 #include "ui_formsettings.h"
+#include <QInputDialog>
+#include <QDir>
+#include <QMessageBox>
 
 FormSettings::FormSettings(QWidget *parent): QWidget(parent), ui(new Ui::FormSettings), reestr_("RegionPostavka", "Partners") {
     ui->setupUi(this);
     ui->checkBoxYandex->setChecked(reestr_.value("Yandex Enabled", QVariant(false)).toBool());
     ui->checkBoxCityMobile->setChecked(reestr_.value("CityMobile Enabled", QVariant(false)).toBool());
+    ui->CheckBoxAutorun->setEnabled(false);
+    ui->ButtonAGZS->setEnabled(false);
+    QSettings bootUpSettings("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", QSettings::NativeFormat);
+    QString value = bootUpSettings.value("RPYandex", QVariant("")).toString();
+    if (value == "") {
+        ui->CheckBoxAutorun->setChecked(false);
+    } else if(value == QDir::toNativeSeparators(QCoreApplication::applicationFilePath())) {
+        ui->CheckBoxAutorun->setChecked(true);
+    } else {
+        ui->CheckBoxAutorun->setCheckState(Qt::CheckState::PartiallyChecked);
+    }
     this->setAttribute(Qt::WA_DeleteOnClose);
 }
 
@@ -24,4 +38,36 @@ void FormSettings::on_checkBoxCityMobile_stateChanged(int arg1) {
    reestr_.setValue("CityMobile Enabled", arg1 == 2);
    reestr_.sync();
    emit s_cityMobileChange(arg1 == 2);
+}
+
+void FormSettings::on_pushButton_clicked() {
+    QString pass = QInputDialog::getText(this, tr("Проверка"), tr("Введите пароль:"), QLineEdit::Password, "");
+    if (pass == "rjrjcs743") {
+        ui->CheckBoxAutorun->setEnabled(!ui->CheckBoxAutorun->isEnabled());
+        ui->ButtonAGZS->setEnabled(!ui->ButtonAGZS->isEnabled());
+    }
+}
+
+void FormSettings::on_CheckBoxAutorun_stateChanged(int arg1) {
+    QSettings bootUpSettings("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", QSettings::NativeFormat);
+    QString app_path = QCoreApplication::applicationFilePath();
+    if (arg1 == 2) {
+        qInfo() << "app autorun is enabled" << app_path;
+        bootUpSettings.setValue("RPYandex", QDir::toNativeSeparators(app_path));
+    } else {
+        qInfo() << "app autorun is disabled";
+        bootUpSettings.remove("RPYandex");
+    }
+}
+
+void FormSettings::on_ButtonAGZS_clicked() {
+    QString password = QInputDialog::getText(this, tr("Поменять АГЗС"), tr("Пароль:"), QLineEdit::Password, "");
+    if (password == "rjrjcs743") {
+        QString agzs = QInputDialog::getText(this, tr("Поменять АГЗС"), tr("Введите АГЗС:"), QLineEdit::Normal, "agzs");
+        if (agzs != "") {
+            emit s_agzsChanged(agzs);
+        }
+    } else {
+        QMessageBox::warning(0, tr("Ошибка!"), tr("Неверный пароль!"));
+    }
 }

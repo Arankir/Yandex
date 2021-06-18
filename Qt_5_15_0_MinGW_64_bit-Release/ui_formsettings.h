@@ -13,6 +13,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QCheckBox>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -22,6 +23,9 @@ class Ui_FormSettings
 {
 public:
     QVBoxLayout *verticalLayout_2;
+    QPushButton *pushButton;
+    QCheckBox *CheckBoxAutorun;
+    QPushButton *ButtonAGZS;
     QVBoxLayout *verticalLayout;
     QLabel *label;
     QCheckBox *checkBoxYandex;
@@ -31,9 +35,24 @@ public:
     {
         if (FormSettings->objectName().isEmpty())
             FormSettings->setObjectName(QString::fromUtf8("FormSettings"));
-        FormSettings->resize(231, 83);
+        FormSettings->resize(132, 162);
         verticalLayout_2 = new QVBoxLayout(FormSettings);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
+        pushButton = new QPushButton(FormSettings);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+
+        verticalLayout_2->addWidget(pushButton);
+
+        CheckBoxAutorun = new QCheckBox(FormSettings);
+        CheckBoxAutorun->setObjectName(QString::fromUtf8("CheckBoxAutorun"));
+
+        verticalLayout_2->addWidget(CheckBoxAutorun);
+
+        ButtonAGZS = new QPushButton(FormSettings);
+        ButtonAGZS->setObjectName(QString::fromUtf8("ButtonAGZS"));
+
+        verticalLayout_2->addWidget(ButtonAGZS);
+
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         label = new QLabel(FormSettings);
@@ -63,6 +82,9 @@ public:
     void retranslateUi(QWidget *FormSettings)
     {
         FormSettings->setWindowTitle(QCoreApplication::translate("FormSettings", "\320\235\320\260\321\201\321\202\321\200\320\276\320\271\320\272\320\270", nullptr));
+        pushButton->setText(QCoreApplication::translate("FormSettings", "\320\240\320\260\320\267\320\261\320\273\320\276\320\272\320\270\321\200\320\276\320\262\320\260\321\202\321\214", nullptr));
+        CheckBoxAutorun->setText(QCoreApplication::translate("FormSettings", "\320\224\320\260", nullptr));
+        ButtonAGZS->setText(QCoreApplication::translate("FormSettings", "\320\220\320\223\320\227\320\241", nullptr));
         label->setText(QCoreApplication::translate("FormSettings", "\320\237\320\260\321\200\321\202\320\275\321\221\321\200\321\213", nullptr));
         checkBoxYandex->setText(QCoreApplication::translate("FormSettings", "\320\257\320\275\320\264\320\265\320\272\321\201 \320\267\320\260\320\277\321\200\320\260\320\262\320\272\320\270", nullptr));
         checkBoxCityMobile->setText(QCoreApplication::translate("FormSettings", "\320\241\320\270\321\202\320\270\320\274\320\276\320\261\320\270\320\273", nullptr));

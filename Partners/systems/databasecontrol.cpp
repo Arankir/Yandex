@@ -1,6 +1,6 @@
 #include "databasecontrol.h"
 
-const int c_maxRestartCount = 2;
+const int c_maxRestartCount = 3;
 
 #define InitStart {
 DataBaseControl::DataBaseControl(QString aAgzs, QObject *aParent): QObject(aParent), agzs_(aAgzs) {
@@ -123,8 +123,8 @@ bool DataBaseControl::makeQuery(QString aQuery, QString aName, QueryType aType, 
 FuelNames DataBaseControl::getFuelNames(int aFuelId) {
     FuelNames fuelNames;
     makeQuery(getQuery("getFuelNames").arg(QString::number(aFuelId)), "getFuelNames", QueryType::qSelect, [&](QSqlQuery &query){
-        fuelNames =   { query.value(0).toString(),
-                        query.value(1).toString()
+        fuelNames =   { query.value("FuelName").toString(),
+                        query.value("FuelShortName").toString()
                       };
     });
     return fuelNames;
@@ -153,25 +153,25 @@ QVector<SideFuel> DataBaseControl::getFuels() {
     QVector<SideFuel> result;
     makeQuery(getQuery("getFuels"), "getFuels", QueryType::qSelect, [&](QSqlQuery &query){
          do {
-            if (query.value(0).toInt() > 0) {
+            if (query.value("SideAdress").toInt() > 0) {
                 SideFuel side;
-                side.sideAdress = query.value(0).toInt();
-                side.partnerSideAdress = query.value(1).toInt();
+                side.sideAdress = query.value("SideAdress").toInt();
+                side.partnerSideAdress = query.value("Partner_TrkNum").toInt();
                 QVector<int> fuels;
-                if (!query.value(2).isNull()) {
-                    fuels.append(query.value(2).toInt());
+                if (!query.value("Nozzle1Fuel").isNull()) {
+                    fuels.append(query.value("Nozzle1Fuel").toInt());
                 }
-                if (!query.value(3).isNull()) {
-                    fuels.append(query.value(3).toInt());
+                if (!query.value("Nozzle2Fuel").isNull()) {
+                    fuels.append(query.value("Nozzle2Fuel").toInt());
                 }
-                if (!query.value(4).isNull()) {
-                    fuels.append(query.value(4).toInt());
+                if (!query.value("Nozzle3Fuel").isNull()) {
+                    fuels.append(query.value("Nozzle3Fuel").toInt());
                 }
-                if (!query.value(5).isNull()) {
-                    fuels.append(query.value(5).toInt());
+                if (!query.value("Nozzle4Fuel").isNull()) {
+                    fuels.append(query.value("Nozzle4Fuel").toInt());
                 }
-                if (!query.value(6).isNull()) {
-                    fuels.append(query.value(6).toInt());
+                if (!query.value("Nozzle5Fuel").isNull()) {
+                    fuels.append(query.value("Nozzle5Fuel").toInt());
                 }
                 side.fuels = fuels;
                 result.append(std::move(side));
@@ -230,7 +230,7 @@ QVector<SideFuel> DataBaseControl::getFuels() {
 int DataBaseControl::getRealSideAddress(int aAgzs, int aPartnerSideAddress) {
     int result;
     makeQuery(getQuery("getRealSideAddress").arg(QString::number(aAgzs), QString::number(aPartnerSideAddress)), "getRealSideAddress", QueryType::qSelect, [&](QSqlQuery &query){
-         result = query.value(0).toInt();
+         result = query.value("SideAdress").toInt();
     });
     return result;
 
@@ -257,7 +257,7 @@ int DataBaseControl::getRealSideAddress(int aAgzs, int aPartnerSideAddress) {
 int DataBaseControl::getSmena() {
     int result;
     makeQuery(getQuery("getSmena"), "getSmena", QueryType::qSelect, [&](QSqlQuery &query){
-         result = query.value(0).toInt();
+         result = query.value("VCode").toInt();
     });
     return result;
 
@@ -281,7 +281,7 @@ int DataBaseControl::getSmena() {
 int DataBaseControl::getCashBoxIndex(QString aIPartner) {
     int result;
     makeQuery(getQuery("getCashBoxIndex").arg(aIPartner), "getCashBoxIndex", QueryType::qSelect, [&](QSqlQuery &query){
-         result = query.value(0).toInt();
+         result = query.value("CashBoxIndex").toInt();
     });
     return result;
 
@@ -305,25 +305,25 @@ int DataBaseControl::getCashBoxIndex(QString aIPartner) {
 Price DataBaseControl::getPrices(QString aIPartner) {
     Price price;
     makeQuery(getQuery("getPrices").arg(aIPartner), "getPrices", QueryType::qSelect, [&](QSqlQuery &query){
-        price.agzsName          = query.value(0).toString();
-        price.agzs              = query.value(1).toInt();
-        price.vCode             = query.value(2).toInt();
-        price.link              = query.value(3).toInt();
-        price.cDate             = query.value(4).toDateTime();
-        price.partner           = query.value(5).toString();
-        price.diesel            = query.value(6).toFloat();
-        price.diesel_premium    = query.value(7).toFloat();
-        price.a80               = query.value(8).toFloat();
-        price.a92               = query.value(9).toFloat();
-        price.a92_premium       = query.value(10).toFloat();
-        price.a95               = query.value(11).toFloat();
-        price.a95_premium       = query.value(12).toFloat();
-        price.a98               = query.value(13).toFloat();
-        price.a98_premium       = query.value(14).toFloat();
-        price.a100              = query.value(15).toFloat();
-        price.a100_premium      = query.value(16).toFloat();
-        price.propane           = query.value(17).toFloat();
-        price.metan             = query.value(18).toFloat();
+        price.agzsName          = query.value("AGZSName").toString();
+        price.agzs              = query.value("AGZS").toInt();
+        price.vCode             = query.value("VCode").toInt();
+        price.link              = query.value("Link").toInt();
+        price.cDate             = query.value("CDate").toDateTime();
+        price.partner           = query.value("Partner").toString();
+        price.diesel            = query.value("diesel").toFloat();
+        price.diesel_premium    = query.value("diesel_premium").toFloat();
+        price.a80               = query.value("a80").toFloat();
+        price.a92               = query.value("a92").toFloat();
+        price.a92_premium       = query.value("a92_premium").toFloat();
+        price.a95               = query.value("a95").toFloat();
+        price.a95_premium       = query.value("a95_premium").toFloat();
+        price.a98               = query.value("a98").toFloat();
+        price.a98_premium       = query.value("a98_premium").toFloat();
+        price.a100              = query.value("a100").toFloat();
+        price.a100_premium      = query.value("a100_premium").toFloat();
+        price.propane           = query.value("propane").toFloat();
+        price.metan             = query.value("metan").toFloat();
     });
     return price;
 //    int cycles = 0;
@@ -374,15 +374,15 @@ Price DataBaseControl::getPrices(QString aIPartner) {
 Agzs DataBaseControl::getAgzsData() {
     Agzs agzs;
     makeQuery(getQuery("getAgzsData"), "getAgzsData", QueryType::qSelect, [&](QSqlQuery &query){
-        agzs.agzsName = query.value(0).toString();
-        agzs.agzs = query.value(1).toInt();
-        agzs.cDate = query.value(2).toDateTime();
-        agzs.vCode = query.value(3).toInt();
-        agzs.id = query.value(4).toString();
-        agzs.adress = query.value(5).toString();
-        agzs.loc_x = query.value(6).toFloat();
-        agzs.loc_y = query.value(7).toFloat();
-        agzs.columnCount = query.value(8).toInt();
+        agzs.agzsName = query.value("AGZSName").toString();
+        agzs.agzs = query.value("AGZS").toInt();
+        agzs.cDate = query.value("CDate").toDateTime();
+        agzs.vCode = query.value("VCode").toInt();
+        agzs.id = query.value("Id").toString();
+        agzs.adress = query.value("Adress").toString();
+        agzs.loc_x = query.value("latitude").toFloat();
+        agzs.loc_y = query.value("longitude").toFloat();
+        agzs.columnCount = query.value("ColumnsCount").toInt();
     });
     return agzs;
 //    int cycles = 0;
@@ -418,22 +418,22 @@ AdastTrk DataBaseControl::getAgzsAdastTrk(int aSideAdress) {
     AdastTrk trk;
     makeQuery(getQuery("getAgzsAdastTrk").arg(QString::number(aSideAdress)), "getAgzsAdastTrk", QueryType::qSelect, [&](QSqlQuery &query){
         trk.sideAdress = aSideAdress;
-        trk.deviceName = query.value(0).toString();
-        trk.serial = query.value(1).toString();
-        trk.description = query.value(2).toString();
-        trk.trkVCode = query.value(3).toInt();
-        trk.side = query.value(4).toString();
-        trk.fuelCode1 = query.value(5).toInt();
-        trk.fuelCode2 = query.value(6).toInt();
-        trk.fuelCode3 = query.value(7).toInt();
-        trk.fuelCode4 = query.value(8).toInt();
-        trk.fuelCode5 = query.value(9).toInt();
-        trk.pumpPlace = query.value(10).toInt();
-        trk.fuel1 = query.value(11).toInt();
-        trk.fuel2 = query.value(12).toInt();
-        trk.fuel3 = query.value(13).toInt();
-        trk.fuel4 = query.value(14).toInt();
-        trk.fuel5 = query.value(15).toInt();
+        trk.deviceName = query.value("DeviceName").toString();
+        trk.serial = query.value("Serial").toString();
+        trk.description = query.value("Description").toString();
+        trk.trkVCode = query.value("VCode").toInt();
+        trk.side = query.value("side").toString();
+        trk.fuelCode1 = query.value("SideA_Nozzle1FuelCode").toInt();
+        trk.fuelCode2 = query.value("SideA_Nozzle2FuelCode").toInt();
+        trk.fuelCode3 = query.value("SideA_Nozzle3FuelCode").toInt();
+        trk.fuelCode4 = query.value("SideA_Nozzle4FuelCode").toInt();
+        trk.fuelCode5 = query.value("SideA_Nozzle5FuelCode").toInt();
+        trk.pumpPlace = query.value("SideA_PumpPlace").toInt();
+        trk.fuel1 = query.value("SideA_Nozzle1Fuel").toInt();
+        trk.fuel2 = query.value("SideA_Nozzle2Fuel").toInt();
+        trk.fuel3 = query.value("SideA_Nozzle3Fuel").toInt();
+        trk.fuel4 = query.value("SideA_Nozzle4Fuel").toInt();
+        trk.fuel5 = query.value("SideA_Nozzle5Fuel").toInt();
     });
     return trk;
 
@@ -680,13 +680,15 @@ ApiTransaction DataBaseControl::getApiTransaction(QString aId) {
     ApiTransaction trans;
     makeQuery(getQuery("getApiTransaction").arg(aId), "getApiTransaction", QueryType::qSelect, [&](QSqlQuery &query){
         trans.id = aId;
-        trans.localState = query.value(0).toString();
-        trans.apiLitre = query.value(1).toDouble();
-        trans.apiVCode = query.value(2).toInt();
-        trans.headVCode = query.value(3).toInt();
-        trans.iState = query.value(4).toInt();
-        trans.dateOpen = query.value(5).toDateTime();
-        trans.dateClose = query.value(6).toDateTime();
+        trans.localState = query.value("localState").toString();
+        trans.apiLitre = query.value("APILitre").toDouble();
+        trans.transLitre = query.value("transLitre").toDouble();
+        trans.apiVCode = query.value("apiVCode").toInt();
+        trans.headVCode = query.value("headVCode").toInt();
+        trans.iState = query.value("iState").toInt();
+        trans.dateOpen = query.value("DateOpen").toDateTime();
+        trans.dateClose = query.value("DateClose").toDateTime();
+        trans.activeDB = query.value("ActiveDB").toInt();
     });
     return trans;
 
@@ -784,11 +786,11 @@ bool DataBaseControl::finalUpdateApiTransactionState(QString aLocalState, double
 bool DataBaseControl::getPayOperationData(int aLink, double &aAmount, double &aVolume, double &aPrice, QDateTime &aDateStart, QDateTime &aDateEnd) {
     bool isExist = false;
     isExist = makeQuery(getQuery("getPayOperationData").arg(QString::number(aLink)), "getPayOperationData", QueryType::qSelect, [&](QSqlQuery &query){
-        aAmount = query.value(0).toDouble();
-        aPrice = query.value(1).toDouble();
-        aVolume = query.value(2).toDouble();
-        aDateStart = query.value(3).toDateTime();
-        aDateEnd = query.value(4).toDateTime();
+        aAmount = query.value("AmountDB").toDouble();
+        aPrice = query.value("PriceDB").toDouble();
+        aVolume = query.value("VolumeDB").toDouble();
+        aDateStart = query.value("DateOpen").toDateTime();
+        aDateEnd = query.value("DateClose").toDateTime();
     });
     return isExist;
 
@@ -848,64 +850,64 @@ bool DataBaseControl::setTransactionClosed(QString aId, int aClosed) {
 Transaction DataBaseControl::getTransaction(int aVCode) {
     Transaction transaction;
     makeQuery(getQuery("getTransaction").arg(QString::number(aVCode)), "getTransaction", QueryType::qSelect, [&](QSqlQuery &query) {
-        transaction.agzsName = query.value(0).toString();
-        transaction.localVCode = query.value(1).toInt();
-        transaction.trkType = query.value(2).toString();
-        transaction.deviceName = query.value(3).toString();
-        transaction.serial = query.value(4).toString();
-        transaction.fuelName = query.value(5).toString();
-        transaction.fuelShortName = query.value(6).toString();
-        transaction.side = query.value(7).toString();
-        transaction.sideAdress = query.value(8).toInt();
-        transaction.nozzle = query.value(9).toInt();
-        transaction.trkFuelCode = query.value(10).toInt();
-        transaction.transNum = query.value(11).toString();
-        transaction.trkTotalPrice = query.value(12).toDouble();
-        transaction.trkVolume = query.value(13).toDouble();
-        transaction.trkUnitPrice = query.value(14).toDouble();
-        transaction.requestTotalPrice = query.value(15).toDouble();
-        transaction.requestVolume = query.value(16).toDouble();
-        transaction.requestUnitPrice = query.value(17).toDouble();
-        transaction.requestField = query.value(18).toString();
-        transaction.state = query.value(19).toString();
-        transaction.iState = query.value(20).toInt();
-        transaction.trkTransType = query.value(21).toString();
-        transaction.litersCountBefore = query.value(22).toDouble();
-        transaction.moneyCountBefore = query.value(23).toDouble();
-        transaction.transCountBefore = query.value(24).toInt();
-        transaction.litersCountAfter = query.value(25).toDouble();
-        transaction.moneyCountAfter = query.value(26).toDouble();
-        transaction.transCountAfter = query.value(27).toInt();
-        transaction.result = query.value(28).toString();
-        transaction.dateOpen = query.value(29).toDateTime();
-        transaction.dateClose = query.value(30).toDateTime();
-        transaction.temperature = query.value(31).toDouble();
-        transaction.payOperationVCode = query.value(32).toInt();
-        transaction.payWay = query.value(33).toString();
-        transaction.prePostPay = query.value(34).toInt();
-        transaction.wUser = query.value(35).toString();
-        transaction.wDate = query.value(36).toDateTime();
-        transaction.cUser = query.value(37).toString();
-        transaction.cDate = query.value(38).toDateTime();
-        transaction.cHost = query.value(39).toString();
-        transaction.wHost = query.value(40).toString();
-        transaction.vCode = query.value(41).toInt();
-        transaction.addedForTransVCode = query.value(42).toInt();
-        transaction.aditionalTransVCode = query.value(43).toInt();
-        transaction.active = query.value(44).toInt();
-        transaction.mass = query.value(45).toDouble();
-        transaction.smena = query.value(46).toInt();
-        transaction.trkVcode = query.value(47).toInt();
-        transaction.capacityVcode = query.value(48).toInt();
-        transaction.pumpPlace = query.value(49).toInt();
-        transaction.moneyTaken = query.value(50).toDouble();
-        transaction.iPayWay = query.value(51).toInt();
-        transaction.autoCheck = query.value(52).toInt();
-        transaction.closed = query.value(53).toInt();
-        transaction.fullTank = query.value(54).toInt();
-        transaction.agzs = query.value(55).toInt();
-        transaction.fuelVCode = query.value(56).toInt();
-        transaction.propan = query.value(57).toInt();
+        transaction.agzsName = query.value("AGZSName").toString();
+        transaction.localVCode = query.value("LocalVCode").toInt();
+        transaction.trkType = query.value("TrkType").toString();
+        transaction.deviceName = query.value("DeviceName").toString();
+        transaction.serial = query.value("Serial").toString();
+        transaction.fuelName = query.value("FuelName").toString();
+        transaction.fuelShortName = query.value("FuelShortName").toString();
+        transaction.side = query.value("Side").toString();
+        transaction.sideAdress = query.value("SideAddress").toInt();
+        transaction.nozzle = query.value("Nozzle").toInt();
+        transaction.trkFuelCode = query.value("TrkFuelCode").toInt();
+        transaction.transNum = query.value("TransNum").toString();
+        transaction.trkTotalPrice = query.value("TrkTotalPriceDB").toDouble();
+        transaction.trkVolume = query.value("TrkVolumeDB").toDouble();
+        transaction.trkUnitPrice = query.value("TrkUnitPriceDB").toDouble();
+        transaction.requestTotalPrice = query.value("RequestTotalPriceDB").toDouble();
+        transaction.requestVolume = query.value("RequestVolumeDB").toDouble();
+        transaction.requestUnitPrice = query.value("RequestUnitPriceDB").toDouble();
+        transaction.requestField = query.value("RequestField").toString();
+        transaction.state = query.value("State").toString();
+        transaction.iState = query.value("iState").toInt();
+        transaction.trkTransType = query.value("TrkTransType").toString();
+        transaction.litersCountBefore = query.value("LitersCountBeforeDB").toDouble();
+        transaction.moneyCountBefore = query.value("MoneyCountBeforeDB").toDouble();
+        transaction.transCountBefore = query.value("TransCountBefore").toInt();
+        transaction.litersCountAfter = query.value("LitersCountAfterDB").toDouble();
+        transaction.moneyCountAfter = query.value("MoneyCountAfterDB").toDouble();
+        transaction.transCountAfter = query.value("TransCountAfter").toInt();
+        transaction.result = query.value("Result").toString();
+        transaction.dateOpen = query.value("DateOpen").toDateTime();
+        transaction.dateClose = query.value("DateClose").toDateTime();
+        transaction.temperature = query.value("TemperatureDB").toDouble();
+        transaction.payOperationVCode = query.value("PayOperationVCode").toInt();
+        transaction.payWay = query.value("PayWay").toString();
+        transaction.prePostPay = query.value("PrePostPay").toInt();
+        transaction.wUser = query.value("WUser").toString();
+        transaction.wDate = query.value("WDate").toDateTime();
+        transaction.cUser = query.value("CUser").toString();
+        transaction.cDate = query.value("CDate").toDateTime();
+        transaction.cHost = query.value("CHost").toString();
+        transaction.wHost = query.value("WHost").toString();
+        transaction.vCode = query.value("VCode").toInt();
+        transaction.addedForTransVCode = query.value("AddedForTransVCode").toInt();
+        transaction.aditionalTransVCode = query.value("AditionalTransVCode").toInt();
+        transaction.active = query.value("ActiveDB").toInt();
+        transaction.mass = query.value("MassDB").toDouble();
+        transaction.smena = query.value("Smena").toInt();
+        transaction.trkVcode = query.value("TrkVcode").toInt();
+        transaction.capacityVcode = query.value("CapacityVcode").toInt();
+        transaction.pumpPlace = query.value("PumpPlace").toInt();
+        transaction.moneyTaken = query.value("MoneyTakenDB").toDouble();
+        transaction.iPayWay = query.value("iPayWay").toInt();
+        transaction.autoCheck = query.value("AutoCheckDB").toInt();
+        transaction.closed = query.value("Closed").toInt();
+        transaction.fullTank = query.value("FullTankDB").toInt();
+        transaction.agzs = query.value("AGZS").toInt();
+        transaction.fuelVCode = query.value("FuelVCode").toInt();
+        transaction.propan = query.value("Propan").toInt();
     });
     return transaction;
 
@@ -999,13 +1001,13 @@ QList<ApiTransaction> DataBaseControl::getOpenedApiTransactions(int aPartner) {
     makeQuery(getQuery("getOpenedApiTransactions").arg(QString::number(aPartner)), "getOpenedApiTransactions", QueryType::qSelect, [&](QSqlQuery &query) {
         do {
             ApiTransaction trans;
-            trans.id = query.value(0).toString();
-            trans.localState = query.value(1).toString();
-            trans.apiLitre = query.value(2).toDouble();
-            trans.apiVCode = query.value(3).toInt();
-            trans.headVCode = query.value(4).toInt();
-            trans.dateOpen = query.value(5).toDateTime();
-            trans.dateClose = query.value(6).toDateTime();
+            trans.id = query.value("APIID").toString();
+            trans.localState = query.value("localState").toString();
+            trans.apiLitre = query.value("APILitre").toDouble();
+            trans.apiVCode = query.value("apiVCode").toInt();
+            trans.headVCode = query.value("transVCode").toInt();
+            trans.dateOpen = query.value("DateOpen").toDateTime();
+            trans.dateClose = query.value("DateClose").toDateTime();
             list.append(trans);
         } while (query.next());
     }, false);
@@ -1047,7 +1049,7 @@ QList<ApiTransaction> DataBaseControl::getOpenedApiTransactions(int aPartner) {
 int DataBaseControl::getCurrentAgzs() {
     int agzs = -1;
     makeQuery(getQuery("getCurrentAgzs"), "getCurrentAgzs", QueryType::qSelect, [&](QSqlQuery &query) {
-        agzs = query.value(0).toInt();
+        agzs = query.value("AGZS").toInt();
     });
     return agzs;
 
@@ -1177,7 +1179,7 @@ bool DataBaseControl::updateYandexToken(QString aToken) {
 QString DataBaseControl::getCityMobileToken() {
     QString token;
     makeQuery(getQuery("getCityMobileToken"), "getCityMobileToken", QueryType::qSelect, [&](QSqlQuery &query) {
-        token = query.value(0).toString();
+        token = query.value("CityMobileToken").toString();
     });
     return token;
 

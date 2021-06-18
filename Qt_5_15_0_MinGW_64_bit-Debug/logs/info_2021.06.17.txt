@@ -1,0 +1,165 @@
+12:09:10 STARTED
+12:09:10 currentAGZS = "deb"
+12:09:15 DB is open
+12:09:15 check y = true  nAut = false  c = true
+12:09:20 itemOrder "WaitingRefueling" "b2531f734d6f4442b5945fd8307f9905"
+12:09:20 "b2531f734d6f4442b5945fd8307f9905" WaitingRefueling
+12:09:23 itemOrder "StationCanceled" "b2531f734d6f4442b5945fd8307f9905"
+12:09:26 "b2531f734d6f4442b5945fd8307f9905" Closed
+12:09:35 itemOrder "AcceptOrder" "b64a0c04c32d4628b25c942bee886125"
+12:09:35 "b64a0c04c32d4628b25c942bee886125" AcceptOrder
+12:09:39 itemOrder "WaitingRefueling" "b64a0c04c32d4628b25c942bee886125"
+12:09:39 "b64a0c04c32d4628b25c942bee886125" WaitingRefueling
+12:09:42 itemOrder "WaitingRefueling" "b64a0c04c32d4628b25c942bee886125"
+12:09:42 "b64a0c04c32d4628b25c942bee886125" WaitingRefueling
+12:09:45 itemOrder "WaitingRefueling" "b64a0c04c32d4628b25c942bee886125"
+12:09:45 "b64a0c04c32d4628b25c942bee886125" WaitingRefueling
+12:09:48 itemOrder "WaitingRefueling" "b64a0c04c32d4628b25c942bee886125"
+12:09:48 "b64a0c04c32d4628b25c942bee886125" WaitingRefueling
+12:09:51 itemOrder "WaitingRefueling" "b64a0c04c32d4628b25c942bee886125"
+12:09:51 "b64a0c04c32d4628b25c942bee886125" WaitingRefueling
+12:09:54 itemOrder "WaitingRefueling" "b64a0c04c32d4628b25c942bee886125"
+12:09:54 "b64a0c04c32d4628b25c942bee886125" WaitingRefueling
+12:09:57 itemOrder "WaitingRefueling" "b64a0c04c32d4628b25c942bee886125"
+12:09:57 "b64a0c04c32d4628b25c942bee886125" WaitingRefueling
+12:10:01 itemOrder "WaitingRefueling" "b64a0c04c32d4628b25c942bee886125"
+12:10:01 "b64a0c04c32d4628b25c942bee886125" WaitingRefueling
+12:10:04 itemOrder "WaitingRefueling" "b64a0c04c32d4628b25c942bee886125"
+12:10:04 "b64a0c04c32d4628b25c942bee886125" WaitingRefueling
+12:10:07 itemOrder "WaitingRefueling" "b64a0c04c32d4628b25c942bee886125"
+12:10:07 "b64a0c04c32d4628b25c942bee886125" WaitingRefueling
+12:10:10 itemOrder "WaitingRefueling" "b64a0c04c32d4628b25c942bee886125"
+12:10:10 "b64a0c04c32d4628b25c942bee886125" WaitingRefueling
+12:10:13 itemOrder "WaitingRefueling" "b64a0c04c32d4628b25c942bee886125"
+12:10:13 "b64a0c04c32d4628b25c942bee886125" WaitingRefueling
+12:10:16 itemOrder "WaitingRefueling" "b64a0c04c32d4628b25c942bee886125"
+12:10:16 "b64a0c04c32d4628b25c942bee886125" WaitingRefueling
+12:10:19 itemOrder "WaitingRefueling" "b64a0c04c32d4628b25c942bee886125"
+12:10:19 "b64a0c04c32d4628b25c942bee886125" WaitingRefueling
+12:10:22 itemOrder "WaitingRefueling" "b64a0c04c32d4628b25c942bee886125"
+12:10:22 "b64a0c04c32d4628b25c942bee886125" WaitingRefueling
+12:10:25 itemOrder "WaitingRefueling" "b64a0c04c32d4628b25c942bee886125"
+12:10:25 "b64a0c04c32d4628b25c942bee886125" WaitingRefueling
+12:10:29 itemOrder "WaitingRefueling" "b64a0c04c32d4628b25c942bee886125"
+12:10:29 "b64a0c04c32d4628b25c942bee886125" WaitingRefueling
+12:10:32 itemOrder "WaitingRefueling" "b64a0c04c32d4628b25c942bee886125"
+12:10:32 "b64a0c04c32d4628b25c942bee886125" WaitingRefueling
+12:10:35 itemOrder "WaitingRefueling" "b64a0c04c32d4628b25c942bee886125"
+12:10:35 "b64a0c04c32d4628b25c942bee886125" WaitingRefueling
+12:10:39 itemOrder "WaitingRefueling" "b64a0c04c32d4628b25c942bee886125"
+12:10:39 "b64a0c04c32d4628b25c942bee886125" WaitingRefueling
+12:10:43 itemOrder "WaitingRefueling" "b64a0c04c32d4628b25c942bee886125"
+12:10:43 "b64a0c04c32d4628b25c942bee886125" WaitingRefueling
+12:10:47 itemOrder "WaitingRefueling" "b64a0c04c32d4628b25c942bee886125"
+12:10:47 "b64a0c04c32d4628b25c942bee886125" WaitingRefueling
+12:10:51 itemOrder "WaitingRefueling" "b64a0c04c32d4628b25c942bee886125"
+12:10:51 "b64a0c04c32d4628b25c942bee886125" WaitingRefueling
+12:10:59 itemOrder "WaitingRefueling" "b64a0c04c32d4628b25c942bee886125"
+12:10:59 "b64a0c04c32d4628b25c942bee886125" WaitingRefueling
+12:11:04 itemOrder "WaitingRefueling" "b64a0c04c32d4628b25c942bee886125"
+12:11:04 "b64a0c04c32d4628b25c942bee886125" WaitingRefueling
+12:11:08 itemOrder "WaitingRefueling" "b64a0c04c32d4628b25c942bee886125"
+12:11:08 "b64a0c04c32d4628b25c942bee886125" WaitingRefueling
+12:11:12 itemOrder "WaitingRefueling" "b64a0c04c32d4628b25c942bee886125"
+12:11:13 "b64a0c04c32d4628b25c942bee886125" WaitingRefueling
+12:11:17 itemOrder "WaitingRefueling" "b64a0c04c32d4628b25c942bee886125"
+12:11:18 "b64a0c04c32d4628b25c942bee886125" WaitingRefueling
+12:11:23 itemOrder "WaitingRefueling" "b64a0c04c32d4628b25c942bee886125"
+12:11:25 "b64a0c04c32d4628b25c942bee886125" WaitingRefueling
+12:11:32 itemOrder "WaitingRefueling" "b64a0c04c32d4628b25c942bee886125"
+12:11:33 "b64a0c04c32d4628b25c942bee886125" WaitingRefueling
+12:11:37 itemOrder "WaitingRefueling" "b64a0c04c32d4628b25c942bee886125"
+12:11:37 "b64a0c04c32d4628b25c942bee886125" WaitingRefueling
+12:11:42 itemOrder "WaitingRefueling" "b64a0c04c32d4628b25c942bee886125"
+12:11:42 "b64a0c04c32d4628b25c942bee886125" WaitingRefueling
+12:11:45 itemOrder "WaitingRefueling" "b64a0c04c32d4628b25c942bee886125"
+12:11:45 "b64a0c04c32d4628b25c942bee886125" WaitingRefueling
+12:11:49 itemOrder "WaitingRefueling" "b64a0c04c32d4628b25c942bee886125"
+12:11:49 "b64a0c04c32d4628b25c942bee886125" WaitingRefueling
+12:11:53 itemOrder "WaitingRefueling" "b64a0c04c32d4628b25c942bee886125"
+12:11:53 "b64a0c04c32d4628b25c942bee886125" WaitingRefueling
+12:11:56 itemOrder "WaitingRefueling" "b64a0c04c32d4628b25c942bee886125"
+12:11:57 "b64a0c04c32d4628b25c942bee886125" WaitingRefueling
+12:12:01 itemOrder "WaitingRefueling" "b64a0c04c32d4628b25c942bee886125"
+12:12:01 "b64a0c04c32d4628b25c942bee886125" WaitingRefueling
+12:12:04 itemOrder "WaitingRefueling" "b64a0c04c32d4628b25c942bee886125"
+12:12:05 "b64a0c04c32d4628b25c942bee886125" WaitingRefueling
+12:12:09 itemOrder "WaitingRefueling" "b64a0c04c32d4628b25c942bee886125"
+12:12:09 "b64a0c04c32d4628b25c942bee886125" WaitingRefueling
+12:12:12 itemOrder "WaitingRefueling" "b64a0c04c32d4628b25c942bee886125"
+12:12:13 "b64a0c04c32d4628b25c942bee886125" WaitingRefueling
+12:12:16 itemOrder "WaitingRefueling" "b64a0c04c32d4628b25c942bee886125"
+12:12:17 "b64a0c04c32d4628b25c942bee886125" WaitingRefueling
+12:12:21 itemOrder "WaitingRefueling" "b64a0c04c32d4628b25c942bee886125"
+12:12:21 "b64a0c04c32d4628b25c942bee886125" WaitingRefueling
+12:12:26 itemOrder "WaitingRefueling" "b64a0c04c32d4628b25c942bee886125"
+12:12:27 "b64a0c04c32d4628b25c942bee886125" WaitingRefueling
+12:12:32 itemOrder "WaitingRefueling" "b64a0c04c32d4628b25c942bee886125"
+12:12:33 "b64a0c04c32d4628b25c942bee886125" WaitingRefueling
+12:12:37 itemOrder "WaitingRefueling" "b64a0c04c32d4628b25c942bee886125"
+12:12:39 "b64a0c04c32d4628b25c942bee886125" WaitingRefueling
+12:12:45 itemOrder "WaitingRefueling" "b64a0c04c32d4628b25c942bee886125"
+12:12:46 "b64a0c04c32d4628b25c942bee886125" WaitingRefueling
+12:12:50 itemOrder "WaitingRefueling" "b64a0c04c32d4628b25c942bee886125"
+12:12:51 "b64a0c04c32d4628b25c942bee886125" WaitingRefueling
+12:12:55 itemOrder "WaitingRefueling" "b64a0c04c32d4628b25c942bee886125"
+12:12:55 "b64a0c04c32d4628b25c942bee886125" WaitingRefueling
+12:12:59 itemOrder "WaitingRefueling" "b64a0c04c32d4628b25c942bee886125"
+12:13:01 "b64a0c04c32d4628b25c942bee886125" WaitingRefueling
+12:13:06 itemOrder "WaitingRefueling" "b64a0c04c32d4628b25c942bee886125"
+12:13:08 "b64a0c04c32d4628b25c942bee886125" WaitingRefueling
+12:13:11 itemOrder "WaitingRefueling" "b64a0c04c32d4628b25c942bee886125"
+12:13:13 "b64a0c04c32d4628b25c942bee886125" WaitingRefueling
+12:13:17 itemOrder "WaitingRefueling" "b64a0c04c32d4628b25c942bee886125"
+12:13:18 "b64a0c04c32d4628b25c942bee886125" WaitingRefueling
+12:13:24 itemOrder "WaitingRefueling" "b64a0c04c32d4628b25c942bee886125"
+12:13:26 "b64a0c04c32d4628b25c942bee886125" WaitingRefueling
+12:13:30 itemOrder "WaitingRefueling" "b64a0c04c32d4628b25c942bee886125"
+12:13:31 "b64a0c04c32d4628b25c942bee886125" WaitingRefueling
+12:13:35 itemOrder "WaitingRefueling" "b64a0c04c32d4628b25c942bee886125"
+12:13:35 "b64a0c04c32d4628b25c942bee886125" WaitingRefueling
+12:13:40 "b64a0c04c32d4628b25c942bee886125" Closed
+12:14:16 check y = true  nAut = false  c = true
+12:19:16 check y = true  nAut = false  c = true
+12:19:33 CLOSED from button
+12:26:36 STARTED
+12:26:36 currentAGZS = "deb"
+12:26:41 DB is open
+12:26:41 check y = true  nAut = false  c = true
+12:27:04 itemOrder "AcceptOrder" "6c89f9e5fa8346068d3e8c891a956274"
+12:27:04 "6c89f9e5fa8346068d3e8c891a956274" AcceptOrder
+12:27:08 itemOrder "WaitingRefueling" "6c89f9e5fa8346068d3e8c891a956274"
+12:27:08 "6c89f9e5fa8346068d3e8c891a956274" WaitingRefueling
+12:27:11 itemOrder "WaitingRefueling" "6c89f9e5fa8346068d3e8c891a956274"
+12:27:11 "6c89f9e5fa8346068d3e8c891a956274" WaitingRefueling
+12:27:14 itemOrder "WaitingRefueling" "6c89f9e5fa8346068d3e8c891a956274"
+12:27:14 "6c89f9e5fa8346068d3e8c891a956274" WaitingRefueling
+12:27:17 "6c89f9e5fa8346068d3e8c891a956274" Closed
+12:27:20 CLOSED from button
+12:36:22 STARTED
+12:36:22 currentAGZS = "deb"
+12:36:26 DB is open
+12:36:26 check y = true  nAut = false  c = true
+12:36:38 itemOrder "AcceptOrder" "72769e3dff474cc7b55e2378cd00dcd9"
+12:36:38 "72769e3dff474cc7b55e2378cd00dcd9" AcceptOrder
+12:36:41 itemOrder "WaitingRefueling" "72769e3dff474cc7b55e2378cd00dcd9"
+12:36:41 "72769e3dff474cc7b55e2378cd00dcd9" WaitingRefueling
+12:36:44 itemOrder "WaitingRefueling" "72769e3dff474cc7b55e2378cd00dcd9"
+12:36:44 "72769e3dff474cc7b55e2378cd00dcd9" WaitingRefueling
+12:36:47 itemOrder "WaitingRefueling" "72769e3dff474cc7b55e2378cd00dcd9"
+12:36:47 "72769e3dff474cc7b55e2378cd00dcd9" WaitingRefueling
+12:36:50 "72769e3dff474cc7b55e2378cd00dcd9" Closed
+12:36:55 CLOSED from button
+12:49:14 STARTED
+12:49:14 currentAGZS = "deb"
+12:49:18 DB is open
+12:49:18 check y = true  nAut = false  c = true
+12:49:33 itemOrder "AcceptOrder" "b395ecc7fa124ea59141fb2c61a3fea7"
+12:49:33 "b395ecc7fa124ea59141fb2c61a3fea7" AcceptOrder
+12:49:36 itemOrder "WaitingRefueling" "b395ecc7fa124ea59141fb2c61a3fea7"
+12:49:36 "b395ecc7fa124ea59141fb2c61a3fea7" WaitingRefueling
+12:49:39 itemOrder "WaitingRefueling" "b395ecc7fa124ea59141fb2c61a3fea7"
+12:49:39 "b395ecc7fa124ea59141fb2c61a3fea7" WaitingRefueling
+12:49:42 itemOrder "WaitingRefueling" "b395ecc7fa124ea59141fb2c61a3fea7"
+12:49:42 "b395ecc7fa124ea59141fb2c61a3fea7" WaitingRefueling
+12:49:45 CLOSED

@@ -6,14 +6,35 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>231</width>
-    <height>83</height>
+    <width>132</width>
+    <height>162</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Настройки</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
+   <item>
+    <widget class="QPushButton" name="pushButton">
+     <property name="text">
+      <string>Разблокировать</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QCheckBox" name="CheckBoxAutorun">
+     <property name="text">
+      <string>Да</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="ButtonAGZS">
+     <property name="text">
+      <string>АГЗС</string>
+     </property>
+    </widget>
+   </item>
    <item>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
