@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>132</width>
-    <height>162</height>
+    <width>187</width>
+    <height>346</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,7 +15,7 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
-    <widget class="QPushButton" name="pushButton">
+    <widget class="QPushButton" name="ButtonUnlock">
      <property name="text">
       <string>Разблокировать</string>
      </property>
@@ -24,8 +24,52 @@
    <item>
     <widget class="QCheckBox" name="CheckBoxAutorun">
      <property name="text">
-      <string>Да</string>
+      <string>Автозапуск</string>
      </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="GroupBoxNotifications">
+     <property name="title">
+      <string>Уведомления</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_3">
+      <item>
+       <widget class="QCheckBox" name="NotificationNewOrder">
+        <property name="text">
+         <string>Новая заявка</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="NotificationCancelOrder">
+        <property name="text">
+         <string>Отмена заявки</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="NotificationApplyOrder">
+        <property name="text">
+         <string>Успешная заправка</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="NotificationUnknownStateOrder">
+        <property name="text">
+         <string>Неизвестное состояние</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="NotificationSound">
+        <property name="text">
+         <string>Звуковое оповещание</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </widget>
    </item>
    <item>
@@ -36,29 +80,27 @@
     </widget>
    </item>
    <item>
-    <layout class="QVBoxLayout" name="verticalLayout">
-     <item>
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>Партнёры</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QCheckBox" name="checkBoxYandex">
-       <property name="text">
-        <string>Яндекс заправки</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QCheckBox" name="checkBoxCityMobile">
-       <property name="text">
-        <string>Ситимобил</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    <widget class="QGroupBox" name="GroupBoxPartners">
+     <property name="title">
+      <string>Партнеры</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_4">
+      <item>
+       <widget class="QCheckBox" name="checkBoxYandex">
+        <property name="text">
+         <string>Яндекс заправки</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="checkBoxCityMobile">
+        <property name="text">
+         <string>Ситимобил</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
    </item>
   </layout>
  </widget>

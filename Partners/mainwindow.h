@@ -71,7 +71,7 @@ private:
     Ui::MainWindow *ui;
 
     const QString c_settingPath = QStringLiteral("Setting.txt");
-    const QString c_version = QStringLiteral("v1.19");
+    const QString c_version = QStringLiteral("v1.19b");
 
     QString agzs_;
 

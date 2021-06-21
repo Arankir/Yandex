@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_FormSettings_t {
-    QByteArrayData data[12];
-    char stringdata0[214];
+    QByteArrayData data[17];
+    char stringdata0[412];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -41,18 +41,27 @@ QT_MOC_LITERAL(5, 62, 4), // "agzs"
 QT_MOC_LITERAL(6, 67, 30), // "on_checkBoxYandex_stateChanged"
 QT_MOC_LITERAL(7, 98, 4), // "arg1"
 QT_MOC_LITERAL(8, 103, 34), // "on_checkBoxCityMobile_stateCh..."
-QT_MOC_LITERAL(9, 138, 21), // "on_pushButton_clicked"
-QT_MOC_LITERAL(10, 160, 31), // "on_CheckBoxAutorun_stateChanged"
-QT_MOC_LITERAL(11, 192, 21) // "on_ButtonAGZS_clicked"
+QT_MOC_LITERAL(9, 138, 31), // "on_CheckBoxAutorun_stateChanged"
+QT_MOC_LITERAL(10, 170, 21), // "on_ButtonAGZS_clicked"
+QT_MOC_LITERAL(11, 192, 23), // "on_ButtonUnlock_clicked"
+QT_MOC_LITERAL(12, 216, 36), // "on_NotificationNewOrder_state..."
+QT_MOC_LITERAL(13, 253, 39), // "on_NotificationCancelOrder_st..."
+QT_MOC_LITERAL(14, 293, 38), // "on_NotificationApplyOrder_sta..."
+QT_MOC_LITERAL(15, 332, 33), // "on_NotificationSound_stateCha..."
+QT_MOC_LITERAL(16, 366, 45) // "on_NotificationUnknownStateOr..."
 
     },
     "FormSettings\0s_yandexChange\0\0"
     "s_cityMobileChange\0s_agzsChanged\0agzs\0"
     "on_checkBoxYandex_stateChanged\0arg1\0"
     "on_checkBoxCityMobile_stateChanged\0"
-    "on_pushButton_clicked\0"
     "on_CheckBoxAutorun_stateChanged\0"
-    "on_ButtonAGZS_clicked"
+    "on_ButtonAGZS_clicked\0on_ButtonUnlock_clicked\0"
+    "on_NotificationNewOrder_stateChanged\0"
+    "on_NotificationCancelOrder_stateChanged\0"
+    "on_NotificationApplyOrder_stateChanged\0"
+    "on_NotificationSound_stateChanged\0"
+    "on_NotificationUnknownStateOrder_stateChanged"
 };
 #undef QT_MOC_LITERAL
 
@@ -62,7 +71,7 @@ static const uint qt_meta_data_FormSettings[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-       8,   14, // methods
+      13,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -70,16 +79,21 @@ static const uint qt_meta_data_FormSettings[] = {
        3,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   54,    2, 0x06 /* Public */,
-       3,    1,   57,    2, 0x06 /* Public */,
-       4,    1,   60,    2, 0x06 /* Public */,
+       1,    1,   79,    2, 0x06 /* Public */,
+       3,    1,   82,    2, 0x06 /* Public */,
+       4,    1,   85,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       6,    1,   63,    2, 0x08 /* Private */,
-       8,    1,   66,    2, 0x08 /* Private */,
-       9,    0,   69,    2, 0x08 /* Private */,
-      10,    1,   70,    2, 0x08 /* Private */,
-      11,    0,   73,    2, 0x08 /* Private */,
+       6,    1,   88,    2, 0x08 /* Private */,
+       8,    1,   91,    2, 0x08 /* Private */,
+       9,    1,   94,    2, 0x08 /* Private */,
+      10,    0,   97,    2, 0x08 /* Private */,
+      11,    0,   98,    2, 0x08 /* Private */,
+      12,    1,   99,    2, 0x08 /* Private */,
+      13,    1,  102,    2, 0x08 /* Private */,
+      14,    1,  105,    2, 0x08 /* Private */,
+      15,    1,  108,    2, 0x08 /* Private */,
+      16,    1,  111,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Bool,    2,
@@ -89,9 +103,14 @@ static const uint qt_meta_data_FormSettings[] = {
  // slots: parameters
     QMetaType::Void, QMetaType::Int,    7,
     QMetaType::Void, QMetaType::Int,    7,
-    QMetaType::Void,
     QMetaType::Void, QMetaType::Int,    7,
     QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::Int,    7,
+    QMetaType::Void, QMetaType::Int,    7,
+    QMetaType::Void, QMetaType::Int,    7,
+    QMetaType::Void, QMetaType::Int,    7,
+    QMetaType::Void, QMetaType::Int,    7,
 
        0        // eod
 };
@@ -107,9 +126,14 @@ void FormSettings::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         case 2: _t->s_agzsChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         case 3: _t->on_checkBoxYandex_stateChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 4: _t->on_checkBoxCityMobile_stateChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 5: _t->on_pushButton_clicked(); break;
-        case 6: _t->on_CheckBoxAutorun_stateChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 7: _t->on_ButtonAGZS_clicked(); break;
+        case 5: _t->on_CheckBoxAutorun_stateChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 6: _t->on_ButtonAGZS_clicked(); break;
+        case 7: _t->on_ButtonUnlock_clicked(); break;
+        case 8: _t->on_NotificationNewOrder_stateChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 9: _t->on_NotificationCancelOrder_stateChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 10: _t->on_NotificationApplyOrder_stateChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 11: _t->on_NotificationSound_stateChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 12: _t->on_NotificationUnknownStateOrder_stateChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -167,13 +191,13 @@ int FormSettings::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 8)
+        if (_id < 13)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 8;
+        _id -= 13;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 8)
+        if (_id < 13)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 8;
+        _id -= 13;
     }
     return _id;
 }

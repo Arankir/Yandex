@@ -43,7 +43,7 @@ int CityMobileAPI::checkOrders() {
     return timerInterval_;
 }
 
-void CityMobileAPI::setStatusAccept(QString aOrderId, int aVCode) {
+int CityMobileAPI::setStatusAccept(QString aOrderId, int aVCode) {
 //    auto req = createRequestData();
     request_->get(createNetworkRequest(baseUrl() + "api/orders/accept?orderId=" + aOrderId));
     if ((request_->code() != 200) && (request_->code() != 401)) {
@@ -52,9 +52,10 @@ void CityMobileAPI::setStatusAccept(QString aOrderId, int aVCode) {
         setStatusCanceled(aOrderId, "Неизвестная ошибка.", QString::number(aVCode), QDateTime::currentDateTime());
     }
 //    delete req;
+    return request_->code();
 }
 
-void CityMobileAPI::setStatusFueling(QString aOrderId, int aVCode) {
+int CityMobileAPI::setStatusFueling(QString aOrderId, int aVCode) {
     Q_UNUSED(aVCode);
 //    auto req = createRequestData();
     request_->get(createNetworkRequest(baseUrl() + "api/orders/fueling?orderId=" + aOrderId));
@@ -64,9 +65,10 @@ void CityMobileAPI::setStatusFueling(QString aOrderId, int aVCode) {
         //setStatusCanceled(orderId, "Неизвестная ошибка.", QString::number(vCode), QDateTime::currentDateTime());
     }
 //    delete req;
+    return request_->code();
 }
 
-void CityMobileAPI::setStatusCanceled(QString aOrderId, QString aReason, QString aExtendedOrderId, QDateTime aExtendedDate) {
+int CityMobileAPI::setStatusCanceled(QString aOrderId, QString aReason, QString aExtendedOrderId, QDateTime aExtendedDate) {
 //    auto req = createRequestData();
     QUrl url(QString("%1api/orders/canceled").arg(baseUrl()));
     QUrlQuery query;
@@ -81,9 +83,10 @@ void CityMobileAPI::setStatusCanceled(QString aOrderId, QString aReason, QString
 //                           "&extendedOrderId=" + aExtendedOrderId +
 //                           "&extendedDate=" + aExtendedDate.toString("dd.MM.yyyy HH:mm:ss")));
 //    delete req;
+    return request_->code();
 }
 
-void CityMobileAPI::setStatusCompleted(QString aOrderId, double aLitre, QString aExtendedOrderId, QDateTime aExtendedDate) {
+int CityMobileAPI::setStatusCompleted(QString aOrderId, double aLitre, QString aExtendedOrderId, QDateTime aExtendedDate) {
 //    auto req = createRequestData();
     QUrl url(QString("%1api/orders/completed").arg(baseUrl()));
     QUrlQuery query;
@@ -99,12 +102,14 @@ void CityMobileAPI::setStatusCompleted(QString aOrderId, double aLitre, QString 
 //                               aExtendedOrderId,
 //                               aExtendedDate.toString("dd.MM.yyyy HH:mm:ss"))));
 //    delete req;
+    return request_->code();
 }
 
-void CityMobileAPI::setStatusFuelNow(QString aOrderId, double aLitre) {
+int CityMobileAPI::setStatusFuelNow(QString aOrderId, double aLitre) {
 //    auto req = createRequestData();
     request_->post(createNetworkRequest(baseUrl() + "api/orders/volume"), QString("orderId=" + aOrderId + "&litre=" + QString::number(aLitre).replace(",",".")).toUtf8());
 //    delete req;
+    return request_->code();
 }
 
 void CityMobileAPI::setStatusMessage(QString aOrderId, QString aMessage) {

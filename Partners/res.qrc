@@ -30,5 +30,7 @@
         <file>queries/isApiTransactionExistId</file>
         <file>queries/isApiTransactionExistVCode</file>
         <file>queries/updateApiTransactionLink</file>
+        <file>images/trayError.png</file>
+        <file>images/trayError2.gif</file>
     </qresource>
 </RCC>

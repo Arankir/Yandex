@@ -26,11 +26,21 @@ private slots:
 
     void on_checkBoxCityMobile_stateChanged(int arg1);
 
-    void on_pushButton_clicked();
-
     void on_CheckBoxAutorun_stateChanged(int arg1);
 
     void on_ButtonAGZS_clicked();
+
+    void on_ButtonUnlock_clicked();
+
+    void on_NotificationNewOrder_stateChanged(int arg1);
+
+    void on_NotificationCancelOrder_stateChanged(int arg1);
+
+    void on_NotificationApplyOrder_stateChanged(int arg1);
+
+    void on_NotificationSound_stateChanged(int arg1);
+
+    void on_NotificationUnknownStateOrder_stateChanged(int arg1);
 
 private:
     Ui::FormSettings *ui;

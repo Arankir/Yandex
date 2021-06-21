@@ -29,11 +29,11 @@ public:
 
     virtual void updatePriceList(QString pricelist) = 0;
     virtual void updateConfigurationAGZS(QJsonObject configuration) = 0;
-    virtual void setStatusAccept(QString orderId, int vCode) = 0;
-    virtual void setStatusFueling(QString orderId, int vCode) = 0;
-    virtual void setStatusCanceled(QString orderId, QString reason, QString extendedOrderId, QDateTime extendedDate) = 0;
-    virtual void setStatusCompleted(QString orderId, double litre, QString extendedOrderId, QDateTime extendedDate) = 0;
-    virtual void setStatusFuelNow(QString orderId, double litre) = 0;
+    virtual int setStatusAccept(QString orderId, int vCode) = 0;
+    virtual int setStatusFueling(QString orderId, int vCode) = 0;
+    virtual int setStatusCanceled(QString orderId, QString reason, QString extendedOrderId, QDateTime extendedDate) = 0;
+    virtual int setStatusCompleted(QString orderId, double litre, QString extendedOrderId, QDateTime extendedDate) = 0;
+    virtual int setStatusFuelNow(QString orderId, double litre) = 0;
 
 public slots:
     virtual int checkOrders() = 0;

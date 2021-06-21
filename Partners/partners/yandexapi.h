@@ -28,11 +28,11 @@ public:
     void updateConfigurationAGZS(QJsonObject configuration) override;
     int checkOrders() override;
 
-    void setStatusAccept(QString orderId, int vCode) override;
-    void setStatusFueling(QString orderId, int vCode) override;
-    void setStatusCanceled(QString orderId, QString reason, QString extendedOrderId, QDateTime extendedDate) override;
-    void setStatusCompleted(QString orderId, double litre, QString extendedOrderId, QDateTime extendedDate) override;
-    void setStatusFuelNow(QString orderId, double litre) override;
+    int setStatusAccept(QString orderId, int vCode) override;
+    int setStatusFueling(QString orderId, int vCode) override;
+    int setStatusCanceled(QString orderId, QString reason, QString extendedOrderId, QDateTime extendedDate) override;
+    int setStatusCompleted(QString orderId, double litre, QString extendedOrderId, QDateTime extendedDate) override;
+    int setStatusFuelNow(QString orderId, double litre) override;
 
 signals:
     void s_needAuth(bool);

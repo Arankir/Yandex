@@ -102,7 +102,7 @@ void MainWindow::globalTimerCheck() {
     qInfo() << "check y =" << isYandexEnabled_ << " nAut =" << isNeedAuth_ << " c =" << isCityMobileEnabled_ << " netErr =" << isNetworkError_;
     if (isYandexEnabled_) {
         if (isNeedAuth_) {
-            soundNotification(tr("Ошибка!"), tr("Авторизуйтесь в Яндексе заново!"), "uvedomlenie.mp3", 100);
+            soundNotification(tr("Ошибка!"), tr("Авторизуйтесь в Яндексе заново!"), "notifications\\unknownError.mp3", 100);
         }
         yandex_->stop();
         yandex_->start();
@@ -116,7 +116,7 @@ void MainWindow::globalTimerCheck() {
         cityMobile_->stop();
     }
     if (isNetworkError_) {
-        soundNotification(tr("Ошибка!"), tr("Сеть недоступна!"), "uvedomlenie.mp3", 100);
+        soundNotification(tr("Ошибка!"), tr("Сеть недоступна!"), "notifications\\unknownError.mp3", 100);
         isNetworkError_ = false;
     }
     updatePrice();
@@ -196,15 +196,17 @@ void MainWindow::yandexErrorNotification() {
 }
 
 void MainWindow::soundNotification(const QString &aTitle, const QString &aMessage, const QString &aPath, const int &aVolume) {
-    QMediaPlayer *player = new QMediaPlayer;
-    player->setMedia(QUrl::fromLocalFile(aPath));
-    player->setVolume(aVolume);
-    player->play();
-    connect(player, &QMediaPlayer::stateChanged, player, [=](QMediaPlayer::State state){
-        if (state == QMediaPlayer::State::StoppedState) {
-            player->deleteLater();
-        }
-    });
+    if (reestr_.value("Notifications/Sound").toBool()) {
+        QMediaPlayer *player = new QMediaPlayer;
+        player->setMedia(QUrl::fromLocalFile(aPath));
+        player->setVolume(aVolume);
+        player->play();
+        connect(player, &QMediaPlayer::stateChanged, player, [=](QMediaPlayer::State state){
+            if (state == QMediaPlayer::State::StoppedState) {
+                player->deleteLater();
+            }
+        });
+    }
 
     trayIcon_->showMessage(aTitle, aMessage);
 }
@@ -610,7 +612,10 @@ bool MainWindow::processAcceptOrder(Order aOrder, PartnerAPI *aPartner) {
             qWarning(logError) << aOrder.id << "AcceptOrder not update link" << QString::number(transactionVCode);
         }
 
-        soundNotification(tr("Внимание!"), tr("Новая заявка через мобильное приложение на %1л.").arg(QString::number(aOrder.moneyData.requestVolumeDB)), "uvedomlenie.mp3", 100);
+        if (reestr_.value("Notifications/NewOrder").toBool()) {
+            soundNotification(tr("Внимание!"), tr("Новая заявка через мобильное приложение на %1л.")
+                              .arg(QString::number(aOrder.moneyData.requestVolumeDB)), "notifications\\newOrder.mp3", 100);
+        }
         return true;
         break;
     }
@@ -672,7 +677,11 @@ bool MainWindow::processFueling(Order aOrder, PartnerAPI *aPartner) {
 
     if((amount >= 0.01) && (volume >= 0.01) && (price >= 0.01) && (apiTransaction.localState == "Fueling")) {
         db_->finalUpdateApiTransactionState("Completed", price, volume, amount, dateOpen, dateClose, apiTransaction.apiVCode);
-        aPartner->setStatusCompleted(aOrder.id, volume, QString::number(apiTransaction.apiVCode), dateClose);
+        int code = aPartner->setStatusCompleted(aOrder.id, volume, QString::number(apiTransaction.apiVCode), dateClose);
+        if (code == 200 && reestr_.value("Notifications/ApplyOrder").toBool()) {
+            soundNotification(tr("Успешно!"), tr("Успешная заправка через мобильное приложение на %1л.")
+                              .arg(QString::number(volume)), "notifications\\acceptOrder.mp3", 100);
+        }
         return true;
     }
     if (apiTransaction.iState > 0
@@ -682,7 +691,11 @@ bool MainWindow::processFueling(Order aOrder, PartnerAPI *aPartner) {
         qInfo() << aOrder.id << "transaction was canceled";
         db_->updateApiTransactionState("Ошибка: Кассир отменил", apiTransaction.dateClose, apiTransaction.apiVCode);
         db_->setTransactionClosed(aOrder.id, 1);
-        aPartner->setStatusCanceled(aOrder.id, "Заказ отменен", QString::number(apiTransaction.apiVCode), QDateTime::currentDateTime());
+        int code = aPartner->setStatusCanceled(aOrder.id, "Заказ отменен", QString::number(apiTransaction.apiVCode), QDateTime::currentDateTime());
+        if (code == 200 && reestr_.value("Notifications/CancelOrder").toBool()) {
+            soundNotification(tr("Внимание!"), tr("Заказ через мобильное приложение на %1л отменен.")
+                              .arg(QString::number(aOrder.moneyData.requestVolumeDB)), "notifications\\cancelOrder.mp3", 100);
+        }
         return false;
     }
     return false;
@@ -695,7 +708,11 @@ bool MainWindow::processExpire(Order aOrder, PartnerAPI *aPartner) {
         qInfo() << aOrder.id << "no start fueling";
         db_->updateApiTransactionState("Ошибка: 30 минут", apiTransaction.dateClose, apiTransaction.apiVCode);
         db_->setTransactionClosed(aOrder.id, 1);
-        aPartner->setStatusCanceled(aOrder.id, "Истекло время ожидания", QString::number(apiTransaction.apiVCode), QDateTime::currentDateTime());
+        int code = aPartner->setStatusCanceled(aOrder.id, "Истекло время ожидания", QString::number(apiTransaction.apiVCode), QDateTime::currentDateTime());
+        if (code == 200 && reestr_.value("Notifications/CancelOrder").toBool()) {
+            soundNotification(tr("Внимание!"), tr("Заказ через мобильное приложение на %1л отменен (Истекло время ожидания).")
+                              .arg(QString::number(aOrder.moneyData.requestVolumeDB)), "notifications\\cancelOrder.mp3", 100);
+        }
         return true;
     }
 
@@ -710,15 +727,27 @@ bool MainWindow::processExpire(Order aOrder, PartnerAPI *aPartner) {
         qInfo() << aOrder.id << "transaction was canceled";
         db_->updateApiTransactionState("Ошибка: 30 минут, кассир отменил", apiTransaction.dateClose, apiTransaction.apiVCode);
         db_->setTransactionClosed(aOrder.id, 1);
-        aPartner->setStatusCanceled(aOrder.id, "Заказ отменен", QString::number(apiTransaction.apiVCode), QDateTime::currentDateTime());
+        int code = aPartner->setStatusCanceled(aOrder.id, "Заказ отменен", QString::number(apiTransaction.apiVCode), QDateTime::currentDateTime());
+        if (code == 200 && reestr_.value("Notifications/CancelOrder").toBool()) {
+            soundNotification(tr("Внимание!"), tr("Заказ через мобильное приложение на %1л отменен.")
+                              .arg(QString::number(aOrder.moneyData.requestVolumeDB)), "notifications\\cancelOrder.mp3", 100);
+        }
         return false;
     }
 
     if((amount >= 0.01) && (volume >= 0.01) && (price >= 0.01) && (apiTransaction.localState != "Completed")) {
         db_->finalUpdateApiTransactionState("Отправка после 30 минут", price, volume, amount, dateOpen, dateClose, apiTransaction.apiVCode);
-        aPartner->setStatusCompleted(aOrder.id, volume, QString::number(apiTransaction.apiVCode), dateClose);
+        int code = aPartner->setStatusCompleted(aOrder.id, volume, QString::number(apiTransaction.apiVCode), dateClose);
+        if (code == 200 && reestr_.value("Notifications/ApplyOrder").toBool()) {
+            soundNotification(tr("Успешно!"), tr("Успешная заправка через мобильное приложение на %1л.")
+                              .arg(QString::number(volume)), "notifications\\acceptOrder.mp3", 100);
+        }
         return true;
     } else {
+        if (reestr_.value("Notifications/UnknownStateOrder").toBool()) {
+            soundNotification(tr("Внимание!"), tr("Заявка через мобильное приложение на %1л не завершена, пожалуйста, завершите заправку.")
+                              .arg(QString::number(aOrder.moneyData.requestVolumeDB)), "notifications\\unknownError.mp3", 100);
+        }
         qInfo() << aOrder.id << "Expire but fueling progress";
         qWarning() << aOrder.id << "Expire but fueling progress";
     }

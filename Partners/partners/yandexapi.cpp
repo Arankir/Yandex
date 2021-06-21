@@ -238,7 +238,7 @@ void YandexAPI::getStateAGZS(QString aApikey) {
     apikey – ключ сети, выписывается сервисом отдельно по запросу сети*/
 }
 
-void YandexAPI::setStatusAccept(QString aOrderId, int aVCode) {
+int YandexAPI::setStatusAccept(QString aOrderId, int aVCode) {
 //    auto req = createRequestData();
     QNetworkRequest request = createNetworkRequest(QString("%1/api/orders/accept?orderId=%2").arg(baseUrl(), aOrderId));
     request_->get(request);
@@ -248,6 +248,7 @@ void YandexAPI::setStatusAccept(QString aOrderId, int aVCode) {
         emit s_error("setStatusAccept", aOrderId, request_->code());
         setStatusCanceled(aOrderId, "Неизвестная ошибка.", QString::number(aVCode), QDateTime::currentDateTime());
     }
+    return request_->code();
 //    delete req;
 /*    Данный статус сообщает системе Яндекс.Заправки о том, что заказ принят и обработан
     интегрируемой системой
@@ -262,7 +263,7 @@ void YandexAPI::setStatusAccept(QString aOrderId, int aVCode) {
     После отправки статуса Accept заказ перейдёт в статус WaitingRefueling*/
 }
 
-void YandexAPI::setStatusFueling(QString aOrderId, int aVCode) {
+int YandexAPI::setStatusFueling(QString aOrderId, int aVCode) {
 //    auto req = createRequestData();
     Q_UNUSED(aVCode);
     QNetworkRequest request = createNetworkRequest(QString("%1/api/orders/fueling?orderId=%2").arg(baseUrl(), aOrderId));
@@ -273,6 +274,7 @@ void YandexAPI::setStatusFueling(QString aOrderId, int aVCode) {
         emit s_error("setStatusFueling", aOrderId, request_->code());
         //setStatusCanceled(orderId, "Неизвестная ошибка.", QString::number(vCode), QDateTime::currentDateTime());
     }
+    return request_->code();
 //    delete req;
 /*    Данный статус сообщает системе Яндекс.Заправки о том, что интегрируемая система готова
     запустить колонку (начать пролив)
@@ -284,7 +286,7 @@ void YandexAPI::setStatusFueling(QString aOrderId, int aVCode) {
     все параметры являются обязательными*/
 }
 
-void YandexAPI::setStatusCanceled(QString aOrderId, QString aReason, QString aExtendedOrderId, QDateTime aExtendedDate) {
+int YandexAPI::setStatusCanceled(QString aOrderId, QString aReason, QString aExtendedOrderId, QDateTime aExtendedDate) {
 //    auto req = createRequestData();
     QUrl url(QString("%1/api/orders/canceled").arg(baseUrl()));
     QUrlQuery query;
@@ -299,6 +301,7 @@ void YandexAPI::setStatusCanceled(QString aOrderId, QString aReason, QString aEx
         qWarning(logError) << "setStatusCanceled" << aOrderId << request_->code();
         emit s_error("setStatusCanceled", "\"" + aOrderId + "\"", request_->code());
     }
+    return request_->code();
 //    delete req;
 /*    Данный статус сообщает системе Яндекс.Заправки о том, что заказ следует отменить
     GET базовый url +
@@ -311,7 +314,7 @@ void YandexAPI::setStatusCanceled(QString aOrderId, QString aReason, QString aEx
     extendedDate – дата по которой АСУ строит отчет для сверки, формат dd.MM.yyyy HH:mm:ss*/
 }
 
-void YandexAPI::setStatusCompleted(QString aOrderId, double aLitre, QString aExtendedOrderId, QDateTime aExtendedDate) {
+int YandexAPI::setStatusCompleted(QString aOrderId, double aLitre, QString aExtendedOrderId, QDateTime aExtendedDate) {
 //    auto req = createRequestData();
     QUrl url(QString("%1/api/orders/completed").arg(baseUrl()));
     QUrlQuery query;
@@ -329,8 +332,9 @@ void YandexAPI::setStatusCompleted(QString aOrderId, double aLitre, QString aExt
 //        connect(&timer_, &QTimer::timeout, &loop, &QEventLoop::quit);
 //        loop.exec();
 //        disconnect(&timer_, &QTimer::timeout, &loop, &QEventLoop::quit);
-        setStatusCompleted(aOrderId, aLitre, aExtendedOrderId, aExtendedDate);
+        return setStatusCompleted(aOrderId, aLitre, aExtendedOrderId, aExtendedDate);
     }
+    return request_->code();
 //    delete req;
 /*    Данный статус сообщает системе Яндекс.Заправки о том, что заказ выполнен и топливо
     залито
@@ -347,7 +351,7 @@ void YandexAPI::setStatusCompleted(QString aOrderId, double aLitre, QString aExt
     extendedDate – дата по которой АСУ строит отчет для сверки, формат dd.MM.yyyy HH:mm:ss*/
 }
 
-void YandexAPI::setStatusFuelNow(QString aOrderId, double aLitre) {
+int YandexAPI::setStatusFuelNow(QString aOrderId, double aLitre) {
 //    auto req = createRequestData();
     QNetworkRequest request = createNetworkRequest(QString("%1/api/orders/volume").arg(baseUrl()));
     request_->post(request, QString("orderId=%1&litre=%2").arg(aOrderId, QString::number(aLitre).replace(".",",")));
@@ -356,6 +360,7 @@ void YandexAPI::setStatusFuelNow(QString aOrderId, double aLitre) {
         qWarning(logError) << "setFuelNow" << aOrderId << request_->code();
         emit s_error("setFuelNow", aOrderId, request_->code());
     }
+    return request_->code();
 //    delete req;
 /*    В момент процесса налива интегрируемая система может сообщать Яндекс.Запракам статус
     счетчика налива
